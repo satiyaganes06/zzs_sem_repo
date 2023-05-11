@@ -44,9 +44,35 @@ switch ($action) {
 
     case 'viewProfile':
         session_start();
-        $useric = $_SESSION['user_login'];
+        $useric = $_SESSION['currentUserIC'];
 
         $userProfileController->viewApplicantProfile($useric);
+        
+        break;
+
+    case 'updateProfile':
+        $nama = $_POST['nama'];
+        $umur = $_POST['umur'];
+        $tarikhTL = $_POST['tarikhL'];
+
+        $jantina = $_POST['jantina'];
+        $bangsa = $_POST['bangsa'];
+        $email = $_POST['email'];
+
+        $alamat = $_POST['alamat'];
+        $noTel = $_POST['noTel'];
+        $noTelRum = $_POST['noTelRum'];
+
+        $trafPen = $_POST['trafPen'];
+        $jawatan = $_POST['jawatan'];
+        $pendapatan = $_POST['pendapatan'];
+
+        $alamatKerja = $_POST['alamatKerja'];
+        $noTelPenjabat = $_POST['noTelPenjabat'];
+
+        
+
+        $userProfileController->updateApplicantProfile($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat);
         
         break;
 

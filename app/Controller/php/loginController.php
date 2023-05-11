@@ -15,7 +15,7 @@ class LoginController {
     if($this->accountModel->loginAccount($ic, $pwd)){
 
         //Check the user type 
-        if($userType == 'Applicant'){
+        if($userType == 'Pemohon'){
             ?>
                 <script>
                     alert("Berjaya log masuk.");

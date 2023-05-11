@@ -1,13 +1,16 @@
 <?php
 
-// Start up your PHP Session
+    // Start up your PHP Session
     session_start();
     $user =  $_SESSION['userinfo'];
+
     
-    // If the user is not logged in send him/her to the login form
-    if(!isset($_SESSION['currentUser'])) {
+    //If the user is not logged in send him/her to the login form
+    if(!isset($_SESSION['currentUserIC'])) {
         header("Location: ../ManageLogin/userLoginView.html");
     }
+
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +20,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
@@ -24,11 +28,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- MDB -->
     <link rel="stylesheet" href="../../Bootstrap/mdb.min.css" />
 
     <!--CSS-->
-
     <link rel="stylesheet" href="../css/viewProfileDetailsView.css">
     <link rel="stylesheet" href="../css/header.css">
 
@@ -73,7 +77,7 @@
 
             <div class="d-flex justify-content-between h-100">
 
-            <!--Sidebar-->
+                <!--Sidebar-->
                 <div class="sidebar bg-white shadow rounded-2">
 
                     <div id="mySidepanel" class="sidepanel list-tab
@@ -100,14 +104,14 @@
                                         <a class="list-group-item
                                             list-group-item-action active
                                             px-3 border-0 pt-1 pb-1
-                                            list-group-item-light" href="../ManageUserProfile/viewProfileDetailsView.html">
+                                            list-group-item-light" href="../ManageUserProfile/viewProfileDetailsView.php">
                                             Lihat Profil
                                         </a>
 
                                         <a class="list-group-item
                                             list-group-item-action px-3
                                             border-0 mt-1 pt-1 pb-1
-                                            list-group-item-light" href="../ManageUserProfile/editProfileDetailsView.html">
+                                            list-group-item-light" href="../ManageUserProfile/editProfileDetailsView.php">
                                             Edit Profil
                                         </a>
 
@@ -136,8 +140,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div>
-                            
+                            </div>      
 
                             <!-- Permohonan Berkahwin Accordian -->
                             <div class="accordion-item">
@@ -320,15 +323,15 @@
 
                 </div>
 
-                <div class="mainContent bg-white shadow rounded-2 ">
+                <div class="mainContent bg-white shadow rounded-2">
 
                     <div class="d-flex justify-content-between">
                         <button class="openbtn" onclick="openNav()"><i class="fas fa-bars"></i></button>
                         <div class="w-100"></div>
                         
                         <div class="d-flex justify-content-end">
-                            <button class="commonButton" onclick=""><i class="fas fa-gear"></i></button>
-                            <button class="commonButton" onclick=""><i class="far fa-bell"></i></button>
+                            <a class="commonButton" onclick=""><i class="fas fa-gear"></i></a>
+                            <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket"></i></a>
                         </div>
                     </div>
                     
@@ -343,30 +346,31 @@
                                   <tr>
                                     <th scope="row">Nama :</th>
                                     <td><?php echo $user['ApplicantName']; ?></td>
-                                  </tr>
-
-                                  <tr>
-                                    <th scope="row">Tarikh Lahir :</th>
-                                    <td><?php echo $user['ApplicantBirthDate']; ?></td>
 
                                     <th scope="row">Umur :</th>
                                     <td><?php echo $user['ApplicantAge']; ?></td>
                                   </tr>
 
                                   <tr>
-                                    <th scope="row">No. Kad Pengenalan :</th>
-                                    <td><?php echo $user['ApplicantAge']; ?></td>
+                                    <th scope="row">Tarikh Lahir :</th>
+                                    <td><?php echo $user['ApplicantBirthDate']; ?></td>
 
                                     <th scope="row">Jantina :</th>
                                     <td><?php echo $user['ApplicantGender']; ?></td>
                                   </tr>
 
                                   <tr>
-                                    <th scope="row">Email :</th>
-                                    <td><?php echo $user['ApplicantEmail']; ?></td>
+                                    <th scope="row">No. Kad Pengenalan :</th>
+                                    <td><?php echo $user['Applicant_Ic']; ?></td>
 
                                     <th scope="row">Bangsa :</th>
                                     <td><?php echo $user['ApplicantRace']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">Email :</th>
+                                    <td><?php echo $user['ApplicantEmail']; ?></td>
+
                                   </tr>
 
                                   <tr>

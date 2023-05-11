@@ -37,8 +37,7 @@ class AccountModel {
       // Password is correct, start session
       session_start();
       $_SESSION['accountId'] = $user['Account_Id'];
-      $_SESSION['userIc'] = $user['User_IC'];
-      $_SESSION['currentUser'] = $user['User_IC'];
+      $_SESSION['currentUserIC'] = $user['User_IC'];
       
       return true;
       

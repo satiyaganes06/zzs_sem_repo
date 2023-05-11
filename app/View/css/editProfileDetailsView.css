@@ -102,8 +102,20 @@ body{
     height: fit-content;
 }
 
+.mainContentBg button{
+    font-family: 'Inria Serif', serif;
+    font-weight: 500;
+    width: fit-content;
+    background-color: #F8C879;
+    border-radius: 50px;
+}
+
+.mainContentBg button:hover{
+    background-color: #F8C879;
+}
+
 #inMainContentOutline{
-    height: 90%;
+    height: 57vh;
     border: 2px solid #f8c779a5;
 }
 
@@ -116,6 +128,13 @@ body{
     background-color: #EEC800;
 }
 
+.form-width{
+    width: fit-content;
+}
+
+.form-width input{
+    background-color: #FFE6BC;
+}
 
 @media only screen and (max-width: 1000px) {
     .sidebar {

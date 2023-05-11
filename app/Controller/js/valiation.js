@@ -50,7 +50,7 @@ function forgotPasswordFormValidate(){
   }
 
   if(email.indexOf("@") == -1 || email.indexOf("com") == -1  || email.length < 6){
-    text = "Please Enter valid Email";
+    text = "Sila masukkan Email yang sah";
     error_message.innerHTML = text;
     return false;
   }
@@ -142,6 +142,123 @@ function registerFormValidate(){
     return false;
   }
 
+
+  return true;
+}
+
+//Validation code for register form
+function userProfileUpdateValidate(){
+
+  //Decluring variable based on id
+  var name = document.getElementById("formNama").value;
+  var umur = document.getElementById("formUmur").value;
+  var tarikhLahir = document.getElementById("formTL").value;
+  var jantina = document.getElementById("formJantina").value;
+  var ic = document.getElementById("formIC").value;
+  var bangsa = document.getElementById("formBangsa").value;
+  var email = document.getElementById("formEmail").value;
+  var alamat = document.getElementById("formAlamat").value;
+  var noTel = document.getElementById("formNoTel").value;
+  var noTelRum = document.getElementById("formNoTelRum").value;
+  var trafPendidikan = document.getElementById("formTaraf").value;
+  var jawatan = document.getElementById("formJawatan").value;
+  var pendapatan = document.getElementById("formPendapatan").value;
+  var alamatKerja = document.getElementById("formAlamatKerja").value;
+  var noTelPenjabat = document.getElementById("formNoTelPenjabat").value;
+
+
+  var text;
+
+  //Validation Condition
+  if(ic.length != 12){
+    text = "Sila masukkan Kad pengenalan yang sah";
+    alert(text);
+    return false;
+  }
+
+  if(name == ""){
+    text = "Sila masukkan nama";
+    alert(text);
+    return false;
+  }
+
+  if(umur == ""){
+    text = "Sila masukkan umur";
+    alert(text);
+    return false;
+  }
+
+  if(tarikhLahir == ""){
+    text = "Sila masukkan tarikh lahir";
+    alert(text);
+    return false;
+  }
+
+  if(jantina == ""){
+    text = "Sila masukkan jantina";
+    alert(text);
+    return false;
+  }
+
+  if(bangsa == ""){
+    text = "Sila masukkan bangsa";
+    alert(text);
+    return false;
+  }
+
+  if(email.indexOf("@") == -1 || email.indexOf("com") == -1  || email.length < 6){
+    text = "Sila masukkan Email yang sah";
+    alert(text);
+    return false;
+  }
+
+  if(alamat == ""){
+    text = "Sila masukkan alamat";
+    alert(text);
+    return false;
+  }
+
+  if(noTel == ""){
+    text = "Sila masukkan no telefon";
+    alert(text);
+    return false;
+  }
+
+  if(noTelRum == ""){
+    text = "Sila masukkan no telefon rumah";
+    alert(text);
+    return false;
+  }
+
+  if(trafPendidikan == ""){
+    text = "Sila masukkan taraf pendidikan";
+    alert(text);
+    return false;
+  }
+
+  if(jawatan == ""){
+    text = "Sila masukkan jawatan";
+    alert(text);
+    return false;
+  }
+  
+  if(pendapatan == ""){
+    text = "Sila masukkan pendapatan";
+    alert(text);
+    return false;
+  }
+
+  if(alamatKerja == ""){
+    text = "Sila masukkan alamat kerja";
+    alert(text);;
+    return false;
+  }
+
+  if(noTelPenjabat == ""){
+    text = "Sila masukkan no telefon penjabat";
+    alert(text);
+    return false;
+  }
 
   return true;
 }
