@@ -4,12 +4,12 @@
 class Database {
 
     //Decluring Variable of Server
-    private $host = "sql12.freesqldatabase.com";
-    private $db_name = "sql12616274";
-    private $username = "sql12616274";
-    private $password = "pJsHj7f5Mt";
+    private $host = "sql12.freemysqlhosting.net";
+    private $db_name = "sql12617882";
+    private $username = "sql12617882";
+    private $password = "Px4zDGzKcL";
 
-
+    
     public function connect() {
         $conn = null;
         try {
