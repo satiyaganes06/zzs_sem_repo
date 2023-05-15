@@ -8,8 +8,8 @@ class LoginController {
     $this->accountModel = $accountModel;
   }
 
-  //User login account function
-  public function userLoginAccount($ic, $pwd, $userType){
+  //User(Staff and Applicant) login account function
+  public function userLoginAccountFunction($ic, $pwd, $userType){
 
     //Send the input to account model to verify the user 
     if($this->accountModel->loginAccount($ic, $pwd)){
@@ -56,6 +56,40 @@ class LoginController {
     
   }
 
+  //User login account function
+  public function adminLoginAccountFunction($id, $pwd){
+
+    //Send the input to account model to verify the user 
+    if($this->accountModel->adminLoginAccount($id, $pwd)){
+        
+        ?>
+            <script>
+                alert("Berjaya log masuk.");
+                
+            </script>
+        <?php
+        header("Location: index.php?action=viewProfile");
+        
+
+        return true;
+        
+
+        
+    }else{
+
+        //If the user not exists, it will show error message 
+        ?>
+            <script>
+                alert("Incorrect IC or Password");
+                window.location = "../app/View/ManageLogin/adminLoginView.html";
+            </script>
+        <?php
+
+        return false;
+    }
+
+    
+  }
 }
 
 ?>

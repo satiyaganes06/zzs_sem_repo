@@ -1,4 +1,4 @@
 <?php
-    $root_path = dirname(__FILE__);
-    echo $root_path;
+    $ss = password_hash("admin", PASSWORD_DEFAULT);
+    echo $ss;
 ?>

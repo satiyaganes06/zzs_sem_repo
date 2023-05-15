@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inria+Serif:wght@400&display=swap');
 
 body{
-    background-image: url(../../Assert/background.png) ;
+    background-image: url(../../Assert/background\ -\ admin.png) ;
     background-repeat: repeat-y;
     background-position: none;
     background-size: cover;
@@ -51,19 +51,85 @@ body{
     display: none;
 }
 
+.commonButton {
+    display: block;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    color: rgb(181, 181, 181);
+    background-color:#E8E8E8;
+    margin-left: 5px;
+    border-radius: 50%;
+    padding: 5px 10px;
+    border: none;
+}
+
+.commonButton:hover{
+    background-color: #a4a4a4;
+}
+
 .mainContent{
     width: 73%;
+    padding: 20px 40px 40px 40px;
+}
+
+#contentTitle{
+    font-family: 'Inria Serif', serif;
+    color: #191919;
+    text-shadow: 2px 2px 5px #afafaf;
+    font-weight: 500;
+}
+
+.mainContentBg{
+    background-color: #E8E8E8;
+    margin-top: 20px;
+    height:90%;
+    border-radius: 10px;
+}
+
+.mainContentBg th{
+    font-size: 14px;
+    text-align: left;
+    font-weight: bold;
+    padding: 0px 0px 10px 0px;
+    width: 15vw;
+    height: fit-content;
+}
+
+.mainContentBg td{
+    font-size: 14px;
+    text-align: left;
+    padding: 0px 0px 10px 0px;
+    height: fit-content;
+}
+
+select{
+    border-color: rgb(180, 180, 180);
+}
+
+.mainContentBg button{
+    font-family: 'Inria Serif', serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+    width: fit-content;
+    color: white;
+    background-color: #000000;
+    border-radius: 50px;
+}
+
+#inMainContentOutline{
+    height: 57vh;
+    border: 2px solid #ababab;
 }
 
 .accordion-item strong{
     font-size: 14px;
-    color: #000000a1;
+    color: #979797;
 }
 
 .accordion-button:not(.collapsed) {
-    background-color: #EEC800;
+    background-color: #000000;
 }
-
 
 @media only screen and (max-width: 1000px) {
     .sidebar {
@@ -99,15 +165,14 @@ body{
     }
 
     .sidepanel{
-        background-image: url(../../Assert/Template\ Kiri__Template\ Kiri.png);
+        background-image: url(../../Assert/Template\ Kiri__Template\ Kiri\ -\ admin.png);
         background-size: cover;
         border-radius: 25px;
-        border: 1px solid #F8C879;
+        border: 1px solid #a4a4a4;
         background-repeat: no-repeat;
         width: 100%;
         background-size: cover;
         border-radius: 25px;
-        border: 1px solid #F8C879;
         background-repeat: no-repeat;
         background-attachment: fixed;
         width: 0;
@@ -120,15 +185,28 @@ body{
         transition: 0.5s;
         padding-top: 60px;
     }
+
+    .commonButton {
+        display: block;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: transparent;
+        color: rgb(181, 181, 181);
+        background-color:#E8E8E8;
+        margin-left: 5px;
+        border-radius: 50%;
+        padding: 10px 15px;
+        border: none;
+    }
 }
 
 @media only screen and (max-width: 2560px) and (min-width: 1000px) {
     
     .sidepanel{
-        background-image: url(../../Assert/Template\ Kiri__Template\ Kiri.png);
+        background-image: url(../../Assert/Template\ Kiri__Template\ Kiri\ -\ admin.png);
         background-size: cover;
         border-radius: 25px;
-        border: 1px solid #F8C879;
+        border: 1px solid #b5b5b5;
         background-repeat: no-repeat;
         width: 100%;
     }

@@ -8,6 +8,22 @@ class AccountModel {
     $this->connect = $database;
   }
 
+  //Get user account data using user account_Id 
+  public function getAccountInfo($account_id) {
+
+    // Prepare SQL statement with placeholders to prevent SQL injection
+    $stmt = $this->connect->prepare('SELECT User_IC, UserType FROM Account_Info WHERE Account_Id = :id');
+    $stmt->bindParam(':id', $account_id);
+
+    // Execute SQL statement
+    $stmt->execute();
+
+    //Store the result of user from mySQL
+    $acountInfo = $stmt->fetch(PDO::FETCH_ASSOC);  
+
+    return $acountInfo;
+  }
+
   //This function will create new account in mySQL database
   public function createAccount($userIC, $userType, $userPassword) {
     $uniqid = uniqid();
@@ -19,7 +35,7 @@ class AccountModel {
     return $uniqid;
   }
 
-  //This function will login account using mySQL database
+  //This function will login staff and applicant account using mySQL database
   public function loginAccount($userIC, $password) {
     
     // Prepare SQL statement with placeholders to prevent SQL injection
@@ -38,7 +54,7 @@ class AccountModel {
       session_start();
       $_SESSION['accountId'] = $user['Account_Id'];
       $_SESSION['currentUserIC'] = $user['User_IC'];
-      
+      $_SESSION['currentUserType'] = $user['UserType'];
       return true;
       
     } else {
@@ -47,7 +63,35 @@ class AccountModel {
     }
   }
 
- 
+  //This function will login account for admin using mySQL database
+  public function adminLoginAccount($id, $password) {
+    
+    // Prepare SQL statement with placeholders to prevent SQL injection
+    $stmt = $this->connect->prepare("SELECT * FROM Account_Info WHERE Account_Id = :id");
+    $stmt->bindParam(":id", $id);
+    
+    // Execute SQL statement
+    $stmt->execute();
+    
+    // Fetch user from result set
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    // Verify password
+    if ($user && password_verify($password, $user['UserPassword'])) {
+      // Password is correct, start session
+      session_start();
+      $_SESSION['accountId'] = $user['Account_Id'];
+      $_SESSION['currentUserIC'] = $user['User_IC'];
+      $_SESSION['currentUserType'] = $user['UserType'];
+      
+      return true;
+      
+    } else {
+        // Password is incorrect or user not found
+        return false;
+    }
+  }
+  
 }
 
 ?>

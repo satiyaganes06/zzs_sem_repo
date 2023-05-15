@@ -25,7 +25,7 @@ class ApplicantModel {
   }
 
 
-  //Get user data using user ic 
+  //Get applicant data using user ic 
   public function getApplicantProfileInfo($userIC) {
 
     // Prepare SQL statement with placeholders to prevent SQL injection
@@ -41,8 +41,23 @@ class ApplicantModel {
     return $userinfo;
   }
 
+  //Get all applicant data
+  public function getAllApplicantInfo() {
 
-  //Update user data using user ic 
+    // Prepare SQL statement with placeholders to prevent SQL injection
+    $stmt = $this->connect->prepare('SELECT * FROM Applicant_Info');
+
+    // Execute SQL statement
+    $stmt->execute();
+
+    // Fetch all rows at once
+    $applicantDetailsList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $applicantDetailsList;
+  }   
+
+
+  //Update applicant data using user ic 
   public function updateApplicantProfileInfo($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat) {
      
     session_start();
@@ -96,11 +111,8 @@ class ApplicantModel {
           
       }
 
-    
-      
   }
   
-
   
 }
 

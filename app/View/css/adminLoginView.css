@@ -1,0 +1,139 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+@import url('//db.onlinewebfonts.com/c/34a6a1a1db670f1f16c76a192a28c853?family=Pirouette+LT+Std');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:wght@400&display=swap');
+
+body{
+    background-image: url(../../Assert/background\ -\ admin.png) ;
+    background-repeat: repeat-y;
+    background-position: none;
+    background-size: cover;
+    scroll-behavior: smooth;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    height: auto;
+    margin: 0px;
+}
+
+.contentPart{
+    height: 75vh;
+    width: 80vw;
+}
+
+
+.width-auto {
+    width: auto;
+}
+
+.text-lg {
+    font-size: 2rem;
+}
+
+.carousel-indicators li {
+    border: none;
+    background: #ebebeb;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+
+.carousel-indicators li.active {
+    background: #fcbf6f;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+
+.mask {
+    -webkit-filter:brightness(0.6)
+}
+
+.imgBody{
+    height: 18vh;
+    background-color: #e5e5e5;
+}
+
+.imgBox{
+    height: 14vh;
+    width: 14vh;
+    background-image: url(../../Assert/ring_img.jpg);
+    background-size: cover;
+}
+
+.loginPart{
+    background-image: url(../../Assert/admin_login_background.png);
+    background-size: cover;
+    height: 100%;
+    padding-top: 6%;
+}
+
+.loginTitle{
+    font-family:'Bruno Ace SC', cursive;
+    font-weight: bold;
+    font-size: medium;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-size: small;
+}
+
+.browser-default{
+    width: 100%;
+}
+
+input[type="text"], textarea {
+    color: rgb(255, 240, 217);
+}
+s
+button{
+    background-color: rgb(255, 240, 217);
+}
+
+@media only screen and (max-width: 1200px) {
+     
+    .grid1 {
+        display: none;
+    }
+
+    .loginPart{
+        margin-top: 20px;
+        height: fit-content;
+    }
+
+    .contentPart{
+        height: 125vh;
+    }
+
+    .imgBody{
+        margin-top: 10px;
+        height: 18vh;
+        background-color: #e5e5e5;
+    }
+
+    .imgBox{
+        height: 12vh;
+        width: 12vh;
+        background-image: url(../../Assert/ring_img.jpg);
+        background-size: cover;
+    }
+}
+
+#error_message{
+    margin-bottom: 20px;
+    width: 100%;
+    background: #DC4C64;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px #1b1b1ba7;
+    padding: 0px;
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.5s ease;
+}
+
+
+
+

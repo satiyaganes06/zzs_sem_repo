@@ -7,7 +7,7 @@
     
     //If the user is not logged in send him/her to the login form
     if(!isset($_SESSION['currentUserIC'])) {
-        header("Location: ../ManageLogin/userLoginView.html");
+        header("Location: ../ManageLogin/adminLoginView.html");
     }
 
     
@@ -19,7 +19,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>ZZS - View Profile</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -33,8 +33,8 @@
     <link rel="stylesheet" href="../../Bootstrap/mdb.min.css" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="../css/viewProfileDetailsView.css">
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/viewAdminProfileDetailsView.css">
+    <link rel="stylesheet" href="../css/adminHeader.css">
 
     <!-- Icon -->
     <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png" />
@@ -104,15 +104,29 @@
                                         <a class="list-group-item
                                             list-group-item-action active
                                             px-3 border-0 pt-1 pb-1
-                                            list-group-item-light" href="../ManageUserProfile/viewProfileDetailsView.php">
+                                            list-group-item-light" href="../ManageUserProfile/viewAdminProfileDetailsView.php">
                                             Lihat Profil
                                         </a>
 
                                         <a class="list-group-item
                                             list-group-item-action px-3
                                             border-0 mt-1 pt-1 pb-1
-                                            list-group-item-light" href="../ManageUserProfile/editProfileDetailsView.php">
+                                            list-group-item-light" href="../ManageUserProfile/editAdminProfileDetailsView.php">
                                             Edit Profil
+                                        </a>
+
+                                        <a class="list-group-item
+                                            list-group-item-action
+                                            px-3 border-0 pt-1 pb-1
+                                            list-group-item-light" href="../../../public/index.php?action=viewStaffList">
+                                            Lihat Staf Profil
+                                        </a>
+
+                                        <a class="list-group-item
+                                            list-group-item-action px-3
+                                            border-0 mt-1 pt-1 pb-1
+                                            list-group-item-light" href="../../../public/index.php?action=viewApplicantList">
+                                            Lihat Pemohon Profil
                                         </a>
 
                                     </div>
@@ -330,8 +344,8 @@
                         <div class="w-100"></div>
                         
                         <div class="d-flex justify-content-end">
-                            <a class="commonButton" onclick=""><i class="fas fa-gear"></i></a>
-                            <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket"></i></a>
+                            <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
+                            <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
                     </div>
                     
@@ -340,78 +354,35 @@
 
 
                         <div id="inMainContentOutline" class="table-responsive p-4">
-                            <table class="table table-borderless table-sm">
+                            <table class="table table-borderless">
                         
                                 <tbody>
                                   <tr>
                                     <th scope="row">Nama :</th>
-                                    <td><?php echo $user['ApplicantName']; ?></td>
+                                    <td><?php echo $user['AdminName']; ?></td>
 
-                                    <th scope="row">Umur :</th>
-                                    <td><?php echo $user['ApplicantAge']; ?></td>
                                   </tr>
 
                                   <tr>
-                                    <th scope="row">Tarikh Lahir :</th>
-                                    <td><?php echo $user['ApplicantBirthDate']; ?></td>
-
-                                    <th scope="row">Jantina :</th>
-                                    <td><?php echo $user['ApplicantGender']; ?></td>
-                                  </tr>
-
-                                  <tr>
-                                    <th scope="row">No. Kad Pengenalan :</th>
-                                    <td><?php echo $user['Applicant_Ic']; ?></td>
-
-                                    <th scope="row">Bangsa :</th>
-                                    <td><?php echo $user['ApplicantRace']; ?></td>
+                                    <th scope="row">Akaun ID :</th>
+                                    <td><?php echo $user['Account_Id']; ?></td>
                                   </tr>
 
                                   <tr>
                                     <th scope="row">Email :</th>
-                                    <td><?php echo $user['ApplicantEmail']; ?></td>
-
-                                  </tr>
-
-                                  <tr>
-                                    <th scope="row">Alamat :</th>
-                                    <td><?php echo $user['ApplicantAddress']; ?></td>
+                                    <td><?php echo $user['AdminEmail']; ?></td>
                                   </tr>
 
                                   <tr>
                                     <th scope="row">No. Telefon(Bimbit) :</th>
-                                    <td><?php echo $user['ApplicantPhoneNo']; ?></td>
+                                    <td><?php echo $user['AdminNumberPhone']; ?></td>
                                   </tr>
 
                                   <tr>
-                                    <th scope="row">No. Telefon(Rumah) :</th>
-                                    <td><?php echo $user['ApplicantHomePhoneNo']; ?></td>
+                                    <th scope="row">Alamat :</th>
+                                    <td><?php echo $user['AdminAddress']; ?></td>
                                   </tr>
 
-                                  <tr>
-                                    <th scope="row">Taraf Pendidikan :</th>
-                                    <td><?php echo $user['ApplicantEduLevel']; ?></td>
-                                  </tr>
-
-                                  <tr>
-                                    <th scope="row">Jawatan / Pekerjaan :</th>
-                                    <td><?php echo $user['ApplicantPosition']; ?></td>
-                                  </tr>
-
-                                  <tr>
-                                    <th scope="col-2">Pendapatan :</th>
-                                    <td>RM <?php echo $user['ApplicantSalary']; ?></td>
-                                  </tr>
-
-                                  <tr>
-                                    <th scope="row">Alamat Tempat Kerja :</th>
-                                    <td><?php echo $user['ApplicantWorkAddress']; ?></td>
-                                  </tr>
-
-                                  <tr>
-                                    <th scope="row">No. Telefon(Pejabat) :</th>
-                                    <td><?php echo $user['ApplicantWorkPhoneNo']; ?></td>
-                                  </tr>
                                 </tbody>
                             </table>
                         </div>

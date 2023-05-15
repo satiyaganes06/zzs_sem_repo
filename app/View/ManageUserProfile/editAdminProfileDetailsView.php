@@ -7,7 +7,7 @@
     
     //If the user is not logged in send him/her to the login form
     if(!isset($_SESSION['currentUserIC'])) {
-        header("Location: ../ManageLogin/userLoginView.html");
+        header("Location: ../ManageLogin/adminLoginView.html");
     }
 
     
@@ -19,7 +19,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>ZZS - Edit Profile</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -33,8 +33,8 @@
     <link rel="stylesheet" href="../../Bootstrap/mdb.min.css" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="../css/editProfileDetailsView.css">
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/editAdminProfileDetailsView.css">
+    <link rel="stylesheet" href="../css/adminHeader.css">
 
     <!-- Icon -->
     <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png" />
@@ -104,15 +104,29 @@
                                         <a class="list-group-item
                                             list-group-item-action
                                             px-3 border-0 pt-1 pb-1
-                                            list-group-item-light" href="../ManageUserProfile/viewProfileDetailsView.php">
+                                            list-group-item-light" href="../ManageUserProfile/viewAdminProfileDetailsView.php">
                                             Lihat Profil
                                         </a>
 
-                                        <a class="list-group-item active
+                                        <a class="list-group-item
+                                            list-group-item-action px-3 active
+                                            border-0 mt-1 pt-1 pb-1
+                                            list-group-item-light" href="../ManageUserProfile/editAdminProfileDetailsView.php">
+                                            Edit Profil
+                                        </a>
+
+                                        <a class="list-group-item
+                                            list-group-item-action
+                                            px-3 border-0 pt-1 pb-1
+                                            list-group-item-light" href="../../../public/index.php?action=viewStaffList">
+                                            Lihat Staf Profil
+                                        </a>
+
+                                        <a class="list-group-item
                                             list-group-item-action px-3
                                             border-0 mt-1 pt-1 pb-1
-                                            list-group-item-light" href="../ManageUserProfile/editProfileDetailsView.php">
-                                            Edit Profil
+                                            list-group-item-light" href="../../../public/index.php?action=viewApplicantList">
+                                            Lihat Pemohon Profil
                                         </a>
 
                                     </div>
@@ -330,8 +344,8 @@
                         <div class="w-100"></div>
                         
                         <div class="d-flex justify-content-end">
-                            <a class="commonButton" onclick=""><i class="fas fa-gear"></i></a>
-                            <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket"></i></a>
+                            <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
+                            <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
                     </div>
                     
@@ -339,142 +353,54 @@
                         <h2 id="contentTitle">Edit Profil</h2>
 
                         <!-- form profile info update -->
-                        <form action="../../../public/index.php?action=updateProfile" method="post" onsubmit = "return userProfileUpdateValidate();">
+                        <form action="../../../public/index.php?action=updateAdminProfile" method="post" onsubmit = "return userProfileUpdateValidate();">
 
                             <div id="inMainContentOutline" class="table-responsive p-4">
 
                                 <table class="table table-borderless table-sm">
 
                                     <tbody>
-                                    <tr>
-                                        <th scope="row">Nama :</th>
-                                        <td>
-                                            <div class="form form-width">
-                                                <input type="text" id="formNama" name="nama" class="form-control form-control-sm" value="<?php echo $user['ApplicantName']; ?>"/>
-                                            </div>
-                                        </td>
+                                        <tr>
+                                            <th scope="row">Nama :</th>
+                                            <td>
+                                                <div class="form form-width">
+                                                    <input type="text" id="formNama" name="nama" class="form-control form-control-sm" value="<?php echo $user['AdminName']; ?>"/>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                        <th scope="row">Umur :</th>
-                                        <td>
-                                            
-                                            <div class="form form-width">
-                                                <input type="text" id="formUmur" name="umur" class="form-control form-control-sm" value="<?php echo $user['ApplicantAge']; ?>"/>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">Akaun ID :</th>
+                                            <td><?php echo $user['Account_Id']; ?></td>
+                                        </tr>
 
-                                    <tr>
-                                        <th scope="row">Tarikh Lahir :</th>
-                                        <td>
-                                            <div class="form form-width">
-                                                <input type="text" id="formTL" name="tarikhL" class="form-control form-control-sm" value="<?php echo $user['ApplicantBirthDate']; ?>" placeholder="YYYY-MM-DD"/>
-                                            </div>
-                                        </td>
+                                        <tr>
+                                            <th scope="row">Email :</th>
+                                            <td>
+                                                <div class="form form-width">
+                                                    <input type="text" id="formEmail" name="email" class="form-control form-control-sm" value="<?php echo $user['AdminEmail']; ?>"/>
+                                                </div>
+                                            </td>
 
-                                        <th scope="row">Jantina :</th>
-                                        <td>
-                                            <div class="form form-width">
-                                                <input type="text" id="formJantina" name="jantina" class="form-control form-control-sm" value="<?php echo $user['ApplicantGender']; ?>"/>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        </tr>
 
-                                    <tr>
-                                        <th scope="row">No. Kad Pengenalan :</th>
-                                        <td>
-                                            <?php echo $user['Applicant_Ic']; ?>
-                                        </td>
+                                        <tr>
+                                            <th scope="row">No. Telefon(Bimbit) :</th>
+                                            <td>
+                                                <div class="form form-width">
+                                                    <input type="text" id="formNoTel" name="noTel" class="form-control form-control-sm" value="<?php echo $user['AdminNumberPhone']; ?>"/>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                        <th scope="row">Bangsa :</th>
-                                        <td>
-                                            <div class="form form-width">
-                                                <input type="text" id="formBangsa" name="bangsa" class="form-control form-control-sm" value="<?php echo $user['ApplicantRace']; ?>"/>
-                                            </div>
-                                        </td>
-                                        
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">Email :</th>
-                                        <td>
-                                            <div class="form form-width">
-                                                <input type="text" id="formEmail" name="email" class="form-control form-control-sm" value="<?php echo $user['ApplicantEmail']; ?>"/>
-                                            </div>
-                                        </td>
-
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">Alamat :</th>
-                                        <td>
-                                            <div class="form form-width">
-                                                <input type="text" id="formAlamat" name="alamat" class="form-control form-control-sm" value="<?php echo $user['ApplicantAddress']; ?>"/>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">No. Telefon(Bimbit) :</th>
-                                        <td>
-                                            <div class="form form-width">
-                                                <input type="text" id="formNoTel" name="noTel" class="form-control form-control-sm" value="<?php echo $user['ApplicantPhoneNo']; ?>"/>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">No. Telefon(Rumah) :</th>
-                                        <td>
-                                            <div class="form form-width">
-                                                <input type="text" id="formNoTelRum" name="noTelRum" class="form-control form-control-sm" value="<?php echo $user['ApplicantHomePhoneNo']; ?>"/>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">Taraf Pendidikan :</th>
-                                        <td>
-                                            <div class="form form-width">
-                                                <input type="text" id="formTaraf" name="trafPen" class="form-control form-control-sm" value="<?php echo $user['ApplicantEduLevel']; ?>"/>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">Jawatan / Pekerjaan :</th>
-                                        <td>
-                                            <div class="form form-width">
-                                                <input type="text" id="formJawatan" name="jawatan" class="form-control form-control-sm" value="<?php echo $user['ApplicantPosition']; ?>"/>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="col-2">Pendapatan : (RM)</th>
-                                        <td> 
-                                            <div class="form form-width">
-                                                <input type="text" id="formPendapatan" name="pendapatan" class="form-control form-control-sm" value="<?php echo $user['ApplicantSalary']; ?>"/>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">Alamat Tempat Kerja :</th>
-                                        <td>
-                                            <div class="form form-width">
-                                                <input type="text" id="formAlamatKerja" name="alamatKerja" class="form-control form-control-sm" value="<?php echo $user['ApplicantWorkAddress']; ?>"/>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">No. Telefon(Pejabat) :</th>
-                                        <td>
-                                            <div class="form form-width">
-                                                <input type="text" id="formNoTelPenjabat" name="noTelPenjabat" class="form-control form-control-sm" value="<?php echo $user['ApplicantWorkPhoneNo']; ?>"/>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">Alamat :</th>
+                                            <td>
+                                                <div class="form form-width">
+                                                    <input type="text" id="formAlamat" name="alamat" class="form-control form-control-sm" value="<?php echo $user['AdminAddress']; ?>"/>
+                                                </div>
+                                            </td>
+                                        </tr>
 
                                     </tbody>
                                 </table>
@@ -482,14 +408,13 @@
                             </div>
 
                             <div class="d-flex justify-content-center">
-                                <button class="btn btn-block mt-3 text-dark" type="submit" data-mdb-ripple-color="dark">Mengemas kini</button>
+                                <button class="btn btn-link btn-md bg-dark text-light btn-rounded mt-3 " type="submit" data-mdb-ripple-color="dark">Mengemas kini</button>
                             </div>
 
                         </form>
-                        
 
+                        
                     </div>
-                    
                 </div>
 
             </div>

@@ -2,6 +2,8 @@
 require_once '../app/Config/database.php';
 require_once '../app/Model/accountModel.php';
 require_once '../app/Model/applicantModel.php';
+require_once '../app/Model/adminModel.php';
+require_once '../app/Model/staffModel.php';
 require_once '../app/Controller/php/registrationController.php';
 require_once '../app/Controller/php/loginController.php';
 require_once '../app/Controller/php/userProfileController.php';
@@ -12,11 +14,14 @@ $db = (new Database())->connect();
 // Create a new instance of the model
 $accountModel = new AccountModel($db);
 $applicantModel = new ApplicantModel($db);
+$adminModel = new AdminModel($db);
+$staffModel = new StaffModel($db);
 
 // Create a new instance of the controller
-$registrationController = new RegistrationController($accountModel, $applicantModel);
+$registrationController = new RegistrationController($accountModel, $applicantModel, $staffModel);
 $loginController = new LoginController($accountModel);
-$userProfileController = new UserProfileController($applicantModel, $accountModel);
+$userProfileController = new UserProfileController($accountModel, $applicantModel, $adminModel, $staffModel);
+
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
@@ -28,7 +33,21 @@ switch ($action) {
         $name = $_POST['name'];
         $gender = $_POST['gender'];
 
-        $registrationController->applicantRegister($ic, "applicant", $password, $name, $gender);
+        $registrationController->applicantRegisterFunction($ic, "Pemohon", $password, $name, $gender);
+        
+        break;
+
+    case 'registerStaff':
+        $name = $_POST['nama'];
+        $ic = $_POST['ic'];
+        $email = $_POST['email'];
+        $noTel = $_POST['noTel'];
+        $typeOfStaff = $_POST['typeOfStaff'];
+        $alamat = $_POST['alamat'];
+        $password = $_POST['password'];
+        
+
+        $registrationController->staffRegisterFunction($name, $ic, $email, $noTel, $typeOfStaff, $alamat, $password, "Kakitangan");
         
         break;
     
@@ -37,16 +56,43 @@ switch ($action) {
         $password = $_POST['password'];
         $userType = $_POST['userType'];
 
-        $loginController->userLoginAccount($ic, $password, $userType);
+        $loginController->userLoginAccountFunction($ic, $password, $userType);
+        
+        
+        break;
+
+    case 'adminLoginAccount':
+        $id = $_POST['id'];
+        $password = $_POST['password'];
+
+        $loginController->adminLoginAccountFunction($id, $password);
         
         
         break;
 
     case 'viewProfile':
-        session_start();
-        $useric = $_SESSION['currentUserIC'];
+        
+        $userProfileController->viewApplicantProfileFunction();
+        
+        break;
 
-        $userProfileController->viewApplicantProfile($useric);
+    case 'viewStaffList':
+    
+        $userProfileController->viewStaffListFunction();
+        
+        break;
+
+    case 'viewApplicantList':
+
+        $userProfileController->viewApplicantListFunction();
+        
+        break;
+
+    case 'viewProfileById':
+        //Applicant or staff id which help to view their profile
+        $viewId = isset($_GET['viewID']) ? $_GET['viewID'] : '';
+        $type = isset($_GET['type']) ? $_GET['type'] : '';
+        $userProfileController->viewDetailsById($viewId,$type);
         
         break;
 
@@ -72,7 +118,19 @@ switch ($action) {
 
         
 
-        $userProfileController->updateApplicantProfile($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat);
+        $userProfileController->updateApplicantProfileFunction($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat);
+        
+        break;
+
+    case 'updateAdminProfile':
+        $nama = $_POST['nama'];
+        $email = $_POST['email'];
+
+        $alamat = $_POST['alamat'];
+        $noTel = $_POST['noTel'];
+
+
+        $userProfileController->updateAdminProfileFunction($nama, $email, $alamat, $noTel);
         
         break;
 

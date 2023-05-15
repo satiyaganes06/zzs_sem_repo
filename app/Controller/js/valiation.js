@@ -28,6 +28,35 @@ function loginFormValidate(){
   return true;
 }
 
+//Validation code for super admin login form
+function superAdminLoginFormValidate(){
+
+  //Decluring variable based on id
+  var ic = document.getElementById("formID").value;
+  var password = document.getElementById("formPassword").value;
+  var error_message = document.getElementById("error_message");
+  
+  //Error Message style
+  error_message.style.padding = "6px";
+  
+  var text;
+  
+  //Validation Condition
+  if(ic.length != 12){
+    text = "Sila masukkan Kad Pengenalan yang sah";
+    error_message.innerHTML = text;
+    return false;
+  }
+  if(password == ""){
+    text = "Sila masukkan Kata Laluan yang sah";
+    error_message.innerHTML = text;
+    return false;
+  }
+  
+
+  return true;
+}
+
 //Validation code for forgot password form
 function forgotPasswordFormValidate(){
 

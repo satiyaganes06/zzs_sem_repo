@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inria+Serif:wght@400&display=swap');
 
 body{
-    background-image: url(../../Assert/background.png) ;
+    background-image: url(../../Assert/background\ -\ admin.png) ;
     background-repeat: repeat-y;
     background-position: none;
     background-size: cover;
@@ -57,15 +57,15 @@ body{
     cursor: pointer;
     background-color: transparent;
     color: rgb(181, 181, 181);
-    background-color:#F8C879;
+    background-color:#E8E8E8;
     margin-left: 5px;
     border-radius: 50%;
-    padding: 5px 10px;
+    padding: 5px 11px;
     border: none;
 }
 
 .commonButton:hover{
-    background-color: #F8C879;
+    background-color: #a4a4a4;
 }
 
 .mainContent{
@@ -81,17 +81,18 @@ body{
 }
 
 .mainContentBg{
-    background-color: #FCECDE;
+    background-color: #E8E8E8;
     margin-top: 20px;
     height:90%;
     border-radius: 10px;
 }
 
 .mainContentBg th{
-    font-size: 14px;
+    font-size: 16px;
     text-align: left;
     font-weight: bold;
     padding: 0px 0px 10px 0px;
+    width: 15vw;
     height: fit-content;
 }
 
@@ -102,20 +103,28 @@ body{
     height: fit-content;
 }
 
+.mainContentBg button{
+    font-family: 'Inria Serif', serif;
+    font-weight: 500;
+    width: fit-content;
+    color: white;
+    background-color: #000000;
+    border-radius: 50px;
+}
+
 #inMainContentOutline{
-    height: 90%;
-    border: 2px solid #f8c779a5;
+    height: 57vh;
+    border: 2px solid #ababab;
 }
 
 .accordion-item strong{
     font-size: 14px;
-    color: #000000a1;
+    color: #979797;
 }
 
 .accordion-button:not(.collapsed) {
-    background-color: #EEC800;
+    background-color: #000000;
 }
-
 
 @media only screen and (max-width: 1000px) {
     .sidebar {
@@ -151,15 +160,14 @@ body{
     }
 
     .sidepanel{
-        background-image: url(../../Assert/Template\ Kiri__Template\ Kiri.png);
+        background-image: url(../../Assert/Template\ Kiri__Template\ Kiri\ -\ admin.png);
         background-size: cover;
         border-radius: 25px;
-        border: 1px solid #F8C879;
+        border: 1px solid #a4a4a4;
         background-repeat: no-repeat;
         width: 100%;
         background-size: cover;
         border-radius: 25px;
-        border: 1px solid #F8C879;
         background-repeat: no-repeat;
         background-attachment: fixed;
         width: 0;
@@ -179,7 +187,7 @@ body{
         cursor: pointer;
         background-color: transparent;
         color: rgb(181, 181, 181);
-        background-color:#F8C879;
+        background-color:#E8E8E8;
         margin-left: 5px;
         border-radius: 50%;
         padding: 10px 15px;
@@ -190,10 +198,10 @@ body{
 @media only screen and (max-width: 2560px) and (min-width: 1000px) {
     
     .sidepanel{
-        background-image: url(../../Assert/Template\ Kiri__Template\ Kiri.png);
+        background-image: url(../../Assert/Template\ Kiri__Template\ Kiri\ -\ admin.png);
         background-size: cover;
         border-radius: 25px;
-        border: 1px solid #F8C879;
+        border: 1px solid #b5b5b5;
         background-repeat: no-repeat;
         width: 100%;
     }

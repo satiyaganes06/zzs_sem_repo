@@ -23,8 +23,8 @@
     <link rel="stylesheet" href="../../Bootstrap/mdb.min.css" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="../css/userLoginView.css">
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/adminLoginView.css">
+    <link rel="stylesheet" href="../css/adminHeader.css">
 
     <!-- Icon -->
     <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png"/>
@@ -158,64 +158,43 @@
             </div>
 
 
-            <div class="loginPart container col-md-4 col-sm-12 pl-5 pr-5 pt-3 shadow rounded-5 text-center">
+            <div class="loginPart container col-md-4 col-sm-12 pl-5 pr-5 Wshadow rounded-5 text-center">
 
                 <img src="../../Assert/login_top_frame.png" alt="login top frame">
 
-                <h3 class="bold loginTitle mt-4">Log Masuk</h3>
+                <h3 class="bold loginTitle mt-4">Admin Log Masuk</h3>
 
                 <div id="error_message">
                   <!-- the error or success message pass in this div from js -->  
                 </div>
 
                 <!-- form login -->
-                <form class="mt-4" action="../../../public/index.php?action=loginAccount" method="post" id="myform" >
-                  <!-- onsubmit = "return loginFormValidate();" -->
+                <form class="mt-4" action="../../../public/index.php?action=adminLoginAccount" method="post" id="myform" onsubmit = "return superAdminLoginFormValidate();">
+                 
 
                   <!-- IC -->
                   <div class="form-outline bg-white rounded-4">
-                    <input type="text" id="formIC" name="ic" class="form-control form-control-sm mb-4 text-dark rounded-3" />
-                    <label class="form-label" for="formIC">Kad Pengenalan</label>
+                    <input type="text" id="formIC" name="id" class="form-control form-control mb-4 text-dark rounded-3" />
+                    <label class="form-label" for="formID">Account ID</label>
                   </div>
 
                   <!-- Password -->
                   <!-- <input type="password" id="password" class="form-control mb-4 shadow rounded-3" placeholder="Password" > -->
                   <div class="form-outline bg-white rounded-4">
-                    <input type="password" id="formPassword" name="password" class="form-control form-control-sm mb-4 shadow rounded-3" />
+                    <input type="password" id="formPassword" name="password" class="form-control form-control mb-4 shadow rounded-3" />
                     <label class="form-label" for="formPassword">Kata Laluan</label>
                   </div>
-
-                  <select class="browser-default custom-select-sm shadow rounded-3" name="userType">
-                    <option value="Pemohon">Pemohon</option>
-                    <option value="Kakitangan">Kakitangan</option>
-                  </select>
 
                   <!-- Sign in button -->
                   <button class="btn btn-info btn-block mt-5 bg-white text-dark " type="submit" data-mdb-ripple-color="dark">Masuk</button>
 
-                  <div class="d-flex justify-content-end">
-                      
-                    <div>
-                        <!-- Forgot password -->
-                        <a href="../ManageLogin/forgotPasswordView.html">Lupa katalaluan?</a>
-                    </div>
-                  </div>
+                  
 
-                  <div class="d-flex justify-content-center">
-                      
-                    <div>
-                        <p>atau</p>
-                    </div>
-                    
-                  </div>
+                  <img class="mt-4" src="../../Assert/login_bottom_frame.png" alt="login top frame">
+
 
                 </form>
                 <!-- Default form login -->
-
-                <!-- Sign in button -->
-                <button class="btn btn-info btn-block bg-white text-dark mb-4" onclick="location.href='../ManageRegistration/applicantRegisterView.html'" data-mdb-ripple-color="dark">Daftar</button>
-                
-                <img src="../../Assert/login_bottom_frame.png" alt="login top frame">
             </div>
     
         </section>
