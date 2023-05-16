@@ -4,6 +4,6 @@
     // Destroying All Sessions
     if(session_destroy()){  
         // Redirecting To Home Page
-        header("Location: ../View/ManageLogin/userLoginView.html"); 
+        header("Location: ../View/ManageLogin/userLoginView.php"); 
     }
 ?>

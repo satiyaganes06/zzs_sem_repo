@@ -13,62 +13,60 @@
             $this->staffModel = $staffModel;
         }
 
-        public function viewApplicantProfileFunction() {
+        //Retrieve data to view
+        public function viewProfileFunction($from) {
             
             session_start();
             $usertype = $_SESSION['currentUserType'] ;
             
-           
-            // $url = '../app/View/ManageUserProfile/viewProfileDetailsView.php?' . http_build_query($user);
-             //header('Location: ../app/View/ManageUserProfile/viewProfileDetailsView.php');
-            
-            if($usertype === "Pemohon"){
+            if($usertype == "Pemohon"){
 
                 $ic = $_SESSION['currentUserIC'];
                 $user = $this->applicantModel->getApplicantProfileInfo($ic);
 
-                //Store the user details in session.
-                $_SESSION['userinfo'] = $user;
+                if($from == 'view'){
+                    header('Location: ../app/View/ManageUserProfile/viewApplicantProfileDetailsView.php?returnInfo='.  urlencode(serialize($user)));
 
-                ?>
-                    <script>
-                        
-                        window.location = "../app/View/ManageUserProfile/viewApplicantProfileDetailsView.php";
-                    </script>
-                <?php
+                }else if($from == 'edit'){
+                    header('Location: ../app/View/ManageUserProfile/editApplicantProfileDetailsView.php?returnInfo='.  urlencode(serialize($user)));
+                    
+                }
+                
 
             }elseif($usertype == "Kakitangan"){
 
-                $ic = $_SESSION['currentUserIC'];
-                $user = $this->applicantModel->getApplicantProfileInfo($ic);
-                //Store the user details in session.
-                $_SESSION['userinfo'] = $user;
+                $id = $_SESSION['accountId'];
+                $user = $this->staffModel->getStaffProfileInfo($id);
+                echo $user['StaffName'];
 
-                ?>
-                    <script>
-                        
-                        window.location = "../app/View/ManageUserProfile/viewApplicantProfileDetailsView.php";
-                    </script>
-                <?php
+                if($from == 'view'){
+                    header('Location: ../app/View/ManageUserProfile/viewStaffProfileDetailsView.php?returnInfo='.  urlencode(serialize($user)));
+
+                }else if($from == 'edit'){
+                    header('Location: ../app/View/ManageUserProfile/editStaffProfileDetailsView.php?returnInfo='.  urlencode(serialize($user)));
+                    
+                }
 
             }elseif($usertype == "Admin"){
 
                 $id = $_SESSION['accountId'];
-                $user = $this->adminModel->getAdminProfileInfo($id);
-                //Store the user details in session.
-                $_SESSION['userinfo'] = $user;
 
-                ?>
-                    <script>
-                        
-                        window.location = "../app/View/ManageUserProfile/viewAdminProfileDetailsView.php";
-                    </script>
-                <?php
+                //Get the data from admin model
+                $adminInfo = $this->adminModel->getAdminProfileInfo($id);
+
+                if($from == 'view'){
+                    //Redirect the user to the admin view profile
+                    header('Location: ../app/View/ManageUserProfile/viewAdminProfileDetailsView.php?returnInfo='.  urlencode(serialize($adminInfo)));
+
+                }else if($from == 'edit'){
+                    //Redirect the user to the admin edit profile
+                    header('Location: ../app/View/ManageUserProfile/editAdminProfileDetailsView.php?returnInfo='.  urlencode(serialize($adminInfo)));
+                }
+                
             }else{
 
                 echo "Problem";
             }
-            
             
         }
 
@@ -113,15 +111,16 @@
                     </script>
                 <?php
                 
-                header("Location: index.php?action=viewProfile");
+                header("Location: index.php?action=viewProfile&from=view");
 
             }else{
                 ?>
                     <script>
                         alert("Error updating record");
-                        window.location = "../app/View/ManageUserProfile/editApplicantProfileDetailsView.php";
                     </script>
                 <?php
+
+                header("Location: index.php?action=viewProfile&from=view");
 
             }
             
@@ -138,7 +137,7 @@
                     </script>
                 <?php
                 
-                header("Location: index.php?action=viewProfile");
+                header("Location: index.php?action=viewProfile&from=view");
 
             }else{
                 ?>

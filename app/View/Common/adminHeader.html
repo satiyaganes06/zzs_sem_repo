@@ -1,0 +1,92 @@
+<style>
+    .headerPart{
+        border-top-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        width: 80vw;
+        margin-left: none;
+    }
+
+    .headerBackground{
+        height: 19vh;
+        background-image: url(../../Assert/header_background\ -\ admin.png);
+        background-size: cover;
+        border-radius: 25px;
+        border: 1px solid rgb(180, 180, 180);
+        background-repeat: no-repeat;
+    }
+
+    #gover_logo{
+        height: 13vh;
+        width: auto;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    #state_logo{
+        height:13vh;
+        width: auto;
+    }
+
+    .title_container{
+        margin-right: 10vw;
+    }
+
+    h1{
+        font-family: "Pirouette LT Std";
+        font-weight: 500;
+        letter-spacing: 2px;
+        font-size: 80px;
+        margin: 0px;
+        color: black;
+        text-shadow: 2px 2px 5px #afafaf;
+        height: 75px;
+    }
+
+    h6{
+        font-family: 'Inria Serif', serif;
+    }
+
+    hr{
+        margin: 0px;
+        border-top: 3px solid #8d8d8d;
+    }
+
+    @media only screen and (max-width: 900px) {
+        #gover_logo{
+            display: none;
+        }
+        
+        #state_logo{
+            display: none;
+        }
+    }
+</style>
+
+<html>
+    <!-- Header -->
+    <section class="headerPart p-2 mt-3 bg-white shadow">
+
+
+        <div class="headerBackground">
+
+            <div class="container-fluid d-flex pt-3 pb-3">
+                <img class="mr-3" id="gover_logo" src="../../Assert/gover_logo.png" alt="Government state logo">
+
+                <img class="mr-3" id="state_logo" src="../../Assert/states_logo.png" alt="Pahang state logo">
+
+                <div class="title_container container-fluid
+                        title_section text-end
+                        col-md-8 text-truncate">
+                    <h1>Zauj wa Zaujah</h1>
+
+                    <hr>
+
+                    <h6>SISTEM PENGURUSAN PERKAHWINAN</h6>
+                </div>
+            </div>
+
+        </div>
+
+
+    </section>
+</html>

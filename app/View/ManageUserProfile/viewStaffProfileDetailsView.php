@@ -1,6 +1,11 @@
 <?php
+
     // Start up your PHP Session
     session_start();
+
+    //Decluration
+    $encodedData;
+    $decodedStaffData;
 
     //If the user is not logged in send him/her to the login form
     if(!isset($_SESSION['currentUserIC'])) {
@@ -8,20 +13,22 @@
         ?>
             <script>
                 alert("Access denied !!!")
-                window.location = "../app/View/ManageLogin/adminLoginView.php";
+                window.location = "../app/View/ManageLogin/userLoginView.php";
             </script>
         <?php
 
     }else{
 
-        // Retrieve list of staff information
-        $result = $_SESSION['listOfApplicant'];
-        $bilNum = 0; 
+        // Retrieve the serialized and URL-encoded data from the URL parameter
+        $encodedData = $_GET['returnInfo'];
+        
+        // Decode the URL-encoded data and unserialize it
+        $decodedStaffData = unserialize(urldecode($encodedData));
 
         //Sidebar Active path
-        $_SESSION['route'] = 'viewApplicantList';
+        $_SESSION['route'] = 'viewProfile';
     }
-    
+ 
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +38,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZZS - Applicant List</title>
+    <title>ZZS - View Profile</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -45,7 +52,7 @@
     <link rel="stylesheet" href="../../Bootstrap/mdb.min.css" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="../css/viewApplicantListView.css">
+    <link rel="stylesheet" href="../css/viewStaffProfileDetailsView.css">
 
     <!-- Icon -->
     <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png" />
@@ -68,7 +75,7 @@
 
                 <!-- Sidebar -->
                 <?php
-                    include('../Common/sidebarAdmin.php');
+                    include('../Common/sidebarStaff.php');
                 ?>
 
                 <div class="mainContent bg-white shadow rounded-2">
@@ -84,61 +91,53 @@
                     </div>
                     
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">Senarai Pemohon Profil</h2>
-                        
+                        <h2 id="contentTitle">Profil</h2>
+
+
                         <div id="inMainContentOutline" class="table-responsive p-4">
-
-                            <table class="table table-bordered border-dark mb-0 align-middle">
-                                <thead class="tableHeaderBg">
-                                    <tr>
-                                        <th>Bil</th>
-                                        <th>Staf Name</th>
-                                        <th ><div class="iCEllipsis">No. Kad Pengenalan</div></th>
-                                        <th>Jenis</th>
-                                        <th>Operasi</th>
-                                    </tr>
-                                </thead>
+                            <table class="table table-borderless">
+                        
                                 <tbody>
-                                    
-                                    <?php
-                                        
-                                        $i = 0;
-                                        foreach ($result as $row)
-                                        {   
-                                            
-                                            ?>
-                                            
-                                                <tr>
-                                                    <td style="width: 5%;">
-                                                        <?php echo ++$bilNum ?>
-                                                    </td>
+                                  <tr>
+                                    <th scope="row">ID Kakitangan :</th>
+                                    <td><?php echo $decodedStaffData['Staff_Id']; ?></td>
 
-                                                    <td class="" style="width: 40%;">
-                                                        
-                                                        <div class="nameEllipsis"><?php echo $row['ApplicantName'];?></div>
-                                                    </td>
+                                    <th scope="row">Jenis Pengguna :</th>
+                                    <td><?php echo $_SESSION['currentUserType']; ?></td>
+                                  </tr>
 
-                                                    <td style="width: 20%;">
-                                                        <span><?php echo $row['Applicant_Ic'];?></span>
-                                                    </td>
+                                  <tr>
+                                    <th scope="row">Name :</th>
+                                    <td><?php echo $decodedStaffData['StaffName']; ?></td>
 
-                                                    <td style="width: 20%;"><?php echo $row['ApplicantGender'];?></td>
+                                    <th scope="row">Jenis Kakitangan :</th>
+                                    <td><?php echo $decodedStaffData['StaffType']; ?></td>
+                                  </tr>
 
-                                                    <td style="width: 15%;">
-                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded"  onclick="location.href='../../../public/index.php?action=viewProfileById&type=pemohon&viewID=<?php echo $row['Applicant_Ic']; ?>'">
-                                                            Lihat
-                                                        </button>
-                                                    </td>
-                                                </tr>
+                                  <tr>
+                                    <th scope="row">No. Kad Pengenalan :</th>
+                                    <td><?php echo $_SESSION['currentUserIC']; ?></td>
+                                  </tr>
 
-                                            <?php 
-                                        }?>
-                                    
-                                    
+                                  <tr>
+                                    <th scope="row">Email :</th>
+                                    <td><?php echo $decodedStaffData['StaffEmail']; ?></td>
+
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">Alamat :</th>
+                                    <td><?php echo $decodedStaffData['StaffAddress']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">No. Telefon(Bimbit) :</th>
+                                    <td><?php echo $decodedStaffData['StaffNumberPhone']; ?></td>
+                                  </tr>
+
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
 
@@ -173,7 +172,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 
 </html>

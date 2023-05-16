@@ -71,8 +71,10 @@ switch ($action) {
         break;
 
     case 'viewProfile':
+
+        $from = isset($_GET['from']) ? $_GET['from'] : '';
         
-        $userProfileController->viewApplicantProfileFunction();
+        $userProfileController->viewProfileFunction($from);
         
         break;
 
@@ -135,7 +137,9 @@ switch ($action) {
         break;
 
     default:
-        include('../app/View/ManageRegistration/applicantRegisterView.html');
+        header('Location: ../app/View/ManageLogin/userLoginView.php');
+        
+
 }
 
 ?>

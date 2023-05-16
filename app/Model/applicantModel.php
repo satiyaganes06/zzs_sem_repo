@@ -56,7 +56,6 @@ class ApplicantModel {
     return $applicantDetailsList;
   }   
 
-
   //Update applicant data using user ic 
   public function updateApplicantProfileInfo($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat) {
      

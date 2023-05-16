@@ -22,21 +22,17 @@ class LoginController {
                     
                 </script>
             <?php
-            header("Location: index.php?action=viewProfile");
-            
-
-            return 0;
+            header("Location: index.php?action=viewProfile&from=view");
             
         }elseif($userType == 'Kakitangan'){
             ?>
                 <script>
                     alert("Berjaya log masuk.");
-                    window.location = "../app/View/ManageUserProfile/adminDashboard.html";
+                   
                 </script>
             <?php
 
-            return 0;
-
+            header("Location: index.php?action=viewProfile&from=view");
         }
 
         
@@ -46,7 +42,7 @@ class LoginController {
         ?>
             <script>
                 alert("Incorrect IC or Password");
-                window.location = "../app/View/ManageLogin/userLoginView.html";
+                window.location = "../app/View/ManageLogin/userLoginView.php";
             </script>
         <?php
 
@@ -61,19 +57,8 @@ class LoginController {
 
     //Send the input to account model to verify the user 
     if($this->accountModel->adminLoginAccount($id, $pwd)){
-        
-        ?>
-            <script>
-                alert("Berjaya log masuk.");
-                
-            </script>
-        <?php
-        header("Location: index.php?action=viewProfile");
-        
-
-        return true;
-        
-
+       
+        header("Location: index.php?action=viewProfile&from=view");
         
     }else{
 
@@ -81,11 +66,10 @@ class LoginController {
         ?>
             <script>
                 alert("Incorrect IC or Password");
-                window.location = "../app/View/ManageLogin/adminLoginView.html";
+                window.location = "../app/View/ManageLogin/adminLoginView.php";
             </script>
         <?php
 
-        return false;
     }
 
     

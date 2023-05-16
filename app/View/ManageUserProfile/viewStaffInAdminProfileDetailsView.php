@@ -2,13 +2,22 @@
 
     // Start up your PHP Session
     session_start();
-    $staffInfo =  $_SESSION['viewProfileById'];
-    $accountInfo = $_SESSION['viewAccountById'];
 
-    
     //If the user is not logged in send him/her to the login form
     if(!isset($_SESSION['currentUserIC'])) {
-        header("Location: ../ManageLogin/userLoginView.html");
+
+        ?>
+            <script>
+                alert("Access denied !!!")
+                window.location = "../app/View/ManageLogin/adminLoginView.php";
+            </script>
+        <?php
+
+    }else{
+
+        // Retrieve staff data
+        $staffInfo =  $_SESSION['viewProfileById'];
+        $accountInfo = $_SESSION['viewAccountById'];
     }
  
 ?>
@@ -46,32 +55,10 @@
     <div class="container-md-8 container-sm-12 row d-flex
             justify-content-center">
 
-        <!-- Header -->
-        <section class="headerPart p-2 mt-3 bg-white shadow">
-
-
-            <div class="headerBackground">
-
-                <div class="container-fluid d-flex pt-3 pb-3">
-                    <img class="mr-3" id="gover_logo" src="../../Assert/gover_logo.png" alt="Government state logo">
-
-                    <img class="mr-3" id="state_logo" src="../../Assert/states_logo.png" alt="Pahang state logo">
-
-                    <div class="title_container container-fluid
-                            title_section text-end
-                            col-md-8 text-truncate">
-                        <h1>Zauj wa Zaujah</h1>
-
-                        <hr>
-
-                        <h6>SISTEM PENGURUSAN PERKAHWINAN</h6>
-                    </div>
-                </div>
-
-            </div>
-
-
-        </section>
+        <!-- Header Section -->
+        <?php
+          include_once('../Common/adminHeader.html');
+        ?>
 
         <!-- Main Content -->
         <section class="mainPart container-fluid mt-3">
