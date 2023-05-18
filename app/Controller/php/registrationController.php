@@ -13,7 +13,7 @@ class RegistrationController {
   }
 
   //Applicant account register function
-  public function applicantRegisterFunction($ic, $userType, $password, $userName, $userGender) {
+  public function applicantRegisterFunction($ic, $userType, $password, $userName, $userGender, $phoneNume) {
     
     //Password Encrytion
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -21,7 +21,7 @@ class RegistrationController {
     //Call create account function in Account Model
     $id = $this->accountModel->createAccount($ic, $userType, $hashed_password);
 
-    $this->addApplicantInfo($ic, $id, $userName, $userGender);
+    $this->addApplicantInfo($ic, $id, $userName, $userGender, $phoneNume);
   }
 
   //Add applicant's initial info function

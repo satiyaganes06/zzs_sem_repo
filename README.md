@@ -12,5 +12,19 @@ Bootstrap 5
 Templates - https://mdbootstrap.com/
 Icons - https://mdbootstrap.com/docs/standard/content-styles/icons/
 
+Test Users Details
+Pemohon
+- IC = 970608232207, Password = 12345
+
+Kakitangan (Jaip Staff)
+- IC = 010802080454, Password = 12345
+
+Kakitangan (Advisor)
+- IC = 010165844511, Password = 12345
+
+Admin
+- acount ID = Admin, Password = admin
+
+
 
 created by sG

@@ -12,7 +12,7 @@ class StaffModel {
   public function getStaffProfileInfo($staff_Id) {
 
     // Prepare SQL statement with placeholders to prevent SQL injection
-    $stmt = $this->connect->prepare('SELECT * FROM Staff_Info WHERE Account_Id = :id');
+    $stmt = $this->connect->prepare('SELECT * FROM staff_info WHERE Staff_Id = :id');
     $stmt->bindParam(':id', $staff_Id);
 
     // Execute SQL statement
@@ -31,7 +31,7 @@ class StaffModel {
 
     //Add SQL Query
     $query = $this->connect->prepare("
-        INSERT INTO Staff_Info 
+        INSERT INTO staff_info 
         (Staff_Id,
         Account_Id, 
         StaffName, 
@@ -49,7 +49,7 @@ class StaffModel {
   public function getAllStaffInfo() {
 
       // Prepare SQL statement with placeholders to prevent SQL injection
-      $stmt = $this->connect->prepare('SELECT * FROM Staff_Info');
+      $stmt = $this->connect->prepare('SELECT * FROM staff_info');
 
       // Execute SQL statement
       $stmt->execute();
@@ -67,7 +67,7 @@ class StaffModel {
     $id = $_SESSION['accountId'];
 
     // Prepare your update statement
-    $sql = "UPDATE Staff_Info set 
+    $sql = "UPDATE staff_info set 
                 StaffName = :nama, 
                 StaffAddress = :alamat, 
                 StaffNumberPhone = :notel, 

@@ -125,7 +125,8 @@
                                                     <td style="width: 20%;"><?php echo $row['StaffType'];?></td>
 
                                                     <td style="width: 15%;">
-                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $id; ?>'">
+                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
+                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $row['Staff_Id']; ?>'">
                                                             Lihat
                                                         </button>
                                                     </td>

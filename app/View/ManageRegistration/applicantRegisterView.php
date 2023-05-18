@@ -173,7 +173,7 @@
                             
                             <!-- Phone number -->
                             <div class="form-outline bg-white rounded-4 ">
-                                <input type="tel" id="formPhoneNum" class="form-control form-control-sm text-dark rounded-3 w-100" />
+                                <input type="tel" id="formPhoneNum" name="phoneNum" class="form-control form-control-sm text-dark rounded-3 w-100" />
                                 <label class="form-label" for="formPhoneNum">Nombor Telefon</label>
                             </div>
                         </div>

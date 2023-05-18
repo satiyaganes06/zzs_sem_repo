@@ -9,7 +9,7 @@ class ApplicantModel {
   }
 
   //Add initial applicant info
-  public function addApplicantInfo($userIC, $accountId, $userName, $userGender) {
+  public function addApplicantInfo($userIC, $accountId, $userName, $userGender, $phoneNum) {
 
     //Add SQL Query
     $query = $this->connect->prepare("
@@ -17,11 +17,12 @@ class ApplicantModel {
         (Applicant_Ic, 
         Account_Id, 
         ApplicantName, 
-        ApplicantGender
-    ) VALUES (?, ?, ?, ?)");
+        ApplicantGender,
+        ApplicantPhoneNo
+    ) VALUES (?, ?, ?, ?, ?)");
 
     //return to registration controller
-    return $query->execute([$userIC, $accountId, $userName, $userGender]);
+    return $query->execute([$userIC, $accountId, $userName, $userGender, $phoneNum]);
   }
 
 

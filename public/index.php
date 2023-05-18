@@ -1,4 +1,5 @@
 <?php
+
 require_once '../app/Config/database.php';
 require_once '../app/Model/accountModel.php';
 require_once '../app/Model/applicantModel.php';
@@ -34,8 +35,9 @@ switch ($action) {
         $password = $_POST['password'];
         $name = $_POST['name'];
         $gender = $_POST['gender'];
+        $phoneNume = $_POST['phoneNum'];
 
-        $registrationController->applicantRegisterFunction($ic, "Pemohon", $password, $name, $gender);
+        $registrationController->applicantRegisterFunction($ic, "Pemohon", $password, $name, $gender, $phoneNume);
         
         break;
 
@@ -105,6 +107,7 @@ switch ($action) {
         //Applicant or staff id which help to view their profile
         $viewId = isset($_GET['viewID']) ? $_GET['viewID'] : '';
         $type = isset($_GET['type']) ? $_GET['type'] : '';
+
         $userProfileController->viewDetailsById($viewId,$type);
         
         break;
