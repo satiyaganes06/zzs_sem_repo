@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZZS Registration</title>
+    <title>ZZS - Daftar</title>
 
     <!-- Font Awesome -->
     <link
@@ -187,14 +187,14 @@
                     </div>
 
                     <!-- Confirm Password -->
-                    <div class="form-outline bg-white rounded-4">
+                    <div class="form-outline bg-white rounded-4 mb-4">
                       <input type="password" id="formConfirmPass" class="form-control form-control-sm mb-3 shadow rounded-3" />
                       <label class="form-label" for="formConfirmPass">Ulang Katalaluan</label>
                     </div>
                     
 
                   <!-- Sign in button -->
-                  <button class="btn btn-info btn-block mt-5 bg-white text-dark mb-3" type="submit" data-mdb-ripple-color="dark">Daftar</button>
+                  <button class="btn btn-dark btn-block text-light mb-3" type="submit" data-mdb-ripple-color="dark">Daftar</button>
 
                   <div class="d-flex justify-content-center">
                       
@@ -211,21 +211,16 @@
                 <!-- Default form -->
 
                 <!-- Sign in button -->
-                <button class="btn btn-info btn-block bg-white text-dark mb-4" onclick="location.href='../ManageLogin/userLoginView.html'" data-mdb-ripple-color="dark">Log Masuk</button>
+                <button class="btn btn-dark btn-block bg-white text-dark mb-4" onclick="location.href='../ManageLogin/userLoginView.php'" data-mdb-ripple-color="dark">Log Masuk</button>
             </div>
     
         
         </section>
 
         <!-- Footer -->
-        <section class="footerPart text-center p-4 bg-white mt-3">
-          <!-- Copyright -->
-          <div>
-            Hak Cipta Terpelihara:
-            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">© 2019 Bahagian Teknologi Maklumat Pejabat Setiausaha Kerajaan Pahang.</a>
-          </div>
-          <!-- Copyright -->
-        </section>
+        <?php
+          include_once('../Common/footer.html');
+        ?>
 
     </div>
 

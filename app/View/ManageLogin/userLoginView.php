@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -163,19 +161,20 @@
                     <label class="form-label" for="formPassword">Kata Laluan</label>
                   </div>
 
+                  
                   <select class="browser-default custom-select-sm shadow rounded-3" name="userType">
                     <option value="Pemohon">Pemohon</option>
                     <option value="Kakitangan">Kakitangan</option>
                   </select>
 
                   <!-- Sign in button -->
-                  <button class="btn btn-info btn-block mt-5 bg-white text-dark " type="submit" data-mdb-ripple-color="dark">Masuk</button>
+                  <button class="btn btn-dark btn-block mt-5 text-light " type="submit" data-mdb-ripple-color="dark">Masuk</button>
 
                   <div class="d-flex justify-content-end">
                       
                     <div>
                         <!-- Forgot password -->
-                        <a href="../ManageLogin/forgotPasswordView.html">Lupa katalaluan?</a>
+                        <a href="../ManageLogin/forgotPasswordView.php">Lupa katalaluan?</a>
                     </div>
                   </div>
 
@@ -191,7 +190,7 @@
                 <!-- Default form login -->
 
                 <!-- Sign in button -->
-                <button class="btn btn-info btn-block bg-white text-dark mb-4" onclick="location.href='../ManageRegistration/applicantRegisterView.html'" data-mdb-ripple-color="dark">Daftar</button>
+                <button class="btn btn-info btn-block bg-white text-dark mb-4" onclick="location.href='../ManageRegistration/applicantRegisterView.php'" data-mdb-ripple-color="dark">Daftar</button>
                 
                 <img src="../../Assert/login_bottom_frame.png" alt="login top frame">
             </div>
@@ -199,14 +198,9 @@
         </section>
 
         <!-- Footer -->
-        <section class="footerPart text-center p-4 bg-white mt-3">
-          <!-- Copyright -->
-          <div>
-            Hak Cipta Terpelihara:
-            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">© 2019 Bahagian Teknologi Maklumat Pejabat Setiausaha Kerajaan Pahang.</a>
-          </div>
-          <!-- Copyright -->
-        </section>
+        <?php
+          include_once('../Common/footer.html');
+        ?>
 
     </div>
 

@@ -156,16 +156,15 @@
 
                   <!-- Password -->
                   <!-- <input type="password" id="password" class="form-control mb-4 shadow rounded-3" placeholder="Password" > -->
-                  <div class="form-outline bg-white rounded-4">
+                  <div class="form-outline bg-white rounded-4  mb-5 ">
                     <input type="password" id="formPassword" name="password" class="form-control form-control mb-4 shadow rounded-3" />
                     <label class="form-label" for="formPassword">Kata Laluan</label>
                   </div>
 
                   <!-- Sign in button -->
-                  <button class="btn btn-info btn-block mt-5 bg-white text-dark " type="submit" data-mdb-ripple-color="dark">Masuk</button>
+                  <button class="btn btn-block btn-dark btn-blocktext-dark " type="submit" data-mdb-ripple-color="dark">Masuk</button>
 
                   
-
                   <img class="mt-4" src="../../Assert/login_bottom_frame.png" alt="login top frame">
 
 
@@ -176,14 +175,9 @@
         </section>
 
         <!-- Footer -->
-        <section class="footerPart text-center p-4 bg-white mt-3">
-          <!-- Copyright -->
-          <div>
-            Hak Cipta Terpelihara:
-            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">© 2019 Bahagian Teknologi Maklumat Pejabat Setiausaha Kerajaan Pahang.</a>
-          </div>
-          <!-- Copyright -->
-        </section>
+        <?php
+          include_once('../Common/footer.html');
+        ?>
 
     </div>
 

@@ -178,9 +178,9 @@
 
 
         <!-- Footer -->
-        <section class="mt-5">
-
-        </section>
+        <?php
+          include_once('../Common/footer.html');
+        ?>
 
     </div>
 

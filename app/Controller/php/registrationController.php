@@ -34,7 +34,7 @@ class RegistrationController {
     ?>
       <script>
         alert("Successfully Registered");
-        window.location = "../app/View/ManageLogin/userLoginView.html";
+        window.location = "../app/View/ManageLogin/userLoginView.php";
       </script>
     <?php
 

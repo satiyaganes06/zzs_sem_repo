@@ -7,6 +7,7 @@ require_once '../app/Model/staffModel.php';
 require_once '../app/Controller/php/registrationController.php';
 require_once '../app/Controller/php/loginController.php';
 require_once '../app/Controller/php/userProfileController.php';
+require_once '../app/Controller/php/reset_password.php';
 
 // Create a new database connection
 $db = (new Database())->connect();
@@ -21,6 +22,7 @@ $staffModel = new StaffModel($db);
 $registrationController = new RegistrationController($accountModel, $applicantModel, $staffModel);
 $loginController = new LoginController($accountModel);
 $userProfileController = new UserProfileController($accountModel, $applicantModel, $adminModel, $staffModel);
+$resetPassword = new ResetPassword($accountModel, $db);
 
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
@@ -58,7 +60,16 @@ switch ($action) {
 
         $loginController->userLoginAccountFunction($ic, $password, $userType);
         
+        break;
+
+    case 'forgotPassword':
+
         
+        $ic = $_POST['formIC'];
+        $email = $_POST['formEmail'];
+        
+        $resetPassword->resetPassword($ic, $email);
+
         break;
 
     case 'adminLoginAccount':
@@ -121,6 +132,17 @@ switch ($action) {
         
 
         $userProfileController->updateApplicantProfileFunction($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat);
+        
+        break;
+    
+    case 'updateStaffProfile':
+        $name = $_POST['nama'];
+        $email = $_POST['email'];
+        $alamat = $_POST['alamat'];
+        $noTel = $_POST['noTel'];
+
+
+        $userProfileController->updateStaffProfileFunction($name, $email, $alamat, $noTel);
         
         break;
 

@@ -14,14 +14,14 @@ class ApplicantModel {
     //Add SQL Query
     $query = $this->connect->prepare("
         INSERT INTO Applicant_Info 
-        (Account_Id, 
-        Applicant_Ic, 
+        (Applicant_Ic, 
+        Account_Id, 
         ApplicantName, 
         ApplicantGender
     ) VALUES (?, ?, ?, ?)");
 
     //return to registration controller
-    return $query->execute([$accountId, $userIC, $userName, $userGender]);
+    return $query->execute([$userIC, $accountId, $userName, $userGender]);
   }
 
 
@@ -29,8 +29,8 @@ class ApplicantModel {
   public function getApplicantProfileInfo($userIC) {
 
     // Prepare SQL statement with placeholders to prevent SQL injection
-    $stmt = $this->connect->prepare('SELECT * FROM Applicant_Info WHERE Applicant_Ic = :id');
-    $stmt->bindParam(':id', $userIC);
+    $stmt = $this->connect->prepare('SELECT * FROM Applicant_Info WHERE Applicant_Ic = :ic');
+    $stmt->bindParam(':ic', $userIC);
 
     // Execute SQL statement
     $stmt->execute();

@@ -126,6 +126,32 @@
             
         }
 
+        //Update the staff profile data 
+        public function updateStaffProfileFunction($name, $email, $alamat, $noTel) {
+            
+            //Firstly, the updateApplicationProfileInfo will update the data in mySQL.
+            if($this->staffModel->updateStaffProfileInfo($name, $email, $alamat, $noTel)){
+                ?>
+                    <script>
+                        alert("Berjaya mengemas kini");
+                    </script>
+                <?php
+                
+                header("Location: index.php?action=viewProfile&from=view");
+
+            }else{
+                ?>
+                    <script>
+                        alert("Error updating record");
+                    </script>
+                <?php
+
+                header("Location: index.php?action=viewProfile&from=view");
+
+            }
+            
+        }
+
         //Update the admin profile data
         public function updateAdminProfileFunction($nama, $email, $alamat, $noTel) {
             

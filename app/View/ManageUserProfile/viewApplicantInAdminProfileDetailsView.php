@@ -9,7 +9,7 @@
         ?>
             <script>
                 alert("Access denied !!!")
-                window.location = "../app/View/ManageLogin/adminLoginView.php";
+                window.location = "../ManageLogin/adminLoginView.php";
             </script>
         <?php
 
@@ -424,9 +424,9 @@
 
 
         <!-- Footer -->
-        <section class="mt-5">
-
-        </section>
+        <?php
+          include_once('../Common/footer.html');
+        ?>
 
     </div>
 

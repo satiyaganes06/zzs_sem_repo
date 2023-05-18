@@ -1,10 +1,14 @@
+<?php
+  $textDis = 'disabled';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZZS Lupa Katalaluan</title>
+    <title>ZZS - Lupa Katalaluan</title>
 
     <!-- Font Awesome -->
     <link
@@ -33,29 +37,9 @@
     <div class="container-md-8 container-sm-12 row d-flex justify-content-center">
 
         <!-- Header Section -->
-        <section class="headerPart p-2 mt-3 bg-white shadow">
-            <!-- Header -->
-
-            <div class="headerBackground">
-
-              <div class="container-fluid d-flex pt-3 pb-3">
-                <img class="mr-3" id="gover_logo" src="../../Assert/gover_logo.png" alt="Government state logo">
-
-                <img class="mr-3" id="state_logo" src="../../Assert/states_logo.png" alt="Pahang state logo">
-
-                <div class="title_container container-fluid title_section text-end col-md-8 text-truncate">
-                  <h1>Zauj wa Zaujah</h1>
-
-                  <hr>
-
-                  <h6>SISTEM PENGURUSAN PERKAHWINAN</h6>
-                </div>
-              </div>
-          
-            </div>
-
-
-        </section>
+        <?php
+          include_once('../Common/applicantHeader.html');
+        ?>
 
         <!-- Content Section -->
         <section class="contentPart row p-4 mt-3 bg-white shadow">
@@ -154,7 +138,6 @@
 
             </div>
 
-
             <div class="loginPart container col-md-4 col-sm-12 pl-5 pr-5 shadow rounded-5 text-center">
 
                 <img src="../../Assert/login_top_frame.png" alt="login top frame">
@@ -166,67 +149,62 @@
                 </div>
 
                 <!-- form forgot password -->
-                <form class="mt-4" action="../ManageLogin/resetForgotPasswordView.html" id="myform" onsubmit = "return forgotPasswordFormValidate();">
-
+                <form class="mt-4" method="POST" action="../../../public/index.php?action=forgotPassword">
+                <!-- onsubmit = "return forgotPasswordFormValidate();" -->
                   <div class="d-flex flex-row">
 
                     <div class="col-9 pr-1 pl-0">
                       
                       <!-- IC -->
                       <div class="form-outline bg-white rounded-4">
-                        <input type="text" id="formIC" class="form-control form-control-sm mb-3 text-dark rounded-3" />
+                        <input type="text" id="formIC" name="formIC" class="form-control form-control-sm mb-3 text-dark rounded-3" />
                         <label class="form-label" for="formIC">Kad Pengenalan</label>
                       </div>
 
                       <!-- Email -->
                       <div class="form-outline bg-white rounded-4">
-                        <input type="email" id="formEmail" class="form-control form-control-sm mb-3 shadow rounded-3" />
+                        <input type="email" id="formEmail" name="formEmail" class="form-control form-control-sm mb-3 shadow rounded-3" />
                         <label class="form-label" for="formEmail">E-mail</label>
                       </div>
                     </div>
 
                     <div class="col-3 p-0 mb-3">
                       <!-- Request OTP Button -->
-                      <button class="btn btn-info btn-block bg-white text-dark pr-0 pl-0 h-100" type="submit" data-mdb-ripple-color="dark">Hantar OTP</button>
+                      <!-- <button id="submmit" class="btn btn-dark btn-block bg-light text-dark pr-0 pl-0 h-100" type="submit" data-mdb-ripple-color="dark">Hantar OTP</button> -->
+
+                      <button class="btn btn-dark btn-block text-light pr-0 pl-0 h-100" type="submit" data-mdb-ripple-color="dark">Hantar OTP</button>
+
                     </div>
 
                   </div>
-                  
+                
+                </form>
+
+                <div id="result"></div>
+
+                <form action="">
                   <!-- OTP -->
-                  <div class="form-outline bg-white rounded-4 mt-4">
-                    <input type="text" id="formOTP" class="form-control form-control-sm mb-3 text-dark rounded-3" />
+                  <div class="form-outline bg-white rounded-4 mt-4 mb-4">
+                    <input type="text" id="formOTP" class="form-control form-control-sm text-dark rounded-3" <?php echo $textDis; ?>/>
                     <label class="form-label" for="formOTP">OTP</label>
                   </div>
                
 
                   <!-- Sign in button -->
-                  <button class="btn btn-info btn-block mt-5 bg-white text-dark mb-4" type="submit" data-mdb-ripple-color="dark">Teruskan</button>
+                  <button class="btn btn-dark btn-block mb-4" type="submit" data-mdb-ripple-color="dark" <?php echo $textDis; ?>>Teruskan</button>
 
                   <img src="../../Assert/login_bottom_frame.png" alt="login top frame">
-
-
                 </form>
-                <!-- Default form login -->
             </div>
     
-        
         </section>
 
         <!-- Footer -->
-        <section class="footerPart text-center p-4 bg-white mt-3">
-          <!-- Copyright -->
-          <div>
-            Hak Cipta Terpelihara:
-            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">© 2019 Bahagian Teknologi Maklumat Pejabat Setiausaha Kerajaan Pahang.</a>
-          </div>
-          <!-- Copyright -->
-        </section>
-
-        <include src="../Common/footer.html"></include>
+        <?php
+          include_once('../Common/footer.html');
+        ?>
 
     </div>
-
-    
 
     <!--Controller-->
     <script src="../../Controller/js/valiation.js"></script>
@@ -235,9 +213,10 @@
     <script type="text/javascript" src="../../Bootstrap/mdb.min.js"></script>
 
     <!--Bootstrap 4 & 5 & jQuery Script-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </body>
 

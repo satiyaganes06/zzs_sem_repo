@@ -45,7 +45,6 @@ class StaffModel {
     return $query->execute([$uniqid, $id, $name, $alamat, $noTel, $email, $typeOfStaff]);
   }
   
-  
   //Get all staff data
   public function getAllStaffInfo() {
 
@@ -59,7 +58,43 @@ class StaffModel {
       $staffDetailsList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       return $staffDetailsList;
-  }         
+  }        
+  
+  //Update staff data using user ic 
+  public function updateStaffProfileInfo($name, $email, $alamat, $noTel) {
+     
+    session_start();
+    $id = $_SESSION['accountId'];
+
+    // Prepare your update statement
+    $sql = "UPDATE Staff_Info set 
+                StaffName = :nama, 
+                StaffAddress = :alamat, 
+                StaffNumberPhone = :notel, 
+                StaffEmail = :email
+            WHERE Account_Id = :id";
+
+    // Prepare the statement
+    $stmt = $this->connect->prepare($sql);
+
+    // Bind parameters
+    $stmt->bindParam(':nama', $name);
+    $stmt->bindParam(':alamat', $alamat);
+    $stmt->bindParam(':notel', $noTel);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':id', $id);
+
+    // Execute the statement
+    if ($stmt->execute() === TRUE) {
+          return true;
+
+      } else {
+      
+          return false;
+          
+      }
+
+  }
 }
 
 ?>

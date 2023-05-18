@@ -13,7 +13,7 @@
         ?>
             <script>
                 alert("Access denied !!!")
-                window.location = "../app/View/ManageLogin/userLoginView.php";
+                window.location = "../ManageLogin/userLoginView.php";
             </script>
         <?php
 
@@ -94,7 +94,7 @@
                         <h2 id="contentTitle">Edit Profil</h2>
 
                         <!-- form profile info update -->
-                        <form action="../../../public/index.php?action=updateAdminProfile" method="post" onsubmit = "return userProfileUpdateValidate();">
+                        <form action="../../../public/index.php?action=updateStaffProfile" method="post" onsubmit = "return userProfileUpdateValidate();">
 
                             <div id="inMainContentOutline" class="table-responsive p-4">
 
@@ -104,9 +104,7 @@
                                         <tr>
                                             <th scope="row">ID Kakitangan :</th>
                                             <td>
-                                                <div class="form form-width">
-                                                    <input type="text" id="formID" name="staffId" class="form-control form-control-sm" value="<?php echo $decodedStaffData['Staff_Id']; ?>"/>
-                                                </div>
+                                                <?php echo $decodedStaffData['Staff_Id']; ?>
                                             </td>
 
                                         </tr>
@@ -126,27 +124,21 @@
                                             <th scope="row">Jenis Pengguna :</th>
                                             <td>
                                                 
-                                                <div class="form form-width">
-                                                    <input type="text" id="formUserType" name="userType" class="form-control form-control-sm" value="<?php echo $_SESSION['currentUserType']; ?>"/>
-                                                </div>
+                                                <?php echo $_SESSION['currentUserType']; ?>
                                             </td> 
                                         </tr>
 
                                         <tr>
                                             <th scope="row">Jenis Kakitangan :</th>
                                             <td>
-                                                <div class="form form-width">
-                                                    <input type="text" id="formStaffType" name="staffType" class="form-control form-control-sm" value="<?php echo $decodedStaffData['StaffType']; ?>"/>
-                                                </div>
+                                                <?php echo $decodedStaffData['StaffType']; ?>
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <th scope="row">No. Kad Pengenalan :</th>
                                             <td>
-                                                <div class="form form-width">
-                                                    <input type="text" id="formIC" name="ic" class="form-control form-control-sm" value="<?php echo $_SESSION['currentUserIC']; ?>"/>
-                                                </div>
+                                                <?php echo $_SESSION['currentUserIC']; ?>
                                             </td>
                                         </tr>
 
@@ -164,7 +156,7 @@
                                             <th scope="row">Alamat :</th>
                                             <td>
                                                 <div class="form form-width">
-                                                    <input type="text" id="formAddress" name="address" class="form-control form-control-sm" value="<?php echo $decodedStaffData['StaffAddress']; ?>"/>
+                                                    <input type="text" id="formAddress" name="alamat" class="form-control form-control-sm" value="<?php echo $decodedStaffData['StaffAddress']; ?>"/>
                                                 </div>
                                             </td>
                                         </tr>
@@ -173,7 +165,7 @@
                                             <th scope="row">No. Telefon(Bimbit) :</th>
                                             <td>
                                                 <div class="form form-width">
-                                                    <input type="text" id="formTelefon" name="telefon" class="form-control form-control-sm" value="<?php echo $decodedStaffData['StaffNumberPhone']; ?>"/>
+                                                    <input type="text" id="formTelefon" name="noTel" class="form-control form-control-sm" value="<?php echo $decodedStaffData['StaffNumberPhone']; ?>"/>
                                                 </div>
                                             </td>
                                         </tr>

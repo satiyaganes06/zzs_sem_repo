@@ -1,21 +1,13 @@
 <?php
-    //$db = isset($_GET['details']) ? $_GET['details'] : '';
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $ic = $_POST['formIC'];
+    $email = $_POST['formEmail'];
 
+    // Do something with the data
+    // For example, you might insert it into a database here
 
-    // Retrieve the serialized and URL-encoded data from the URL parameter
-    $encodedData = $_GET['returnInfo'];
-    
-    // Decode the URL-encoded data and unserialize it
-    $decodedData = unserialize(urldecode($encodedData));
-    
-    // Access the values in the array
-    $page = $decodedData['AdminName'];
-    $search = $decodedData['Admin_Id'];
-    
-    // Use the values as needed
-    echo "Page: $page<br>";
-    echo "Search: $search";
-    
-    
-
+    // Then return a message
+    echo "Thank you, " . $ic . ". Your email is " . $email . ".";
+}
 ?>
+
