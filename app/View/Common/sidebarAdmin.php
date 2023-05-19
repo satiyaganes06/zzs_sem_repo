@@ -97,6 +97,13 @@
                                 list-group-item-light" href="../blankPage.php">
                                 Messages
                             </a>
+
+                            <!-- <a class="list-group-item
+                                list-group-item-action 
+                                px-3 border-0 pt-1 pb-1
+                                list-group-item-light" href="../ManageLogin/userLoginView.php">
+                                Messages
+                            </a> -->
                         </div>
                     </div>
                 </div>      
