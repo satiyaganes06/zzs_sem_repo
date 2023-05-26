@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+@import url('//db.onlinewebfonts.com/c/34a6a1a1db670f1f16c76a192a28c853?family=Pirouette+LT+Std');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:wght@400&display=swap');
+
+body{
+    background-image: url(../../Assert/background.png) ;
+    background-repeat: repeat-y;
+    background-position: none;
+    background-size: cover;
+    scroll-behavior: smooth;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    height: auto;
+    margin: 0px;
+}
+
+.mainPart{
+    width: 80vw;
+    height: 90vh;
+    padding: 0px;
+}
+
+.sidebar{
+    width: 24%;
+    padding: 20px;
+    
+}
+
+.sidebar a {
+    padding: 2px 2px 2px 22px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #818181;
+    background-color: transparent;
+    display: block;
+    transition: 0.3s;
+}
+  
+.sidebar a:hover {
+    color: #191919;
+    background-color: rgb(186, 186, 186);
+}
+  
+
+.sidepanel .closebtn {
+    display: none;
+}
+  
+.openbtn {
+    display: none;
+}
+
+.commonButton {
+    display: block;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    color: rgb(181, 181, 181);
+    background-color:#F8C879;
+    margin-left: 5px;
+    border-radius: 50%;
+    padding: 5px 11px;
+    border: none;
+}
+
+.commonButton:hover{
+    background-color: #F8C879;
+}
+
+.mainContent{
+    width: 73%;
+    padding: 20px 40px 40px 40px;
+}
+
+#contentTitle{
+    font-family: 'Inria Serif', serif;
+    color: #191919;
+    text-shadow: 2px 2px 5px #afafaf;
+    font-weight: 500;
+    
+}
+
+.mainContentBg{
+    background-color: #FCECDE;
+    margin-top: 20px;
+    height:90%;
+    border-radius: 10px;
+}
+
+#kpin{
+    font-family: 'Inria Serif', serif;
+    font-size: 20px;
+    color: #191919;
+    font-weight: 500;
+    float:left;
+    
+}
+
+#kpSpousein{
+    font-family: 'Inria Serif', serif;
+    font-size: 20px;
+    color: #191919;
+    font-weight: 500;
+    
+    
+}
+
+
+#kp{
+    
+    border-radius: 5px;
+    border: 2px solid ;
+    padding: 15px; 
+    width: 250px;
+    height: 5px; 
+    float:right;
+    
+}
+
+#kpSpouse{
+    
+    border-radius: 5px;
+    border: 2px solid ;
+    padding: 15px; 
+    width: 250px;
+    height: 5px; 
+    
+    
+}
+
+#categoryIn{
+    font-family: 'Inria Serif', serif;
+    font-size: 20px;
+    color: #191919;
+    font-weight: 500;
+    float:left;
+    background-color: #fcf4e8;
+}
+
+#sectionTitle{
+    font-family: 'Inria Serif', serif;
+    font-size: 20px;
+    color: #191919;
+    font-weight: 500;
+    
+    background-color:#ff9d00;
+}
+
+.fileUplod{
+    text-align:left;
+}
+.section{
+    border-color: #191919 solid 2px;
+    background-color: #ff9d00;
+}
+#marriageCategory{
+    font-family: 'Inria Serif', serif;
+    font-size: 20px;
+    color: #191919;
+    font-weight: 500;
+    float:right;
+    
+}
+
+#AkuanNum{
+    font-family: 'Inria Serif', serif;
+    font-size: 20px;
+    color: #191919;
+    font-weight: 500;
+    float:left;
+    margin-right:200px;
+}
+
+#akuanIn{
+    
+    border-radius: 5px;
+    border: 2px solid ;
+    padding: 15px; 
+    width: 250px;
+    height: 5px; 
+    float:right;
+    
+    
+}
+
+button{
+    display: inline-block;
+}
+#buttonR{
+    font-family: 'Inria Serif', serif;
+    font-size: 20px;
+    border-radius: 20px;
+    background-color:coral;
+    width:200px;
+    height:50px;
+    margin-top:100px;
+    margin-right:100px;
+   
+}
+
+#buttonS{
+    font-family: 'Inria Serif', serif;
+    font-size: 20px;
+    border-radius: 20px;
+    background-color:coral;
+    width:100px;
+    height:40px;
+    
+   
+}
+
+.custom-file-upload {
+    
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.tablestatus{
+        border:#191919 solid;
+}
+
+.starlabel{
+    box-align: left;
+    font-family: 'Inria Serif', serif;
+    font-size: 20px;
+    color: #191919;
+    font-weight: 500;
+}
+.starlabel label:before {
+    content:" *";
+    color: red;
+  }
+
+  .form-width{
+    width: fit-content;
+}
+
+.form-width input{
+    background-color: #FFE6BC;
+}
+
+#buttonU{
+    font-family: 'Inria Serif', serif;
+    font-size: 20px;
+    border-radius: 20px;
+    background-color:coral;
+    width:250px;
+    height:50px;
+    margin-top:100px;
+    
+    
+}
+
+#inMainContentOutline{
+    height: 90%;
+    border: 2px solid #f8c779a5;
+}
+
+.accordion-item strong{
+    font-size: 14px;
+    color: #000000a1;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #EEC800;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .sidebar {
+        width: 0px;
+        padding: 0px;
+    }
+
+    .mainContent {
+        width: 100%;
+    }
+
+    .sidepanel .closebtn {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+    }
+
+    .openbtn {
+        display: block;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: transparent;
+        color: rgb(181, 181, 181);
+        padding: 10px 15px;
+        border: none;
+    }
+
+    .openbtn:hover {
+        background-color:#fcf4e8;
+        border-radius: 5px;
+    }
+
+    .sidepanel{
+        background-image: url(../../Assert/Template\ Kiri__Template\ Kiri.png);
+        background-size: cover;
+        border-radius: 25px;
+        border: 1px solid #F8C879;
+        background-repeat: no-repeat;
+        width: 100%;
+        background-size: cover;
+        border-radius: 25px;
+        border: 1px solid #F8C879;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        height: 250px;
+        top: 0;
+        left: 0;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .commonButton {
+        display: block;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: transparent;
+        color: rgb(181, 181, 181);
+        background-color:#F8C879;
+        margin-left: 5px;
+        border-radius: 50%;
+        padding: 10px 15px;
+        border: none;
+    }
+}
+
+@media only screen and (max-width: 2560px) and (min-width: 1000px) {
+    
+    .sidepanel{
+        background-image: url(../../Assert/Template\ Kiri__Template\ Kiri.png);
+        background-size: cover;
+        border-radius: 25px;
+        border: 1px solid #F8C879;
+        background-repeat: no-repeat;
+        width: 100%;
+    }
+
+    #mySidepanel{
+        width: 100%;
+    }
+
+}
+
