@@ -11,7 +11,7 @@ class Database {
 
     private $host = "localhost";
     private $db_name = "zzs_db";
-    private $username = "root";
+    private $username = "root"; 
     private $password = "";
 
     
