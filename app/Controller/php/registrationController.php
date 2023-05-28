@@ -21,14 +21,14 @@ class RegistrationController {
     //Call create account function in Account Model
     $id = $this->accountModel->createAccount($ic, $userType, $hashed_password);
 
-    $this->addApplicantInfo($ic, $id, $userName, $userGender, $phoneNume);
+    $this->addApplicantInfoFunction($ic, $id, $userName, $userGender, $phoneNume);
   }
 
   //Add applicant's initial info function
-  public function addApplicantInfo($userIC, $accountId, $userName, $userGender) {
+  public function addApplicantInfoFunction($userIC, $accountId, $userName, $userGender, $phoneNume) {
 
     //Call create account function in Account Model
-    $this->applicantModel->addApplicantInfo($userIC, $accountId, $userName, $userGender);
+    $this->applicantModel->addApplicantInfo($userIC, $accountId, $userName, $userGender, $phoneNume);
 
     //End of the process this the system alert the applicant and redirect to user login page
     ?>

@@ -13,7 +13,7 @@ class ApplicantModel {
 
     //Add SQL Query
     $query = $this->connect->prepare("
-        INSERT INTO Applicant_Info 
+        INSERT INTO applicant_info 
         (Applicant_Ic, 
         Account_Id, 
         ApplicantName, 

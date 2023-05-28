@@ -14,24 +14,20 @@ class LoginController {
     //Send the input to account model to verify the user 
     if($this->accountModel->loginAccount($ic, $pwd)){
 
+        ?>
+            <script>
+                alert("Berjaya log masuk.");
+                
+            </script>
+        <?php
+
         //Check the user type 
         if($userType == 'Pemohon'){
-            ?>
-                <script>
-                    alert("Berjaya log masuk.");
-                    
-                </script>
-            <?php
+            
             header("Location: index.php?action=viewProfile&from=view");
             
         }elseif($userType == 'Kakitangan'){
-            ?>
-                <script>
-                    alert("Berjaya log masuk.");
-                   
-                </script>
-            <?php
-
+        
             header("Location: index.php?action=viewProfile&from=view");
         }
 
@@ -65,7 +61,7 @@ class LoginController {
         //If the user not exists, it will show error message 
         ?>
             <script>
-                alert("Incorrect IC or Password");
+                alert("Incorrect ID or Password");
                 window.location = "../app/View/ManageLogin/adminLoginView.php";
             </script>
         <?php
