@@ -14,13 +14,15 @@
 
     }else{
 
-        // Retrieve list of staff information
-        $result = $_SESSION['listOfApplicant'];
-        $bilNum = 0; 
-
         //Sidebar Active path
         $_SESSION['route'] = 'viewApplicantList';
+
+        // Retrieve list of staff information
+        $result = $_SESSION['listOfApplicant'];
+        $bilNum = 0;
+        
     }
+    
     
 ?>
 
@@ -79,7 +81,7 @@
                         
                         <div class="d-flex justify-content-end">
                             <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
-                            <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
+                            <a class="commonButton" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
                     </div>
                     
@@ -102,9 +104,11 @@
                                     
                                     <?php
                                         
-                                        $i = 0;
                                         foreach ($result as $row)
                                         {   
+                                            $Applicant_name = $row['ApplicantName'];
+                                            $Applicant_ic = $row['Applicant_Ic'];
+                                            $Applicant_gender = $row['ApplicantGender'];
                                             
                                             ?>
                                             
@@ -115,17 +119,17 @@
 
                                                     <td class="" style="width: 40%;">
                                                         
-                                                        <div class="nameEllipsis"><?php echo $row['ApplicantName'];?></div>
+                                                        <div class="nameEllipsis"><?php echo $Applicant_name;?></div>
                                                     </td>
 
                                                     <td style="width: 20%;">
-                                                        <span><?php echo $row['Applicant_Ic'];?></span>
+                                                        <span><?php echo $Applicant_ic;?></span>
                                                     </td>
 
-                                                    <td style="width: 20%;"><?php echo $row['ApplicantGender'];?></td>
+                                                    <td style="width: 20%;"><?php echo $Applicant_gender;?></td>
 
                                                     <td style="width: 15%;">
-                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded"  onclick="location.href='../../../public/index.php?action=viewProfileById&type=pemohon&viewID=<?php echo $row['Applicant_Ic']; ?>'">
+                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded"  onclick="location.href='../../../public/index.php?action=viewProfileById&type=pemohon&viewID=<?php echo $Applicant_ic; ?>'">
                                                             Lihat
                                                         </button>
                                                     </td>
@@ -147,9 +151,12 @@
         </section>
 
 
-        <!-- Footer -->
         <?php
-          include_once('../Common/footer.html');
+          // Footer 
+          include_once('../Common/footer.html');  
+
+          //Logout Model
+          include_once('../Common/logoutModel.html');
         ?>
 
     </div>

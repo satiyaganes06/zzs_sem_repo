@@ -2,21 +2,22 @@
 
     // Start up your PHP Session
     session_start();
-
+    
     //If the user is not logged in send him/her to the login form
     if(!isset($_SESSION['currentUserIC'])) {
 
-        ?>
-            <script>
-                alert("Access denied !!!")
-                window.location = "../ManageLogin/adminLoginView.php";
-            </script>
-        <?php
+      ?>
+          <script>
+              alert("Access denied !!!")
+              window.location = "../ManageLogin/adminLoginView.php";
+          </script>
+      <?php
 
     }else{
 
-        // Retrieve applicant data
-        $info =  $_SESSION['viewProfileById'];
+      // Retrieve applicant data
+      $applicantInfo =  $_SESSION['viewProfileById'];
+
     }
  
 ?>
@@ -76,7 +77,7 @@
                         
                         <div class="d-flex justify-content-end">
                             <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
-                            <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
+                            <a class="commonButton" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
                     </div>
                     
@@ -90,72 +91,72 @@
                                 <tbody>
                                   <tr>
                                     <th scope="row">Nama :</th>
-                                    <td><?php echo $info['ApplicantName']; ?></td>
+                                    <td><?php echo $applicantInfo['ApplicantName']; ?></td>
 
                                     <th scope="row">Umur :</th>
-                                    <td><?php echo $info['ApplicantAge']; ?></td>
+                                    <td><?php echo $applicantInfo['ApplicantAge']; ?></td>
                                   </tr>
 
                                   <tr>
                                     <th scope="row">Tarikh Lahir :</th>
-                                    <td><?php echo $info['ApplicantBirthDate']; ?></td>
+                                    <td><?php echo $applicantInfo['ApplicantBirthDate']; ?></td>
 
                                     <th scope="row">Jantina :</th>
-                                    <td><?php echo $info['ApplicantGender']; ?></td>
+                                    <td><?php echo $applicantInfo['ApplicantGender']; ?></td>
                                   </tr>
 
                                   <tr>
                                     <th scope="row">No. Kad Pengenalan :</th>
-                                    <td><?php echo $info['Applicant_Ic']; ?></td>
+                                    <td><?php echo $applicantInfo['Applicant_Ic']; ?></td>
 
                                     <th scope="row">Bangsa :</th>
-                                    <td><?php echo $info['ApplicantRace']; ?></td>
+                                    <td><?php echo $applicantInfo['ApplicantRace']; ?></td>
                                   </tr>
 
                                   <tr>
                                     <th scope="row">Email :</th>
-                                    <td><?php echo $info['ApplicantEmail']; ?></td>
+                                    <td><?php echo $applicantInfo['ApplicantEmail']; ?></td>
 
                                   </tr>
 
                                   <tr>
                                     <th scope="row">Alamat :</th>
-                                    <td><?php echo $info['ApplicantAddress']; ?></td>
+                                    <td><?php echo $applicantInfo['ApplicantAddress']; ?></td>
                                   </tr>
 
                                   <tr>
                                     <th scope="row">No. Telefon(Bimbit) :</th>
-                                    <td><?php echo $info['ApplicantPhoneNo']; ?></td>
+                                    <td><?php echo $applicantInfo['ApplicantPhoneNo']; ?></td>
                                   </tr>
 
                                   <tr>
                                     <th scope="row">No. Telefon(Rumah) :</th>
-                                    <td><?php echo $info['ApplicantHomePhoneNo']; ?></td>
+                                    <td><?php echo $applicantInfo['ApplicantHomePhoneNo']; ?></td>
                                   </tr>
 
                                   <tr>
                                     <th scope="row">Taraf Pendidikan :</th>
-                                    <td><?php echo $info['ApplicantEduLevel']; ?></td>
+                                    <td><?php echo $applicantInfo['ApplicantEduLevel']; ?></td>
                                   </tr>
 
                                   <tr>
                                     <th scope="row">Jawatan / Pekerjaan :</th>
-                                    <td><?php echo $info['ApplicantPosition']; ?></td>
+                                    <td><?php echo $applicantInfo['ApplicantPosition']; ?></td>
                                   </tr>
 
                                   <tr>
                                     <th scope="col-2">Pendapatan :</th>
-                                    <td>RM <?php echo $info['ApplicantSalary']; ?></td>
+                                    <td>RM <?php echo $applicantInfo['ApplicantSalary']; ?></td>
                                   </tr>
 
                                   <tr>
                                     <th scope="row">Alamat Tempat Kerja :</th>
-                                    <td><?php echo $info['ApplicantWorkAddress']; ?></td>
+                                    <td><?php echo $applicantInfo['ApplicantWorkAddress']; ?></td>
                                   </tr>
 
                                   <tr>
                                     <th scope="row">No. Telefon(Pejabat) :</th>
-                                    <td><?php echo $info['ApplicantWorkPhoneNo']; ?></td>
+                                    <td><?php echo $applicantInfo['ApplicantWorkPhoneNo']; ?></td>
                                   </tr>
                                 </tbody>
                             </table>
@@ -168,9 +169,12 @@
         </section>
 
 
-        <!-- Footer -->
         <?php
-          include_once('../Common/footer.html');
+          // Footer 
+          include_once('../Common/footer.html');  
+
+          //Logout Model
+          include_once('../Common/logoutModel.html');
         ?>
 
     </div>

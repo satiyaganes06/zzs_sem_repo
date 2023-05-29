@@ -1,31 +1,28 @@
 <?php
 
-     // Start up your PHP Session
-     session_start();
+    // Start up your PHP Session
+    session_start();
 
-     $encodedData;
-     $decodedApplicantData;
-
-     //If the user is not logged in send him/her to the login form
-     if(!isset($_SESSION['currentUserIC'])) {
+    //If the user is not logged in send him/her to the login form
+    if(!isset($_SESSION['currentUserIC'])) {
         ?>
-          <script>
-              alert("Access denied !!!")
-              window.location = "../ManageLogin/userLoginView.php";
-          </script>
+        <script>
+            alert("Access denied !!!")
+            window.location = "../ManageLogin/userLoginView.php";
+        </script>
         <?php
- 
-     }else{
- 
-          // Retrieve the serialized and URL-encoded data from the URL parameter
-         $encodedData = $_GET['returnInfo'];
-         
-         // Decode the URL-encoded data and unserialize it
-         $decodedApplicantData = unserialize(urldecode($encodedData));
 
-         //Sidebar Active path
-         $_SESSION['route'] = 'editProfile';
-     }
+    }else{
+
+        // Retrieve the serialized and URL-encoded data from the URL parameter
+        $encodedData = $_GET['returnInfo'];
+        
+        // Decode the URL-encoded data and unserialize it
+        $decodedApplicantData = unserialize(urldecode($encodedData));
+
+        //Sidebar Active path
+        $_SESSION['route'] = 'editProfile';
+    }
     
 ?>
 
@@ -85,7 +82,7 @@
                         
                         <div class="d-flex justify-content-end">
                             <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: grey;"></i></a>
-                            <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: grey;"></i></a>
+                            <a class="commonButton" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right-to-bracket" style="color: grey;"></i></a>
                         </div>
                     </div>
                     
@@ -104,7 +101,7 @@
                                         <th scope="row">Nama :</th>
                                         <td>
                                             <div class="form form-width">
-                                                <input type="text" id="formNama" name="nama" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantName']; ?>"/>
+                                                <input type="text" id="formNama" name="Applicant_nama" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantName']; ?>"/>
                                             </div>
                                         </td>
 
@@ -112,7 +109,7 @@
                                         <td>
                                             
                                             <div class="form form-width">
-                                                <input type="text" id="formUmur" name="umur" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantAge']; ?>"/>
+                                                <input type="text" id="formUmur" name="Applicant_umur" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantAge']; ?>"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -121,14 +118,14 @@
                                         <th scope="row">Tarikh Lahir :</th>
                                         <td>
                                             <div class="form form-width">
-                                                <input type="text" id="formTL" name="tarikhL" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantBirthDate']; ?>" placeholder="YYYY-MM-DD"/>
+                                                <input type="text" id="formTL" name="Applicant_tarikhL" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantBirthDate']; ?>" placeholder="YYYY-MM-DD"/>
                                             </div>
                                         </td>
 
                                         <th scope="row">Jantina :</th>
                                         <td>
                                             <div class="form form-width">
-                                                <input type="text" id="formJantina" name="jantina" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantGender']; ?>"/>
+                                                <input type="text" id="formJantina" name="Applicant_jantina" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantGender']; ?>"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -142,7 +139,7 @@
                                         <th scope="row">Bangsa :</th>
                                         <td>
                                             <div class="form form-width">
-                                                <input type="text" id="formBangsa" name="bangsa" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantRace']; ?>"/>
+                                                <input type="text" id="formBangsa" name="Applicant_bangsa" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantRace']; ?>"/>
                                             </div>
                                         </td>
                                         
@@ -152,7 +149,7 @@
                                         <th scope="row">Email :</th>
                                         <td>
                                             <div class="form form-width">
-                                                <input type="text" id="formEmail" name="email" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantEmail']; ?>"/>
+                                                <input type="text" id="formEmail" name="Applicant_email" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantEmail']; ?>"/>
                                             </div>
                                         </td>
 
@@ -162,7 +159,7 @@
                                         <th scope="row">Alamat :</th>
                                         <td>
                                             <div class="form form-width">
-                                                <input type="text" id="formAlamat" name="alamat" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantAddress']; ?>"/>
+                                                <input type="text" id="formAlamat" name="Applicant_alamat" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantAddress']; ?>"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -171,7 +168,7 @@
                                         <th scope="row">No. Telefon(Bimbit) :</th>
                                         <td>
                                             <div class="form form-width">
-                                                <input type="text" id="formNoTel" name="noTel" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantPhoneNo']; ?>"/>
+                                                <input type="text" id="formNoTel" name="Applicant_noTel" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantPhoneNo']; ?>"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -180,7 +177,7 @@
                                         <th scope="row">No. Telefon(Rumah) :</th>
                                         <td>
                                             <div class="form form-width">
-                                                <input type="text" id="formNoTelRum" name="noTelRum" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantHomePhoneNo']; ?>"/>
+                                                <input type="text" id="formNoTelRum" name="Applicant_noTelRum" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantHomePhoneNo']; ?>"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -189,7 +186,7 @@
                                         <th scope="row">Taraf Pendidikan :</th>
                                         <td>
                                             <div class="form form-width">
-                                                <input type="text" id="formTaraf" name="trafPen" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantEduLevel']; ?>"/>
+                                                <input type="text" id="formTaraf" name="Applicant_trafPen" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantEduLevel']; ?>"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -198,7 +195,7 @@
                                         <th scope="row">Jawatan / Pekerjaan :</th>
                                         <td>
                                             <div class="form form-width">
-                                                <input type="text" id="formJawatan" name="jawatan" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantPosition']; ?>"/>
+                                                <input type="text" id="formJawatan" name="Applicant_jawatan" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantPosition']; ?>"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -207,7 +204,7 @@
                                         <th scope="col-2">Pendapatan : (RM)</th>
                                         <td> 
                                             <div class="form form-width">
-                                                <input type="text" id="formPendapatan" name="pendapatan" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantSalary']; ?>"/>
+                                                <input type="text" id="formPendapatan" name="Applicant_pendapatan" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantSalary']; ?>"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -216,7 +213,7 @@
                                         <th scope="row">Alamat Tempat Kerja :</th>
                                         <td>
                                             <div class="form form-width">
-                                                <input type="text" id="formAlamatKerja" name="alamatKerja" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantWorkAddress']; ?>"/>
+                                                <input type="text" id="formAlamatKerja" name="Applicant_alamatKerja" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantWorkAddress']; ?>"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -225,7 +222,7 @@
                                         <th scope="row">No. Telefon(Pejabat) :</th>
                                         <td>
                                             <div class="form form-width">
-                                                <input type="text" id="formNoTelPenjabat" name="noTelPenjabat" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantWorkPhoneNo']; ?>"/>
+                                                <input type="text" id="formNoTelPenjabat" name="Applicant_noTelPenjabat" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantWorkPhoneNo']; ?>"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -251,10 +248,13 @@
         </section>
 
 
-        <!-- Footer -->
-        <section class="mt-5">
+        <?php
+          // Footer 
+          include_once('../Common/footer.html');  
 
-        </section>
+          //Logout Model
+          include_once('../Common/logoutModel.html');
+        ?>
 
     </div>
 

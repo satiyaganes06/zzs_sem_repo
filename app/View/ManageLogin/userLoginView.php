@@ -36,6 +36,7 @@
           include_once('../Common/applicantHeader.html');
         ?>
 
+
         <!-- Content Section -->
         <section class="contentPart row p-4 mt-3 bg-white shadow">
             <!-- Content -->
@@ -150,19 +151,19 @@
 
                   <!-- IC -->
                   <div class="form-outline bg-white rounded-4">
-                    <input type="text" id="formIC" name="ic" class="form-control form-control-sm mb-4 text-dark rounded-3" />
+                    <input type="text" id="formIC" name="User_ic" class="form-control form-control-sm mb-4 text-dark rounded-3" />
                     <label class="form-label" for="formIC">Kad Pengenalan</label>
                   </div>
 
                   <!-- Password -->
                   <!-- <input type="password" id="password" class="form-control mb-4 shadow rounded-3" placeholder="Password" > -->
                   <div class="form-outline bg-white rounded-4">
-                    <input type="password" id="formPassword" name="password" class="form-control form-control-sm mb-4 shadow rounded-3" />
+                    <input type="password" id="formPassword" name="User_password" class="form-control form-control-sm mb-4 shadow rounded-3" />
                     <label class="form-label" for="formPassword">Kata Laluan</label>
                   </div>
 
                   
-                  <select class="browser-default custom-select-sm shadow rounded-3" name="userType">
+                  <select class="browser-default custom-select-sm shadow rounded-3" name="User_type">
                     <option value="Pemohon">Pemohon</option>
                     <option value="Kakitangan">Kakitangan</option>
                   </select>

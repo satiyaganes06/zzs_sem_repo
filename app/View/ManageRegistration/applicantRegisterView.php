@@ -147,13 +147,13 @@
                     <!-- onsubmit = "return registerFormValidate();" -->
                     <!-- IC -->
                     <div class="form-outline bg-white rounded-4">
-                      <input type="text" id="formIC" name="ic" class="form-control form-control-sm mb-3 text-dark rounded-3" />
+                      <input type="text" id="formIC" name="Applicant_ic" class="form-control form-control-sm mb-3 text-dark rounded-3" />
                       <label class="form-label" for="formIC">Kad Pengenalan</label>
                     </div>
 
                     <!-- Full name -->
                     <div class="form-outline bg-white rounded-4">
-                        <input type="text" id="formName" name="name" class="form-control form-control-sm mb-3 text-dark rounded-3" />
+                        <input type="text" id="formName" name="Applicant_name" class="form-control form-control-sm mb-3 text-dark rounded-3" />
                         <label class="form-label" for="formName">Nama Penuh</label>
                     </div>
 
@@ -162,7 +162,7 @@
                         <div class="col-6 pr-1 pl-0">
 
                             <!-- Gender -->
-                            <select name="gender" class="browser-default custom-select-sm shadow rounded-3" name="gender">
+                            <select name="Applicant_gender" class="browser-default custom-select-sm shadow rounded-3" name="gender">
                                 <option value="Lelaki">Lelaki</option>
                                 <option value="Perempuan">Perempuan</option>
                             </select>
@@ -173,7 +173,7 @@
                             
                             <!-- Phone number -->
                             <div class="form-outline bg-white rounded-4 ">
-                                <input type="tel" id="formPhoneNum" name="phoneNum" class="form-control form-control-sm text-dark rounded-3 w-100" />
+                                <input type="tel" id="formPhoneNum" name="Applicant_phoneNum" class="form-control form-control-sm text-dark rounded-3 w-100" />
                                 <label class="form-label" for="formPhoneNum">Nombor Telefon</label>
                             </div>
                         </div>
@@ -182,13 +182,13 @@
 
                     <!-- Password -->
                     <div class="form-outline bg-white rounded-4 mt-3">
-                        <input type="password" id="formPassword" name="password" class="form-control form-control-sm mb-3 shadow rounded-3" />
+                        <input type="password" id="formPassword" name="Applicant_password" class="form-control form-control-sm mb-3 shadow rounded-3" />
                         <label class="form-label" for="formPassword">Katalaluan</label>
                     </div>
 
                     <!-- Confirm Password -->
                     <div class="form-outline bg-white rounded-4 mb-4">
-                      <input type="password" id="formConfirmPass" class="form-control form-control-sm mb-3 shadow rounded-3" />
+                      <input type="password" id="formConfirmPass" name="Applicant_confirm_password" class="form-control form-control-sm mb-3 shadow rounded-3" />
                       <label class="form-label" for="formConfirmPass">Ulang Katalaluan</label>
                     </div>
                     

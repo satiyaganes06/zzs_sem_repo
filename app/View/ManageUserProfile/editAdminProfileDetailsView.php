@@ -3,12 +3,9 @@
     // Start up your PHP Session
     session_start();
 
-    //Decluration
-    $encodedData;
-    $decodedAdminData;
 
-    //If the user is not logged in send him/her to the login form
-    if(!isset($_SESSION['currentUserIC'])) {
+     //If the user is not logged in send him/her to the login form
+     if(!isset($_SESSION['currentUserIC'])) {
 
         ?>
             <script>
@@ -19,14 +16,15 @@
 
     }else{
 
+        //Sidebar Active path
+        $_SESSION['route'] = 'editProfile';
+
         // Retrieve the serialized and URL-encoded data from the URL parameter
         $encodedData = $_GET['returnInfo'];
         
         // Decode the URL-encoded data and unserialize it
         $decodedAdminData = unserialize(urldecode($encodedData));
 
-        //Sidebar Active path
-        $_SESSION['route'] = 'editProfile';
     }
     
 ?>
@@ -85,7 +83,7 @@
                         
                         <div class="d-flex justify-content-end">
                             <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
-                            <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
+                            <a class="commonButton" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
                     </div>
                     
@@ -104,7 +102,7 @@
                                             <th scope="row">Nama :</th>
                                             <td>
                                                 <div class="form form-width">
-                                                    <input type="text" id="formNama" name="nama" class="form-control form-control-sm" value="<?php echo $decodedAdminData['AdminName']; ?>"/>
+                                                    <input type="text" id="formNama" name="Admin_nama" class="form-control form-control-sm" value="<?php echo $decodedAdminData['AdminName']; ?>"/>
                                                 </div>
                                             </td>
                                         </tr>
@@ -118,7 +116,7 @@
                                             <th scope="row">Email :</th>
                                             <td>
                                                 <div class="form form-width">
-                                                    <input type="text" id="formEmail" name="email" class="form-control form-control-sm" value="<?php echo $decodedAdminData['AdminEmail']; ?>"/>
+                                                    <input type="text" id="formEmail" name="Admin_email" class="form-control form-control-sm" value="<?php echo $decodedAdminData['AdminEmail']; ?>"/>
                                                 </div>
                                             </td>
 
@@ -128,7 +126,7 @@
                                             <th scope="row">No. Telefon(Bimbit) :</th>
                                             <td>
                                                 <div class="form form-width">
-                                                    <input type="text" id="formNoTel" name="noTel" class="form-control form-control-sm" value="<?php echo $decodedAdminData['AdminNumberPhone']; ?>"/>
+                                                    <input type="text" id="formNoTel" name="Admin_noTel" class="form-control form-control-sm" value="<?php echo $decodedAdminData['AdminNumberPhone']; ?>"/>
                                                 </div>
                                             </td>
                                         </tr>
@@ -137,7 +135,7 @@
                                             <th scope="row">Alamat :</th>
                                             <td>
                                                 <div class="form form-width">
-                                                    <input type="text" id="formAlamat" name="alamat" class="form-control form-control-sm" value="<?php echo $decodedAdminData['AdminAddress']; ?>"/>
+                                                    <input type="text" id="formAlamat" name="Admin_alamat" class="form-control form-control-sm" value="<?php echo $decodedAdminData['AdminAddress']; ?>"/>
                                                 </div>
                                             </td>
                                         </tr>
@@ -162,9 +160,12 @@
         </section>
 
 
-        <!-- Footer -->
         <?php
-          include_once('../Common/footer.html');
+          // Footer 
+          include_once('../Common/footer.html');  
+
+          //Logout Model
+          include_once('../Common/logoutModel.html');
         ?>
 
     </div>

@@ -91,8 +91,6 @@ class AccountModel {
         return false;
     }
   }
-
-  
   
 }
 

@@ -79,7 +79,7 @@
                         
                         <div class="d-flex justify-content-end">
                             <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
-                            <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
+                            <a class="commonButton" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
                     </div>
                     
@@ -106,7 +106,10 @@
                                         foreach ($result as $row)
                                         {
                                                 
-                                                $id = $row["Staff_Id"];
+                                                
+                                            $Staff_id = $row["Staff_Id"];
+                                            $Staff_name = $row['StaffName'];
+                                            $Staff_type = $row['StaffType'];
                                             ?>
                                                 <tr>
                                                     <td style="width: 5%;">
@@ -115,18 +118,18 @@
 
                                                     <td class="" style="width: 40%;">
                                                         
-                                                        <div class="nameEllipsis"><?php echo $row['StaffName'];?></div>
+                                                        <div class="nameEllipsis"><?php echo $Staff_name;?></div>
                                                     </td>
 
                                                     <td style="width: 20%;">
-                                                        <span><?php echo $row['Staff_Id'];?></span>
+                                                        <span><?php echo $Staff_id;?></span>
                                                     </td>
 
-                                                    <td style="width: 20%;"><?php echo $row['StaffType'];?></td>
+                                                    <td style="width: 20%;"><?php echo $Staff_type;?></td>
 
                                                     <td style="width: 15%;">
                                                         <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
-                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $row['Staff_Id']; ?>'">
+                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
                                                             Lihat
                                                         </button>
                                                     </td>
@@ -151,9 +154,12 @@
         </section>
 
 
-        <!-- Footer -->
         <?php
-          include_once('../Common/footer.html');
+          // Footer 
+          include_once('../Common/footer.html');  
+
+          //Logout Model
+          include_once('../Common/logoutModel.html');
         ?>
 
     </div>

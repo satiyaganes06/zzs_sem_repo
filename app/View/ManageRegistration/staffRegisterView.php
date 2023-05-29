@@ -73,7 +73,7 @@
                         
                         <div class="d-flex justify-content-end">
                             <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
-                            <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
+                            <a class="commonButton" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
                     </div>
                     
@@ -92,7 +92,7 @@
                                             <th scope="row">Nama :</th>
                                             <td>
                                                 <div class="form form-width">
-                                                    <input type="text" id="formNama" name="nama" class="form-control shadow-sm form-control-sm" required value="<?php // echo $user['AdminName']; ?>"/>
+                                                    <input type="text" id="formNama" name="Staff_nama" class="form-control shadow-sm form-control-sm" required value="<?php // echo $user['AdminName']; ?>"/>
                                                 </div>
                                             </td>
                                         </tr>
@@ -101,7 +101,7 @@
                                             <th scope="row">No. Kad Pengenalan :</th>
                                             <td>
                                                 <div class="form form-width">
-                                                    <input type="text" id="formAlamat" name="ic" class="form-control shadow-sm form-control-sm" required value="<?php //echo $user['AdminAddress']; ?>"/>
+                                                    <input type="text" id="formAlamat" name="Staff_ic" class="form-control shadow-sm form-control-sm" required value="<?php //echo $user['AdminAddress']; ?>"/>
                                                 </div>
                                             </td>
                                         </tr>
@@ -110,7 +110,7 @@
                                             <th scope="row">Email :</th>
                                             <td>
                                                 <div class="form form-width">
-                                                    <input type="email" id="formEmail" name="email" class="form-control shadow-sm form-control-sm" required value="<?php //echo $user['AdminEmail']; ?>"/>
+                                                    <input type="email" id="formEmail" name="Staff_email" class="form-control shadow-sm form-control-sm" required value="<?php //echo $user['AdminEmail']; ?>"/>
                                                 </div>
                                             </td>
 
@@ -120,7 +120,7 @@
                                             <th scope="row">No. Telefon(Bimbit) :</th>
                                             <td>
                                                 <div class="form form-width">
-                                                    <input type="tel" id="formNoTel" name="noTel" class="form-control shadow-sm form-control-sm" required value="<?php //echo $user['AdminNumberPhone']; ?>"/>
+                                                    <input type="tel" id="formNoTel" name="Staff_noTel" class="form-control shadow-sm form-control-sm" required value="<?php //echo $user['AdminNumberPhone']; ?>"/>
                                                 </div>
                                             </td>
                                         </tr>
@@ -140,7 +140,7 @@
                                             <th scope="row">Alamat :</th>
                                             <td>
                                                 <div class="form form-width">
-                                                    <input type="text" id="formAlamat" name="alamat" class="form-control shadow-sm form-control-sm" required value="<?php //echo $user['AdminAddress']; ?>"/>
+                                                    <input type="text" id="formAlamat" name="Staff_alamat" class="form-control shadow-sm form-control-sm" required value="<?php //echo $user['AdminAddress']; ?>"/>
                                                 </div>
                                             </td>
                                         </tr>
@@ -149,7 +149,7 @@
                                             <th scope="row">Kata Laluan :</th>
                                             <td>
                                                 <div class="form form-width">
-                                                    <input type="password" id="formAlamat" name="password" class="form-control shadow-sm form-control-sm" required value="<?php //echo $user['AdminAddress']; ?>"/>
+                                                    <input type="password" id="formAlamat" name="Staff_password" class="form-control shadow-sm form-control-sm" required value="<?php //echo $user['AdminAddress']; ?>"/>
                                                 </div>
                                             </td>
                                         </tr>
@@ -158,7 +158,7 @@
                                             <th scope="row">Ulangan Kata Laluan :</th>
                                             <td>
                                                 <div class="form form-width">
-                                                    <input type="password" id="formAlamat" name="confirmPassword" class="form-control shadow-sm form-control-sm" required value="<?php //echo $user['AdminAddress']; ?>"/>
+                                                    <input type="password" id="formAlamat" name="Staff_confirmPassword" class="form-control shadow-sm form-control-sm" required value="<?php //echo $user['AdminAddress']; ?>"/>
                                                 </div>
                                             </td>
                                         </tr>
@@ -183,9 +183,12 @@
         </section>
 
 
-        <!-- Footer -->
         <?php
-          include_once('../Common/footer.html');
+          // Footer 
+          include_once('../Common/footer.html');  
+
+          //Logout Model
+          include_once('../Common/logoutModel.html');
         ?>
 
     </div>

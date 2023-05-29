@@ -13,7 +13,7 @@
             $this->staffModel = $staffModel;
         }
 
-        //Retrieve data to view
+        //Retrieve profile data from model
         public function viewProfileFunction($from) {
             
             session_start();
@@ -37,7 +37,6 @@
 
                 $id = $_SESSION['accountId'];
                 $user = $this->staffModel->getStaffProfileInfo($id);
-                echo $user['StaffName'];
 
                 if($from == 'view'){
                     header('Location: ../app/View/ManageUserProfile/viewStaffProfileDetailsView.php?returnInfo='.  urlencode(serialize($user)));
@@ -70,6 +69,7 @@
             
         }
 
+        //Retrieve staff list from staff model
         public function viewStaffListFunction() {
 
             $listOfStaffs = $this->staffModel->getAllStaffInfo();
@@ -85,12 +85,13 @@
 
         }
 
+        //Retrieve staff list from applicant model
         public function viewApplicantListFunction() {
 
-            $listOfStaffs = $this->applicantModel->getAllApplicantInfo();
+            $listOfApplicant = $this->applicantModel->getAllApplicantInfo();
 
             session_start();
-            $_SESSION['listOfApplicant'] = $listOfStaffs;
+            $_SESSION['listOfApplicant'] = $listOfApplicant;
 
             ?>
                 <script>
@@ -206,6 +207,9 @@
                         window.location = "../app/View/ManageUserProfile/viewStaffInAdminProfileDetailsView.php";
                     </script>
                 <?php
+                
+            }else{
+                echo "Problem 404";
                 
             }
 

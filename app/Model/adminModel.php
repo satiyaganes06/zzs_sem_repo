@@ -8,7 +8,6 @@ class AdminModel {
     $this->connect = $database;
   }
 
-
   //Get admin data using user ic 
   public function getAdminProfileInfo($id) {
 
@@ -59,8 +58,6 @@ class AdminModel {
           
       }
 
-    
-      
   }
   
 }

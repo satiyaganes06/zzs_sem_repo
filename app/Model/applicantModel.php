@@ -25,7 +25,6 @@ class ApplicantModel {
     return $query->execute([$userIC, $accountId, $userName, $userGender, $phoneNum]);
   }
 
-
   //Get applicant data using user ic 
   public function getApplicantProfileInfo($userIC) {
 
@@ -112,7 +111,6 @@ class ApplicantModel {
       }
 
   }
-  
   
 }
 

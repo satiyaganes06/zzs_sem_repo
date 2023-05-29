@@ -31,24 +31,24 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 switch ($action) {
   
     case 'createAccount':
-        $ic = $_POST['ic'];
-        $password = $_POST['password'];
-        $name = $_POST['name'];
-        $gender = $_POST['gender'];
-        $phoneNume = $_POST['phoneNum'];
+        $ic = $_POST['Applicant_ic'];
+        $password = $_POST['Applicant_password'];
+        $name = $_POST['Applicant_name'];
+        $gender = $_POST['Applicant_gender'];
+        $phoneNume = $_POST['Applicant_phoneNum'];
 
         $registrationController->applicantRegisterFunction($ic, "Pemohon", $password, $name, $gender, $phoneNume);
         
         break;
 
     case 'registerStaff':
-        $name = $_POST['nama'];
-        $ic = $_POST['ic'];
-        $email = $_POST['email'];
-        $noTel = $_POST['noTel'];
+        $name = $_POST['Staff_nama'];
+        $ic = $_POST['Staff_ic'];
+        $email = $_POST['Staff_email'];
+        $noTel = $_POST['Staff_noTel'];
         $typeOfStaff = $_POST['typeOfStaff'];
-        $alamat = $_POST['alamat'];
-        $password = $_POST['password'];
+        $alamat = $_POST['Staff_alamat'];
+        $password = $_POST['Staff_password'];
         
 
         $registrationController->staffRegisterFunction($name, $ic, $email, $noTel, $typeOfStaff, $alamat, $password, "Kakitangan");
@@ -56,9 +56,9 @@ switch ($action) {
         break;
     
     case 'loginAccount':
-        $ic = $_POST['ic'];
-        $password = $_POST['password'];
-        $userType = $_POST['userType'];
+        $ic = $_POST['User_ic'];
+        $password = $_POST['User_password'];
+        $userType = $_POST['User_type'];
 
         $loginController->userLoginAccountFunction($ic, $password, $userType);
         
@@ -75,8 +75,8 @@ switch ($action) {
         break;
 
     case 'adminLoginAccount':
-        $id = $_POST['id'];
-        $password = $_POST['password'];
+        $id = $_POST['Admin_id'];
+        $password = $_POST['Admin_password'];
 
         $loginController->adminLoginAccountFunction($id, $password);
         
@@ -113,24 +113,24 @@ switch ($action) {
         break;
 
     case 'updateProfile':
-        $nama = $_POST['nama'];
-        $umur = $_POST['umur'];
-        $tarikhTL = $_POST['tarikhL'];
+        $nama = $_POST['Applicant_nama'];
+        $umur = $_POST['Applicant_umur'];
+        $tarikhTL = $_POST['Applicant_tarikhL'];
 
-        $jantina = $_POST['jantina'];
-        $bangsa = $_POST['bangsa'];
-        $email = $_POST['email'];
+        $jantina = $_POST['Applicant_jantina'];
+        $bangsa = $_POST['Applicant_bangsa'];
+        $email = $_POST['Applicant_email'];
 
-        $alamat = $_POST['alamat'];
-        $noTel = $_POST['noTel'];
-        $noTelRum = $_POST['noTelRum'];
+        $alamat = $_POST['Applicant_alamat'];
+        $noTel = $_POST['Applicant_noTel'];
+        $noTelRum = $_POST['Applicant_noTelRum'];
 
-        $trafPen = $_POST['trafPen'];
-        $jawatan = $_POST['jawatan'];
-        $pendapatan = $_POST['pendapatan'];
+        $trafPen = $_POST['Applicant_trafPen'];
+        $jawatan = $_POST['Applicant_jawatan'];
+        $pendapatan = $_POST['Applicant_pendapatan'];
 
-        $alamatKerja = $_POST['alamatKerja'];
-        $noTelPenjabat = $_POST['noTelPenjabat'];
+        $alamatKerja = $_POST['Applicant_alamatKerja'];
+        $noTelPenjabat = $_POST['Applicant_noTelPenjabat'];
 
         
 
@@ -139,10 +139,10 @@ switch ($action) {
         break;
     
     case 'updateStaffProfile':
-        $name = $_POST['nama'];
-        $email = $_POST['email'];
-        $alamat = $_POST['alamat'];
-        $noTel = $_POST['noTel'];
+        $name = $_POST['Staff_nama'];
+        $email = $_POST['Staff_email'];
+        $alamat = $_POST['Staff_alamat'];
+        $noTel = $_POST['Staff_noTel'];
 
 
         $userProfileController->updateStaffProfileFunction($name, $email, $alamat, $noTel);
@@ -150,11 +150,11 @@ switch ($action) {
         break;
 
     case 'updateAdminProfile':
-        $nama = $_POST['nama'];
-        $email = $_POST['email'];
+        $nama = $_POST['Admin_nama'];
+        $email = $_POST['Admin_email'];
 
-        $alamat = $_POST['alamat'];
-        $noTel = $_POST['noTel'];
+        $alamat = $_POST['Admin_alamat'];
+        $noTel = $_POST['Admin_noTel'];
 
 
         $userProfileController->updateAdminProfileFunction($nama, $email, $alamat, $noTel);

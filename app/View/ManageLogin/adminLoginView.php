@@ -150,14 +150,14 @@
 
                   <!-- IC -->
                   <div class="form-outline bg-white rounded-4">
-                    <input type="text" id="formIC" name="id" class="form-control form-control mb-4 text-dark rounded-3" />
+                    <input type="text" id="formIC" name="Admin_id" class="form-control form-control mb-4 text-dark rounded-3" />
                     <label class="form-label" for="formID">Account ID</label>
                   </div>
 
                   <!-- Password -->
                   <!-- <input type="password" id="password" class="form-control mb-4 shadow rounded-3" placeholder="Password" > -->
                   <div class="form-outline bg-white rounded-4  mb-5 ">
-                    <input type="password" id="formPassword" name="password" class="form-control form-control mb-4 shadow rounded-3" />
+                    <input type="password" id="formPassword" name="Admin_password" class="form-control form-control mb-4 shadow rounded-3" />
                     <label class="form-label" for="formPassword">Kata Laluan</label>
                   </div>
 

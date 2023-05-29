@@ -13,6 +13,13 @@
         $editProfileRoute = 'active' ;
     }
     
+    else if($route == 'marriageRegistrationStatus'){
+        $marriageRegistrationStatusRoute = 'active' ;
+    } 
+    
+    else if($route == 'MarriageRegistrationPayment'){
+        $marriageRegistrationPaymentRoute = 'active' ;
+    } 
 ?>
 
 <html>
@@ -137,14 +144,14 @@
                         <div class="accordion-body">
 
                             <a class="list-group-item
-                                        list-group-item-action
+                                        list-group-item-action 
                                         border-0 px-3 pt-1 pb-1
-                                        list-group-item-light" href="../blankPage.html">Status</a>
+                                        list-group-item-light" href="../MarriageRegistration/marriageRegistrationStatusView.php">Status</a>
                             <a class="list-group-item
-                                        list-group-item-action
+                                        list-group-item-action<?php echo $marriageRegistrationPaymentRoute ?>
                                         border-0 mt-1 px-3 pt-1
                                         pb-1
-                                        list-group-item-light" href="../blankPage.html">Pembayaran</a>
+                                        list-group-item-light" href="../MarriageCard/marriageCardPaymentView.php">Pembayaran</a>
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,7 @@ class StaffModel {
   public function getStaffProfileInfo($staff_Id) {
 
     // Prepare SQL statement with placeholders to prevent SQL injection
-    $stmt = $this->connect->prepare('SELECT * FROM staff_info WHERE Staff_Id = :id');
+    $stmt = $this->connect->prepare('SELECT * FROM staff_info WHERE Account_Id = :id');
     $stmt->bindParam(':id', $staff_Id);
 
     // Execute SQL statement
@@ -95,6 +95,7 @@ class StaffModel {
       }
 
   }
+  
 }
 
 ?>

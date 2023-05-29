@@ -3,10 +3,7 @@
     // Start up your PHP Session
     session_start();
 
-    //Decluration
-    $encodedData;
-    $decodedStaffData;
-
+    
     //If the user is not logged in send him/her to the login form
     if(!isset($_SESSION['currentUserIC'])) {
 
@@ -19,15 +16,17 @@
 
     }else{
 
+        //Sidebar Active path
+        $_SESSION['route'] = 'editProfile';
+
         // Retrieve the serialized and URL-encoded data from the URL parameter
         $encodedData = $_GET['returnInfo'];
         
         // Decode the URL-encoded data and unserialize it
         $decodedStaffData = unserialize(urldecode($encodedData));
 
-        //Sidebar Active path
-        $_SESSION['route'] = 'editProfile';
     }
+    
  
 ?>
 
@@ -86,7 +85,7 @@
                         
                         <div class="d-flex justify-content-end">
                             <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
-                            <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
+                            <a class="commonButton" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
                     </div>
                     
@@ -114,7 +113,7 @@
                                             <td>
                                                 
                                                 <div class="form form-width">
-                                                    <input type="text" id="formNama" name="nama" class="form-control form-control-sm" value="<?php echo $decodedStaffData['StaffName']; ?>"/>
+                                                    <input type="text" id="formNama" name="Staff_nama" class="form-control form-control-sm" value="<?php echo $decodedStaffData['StaffName']; ?>"/>
                                                 </div>
                                             </td>
 
@@ -146,7 +145,7 @@
                                             <th scope="row">Email :</th>
                                             <td>
                                                 <div class="form form-width">
-                                                    <input type="text" id="formEmail" name="email" class="form-control form-control-sm" value="<?php echo $decodedStaffData['StaffEmail']; ?>"/>
+                                                    <input type="text" id="formEmail" name="Staff_email" class="form-control form-control-sm" value="<?php echo $decodedStaffData['StaffEmail']; ?>"/>
                                                 </div>
                                             </td>
 
@@ -156,7 +155,7 @@
                                             <th scope="row">Alamat :</th>
                                             <td>
                                                 <div class="form form-width">
-                                                    <input type="text" id="formAddress" name="alamat" class="form-control form-control-sm" value="<?php echo $decodedStaffData['StaffAddress']; ?>"/>
+                                                    <input type="text" id="formAddress" name="Staff_alamat" class="form-control form-control-sm" value="<?php echo $decodedStaffData['StaffAddress']; ?>"/>
                                                 </div>
                                             </td>
                                         </tr>
@@ -165,7 +164,7 @@
                                             <th scope="row">No. Telefon(Bimbit) :</th>
                                             <td>
                                                 <div class="form form-width">
-                                                    <input type="text" id="formTelefon" name="noTel" class="form-control form-control-sm" value="<?php echo $decodedStaffData['StaffNumberPhone']; ?>"/>
+                                                    <input type="text" id="formTelefon" name="Staff_noTel" class="form-control form-control-sm" value="<?php echo $decodedStaffData['StaffNumberPhone']; ?>"/>
                                                 </div>
                                             </td>
                                         </tr>
@@ -191,10 +190,13 @@
         </section>
 
 
-        <!-- Footer -->
-        <section class="mt-5">
+        <?php
+          // Footer 
+          include_once('../Common/footer.html');  
 
-        </section>
+          //Logout Model
+          include_once('../Common/logoutModel.html');
+        ?>
 
     </div>
 
