@@ -8,7 +8,7 @@ require_once '../app/Model/staffModel.php';
 require_once '../app/Controller/php/registrationController.php';
 require_once '../app/Controller/php/loginController.php';
 require_once '../app/Controller/php/userProfileController.php';
-require_once '../app/Controller/php/reset_password.php';
+require_once '../app/Controller/php/resetPasswordController.php';
 
 // Create a new database connection
 $db = (new Database())->connect();
@@ -23,7 +23,7 @@ $staffModel = new StaffModel($db);
 $registrationController = new RegistrationController($accountModel, $applicantModel, $staffModel);
 $loginController = new LoginController($accountModel);
 $userProfileController = new UserProfileController($accountModel, $applicantModel, $adminModel, $staffModel);
-$resetPassword = new ResetPassword($accountModel, $db);
+$resetPasswordController = new ResetPasswordController($accountModel, $applicantModel, $staffModel);
 
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
@@ -64,16 +64,29 @@ switch ($action) {
         
         break;
 
-    case 'forgotPassword':
+    case 'resetPassword':
 
+        $ic = isset($_GET['ic']) ? $_GET['ic'] : '';
+        $newPass = $_POST['newpassword'];
         
+        $resetPasswordController->resetPassword($newPass, $ic);
+
+        break;
+    case 'sendOTP':
+
         $ic = $_POST['formIC'];
         $email = $_POST['formEmail'];
         
-        $resetPassword->resetPassword($ic, $email);
+        $resetPasswordController->checkUserExists($ic, $email);
 
         break;
+    case 'checkOTP':
 
+        $otp = $_POST['formOTP'];
+        $ic = isset($_GET['ic']) ? $_GET['ic'] : '';
+        $resetPasswordController->checkOTP($ic, $otp);
+
+        break;
     case 'adminLoginAccount':
         $id = $_POST['Admin_id'];
         $password = $_POST['Admin_password'];

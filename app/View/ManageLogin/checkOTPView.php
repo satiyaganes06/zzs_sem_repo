@@ -1,33 +1,39 @@
+<?php
+  $ic = $_GET['ic'];
+  $message = $_GET['message'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZZS - Login</title>
-    
+    <title>ZZS - Lupa Katalaluan</title>
+
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
 
-     <!--Bootstrap Script-->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Bootstrap Script-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- MDB -->
     <link rel="stylesheet" href="../../Bootstrap/mdb.min.css" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="../css/userLoginView.css">
+    <link rel="stylesheet" href="../css/forgotPasswordView.css">
+    <link rel="stylesheet" href="../css/header.css">
 
     <!-- Icon -->
     <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png"/>
 </head>
 
 <body>
+
     
     <div class="container-md-8 container-sm-12 row d-flex justify-content-center">
 
@@ -35,7 +41,6 @@
         <?php
           include_once('../Common/applicantHeader.html');
         ?>
-
 
         <!-- Content Section -->
         <section class="contentPart row p-4 mt-3 bg-white shadow">
@@ -134,66 +139,42 @@
 
             </div>
 
-
-            <div class="loginPart container col-md-4 col-sm-12 pl-5 pr-5 pt-3 shadow rounded-5 text-center">
+            <div class="loginPart container col-md-4 col-sm-12 pl-5 pr-5 shadow rounded-5 text-center">
 
                 <img src="../../Assert/login_top_frame.png" alt="login top frame">
 
-                <h3 class="bold loginTitle mt-4">Log Masuk</h3>
+                <h3 class="bold loginTitle mt-4">Lupa Katalaluan</h3>
 
                 <div id="error_message">
                   <!-- the error or success message pass in this div from js -->  
                 </div>
 
-                <!-- form login -->
-                <form class="mt-4" action="../../../public/index.php?action=loginAccount" method="post" id="myform" >
-                  <!-- onsubmit = "return loginFormValidate();" -->
+                <p><?php 
+                    if($message != "Incorrent OTP"){
+                       echo '<p  class="text-white bg-primary rounded-3">Check your email for OTP</p>';
+                    }else{
+                      echo '<p  class="text-white bg-danger rounded-3">'. $message . '</p>';
+                    }
+                 ?></p>
 
-                  <!-- IC -->
-                  <div class="form-outline bg-white rounded-4">
-                    <input type="text" id="formIC" name="User_ic" class="form-control form-control-sm mb-4 text-dark rounded-3" />
-                    <label class="form-label" for="formIC">Kad Pengenalan</label>
+                <form action="../../../public/index.php?action=checkOTP&ic=<?php echo $ic; ?>" method="post">
+
+                  <div class="form-outline bg-white rounded-4 mt-4 mb-4">
+                    <input type="text" id="formIC" name="formIC" class="form-control form-control-sm text-dark rounded-3" disabled value="<?php echo $ic; ?>">
+                    <label class="form-label" for="formEmail">Kad Pengenalan</label>
                   </div>
-
-                  <!-- Password -->
-                  <!-- <input type="password" id="password" class="form-control mb-4 shadow rounded-3" placeholder="Password" > -->
-                  <div class="form-outline bg-white rounded-4">
-                    <input type="password" id="formPassword" name="User_password" class="form-control form-control-sm mb-4 shadow rounded-3" />
-                    <label class="form-label" for="formPassword">Kata Laluan</label>
+                  <!-- OTP -->
+                  <div class="form-outline bg-white rounded-4 mt-4 mb-4">
+                    <input type="text" id="formOTP" name="formOTP" class="form-control form-control-sm text-dark rounded-3">
+                    <label class="form-label" for="formOTP">OTP</label>
                   </div>
-
-                  
-                  <select class="browser-default custom-select-sm shadow rounded-3" name="User_type">
-                    <option value="Pemohon">Pemohon</option>
-                    <option value="Kakitangan">Kakitangan</option>
-                  </select>
+               
 
                   <!-- Sign in button -->
-                  <button class="btn btn-dark btn-block mt-5 text-light " type="submit" data-mdb-ripple-color="dark">Masuk</button>
+                  <button class="btn btn-dark btn-block mb-4" type="submit" data-mdb-ripple-color="dark" id="teruskan-button">Teruskan</button>
 
-                  <div class="d-flex justify-content-end">
-                      
-                    <div>
-                        <!-- Forgot password -->
-                        <a href="../ManageLogin/sendOTPView.php">Lupa katalaluan?</a>
-                    </div>
-                  </div>
-
-                  <div class="d-flex justify-content-center">
-                      
-                    <div>
-                        <p>atau</p>
-                    </div>
-                    
-                  </div>
-
+                  <img src="../../Assert/login_bottom_frame.png" alt="login top frame">
                 </form>
-                <!-- Default form login -->
-
-                <!-- Sign in button -->
-                <button class="btn btn-info btn-block bg-white text-dark mb-4" onclick="location.href='../ManageRegistration/applicantRegisterView.php'" data-mdb-ripple-color="dark">Daftar</button>
-                
-                <img src="../../Assert/login_bottom_frame.png" alt="login top frame">
             </div>
     
         </section>
@@ -205,6 +186,7 @@
 
     </div>
 
+    
 
     <!--Controller-->
     <script src="../../Controller/js/valiation.js"></script>
@@ -213,10 +195,8 @@
     <script type="text/javascript" src="../../Bootstrap/mdb.min.js"></script>
 
     <!--Bootstrap 4 & 5 & jQuery Script-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 
 </html>

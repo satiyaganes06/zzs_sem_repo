@@ -1,7 +1,3 @@
-<?php
-  $textDis = 'disabled';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -149,11 +145,8 @@
                 </div>
 
                 <!-- form forgot password -->
-                <form class="mt-4" method="POST" action="../../../public/index.php?action=forgotPassword">
+                <form action="../../../public/index.php?action=sendOTP" method="post">
                 <!-- onsubmit = "return forgotPasswordFormValidate();" -->
-                  <div class="d-flex flex-row">
-
-                    <div class="col-9 pr-1 pl-0">
                       
                       <!-- IC -->
                       <div class="form-outline bg-white rounded-4">
@@ -162,39 +155,17 @@
                       </div>
 
                       <!-- Email -->
-                      <div class="form-outline bg-white rounded-4">
+                      <div class="form-outline bg-white rounded-4 mb-5">
                         <input type="email" id="formEmail" name="formEmail" class="form-control form-control-sm mb-3 shadow rounded-3" />
                         <label class="form-label" for="formEmail">E-mail</label>
                       </div>
-                    </div>
 
-                    <div class="col-3 p-0 mb-3">
                       <!-- Request OTP Button -->
-                      <!-- <button id="submmit" class="btn btn-dark btn-block bg-light text-dark pr-0 pl-0 h-100" type="submit" data-mdb-ripple-color="dark">Hantar OTP</button> -->
+                      <button class="btn btn-dark btn-block text-light pr-0 pl-0 h-100 mb-4"  type="submit" data-mdb-ripple-color="dark">Hantar OTP</button>
 
-                      <button class="btn btn-dark btn-block text-light pr-0 pl-0 h-100" type="submit" data-mdb-ripple-color="dark">Hantar OTP</button>
-
-                    </div>
-
-                  </div>
-                
                 </form>
 
-                <div id="result"></div>
-
-                <form action="">
-                  <!-- OTP -->
-                  <div class="form-outline bg-white rounded-4 mt-4 mb-4">
-                    <input type="text" id="formOTP" class="form-control form-control-sm text-dark rounded-3" <?php echo $textDis; ?>/>
-                    <label class="form-label" for="formOTP">OTP</label>
-                  </div>
-               
-
-                  <!-- Sign in button -->
-                  <button class="btn btn-dark btn-block mb-4" type="submit" data-mdb-ripple-color="dark" <?php echo $textDis; ?>>Teruskan</button>
-
-                  <img src="../../Assert/login_bottom_frame.png" alt="login top frame">
-                </form>
+                <img src="../../Assert/login_bottom_frame.png" alt="login top frame">
             </div>
     
         </section>
@@ -206,6 +177,8 @@
 
     </div>
 
+    
+
     <!--Controller-->
     <script src="../../Controller/js/valiation.js"></script>
      
@@ -215,9 +188,6 @@
     <!--Bootstrap 4 & 5 & jQuery Script-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 </body>
 
 </html>

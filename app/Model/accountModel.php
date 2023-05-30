@@ -24,6 +24,23 @@ class AccountModel {
     return $acountInfo;
   }
 
+  //Get user account data using user account_Id 
+  public function checkUserExistByIc($ic) {
+
+    // Prepare SQL statement with placeholders to prevent SQL injection
+    $stmt = $this->connect->prepare('SELECT * FROM Account_Info WHERE User_IC = :ic');
+    $stmt->bindParam(':ic', $ic);
+
+    // Execute SQL statement
+    $stmt->execute();
+
+    //Store the result of user from mySQL
+    $acountInfo = $stmt->fetch(PDO::FETCH_ASSOC);  
+
+    return $acountInfo;
+    
+  }
+
   //This function will create new account in mySQL database
   public function createAccount($userIC, $userType, $userPassword) {
     $uniqid = uniqid();
@@ -91,6 +108,56 @@ class AccountModel {
         return false;
     }
   }
+
+  public function storeOTP($otpCode, $ic){
+
+      // Prepare your update statement
+      $sql = "UPDATE Account_Info set 
+          otp = :otpCode
+      WHERE User_Ic = :ic";
+
+      // Prepare the statement
+      $stmt = $this->connect->prepare($sql);
+
+      // Bind parameters
+      $stmt->bindParam(':otpCode', $otpCode);
+      $stmt->bindParam(':ic', $ic);
+
+      // Execute the statement
+      if ($stmt->execute() === TRUE) {
+        return true;
+
+      } else {
+
+        return false;
+
+      }
+  }
+
+  public function resetToNewPassword($hashed_password, $ic){
+
+    // Prepare your update statement
+    $sql = "UPDATE Account_Info set 
+        UserPassword = :newpass
+    WHERE User_Ic = :ic";
+
+    // Prepare the statement
+    $stmt = $this->connect->prepare($sql);
+
+    // Bind parameters
+    $stmt->bindParam(':newpass', $hashed_password);
+    $stmt->bindParam(':ic', $ic);
+
+    // Execute the statement
+    if ($stmt->execute() === TRUE) {
+      return true;
+
+    } else {
+
+      return false;
+
+    }
+}
   
 }
 

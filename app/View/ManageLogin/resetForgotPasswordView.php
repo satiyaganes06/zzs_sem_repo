@@ -1,3 +1,7 @@
+<?php
+  $iC = $_GET['iC'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -146,30 +150,28 @@
                 </div>
 
                 <!-- form reset -->
-                <form class="" action="../ManageLogin/userLoginView.html" id="myform" onsubmit = "return resetPasswordFormValidate();">
+                <form  action="../../../public/index.php?action=resetPassword&ic=<?php echo $iC; ?>" method="post"  onsubmit = "return resetPasswordFormValidate();">
 
-                  
                     <!-- Password -->
                     <div class="form-outline bg-white rounded-4">
-                      <input type="password" id="formPassword" class="form-control form-control-sm mb-3 text-dark rounded-3" />
+                      <input type="password" id="formPassword" name="newpassword" class="form-control form-control-sm mb-3 text-dark rounded-3" />
                       <label class="form-label" for="formPassword">Katalaluan</label>
                     </div>
 
                     <!-- Confirm Password -->
-                    <div class="form-outline bg-white rounded-4">
+                    <div class="form-outline bg-white rounded-4 mb-5">
                       <input type="password" id="formConfirmPass" class="form-control form-control-sm mb-3 shadow rounded-3" />
                       <label class="form-label" for="formConfirmPass">Ulang Katalaluan Baru</label>
                     </div>
                     
 
-                  <!-- Sign in button -->
-                  <button class="btn btn-info btn-block mt-5 bg-white text-dark mb-4" type="submit" data-mdb-ripple-color="dark">Teruskan</button>
-
-                  <img src="../../Assert/login_bottom_frame.png" alt="login top frame">
-
+                    <!-- Sign in button -->
+                    <button class="btn btn-dark btn-block mb-4" type="submit" data-mdb-ripple-color="dark" >Teruskan</button>
 
                 </form>
                 <!-- Default form -->
+
+                <img src="../../Assert/login_bottom_frame.png" alt="login top frame">
             </div>
     
         
