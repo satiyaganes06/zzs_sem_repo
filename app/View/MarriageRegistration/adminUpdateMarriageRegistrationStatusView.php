@@ -1,8 +1,4 @@
-
 <?php
-
-
-
 
     // Start up your PHP Session
     session_start();
@@ -99,81 +95,64 @@
 
 
 <div id="inMainContentOutline" class="table-responsive p-4">
-    <table class="table table-borderless table-sm">
 
-        <tbody>
-          <tr>
-            <th scope="row">Nama :</th>
-            <td><?php echo $decodedApplicantData['ApplicantName']; ?></td>
+                      <div class="section">
+                            <label id="sectonTitle">MAKLUMAT PEMOHON</label>
+                      </div>
+                      <table class="table table-borderless table-sm">
 
-            <th scope="row">Umur :</th>
-            <td><?php echo $decodedApplicantData['ApplicantAge']; ?></td>
-          </tr>
+<tbody>
+  <tr>
+    <th scope="row">Nama :</th>
+    <td><?php echo $decodedApplicantData['ApplicantName']; ?></td>
 
-          <tr>
-            <th scope="row">Tarikh Lahir :</th>
-            <td><?php echo $decodedApplicantData['ApplicantBirthDate']; ?></td>
+    <th scope="row">Umur :</th>
+    <td><?php echo $decodedApplicantData['ApplicantAge']; ?></td>
+  </tr>
 
-            <th scope="row">Jantina :</th>
-            <td><?php echo $decodedApplicantData['ApplicantGender']; ?></td>
-          </tr>
+  <tr>
+    <th scope="row">Tarikh Lahir :</th>
+    <td><?php echo $decodedApplicantData['ApplicantBirthDate']; ?></td>
 
-          <tr>
-            <th scope="row">No. Kad Pengenalan :</th>
-            <td><?php echo $decodedApplicantData['Applicant_Ic']; ?></td>
+    <th scope="row">Jantina :</th>
+    <td><?php echo $decodedApplicantData['ApplicantGender']; ?></td>
+  </tr>
 
-            <th scope="row">Bangsa :</th>
-            <td><?php echo $decodedApplicantData['ApplicantRace']; ?></td>
-          </tr>
+  <tr>
+    <th scope="row">No. Kad Pengenalan :</th>
+    <td><?php echo $decodedApplicantData['Applicant_Ic']; ?></td>
 
-          <tr>
-            <th scope="row">Email :</th>
-            <td><?php echo $decodedApplicantData['ApplicantEmail']; ?></td>
+    <th scope="row">Bangsa :</th>
+    <td><?php echo $decodedApplicantData['ApplicantRace']; ?></td>
+  </tr>
 
-          </tr>
+  <tr>
+    <th scope="row">Email :</th>
+    <td><?php echo $decodedApplicantData['ApplicantEmail']; ?></td>
 
-          <tr>
-            <th scope="row">Alamat :</th>
-            <td><?php echo $decodedApplicantData['ApplicantAddress']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="row">No. Telefon(Bimbit) :</th>
-            <td><?php echo $decodedApplicantData['ApplicantPhoneNo']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="row">No. Telefon(Rumah) :</th>
-            <td><?php echo $decodedApplicantData['ApplicantHomePhoneNo']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="row">Taraf Pendidikan :</th>
-            <td><?php echo $decodedApplicantData['ApplicantEduLevel']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="row">Jawatan / Pekerjaan :</th>
-            <td><?php echo $decodedApplicantData['ApplicantPosition']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="col-2">Pendapatan :</th>
-            <td>RM <?php echo $decodedApplicantData['ApplicantSalary']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="row">Alamat Tempat Kerja :</th>
-            <td><?php echo $decodedApplicantData['ApplicantWorkAddress']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="row">No. Telefon(Pejabat) :</th>
-            <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo']; ?></td>
-          </tr>
-        </tbody>
-    </table>
-    <button type="button" name="return" id="buttonR" >Kembali</button>
+  </tr>
+  <tr>
+    <th scope="row">No. Pendaftaran :</th>
+    <td>   1234567890<td>
+  </tr>
+</tbody>
+                      </table>
+<br>
+<br>
+<label id="kpin">Status Permohonan :</label><select name ="Acategory" id="marriageCaategory">
+                                                    <option value="main" >Status</option>
+                                                    <option value="newest" >Baru</option>
+                                                    <option value="processing" >Sedang Diproses</option>
+                                                    <option value="waitingApproval" >Untuk Diluluskan</option>
+                                                    <option value="Approved" >Lulus</option>
+                                            </select>  
+                                            <br>
+                                            <br>
+<label id="kpin">Tarikh Lulus/Gagal Permohonan :</label><input type="date" id="resultDate" name="dateR">
+                                            <br>
+                                            <br>
+                        <button type="button" name="return" id="buttonR" >Simpan</button>
+                            </form>
                         </div>
                     </div>
                 </div>
