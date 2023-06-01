@@ -179,6 +179,3 @@ switch ($action) {
         
 
 }
-
-?>
-

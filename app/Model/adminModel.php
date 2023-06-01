@@ -19,9 +19,9 @@ class AdminModel {
     $stmt->execute();
 
     //Store the result of user from mySQL
-    $userinfo = $stmt->fetch(PDO::FETCH_ASSOC);  
+    $adminInfo = $stmt->fetch(PDO::FETCH_ASSOC);  
 
-    return $userinfo;
+    return $adminInfo;
   }
 
   //Update applicant data using user ic 
