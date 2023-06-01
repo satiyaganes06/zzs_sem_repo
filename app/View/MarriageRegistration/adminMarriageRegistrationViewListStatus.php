@@ -1,8 +1,4 @@
-
-<?php
-
-
-
++<?php
 
     // Start up your PHP Session
     session_start();
@@ -95,85 +91,49 @@
                     </div>
                     
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">Profil</h2>
+                        
 
 
-<div id="inMainContentOutline" class="table-responsive p-4">
-    <table class="table table-borderless table-sm">
-
-        <tbody>
-          <tr>
-            <th scope="row">Nama :</th>
-            <td><?php echo $decodedApplicantData['ApplicantName']; ?></td>
-
-            <th scope="row">Umur :</th>
-            <td><?php echo $decodedApplicantData['ApplicantAge']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="row">Tarikh Lahir :</th>
-            <td><?php echo $decodedApplicantData['ApplicantBirthDate']; ?></td>
-
-            <th scope="row">Jantina :</th>
-            <td><?php echo $decodedApplicantData['ApplicantGender']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="row">No. Kad Pengenalan :</th>
-            <td><?php echo $decodedApplicantData['Applicant_Ic']; ?></td>
-
-            <th scope="row">Bangsa :</th>
-            <td><?php echo $decodedApplicantData['ApplicantRace']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="row">Email :</th>
-            <td><?php echo $decodedApplicantData['ApplicantEmail']; ?></td>
-
-          </tr>
-
-          <tr>
-            <th scope="row">Alamat :</th>
-            <td><?php echo $decodedApplicantData['ApplicantAddress']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="row">No. Telefon(Bimbit) :</th>
-            <td><?php echo $decodedApplicantData['ApplicantPhoneNo']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="row">No. Telefon(Rumah) :</th>
-            <td><?php echo $decodedApplicantData['ApplicantHomePhoneNo']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="row">Taraf Pendidikan :</th>
-            <td><?php echo $decodedApplicantData['ApplicantEduLevel']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="row">Jawatan / Pekerjaan :</th>
-            <td><?php echo $decodedApplicantData['ApplicantPosition']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="col-2">Pendapatan :</th>
-            <td>RM <?php echo $decodedApplicantData['ApplicantSalary']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="row">Alamat Tempat Kerja :</th>
-            <td><?php echo $decodedApplicantData['ApplicantWorkAddress']; ?></td>
-          </tr>
-
-          <tr>
-            <th scope="row">No. Telefon(Pejabat) :</th>
-            <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo']; ?></td>
-          </tr>
-        </tbody>
-    </table>
-    <button type="button" name="return" id="buttonR" >Kembali</button>
+                        <div id="inMainContentOutline" class="table-responsive p-4">
+                        <label id="kpSpousein">Masukkan nombor kad pengenalan pemohon</label>
+                        <br>
+                        <Input type="text" id="kpSpouse" name="kpSpouse" value="">
+                            <button type="button" name="return" id="buttonS" >Cari</button></label><select name ="Acategory" id="marriageCaategory">
+                                                                                                      <option value="main" >Status</option>
+                                                                                                      <option value="newest" >Baru</option>
+                                                                                                      <option value="processing" >Sedang Diproses</option>
+                                                                                                      <option value="waitingApproval" >Untuk Diluluskan</option>
+                                                                                                      <option value="Approved" >Lulus</option>
+                                                                                                   </select>  
+                            <br><br>
+                            <table class="table table-borderless">
+            <tr>
+                <th>Bil</th>
+                <th>Tarikh Mohon</th>
+                <th>Nama Pemohon</th>
+                <th>No Kad Pengenalan</th>
+                <th>Status</th>
+                <th>Operasi</th>
+            </tr>
+            <!-- PHP CODE TO FETCH DATA FROM ROWS -->
+            <?php
+                // LOOP TILL END OF DATA
+                
+            ?>
+            <tr>
+                <!-- FETCHING DATA FROM EACH
+                    ROW OF EVERY COLUMN -->
+                <td>asdfghjkl;</td>
+                <td>asdfghjkl;</td>
+                <td>sdfghjkl;</td>
+                <td>xcfghjkl;</td>
+                <td>sdfghjkl;'</td>
+                <td>asdfghjkl;'</td>
+            </tr>
+            <?php
+                
+            ?>
+        </table>
                         </div>
                     </div>
                 </div>

@@ -248,17 +248,27 @@
                 <!-- Insentif Khas Accordian -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingSix">
-                        <button class="accordion-button
-                                    collapsed rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                        <button class="accordion-button collapsed rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
                             <strong>&nbsp;
                                 INSENTIF KHAS
                             </strong>
                         </button>
                     </h2>
-                    <div id="flush-collapseSix" class="accordion-collapse
-                                            collapse" aria-labelledby="flush-headingSix" data-mdb-parent="#accordionFlushExample">
+                    <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-mdb-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <a class="list-group-item list-group-item-action border-0 px-3 pt-1 pb-1 list-group-item-light" href="../blankPage.html">Settings</a>
+                            
+                            <a class="list-group-item 
+                            list-group-item-action border-0 px-3 pt-1 pb-1 
+                            list-group-item-light" href="../ManageSpecialIncentive/applicantIncentiveView.php">
+                            Permohonan
+                            </a>
+
+                            <a class="list-group-item 
+                            list-group-item-action border-0 px-3 pt-1 pb-1 
+                            list-group-item-light" href="../ManageSpecialIncentive/applicantIncentiveStatusView.php">
+                            Status
+                            </a>
+
                         </div>
                     </div>
                 </div>
