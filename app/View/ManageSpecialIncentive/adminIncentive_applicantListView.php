@@ -1,4 +1,5 @@
 <?php
+
     // Start up your PHP Session
     session_start();
 
@@ -15,17 +16,14 @@
     }else{
 
         //Sidebar Active path
-        $_SESSION['route'] = 'viewApplicantList';
+        // $_SESSION['route'] = 'viewApplicantList';
 
         // Retrieve list of applicant information
         $result = $_SESSION['listOfApplicant'];
         $bilNum = 0;
-        
     }
     
-    
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +31,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZZS - Applicant List</title>
+    <title>ZZS - Special Incentive Application List</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -47,7 +45,7 @@
     <link rel="stylesheet" href="../../Bootstrap/mdb.min.css" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="../css/viewApplicantListView.css">
+    <link rel="stylesheet" href="../css/viewStaffListView.css">
 
     <!-- Icon -->
     <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png" />
@@ -86,7 +84,7 @@
                     </div>
                     
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">Senarai Pemohon Profil</h2>
+                        <h2 id="contentTitle">Senarai Staf Profil</h2>
                         
                         <div id="inMainContentOutline" class="table-responsive p-4">
 
@@ -94,42 +92,40 @@
                                 <thead class="tableHeaderBg">
                                     <tr>
                                         <th>Bil</th>
-                                        <th>Staf Name</th>
-                                        <th ><div class="iCEllipsis">No. Kad Pengenalan</div></th>
-                                        <th>Jenis</th>
+                                        <th>Tarikh Mohon</th>
+                                        <th>Nama Pemohon</th>
+                                        <th >No. Kad Pengenalan</th>
                                         <th>Operasi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     
                                     <?php
-                                        
                                         foreach ($result as $row)
-                                        {   
-                                            $Applicant_name = $row['ApplicantName'];
+                                        {
                                             $Applicant_ic = $row['Applicant_Ic'];
-                                            $Applicant_gender = $row['ApplicantGender'];
-                                            
+                                            $Applicant_name = $row['ApplicantName'];
+                                            //$SpecialIncentiveDate = $row['SpecialIncentiveDate'];
                                             ?>
-                                            
                                                 <tr>
                                                     <td style="width: 5%;">
-                                                        <?php echo ++$bilNum ?>
+                                                        <?php echo ++$bilNum; ?>
                                                     </td>
 
-                                                    <td class="" style="width: 40%;">
+                                                    <td class="" style="width: 20%;">
                                                         
-                                                        <div class="nameEllipsis"><?php echo $Applicant_name;?></div>
+                                                        <div class="nameEllipsis"><?php //echo $SpecialIncentiveDate;?></div>
                                                     </td>
 
-                                                    <td style="width: 20%;">
-                                                        <span><?php echo $Applicant_ic;?></span>
+                                                    <td style="width: 40%;">
+                                                        <span><?php echo $Applicant_name;?></span>
                                                     </td>
 
-                                                    <td style="width: 20%;"><?php echo $Applicant_gender;?></td>
+                                                    <td style="width: 20%;"><?php echo $Applicant_ic;?></td>
 
                                                     <td style="width: 15%;">
-                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded"  onclick="location.href='../../../public/index.php?action=viewProfileById&type=pemohon&viewID=<?php echo $Applicant_ic; ?>'">
+                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
+                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
                                                             Lihat
                                                         </button>
                                                     </td>
@@ -143,6 +139,9 @@
                             </table>
                         </div>
 
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-link btn-md bg-dark text-light btn-rounded mt-3" type="submit" onclick="location.href='../ManageRegistration/staffRegisterView.php'" data-mdb-ripple-color="dark">Tambah Staf</button>
+                        </div>
                     </div>
                 </div>
 

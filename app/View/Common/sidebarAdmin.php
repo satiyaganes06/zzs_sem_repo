@@ -298,21 +298,21 @@ if ($route == 'viewProfile') {
                 </div>
             </div>
 
-            <!-- Insentif Khas Accordian -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingSix">
-                    <button class="accordion-button collapsed rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-                        <strong>&nbsp;
-                            INSENTIF KHAS
-                        </strong>
-                    </button>
-                </h2>
-                <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-mdb-parent="#accordionFlushExample">
-                    <div class="accordion-body">
-                        <a class="list-group-item 
+                <!-- Insentif Khas Accordian -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingSix">
+                        <button class="accordion-button collapsed rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                            <strong>&nbsp;
+                                INSENTIF KHAS
+                            </strong>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-mdb-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <a class="list-group-item 
                             list-group-item-action 
                             border-0 px-3 pt-1 pb-1 
-                            list-group-item-light" href="../ManageSpecialIncentive/adminIncentive_applicantListView.php">
+                            list-group-item-light" href="../../../public/index.php?action=adminIncentiveApplicantListView">
                             Senarai Permohonan
                         </a>
                     </div>
