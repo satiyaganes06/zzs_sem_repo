@@ -279,7 +279,7 @@
                             <a class="list-group-item 
                             list-group-item-action 
                             border-0 px-3 pt-1 pb-1 
-                            list-group-item-light" href="../ManageSpecialIncentive/adminIncentive_applicantListView.php">
+                            list-group-item-light" href="../../../public/index.php?action=adminIncentiveApplicantListView">
                             Senarai Permohonan
                         </a>
                         </div>
