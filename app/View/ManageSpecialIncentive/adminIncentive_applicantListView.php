@@ -15,12 +15,12 @@
 
     }else{
 
-        // Retrieve list of staff information
-        $result = $_SESSION['listOfStaffs'];
-        $bilNum = 0; 
-
         //Sidebar Active path
-        $_SESSION['route'] = 'viewStaffList';
+        // $_SESSION['route'] = 'viewApplicantList';
+
+        // Retrieve list of applicant information
+        $result = $_SESSION['listOfApplicant'];
+        $bilNum = 0;
     }
     
 ?>
@@ -103,21 +103,21 @@
                                     <?php
                                         foreach ($result as $row)
                                         {
-                                            $Applicant_ic = $row['Applicant_ic'];
-                                            $Applicant_name = $row['Applicant_name'];
-                                            $SpecialIncentiveDate = $row['SpecialIncentiveDate'];
+                                            $Applicant_ic = $row['Applicant_Ic'];
+                                            $Applicant_name = $row['ApplicantName'];
+                                            //$SpecialIncentiveDate = $row['SpecialIncentiveDate'];
                                             ?>
                                                 <tr>
                                                     <td style="width: 5%;">
                                                         <?php echo ++$bilNum; ?>
                                                     </td>
 
-                                                    <td class="" style="width: 40%;">
+                                                    <td class="" style="width: 20%;">
                                                         
-                                                        <div class="nameEllipsis"><?php echo $SpecialIncentiveDate;?></div>
+                                                        <div class="nameEllipsis"><?php //echo $SpecialIncentiveDate;?></div>
                                                     </td>
 
-                                                    <td style="width: 20%;">
+                                                    <td style="width: 40%;">
                                                         <span><?php echo $Applicant_name;?></span>
                                                     </td>
 
