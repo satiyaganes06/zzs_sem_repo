@@ -1,32 +1,30 @@
-
-
 <?php
 
-    // Start up your PHP Session
-    session_start();
+// Start up your PHP Session
+session_start();
 
-    //Decluration
-    $encodedData;
-    $decodedAdminData;
+//Decluration
+$encodedData;
+$decodedAdminData;
 
-    //If the user is not logged in send him/her to the login form
-    if(!isset($_SESSION['currentUserIC'])) {
+//If the user is not logged in send him/her to the login form
+if (!isset($_SESSION['currentUserIC'])) {
 
-        ?>
-            <script>
-                alert("Access denied !!!")
-                window.location = "../ManageLogin/adminLoginView.php";
-            </script>
-        <?php
+?>
+    <script>
+        alert("Access denied !!!")
+        window.location = "../ManageLogin/adminLoginView.php";
+    </script>
+<?php
 
-    }else{
+} else {
 
 
-        //Sidebar Active path
-        $_SESSION['route'] = 'listOfApplicantMPC';
-    }
+    //Sidebar Active path
+    $_SESSION['route'] = 'listOfApplicantMPC';
+}
 
-    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +60,7 @@
 
         <!-- Header Section -->
         <?php
-          include_once('../Common/adminHeader.html');
+        include_once('../Common/adminHeader.html');
         ?>
 
         <!-- Main Content -->
@@ -72,7 +70,7 @@
 
                 <!-- Sidebar -->
                 <?php
-                    include('../Common/sidebarAdmin.php');
+                include('../Common/sidebarAdmin.php');
                 ?>
 
                 <div class="mainContent bg-white shadow rounded-2">
@@ -80,18 +78,78 @@
                     <div class="d-flex justify-content-between">
                         <button class="openbtn" onclick="openNav()"><i class="fas fa-bars"></i></button>
                         <div class="w-100"></div>
-                        
+
                         <div class="d-flex justify-content-end">
                             <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
                             <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
                     </div>
-                    
+
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">XX</h2>
+                        <h2 id="contentTitle">Senarai Semua Pemohon</h2>
                         <!-- Your can code here -->
 
-                        
+                        <table class="table table-bordered border-dark mb-0 align-middle">
+                            <thead class="tableHeaderBg">
+                                <tr>
+                                    <th>Bil</th>
+                                    <th>Tarikh Mohon</th>
+                                    <th>
+                                        <div class="iCEllipsis">Nama Peserta</div>
+                                    </th>
+                                    <th>No Kad Pengenalan</th>
+                                    <th>Status</th>
+                                    <th>Operasi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <?php
+
+
+                                foreach ($result as $row) {
+
+
+                                    $Staff_id = $row["Staff_Id"];
+                                    $Staff_name = $row['StaffName'];
+                                    $Staff_type = $row['StaffType'];
+                                ?>
+                                    <tr>
+                                        <td style="width: 3%;">
+                                            <?php echo ++$bilNum; ?>
+                                        </td>
+
+                                        <td class="" style="width: 15%;">
+
+                                            <?php echo $Staff_name; ?>
+                                        </td>
+
+                                        <td class="" style="width: 40%;">
+
+                                            <?php echo $Staff_name; ?>
+                                        </td>
+
+                                        <td style="width: 20%;">
+                                            <span><?php echo $Staff_id; ?></span>
+                                        </td>
+
+                                        <td style="width: 10%;"><?php echo $Staff_type; ?></td>
+
+                                        <td style="width: 12%;">
+                                            <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
+                                                Lihat
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                <?php
+                                } ?>
+
+
+                            </tbody>
+                        </table>
+
+
                     </div>
                 </div>
 
@@ -102,7 +160,7 @@
 
         <!-- Footer -->
         <?php
-          include_once('../Common/footer.html');
+        include_once('../Common/footer.html');
         ?>
 
     </div>

@@ -88,10 +88,62 @@
                     </div>
                     
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">XX</h2>
-
-                        
+                        <h2 id="contentTitle">Senarai Pemohon Perkahwinan</h2>
                         <!-- Your can code here -->
+
+                        <table class="table table-bordered border-dark mb-0 align-middle">
+                                <thead class="tableHeaderBg">
+                                    <tr>
+                                        <th>Bil</th>
+                                        <th ><div class="iCEllipsis">Nama Peserta</div></th>
+                                        <th>No Kad Pengenalan</th>
+                                        <th>Jantina</th>
+                                        <th>Operasi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <?php
+                                         
+
+                                        foreach ($result as $row)
+                                        {
+                                                
+                                                
+                                            $Staff_id = $row["Staff_Id"];
+                                            $Staff_name = $row['StaffName'];
+                                            $Staff_type = $row['StaffType'];
+                                            ?>
+                                                <tr>
+                                                    <td style="width: 3%;">
+                                                        <?php echo ++$bilNum; ?>
+                                                    </td>
+
+                                                    <td class="" style="width: 45%;">
+                                                        
+                                                        <?php echo $Staff_name;?>
+                                                    </td>
+
+                                                    <td style="width: 25%;">
+                                                        <span><?php echo $Staff_id;?></span>
+                                                    </td>
+
+                                                    <td style="width: 15%;"><?php echo $Staff_type;?></td>
+
+                                                    <td style="width: 12%;">
+                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
+                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
+                                                            Lihat
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                            <?php 
+                                        }?>
+                                    
+                                    
+                                </tbody>
+                            </table>
 
                         
                     </div>

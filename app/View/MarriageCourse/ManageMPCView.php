@@ -1,32 +1,30 @@
-
-
 <?php
 
-    // Start up your PHP Session
-    session_start();
+// Start up your PHP Session
+session_start();
 
-    //Decluration
-    $encodedData;
-    $decodedAdminData;
+//Decluration
+$encodedData;
+$decodedAdminData;
 
-    //If the user is not logged in send him/her to the login form
-    if(!isset($_SESSION['currentUserIC'])) {
+//If the user is not logged in send him/her to the login form
+if (!isset($_SESSION['currentUserIC'])) {
 
-        ?>
-            <script>
-                alert("Access denied !!!")
-                window.location = "../ManageLogin/adminLoginView.php";
-            </script>
-        <?php
+?>
+    <script>
+        alert("Access denied !!!")
+        window.location = "../ManageLogin/adminLoginView.php";
+    </script>
+<?php
 
-    }else{
+} else {
 
 
-        //Sidebar Active path
-        $_SESSION['route'] = 'manageMPC';
-    }
+    //Sidebar Active path
+    $_SESSION['route'] = 'manageMPC';
+}
 
-    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +48,7 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="../css/viewAdminProfileDetailsView.css">
+    <link rel="stylesheet" href="../css/ManageMPCView.css">
 
     <!-- Icon -->
     <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png" />
@@ -62,7 +61,7 @@
 
         <!-- Header Section -->
         <?php
-          include_once('../Common/adminHeader.html');
+        include_once('../Common/adminHeader.html');
         ?>
 
         <!-- Main Content -->
@@ -72,7 +71,7 @@
 
                 <!-- Sidebar -->
                 <?php
-                    include('../Common/sidebarAdmin.php');
+                include('../Common/sidebarAdmin.php');
                 ?>
 
                 <div class="mainContent bg-white shadow rounded-2">
@@ -80,18 +79,92 @@
                     <div class="d-flex justify-content-between">
                         <button class="openbtn" onclick="openNav()"><i class="fas fa-bars"></i></button>
                         <div class="w-100"></div>
-                        
+
                         <div class="d-flex justify-content-end">
                             <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
                             <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
                     </div>
-                    
-                    <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">XX</h2>
+                    <h2 id="contentTitle">Kursus Perkahwinan</h2>
+                    <div class="container">
                         <!-- Your can code here -->
 
-                        
+                        <div>
+                            <h3>Daftar Kursus Pra-Perkahwinan</h3>
+                            <form action="" method="post">
+                                <label for="organize">PAID : </label><input type="text" name="organize"><br>
+                                <label for="DateStart">Tarikh Mula : </label><input type="date" name="DateStart">
+                                <label for="DateFinish">Tarikh Tamat : </label><input type="date" name="DateFinish"><br>
+                                <label for="Venue">Tempat : </label><input type="text" name="Venue"><br>
+                                <label for="address">Alamat : </label><input type="text" name="address"><br>
+                                <label for="TimeStart">Masa Bermula : </label><input type="time" name="TimeStart">
+                                <label for="TimeFinish">Masa Tamat : </label><input type="time" name="TimeFinish"><br>
+                                <label for="StaffName">Pegawai Dihubungi : </label><input type="text" name="StaffName">
+                                <label for="StaffPhoneNumber">No Telefon : </label><input type="text" name="StaffPhoneNumber"><br>
+                                <label for="Capacity">Kapasiti : </label><input type="number" name="Capacity"><br>
+                                <label for="Notes">Catatan : </label><input type="text" name="Notes">
+                                <label for="publish">Terbitkan Umum : </label><input type="text" name="publish">
+                            </form>
+                        </div>
+
+
+                    </div>
+                    <div class="container">
+
+                        <table class="table table-bordered border-dark mb-0 align-middle">
+                            <thead class="tableHeaderBg">
+                                <tr>
+                                    <th>Bil</th>
+                                    <th>PAID</th>
+                                    <th>
+                                        <div class="iCEllipsis">Tempat</div>
+                                    </th>
+                                    <th>Tarikh</th>
+                                    <th>Kapasiti Peserta</th>
+                                    <th>Operasi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <?php
+
+
+                                //foreach ($result as $row) {
+
+
+                                    // $Staff_id = $row["Staff_Id"];
+                                    // $Staff_name = $row['StaffName'];
+                                    // $Staff_type = $row['StaffType'];
+                                ?>
+                                    <tr>
+                                        <td style="width: 3%;">
+                                        </td>
+
+                                        <td class="" style="width: 15%;">
+                                        </td>
+
+                                        <td class="" style="width: 40%;">
+                                        </td>
+
+                                        <td style="width: 20%;">
+                                        </td>
+
+                                        <td style="width: 10%;">
+                                    </td>
+
+                                        <td style="width: 12%;">
+                                            <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
+                                                Lihat
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                <?php
+                                //} ?>
+
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
@@ -102,7 +175,7 @@
 
         <!-- Footer -->
         <?php
-          include_once('../Common/footer.html');
+        include_once('../Common/footer.html');
         ?>
 
     </div>
