@@ -88,8 +88,85 @@
                     </div>
                     
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">XX</h2>
+                        <h2 id="contentTitle">Maklumat Pemohon Kursus Kahwin</h2>
                         <!-- Your can code here -->
+
+                        <div id="inMainContentOutline" class="table-responsive p-4">
+                            <table class="table table-borderless table-sm">
+                        
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">Nama :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantName']; ?></td>
+
+                                    <th scope="row">Umur :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantAge']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">Tarikh Lahir :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantBirthDate']; ?></td>
+
+                                    <th scope="row">Jantina :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantGender']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">No. Kad Pengenalan :</th>
+                                    <td><?php echo $decodedApplicantData['Applicant_Ic']; ?></td>
+
+                                    <th scope="row">Bangsa :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantRace']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">Email :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantEmail']; ?></td>
+
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">Alamat :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantAddress']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">No. Telefon(Bimbit) :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantPhoneNo']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">No. Telefon(Rumah) :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantHomePhoneNo']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">Taraf Pendidikan :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantEduLevel']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">Jawatan / Pekerjaan :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantPosition']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="col-2">Pendapatan :</th>
+                                    <td>RM <?php echo $decodedApplicantData['ApplicantSalary']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">Alamat Tempat Kerja :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantWorkAddress']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">No. Telefon(Pejabat) :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo']; ?></td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
                         
                     </div>
