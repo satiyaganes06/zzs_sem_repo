@@ -3,12 +3,6 @@
 <?php
 class Database {
 
-    //Decluring Variable of Server
-    // private $host = "sql12.freemysqlhosting.net";
-    // private $db_name = "sql12617882";
-    // private $username = "sql12617882";
-    // private $password = "Px4zDGzKcL";
-
     private $host = "localhost";
     private $db_name = "zzs_db";
     private $username = "root";

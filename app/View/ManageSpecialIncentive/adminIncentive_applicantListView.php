@@ -16,16 +16,12 @@
     }else{
 
         //Sidebar Active path
-        $_SESSION['route'] = 'viewProfile';
+        // $_SESSION['route'] = 'viewApplicantList';
 
-        // Retrieve the serialized and URL-encoded data from the URL parameter
-        $encodedData = $_GET['returnInfo'];
-        
-        // Decode the URL-encoded data and unserialize it
-        $decodedAdminData = unserialize(urldecode($encodedData));
-
+        // Retrieve list of applicant information
+        $result = $_SESSION['listOfApplicant'];
+        $bilNum = 0;
     }
-
     
 ?>
 <!DOCTYPE html>
@@ -35,7 +31,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZZS - View Profile</title>
+    <title>ZZS - Special Incentive Application List</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -49,16 +45,13 @@
     <link rel="stylesheet" href="../../Bootstrap/mdb.min.css" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="../css/viewAdminProfileDetailsView.css">
+    <link rel="stylesheet" href="../css/viewStaffListView.css">
 
     <!-- Icon -->
     <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png" />
 </head>
 
 <body>
-
-    <!-- Toast -->
-    <?php include('../Common/alert.php'); ?>
 
     <div class="container-md-8 container-sm-12 row d-flex
             justify-content-center">
@@ -91,41 +84,63 @@
                     </div>
                     
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">Profil</h2>
-
-
-                        <div id="inMainContentOutline" class="table-responsive p-4">
-                            <table class="table table-borderless">
+                        <h2 id="contentTitle">Senarai Staf Profil</h2>
                         
+                        <div id="inMainContentOutline" class="table-responsive p-4">
+
+                            <table class="table table-bordered border-dark mb-0 align-middle">
+                                <thead class="tableHeaderBg">
+                                    <tr>
+                                        <th>Bil</th>
+                                        <th>Tarikh Mohon</th>
+                                        <th>Nama Pemohon</th>
+                                        <th >No. Kad Pengenalan</th>
+                                        <th>Operasi</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
-                                  <tr>
-                                    <th scope="row">Nama :</th>
-                                    <td><?php echo $decodedAdminData['AdminName']; ?></td>
+                                    
+                                    <?php
+                                        foreach ($result as $row)
+                                        {
+                                            $Applicant_ic = $row['Applicant_Ic'];
+                                            $Applicant_name = $row['ApplicantName'];
+                                            //$SpecialIncentiveDate = $row['SpecialIncentiveDate'];
+                                            ?>
+                                                <tr>
+                                                    <td style="width: 5%;">
+                                                        <?php echo ++$bilNum; ?>
+                                                    </td>
 
-                                  </tr>
+                                                    <td class="" style="width: 20%;">
+                                                        
+                                                        <div class="nameEllipsis"><?php //echo $SpecialIncentiveDate;?></div>
+                                                    </td>
 
-                                  <tr>
-                                    <th scope="row">Akaun ID :</th>
-                                    <td><?php echo $decodedAdminData['Account_Id']; ?></td>
-                                  </tr>
+                                                    <td style="width: 40%;">
+                                                        <span><?php echo $Applicant_name;?></span>
+                                                    </td>
 
-                                  <tr>
-                                    <th scope="row">Email :</th>
-                                    <td><?php echo $decodedAdminData['AdminEmail']; ?></td>
-                                  </tr>
+                                                    <td style="width: 20%;"><?php echo $Applicant_ic;?></td>
 
-                                  <tr>
-                                    <th scope="row">No. Telefon(Bimbit) :</th>
-                                    <td><?php echo $decodedAdminData['AdminNumberPhone']; ?></td>
-                                  </tr>
+                                                    <td style="width: 15%;">
+                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
+                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
+                                                            Lihat
+                                                        </button>
+                                                    </td>
+                                                </tr>
 
-                                  <tr>
-                                    <th scope="row">Alamat :</th>
-                                    <td><?php echo $decodedAdminData['AdminAddress']; ?></td>
-                                  </tr>
-
+                                            <?php 
+                                        }?>
+                                    
+                                    
                                 </tbody>
                             </table>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-link btn-md bg-dark text-light btn-rounded mt-3" type="submit" onclick="location.href='../ManageRegistration/staffRegisterView.php'" data-mdb-ripple-color="dark">Tambah Staf</button>
                         </div>
                     </div>
                 </div>
@@ -164,6 +179,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

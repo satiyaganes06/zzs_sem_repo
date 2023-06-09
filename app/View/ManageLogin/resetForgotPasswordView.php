@@ -1,5 +1,7 @@
 <?php
   $iC = $_GET['iC'];
+
+  session_start();
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +35,9 @@
 </head>
 
 <body>
+
+    <!-- Toast -->
+    <?php include('../Common/alert.php'); ?>
     
     <div class="container-md-8 container-sm-12 row d-flex justify-content-center">
 

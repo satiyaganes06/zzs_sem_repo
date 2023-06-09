@@ -1,7 +1,13 @@
+
+
 <?php
 
     // Start up your PHP Session
     session_start();
+
+    //Decluration
+    $encodedData;
+    $decodedAdminData;
 
     //If the user is not logged in send him/her to the login form
     if(!isset($_SESSION['currentUserIC'])) {
@@ -15,15 +21,9 @@
 
     }else{
 
+
         //Sidebar Active path
-        $_SESSION['route'] = 'viewProfile';
-
-        // Retrieve the serialized and URL-encoded data from the URL parameter
-        $encodedData = $_GET['returnInfo'];
-        
-        // Decode the URL-encoded data and unserialize it
-        $decodedAdminData = unserialize(urldecode($encodedData));
-
+        $_SESSION['route'] = 'listApplicant';
     }
 
     
@@ -57,9 +57,6 @@
 
 <body>
 
-    <!-- Toast -->
-    <?php include('../Common/alert.php'); ?>
-
     <div class="container-md-8 container-sm-12 row d-flex
             justify-content-center">
 
@@ -86,47 +83,69 @@
                         
                         <div class="d-flex justify-content-end">
                             <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
-                            <a class="commonButton" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
+                            <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
                     </div>
                     
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">Profil</h2>
+                        <h2 id="contentTitle">Senarai Pemohon Perkahwinan</h2>
+                        <!-- Your can code here -->
 
-
-                        <div id="inMainContentOutline" class="table-responsive p-4">
-                            <table class="table table-borderless">
-                        
+                        <table class="table table-bordered border-dark mb-0 align-middle">
+                                <thead class="tableHeaderBg">
+                                    <tr>
+                                        <th>Bil</th>
+                                        <th ><div class="iCEllipsis">Nama Peserta</div></th>
+                                        <th>No Kad Pengenalan</th>
+                                        <th>Jantina</th>
+                                        <th>Operasi</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
-                                  <tr>
-                                    <th scope="row">Nama :</th>
-                                    <td><?php echo $decodedAdminData['AdminName']; ?></td>
+                                    
+                                    <?php
+                                         
 
-                                  </tr>
+                                        foreach ($result as $row)
+                                        {
+                                                
+                                                
+                                            $Staff_id = $row["Staff_Id"];
+                                            $Staff_name = $row['StaffName'];
+                                            $Staff_type = $row['StaffType'];
+                                            ?>
+                                                <tr>
+                                                    <td style="width: 3%;">
+                                                        <?php echo ++$bilNum; ?>
+                                                    </td>
 
-                                  <tr>
-                                    <th scope="row">Akaun ID :</th>
-                                    <td><?php echo $decodedAdminData['Account_Id']; ?></td>
-                                  </tr>
+                                                    <td class="" style="width: 45%;">
+                                                        
+                                                        <?php echo $Staff_name;?>
+                                                    </td>
 
-                                  <tr>
-                                    <th scope="row">Email :</th>
-                                    <td><?php echo $decodedAdminData['AdminEmail']; ?></td>
-                                  </tr>
+                                                    <td style="width: 25%;">
+                                                        <span><?php echo $Staff_id;?></span>
+                                                    </td>
 
-                                  <tr>
-                                    <th scope="row">No. Telefon(Bimbit) :</th>
-                                    <td><?php echo $decodedAdminData['AdminNumberPhone']; ?></td>
-                                  </tr>
+                                                    <td style="width: 15%;"><?php echo $Staff_type;?></td>
 
-                                  <tr>
-                                    <th scope="row">Alamat :</th>
-                                    <td><?php echo $decodedAdminData['AdminAddress']; ?></td>
-                                  </tr>
+                                                    <td style="width: 12%;">
+                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
+                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
+                                                            Lihat
+                                                        </button>
+                                                    </td>
+                                                </tr>
 
+                                            <?php 
+                                        }?>
+                                    
+                                    
                                 </tbody>
                             </table>
-                        </div>
+
+                        
                     </div>
                 </div>
 
@@ -135,12 +154,9 @@
         </section>
 
 
+        <!-- Footer -->
         <?php
-          // Footer 
-          include_once('../Common/footer.html');  
-
-          //Logout Model
-          include_once('../Common/logoutModel.html');
+          include_once('../Common/footer.html');
         ?>
 
     </div>

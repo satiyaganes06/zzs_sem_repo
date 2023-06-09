@@ -17,7 +17,7 @@
         //Sidebar Active path
         $_SESSION['route'] = 'viewApplicantList';
 
-        // Retrieve list of staff information
+        // Retrieve list of applicant information
         $result = $_SESSION['listOfApplicant'];
         $bilNum = 0;
         

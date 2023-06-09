@@ -25,6 +25,7 @@
                 $user = $this->applicantModel->getApplicantProfileInfo($ic);
 
                 if($from == 'view'){
+
                     header('Location: ../app/View/ManageUserProfile/viewApplicantProfileDetailsView.php?returnInfo='.  urlencode(serialize($user)));
 
                 }else if($from == 'edit'){
@@ -86,19 +87,28 @@
         }
 
         //Retrieve staff list from applicant model
-        public function viewApplicantListFunction() {
+        public function viewApplicantListFunction($from) {
 
             $listOfApplicant = $this->applicantModel->getAllApplicantInfo();
 
             session_start();
             $_SESSION['listOfApplicant'] = $listOfApplicant;
+            
+            if($from == 'viewListApplicant'){
+                ?>
+                    <script>
+                        window.location = "../app/View/ManageUserProfile/viewApplicantListView.php";
+                    </script>
+                <?php
+            
 
-            ?>
-                <script>
-                    window.location = "../app/View/ManageUserProfile/viewApplicantListView.php";
-                </script>
-            <?php
-
+            }elseif($from == 'adminIncentiveApplicantListView'){
+                ?>
+                    <script>
+                        window.location = "../app/View/ManageSpecialIncentive/adminIncentive_applicantListView.php";
+                    </script>
+                <?php
+            }
         }
 
         //Update the applicant profile data 
@@ -106,22 +116,22 @@
             
             //Firstly, the updateApplicationProfileInfo will update the data in mySQL.
             if($this->applicantModel->updateApplicantProfileInfo($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat)){
-                ?>
-                    <script>
-                        alert("Berjaya mengemas kini");
-                    </script>
-                <?php
+
+                // Display success message using JavaScript
+                $_SESSION['alert-success'] = "Berjaya mengemas kini.";
+
+                // Redirect the page using JavaScript
+                echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
                 
-                header("Location: index.php?action=viewProfile&from=view");
 
             }else{
-                ?>
-                    <script>
-                        alert("Error updating record");
-                    </script>
-                <?php
 
-                header("Location: index.php?action=viewProfile&from=view");
+                // Display success message using JavaScript
+                $_SESSION['alert-fail'] = "Kegagalan mengemas kini.";
+
+                // Redirect the page using JavaScript
+                echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
+
 
             }
             
@@ -132,22 +142,21 @@
             
             //Firstly, the updateApplicationProfileInfo will update the data in mySQL.
             if($this->staffModel->updateStaffProfileInfo($name, $email, $alamat, $noTel)){
-                ?>
-                    <script>
-                        alert("Berjaya mengemas kini");
-                    </script>
-                <?php
-                
-                header("Location: index.php?action=viewProfile&from=view");
+               
+                // Display success message using JavaScript
+                $_SESSION['alert-success'] = "Berjaya mengemas kini.";
+
+                // Redirect the page using JavaScript
+                echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
 
             }else{
-                ?>
-                    <script>
-                        alert("Error updating record");
-                    </script>
-                <?php
+              
 
-                header("Location: index.php?action=viewProfile&from=view");
+                // Display success message using JavaScript
+                $_SESSION['alert-fail'] = "Kegagalan mengemas kini.";
+
+                // Redirect the page using JavaScript
+                echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
 
             }
             
@@ -158,21 +167,22 @@
             
             //Firstly, the updateApplicationProfileInfo will update the data in mySQL.
             if($this->adminModel->updateAdminProfileInfo($nama, $email, $alamat, $noTel)){
-                ?>
-                    <script>
-                        alert("Berjaya mengemas kini");
-                    </script>
-                <?php
-                
-                header("Location: index.php?action=viewProfile&from=view");
+
+                // Display success message using JavaScript
+                $_SESSION['alert-success'] = "Berjaya mengemas kini.";
+
+                // Redirect the page using JavaScript
+                echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
 
             }else{
-                ?>
-                    <script>
-                        alert("Error updating record");
-                        window.location = "../app/View/ManageUserProfile/editAdminProfileDetailsView.php";
-                    </script>
-                <?php
+
+                // Display success message using JavaScript
+                $_SESSION['alert-fail'] = "Kegagalan mengemas kini.";
+
+                // Redirect the page using JavaScript
+                echo '<script>window.location.href = "../app/View/ManageUserProfile/editAdminProfileDetailsView.php";</script>';
+
+                
 
             }
             

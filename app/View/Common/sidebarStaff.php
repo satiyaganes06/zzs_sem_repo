@@ -243,7 +243,7 @@
                  <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingSix">
                         <button class="accordion-button collapsed rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-                            <strong>&nbsp;
+                            <strong><i class="fas fa-dollar-sign"></i>&nbsp;
                                 INSENTIF KHAS
                             </strong>
                         </button>

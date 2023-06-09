@@ -1,7 +1,13 @@
+
+
 <?php
 
     // Start up your PHP Session
     session_start();
+
+    //Decluration
+    $encodedData;
+    $decodedAdminData;
 
     //If the user is not logged in send him/her to the login form
     if(!isset($_SESSION['currentUserIC'])) {
@@ -15,15 +21,9 @@
 
     }else{
 
+
         //Sidebar Active path
         $_SESSION['route'] = 'viewProfile';
-
-        // Retrieve the serialized and URL-encoded data from the URL parameter
-        $encodedData = $_GET['returnInfo'];
-        
-        // Decode the URL-encoded data and unserialize it
-        $decodedAdminData = unserialize(urldecode($encodedData));
-
     }
 
     
@@ -57,9 +57,6 @@
 
 <body>
 
-    <!-- Toast -->
-    <?php include('../Common/alert.php'); ?>
-
     <div class="container-md-8 container-sm-12 row d-flex
             justify-content-center">
 
@@ -86,47 +83,91 @@
                         
                         <div class="d-flex justify-content-end">
                             <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
-                            <a class="commonButton" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
+                            <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
                     </div>
                     
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">Profil</h2>
-
+                        <h2 id="contentTitle">Maklumat Pemohon</h2>
+                        <!-- Your can code here -->
 
                         <div id="inMainContentOutline" class="table-responsive p-4">
-                            <table class="table table-borderless">
+                            <table class="table table-borderless table-sm">
                         
                                 <tbody>
                                   <tr>
                                     <th scope="row">Nama :</th>
-                                    <td><?php echo $decodedAdminData['AdminName']; ?></td>
+                                    <td><?php echo $decodedApplicantData['ApplicantName']; ?></td>
 
+                                    <th scope="row">Umur :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantAge']; ?></td>
                                   </tr>
 
                                   <tr>
-                                    <th scope="row">Akaun ID :</th>
-                                    <td><?php echo $decodedAdminData['Account_Id']; ?></td>
+                                    <th scope="row">Tarikh Lahir :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantBirthDate']; ?></td>
+
+                                    <th scope="row">Jantina :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantGender']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">No. Kad Pengenalan :</th>
+                                    <td><?php echo $decodedApplicantData['Applicant_Ic']; ?></td>
+
+                                    <th scope="row">Bangsa :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantRace']; ?></td>
                                   </tr>
 
                                   <tr>
                                     <th scope="row">Email :</th>
-                                    <td><?php echo $decodedAdminData['AdminEmail']; ?></td>
-                                  </tr>
+                                    <td><?php echo $decodedApplicantData['ApplicantEmail']; ?></td>
 
-                                  <tr>
-                                    <th scope="row">No. Telefon(Bimbit) :</th>
-                                    <td><?php echo $decodedAdminData['AdminNumberPhone']; ?></td>
                                   </tr>
 
                                   <tr>
                                     <th scope="row">Alamat :</th>
-                                    <td><?php echo $decodedAdminData['AdminAddress']; ?></td>
+                                    <td><?php echo $decodedApplicantData['ApplicantAddress']; ?></td>
                                   </tr>
 
+                                  <tr>
+                                    <th scope="row">No. Telefon(Bimbit) :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantPhoneNo']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">No. Telefon(Rumah) :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantHomePhoneNo']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">Taraf Pendidikan :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantEduLevel']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">Jawatan / Pekerjaan :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantPosition']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="col-2">Pendapatan :</th>
+                                    <td>RM <?php echo $decodedApplicantData['ApplicantSalary']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">Alamat Tempat Kerja :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantWorkAddress']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th scope="row">No. Telefon(Pejabat) :</th>
+                                    <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo']; ?></td>
+                                  </tr>
                                 </tbody>
                             </table>
                         </div>
+                        
                     </div>
                 </div>
 
@@ -135,12 +176,9 @@
         </section>
 
 
+        <!-- Footer -->
         <?php
-          // Footer 
-          include_once('../Common/footer.html');  
-
-          //Logout Model
-          include_once('../Common/logoutModel.html');
+          include_once('../Common/footer.html');
         ?>
 
     </div>
