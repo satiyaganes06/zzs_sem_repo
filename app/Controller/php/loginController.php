@@ -1,5 +1,9 @@
 <?php
-
+?>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<?php
 class LoginController {
   private $accountModel;
 
@@ -12,37 +16,38 @@ class LoginController {
   public function userLoginAccountFunction($ic, $pwd, $userType){
 
     //Send the input to account model to verify the user 
-    if($this->accountModel->loginAccount($ic, $pwd)){
-
-        ?>
-            <script>
-                alert("Berjaya log masuk.");
-                
-            </script>
-        <?php
+    if($this->accountModel->loginAccount($ic, $pwd, $userType)){
 
         //Check the user type 
         if($userType == 'Pemohon'){
+
+          // Display success message using JavaScript
+          $_SESSION['alert-success'] = "Berjaya log masuk.";
+
+          // Redirect the page using JavaScript
+          echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
             
-            header("Location: index.php?action=viewProfile&from=view");
             
         }elseif($userType == 'Kakitangan'){
-        
-            header("Location: index.php?action=viewProfile&from=view");
+
+            // Display success message using JavaScript
+            $_SESSION['alert-success'] = "Berjaya log masuk.";
+
+            // Redirect the page using JavaScript
+            echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
         }
 
         
     }else{
 
         //If the user not exists, it will show error message 
-        ?>
-            <script>
-                alert("Incorrect IC or Password");
-                window.location = "../app/View/ManageLogin/userLoginView.php";
-            </script>
-        <?php
+        session_start();
+        $_SESSION['alert-fail'] = "Incorrect IC atau Kata laluan or User Type !!!";
 
-        return 0;
+        // Redirect the page using JavaScript
+        echo '<script>window.location.href = "../app/View/ManageLogin/userLoginView.php";</script>';
+        
+
     }
 
     
@@ -53,18 +58,21 @@ class LoginController {
 
     //Send the input to account model to verify the user 
     if($this->accountModel->adminLoginAccount($id, $pwd)){
-       
-        header("Location: index.php?action=viewProfile&from=view");
+
+        // Display success message using JavaScript
+        $_SESSION['alert-success'] = "Berjaya log masuk.";
+
+        // Redirect the page using JavaScript
+        echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
         
     }else{
 
         //If the user not exists, it will show error message 
-        ?>
-            <script>
-                alert("Incorrect ID or Password");
-                window.location = "../app/View/ManageLogin/adminLoginView.php";
-            </script>
-        <?php
+        session_start();
+        $_SESSION['alert-fail'] = "Incorrect IC or Password !!!";
+
+        // Redirect the page using JavaScript
+        echo '<script>window.location.href = "../app/View/ManageLogin/adminLoginView.php";</script>';
 
     }
 

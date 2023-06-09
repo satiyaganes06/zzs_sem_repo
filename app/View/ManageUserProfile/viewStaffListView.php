@@ -108,6 +108,7 @@
                                                 
                                                 
                                             $Staff_id = $row["Staff_Id"];
+                                            $account_Id = $row["Account_Id"];
                                             $Staff_name = $row['StaffName'];
                                             $Staff_type = $row['StaffType'];
                                             ?>
@@ -129,7 +130,7 @@
 
                                                     <td style="width: 15%;">
                                                         <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
-                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
+                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $account_Id; ?>'">
                                                             Lihat
                                                         </button>
                                                     </td>

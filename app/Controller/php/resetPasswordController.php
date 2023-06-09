@@ -14,7 +14,7 @@ class ResetPasswordController{
     }
     
     function checkUserExists($ic, $email){
-
+        session_start();
         $user = $this->accountModel->checkUserExistByIc($ic);
 
         if($user){
@@ -27,31 +27,40 @@ class ResetPasswordController{
                     header('Location: ../app/Api/PHPMailer/sendEmail.php?email='. $email . '&ic='. $ic);
 
                 }else{
-                    ?>
-                        <script>
-                            alert("User Not Exists");
-                            window.location = "../../View/ManageLogin/sendOTPView.php";
-                        </script>
-                    <?php
+                    // Display success message using JavaScript
+                    $_SESSION['alert-fail'] = "Pengguna Tidak Wujud";
+
+                    // Redirect the page using JavaScript
+                    echo '<script>window.location.href = "../app/View/ManageLogin/sendOTPView.php";</script>';
                 }
 
             }elseif($user['UserType'] == "Kakitangan"){
-                header('Location: ../app/Api/PHPMailer/sendEmail.php?email='. $email . '&ic='. $ic);
-                ?>
-                    <script>
-                        alert("User Not Exists");
-                        window.location = "../../View/ManageLogin/sendOTPView.php";
-                    </script>
-                <?php
+
+                $staff = $this->staffModel->getStaffProfileInfo($user['Account_Id']);
+
+                if($staff['StaffEmail'] == $email){
+                    
+                    header('Location: ../app/Api/PHPMailer/sendEmail.php?email='. $email . '&ic='. $user['User_IC']);
+
+                }else{
+
+                    // Display success message using JavaScript
+                    $_SESSION['alert-fail'] = "Pengguna Tidak Wujud";
+
+                    // Redirect the page using JavaScript
+                    echo '<script>window.location.href = "../app/View/ManageLogin/sendOTPView.php";</script>';
+                }
+
             }
             
 
         }else{
-            ?>
-                <script>
-                    alert("User Not Exists");
-                </script>
-            <?php
+            
+            // Display success message using JavaScript
+            $_SESSION['alert-fail'] = "Pengguna Tidak Wujud";
+
+            // Redirect the page using JavaScript
+            echo '<script>window.location.href = "../app/View/ManageLogin/sendOTPView.php";</script>';
         }
         
 
@@ -71,11 +80,17 @@ class ResetPasswordController{
     }
 
     function checkOTP($ic, $otp){
+        session_start();
 
         $account = $this->accountModel->checkUserExistByIc($ic);
 
 
         if($account['otp'] == $otp){
+            // Display success message using JavaScript
+            $_SESSION['alert-success'] = "OTP Dipadankan";
+
+            // Redirect the page using JavaScript
+            echo '<script>window.location.href = "../app/View/ManageLogin/userLoginView.php";</script>';
             header('Location: ../app/View/ManageLogin/resetForgotPasswordView.php?iC='. $ic);
         }else{
             $message = "Incorrent OTP";
@@ -85,24 +100,25 @@ class ResetPasswordController{
 
     function resetPassword($newPass, $ic){
 
+        session_start();
+
         //Password Encrytion
         $hashed_password = password_hash($newPass, PASSWORD_DEFAULT);
         
         if($this->accountModel->resetToNewPassword($hashed_password, $ic)){
-            ?>
-                <script>
-                    alert("Reset Password Successful ...");
-                    window.location = "../app/View/ManageLogin/userLoginView.php";
-                </script>
-            <?php
+            // Display success message using JavaScript
+            $_SESSION['alert-success'] = "Reset Password Successful ...";
+
+            // Redirect the page using JavaScript
+            echo '<script>window.location.href = "../app/View/ManageLogin/userLoginView.php";</script>';
 
         }else{
-            ?>
-                <script>
-                    alert("Reset Password Fail ...");
-                    window.location = "../app/View/ManageLogin/userLoginView.php";
-                </script>
-            <?php
+
+            // Display success message using JavaScript
+            $_SESSION['alert-fail'] = "Reset Password Fail ...";
+
+            // Redirect the page using JavaScript
+            echo '<script>window.location.href = "../app/View/ManageLogin/userLoginView.php";</script>';
         }
     }
 }

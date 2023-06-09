@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,8 +31,35 @@
     <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png"/>
 </head>
 
+<style>
+  .loading::after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+  width: 15px;
+  height: 15px;
+  border: 3px solid #333;
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+</style>
+
 <body>
+
     
+    <!-- Toast -->
+    <?php include('../Common/alert.php'); ?>
+
     <div class="container-md-8 container-sm-12 row d-flex justify-content-center">
 
         <!-- Header Section -->
@@ -145,7 +175,7 @@
                 </div>
 
                 <!-- form forgot password -->
-                <form action="../../../public/index.php?action=sendOTP" method="post">
+                <form id="sendOTPForm" action="../../../public/index.php?action=sendOTP" method="post">
                 <!-- onsubmit = "return forgotPasswordFormValidate();" -->
                       
                       <!-- IC -->
@@ -177,7 +207,31 @@
 
     </div>
 
-    
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        var form = document.getElementById('sendOTPForm');
+        var submitButton = form.querySelector('button[type="submit"]');
+
+        form.addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent the form from submitting
+
+          // Add loading class and disable the submit button
+          submitButton.classList.add('loading');
+          submitButton.disabled = true;
+
+          // Perform any additional actions, such as form validation or AJAX requests
+          // Once the actions are completed, you can remove the loading class and enable the submit button again
+
+          // For demonstration purposes, simulate a delay of 3 seconds before removing the loading class and enabling the button
+          setTimeout(function() {
+            submitButton.classList.remove('loading');
+            submitButton.disabled = false;
+            form.submit(); // Submit the form
+          }, 1000);
+        });
+      });
+    </script>
+
 
     <!--Controller-->
     <script src="../../Controller/js/valiation.js"></script>
