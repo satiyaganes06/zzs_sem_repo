@@ -84,7 +84,7 @@
                     </div>
                     
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">Senarai Staf Profil</h2>
+                        <h2 id="contentTitle">Senarai Pemohon</h2>
                         
                         <div id="inMainContentOutline" class="table-responsive p-4">
 
@@ -105,7 +105,7 @@
                                         {
                                             $Applicant_ic = $row['Applicant_Ic'];
                                             $Applicant_name = $row['ApplicantName'];
-                                            //$SpecialIncentiveDate = $row['SpecialIncentiveDate'];
+                                            $IncentiveDate = $row['IncentiveDate'];
                                             ?>
                                                 <tr>
                                                     <td style="width: 5%;">
@@ -114,7 +114,9 @@
 
                                                     <td class="" style="width: 20%;">
                                                         
-                                                        <div class="nameEllipsis"><?php //echo $SpecialIncentiveDate;?></div>
+                                                        <div class="nameEllipsis">
+                                                            <?php //echo $IncentiveDate; ?>
+                                                        </div>
                                                     </td>
 
                                                     <td style="width: 40%;">

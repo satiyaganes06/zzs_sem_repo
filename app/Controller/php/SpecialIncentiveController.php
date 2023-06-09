@@ -17,4 +17,6 @@
         $this->marriageInfoModel = $marriageInfoModel;
         $this->incentiveDocModel = $incentiveDocModel;
     }
+
+    //Applicant special incentive application function 
 ?>
