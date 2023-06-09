@@ -87,19 +87,28 @@
         }
 
         //Retrieve staff list from applicant model
-        public function viewApplicantListFunction() {
+        public function viewApplicantListFunction($from) {
 
             $listOfApplicant = $this->applicantModel->getAllApplicantInfo();
 
             session_start();
             $_SESSION['listOfApplicant'] = $listOfApplicant;
+            
+            if($from == 'viewListApplicant'){
+                ?>
+                    <script>
+                        window.location = "../app/View/ManageUserProfile/viewApplicantListView.php";
+                    </script>
+                <?php
+            
 
-            ?>
-                <script>
-                    window.location = "../app/View/ManageUserProfile/viewApplicantListView.php";
-                </script>
-            <?php
-
+            }elseif($from == 'adminIncentiveApplicantListView'){
+                ?>
+                    <script>
+                        window.location = "../app/View/ManageSpecialIncentive/adminIncentive_applicantListView.php";
+                    </script>
+                <?php
+            }
         }
 
         //Update the applicant profile data 
