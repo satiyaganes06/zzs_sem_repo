@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +31,9 @@
 </head>
 
 <body>
+
+    <!-- Toast -->
+    <?php include('../Common/alert.php'); ?>
     
     <div class="container-md-8 container-sm-12 row d-flex justify-content-center">
 
@@ -81,7 +87,7 @@
   
                                   <p class="font-italic lead small"> <i class="fa fa-quote-left mr-3 text-dark"></i>Semakin banyak kemanisan yang kita ambil sebelum pernikahan, Semakin tawar dan hambar sesebuah perkahwinan itu.</p>
                                   
-                                  <footer class="blockquote-footer text-warning">Ustaz Pahrol
+                                  <footer class="blockquote-footer text-dark bg-warning rounded-7 opacity-75">Ustaz Pahrol
                                       <cite title="Source Title">Mengembirakan Pasangan</cite>
                                   </footer>
   
@@ -98,9 +104,9 @@
 
                               <blockquote class="blockquote border-0 pb-4">
   
-                                  <p class="font-italic lead small"> <i class="fa fa-quote-left mr-3 text-dark"></i>Semakin banyak kemanisan yang kita ambil sebelum pernikahan, Semakin tawar dan hambar sesebuah perkahwinan itu.</p>
+                                  <p class="font-italic lead small"> <i class="fa fa-quote-left mr-3 text-dark "></i>Semakin banyak kemanisan yang kita ambil sebelum pernikahan, Semakin tawar dan hambar sesebuah perkahwinan itu.</p>
                                   
-                                  <footer class="blockquote-footer text-warning">Ustaz Pahrol
+                                  <footer class="blockquote-footer text-dark bg-warning rounded-7 opacity-75">Ustaz Pahrol
                                       <cite title="Source Title">Mengembirakan Pasangan</cite>
                                   </footer>
   
@@ -163,9 +169,10 @@
                   </div>
 
                   
-                  <select class="browser-default custom-select-sm shadow rounded-3" name="User_type">
-                    <option value="Pemohon">Pemohon</option>
-                    <option value="Kakitangan">Kakitangan</option>
+                  <select class="browser-default custom-select-sm shadow rounded-3" name="User_type" required>
+                      <option class="text-muted" value="" disabled selected>Pilih</option>
+                      <option value="Pemohon">Pemohon</option>
+                      <option value="Kakitangan">Kakitangan</option>
                   </select>
 
                   <!-- Sign in button -->
@@ -192,8 +199,7 @@
 
                 <!-- Sign in button -->
                 <button class="btn btn-info btn-block bg-white text-dark mb-4" onclick="location.href='../ManageRegistration/applicantRegisterView.php'" data-mdb-ripple-color="dark">Daftar</button>
-                
-                <img src="../../Assert/login_bottom_frame.png" alt="login top frame">
+   
             </div>
     
         </section>

@@ -9,11 +9,11 @@ class StaffModel {
   }
 
   //Get applicant data using user ic 
-  public function getStaffProfileInfo($staff_Id) {
+  public function getStaffProfileInfo($account_Id) {
 
     // Prepare SQL statement with placeholders to prevent SQL injection
     $stmt = $this->connect->prepare('SELECT * FROM staff_info WHERE Account_Id = :id');
-    $stmt->bindParam(':id', $staff_Id);
+    $stmt->bindParam(':id', $account_Id);
 
     // Execute SQL statement
     $stmt->execute();

@@ -53,10 +53,11 @@ class AccountModel {
   }
 
   //This function will login staff and applicant account using mySQL database
-  public function loginAccount($userIC, $password) {
+  public function loginAccount($userIC, $password, $userType) {
     
     // Prepare SQL statement with placeholders to prevent SQL injection
-    $stmt = $this->connect->prepare("SELECT * FROM Account_Info WHERE User_IC = :ic");
+    $stmt = $this->connect->prepare("SELECT * FROM Account_Info WHERE UserType = :userType AND User_IC = :ic");
+    $stmt->bindParam(":userType", $userType);
     $stmt->bindParam(":ic", $userIC);
     
     // Execute SQL statement
@@ -157,7 +158,7 @@ class AccountModel {
       return false;
 
     }
-}
+  }
   
 }
 
