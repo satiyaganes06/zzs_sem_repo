@@ -88,8 +88,17 @@
                     </div>
                     
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">XX</h2>
+                        <h2 id="contentTitle">Permohonan Berkahwin</h2>
                         <!-- Your can code here -->
+
+                        <form action="" method="post">
+                            <label for="partnerIC"></label>
+                            <input type="text" name="partnerIC">&nbsp;&nbsp;
+                            <input type="submit" value="Search">
+                        </form>
+
+                        
+
 
                         
                     </div>

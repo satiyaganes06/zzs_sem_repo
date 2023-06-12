@@ -22,6 +22,8 @@ if (!isset($_SESSION['currentUserIC'])) {
 
     //Sidebar Active path
     $_SESSION['route'] = 'listOfApplicantMPC';
+
+
 }
 
 
