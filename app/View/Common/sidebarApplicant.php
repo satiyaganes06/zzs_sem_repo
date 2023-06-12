@@ -20,6 +20,10 @@
     else if($route == 'MarriageRegistrationPayment'){
         $marriageRegistrationPaymentRoute = 'active' ;
     } 
+    
+    else if($route == 'appIncentiveView'){
+        $appIncentiveViewRoute = 'active' ;
+    } 
 ?>
 
 <html>
@@ -257,9 +261,9 @@
                     <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-mdb-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             
-                            <a class="list-group-item 
+                            <a class="list-group-item <?php echo $appIncentiveViewRoute ?>
                             list-group-item-action border-0 px-3 pt-1 pb-1 
-                            list-group-item-light" href="../ManageSpecialIncentive/applicantIncentiveView.php">
+                            list-group-item-light" href="../../../public/index.php?action=viewProfile&from=insentifPemohon">
                             Permohonan
                             </a>
                             
