@@ -18,18 +18,21 @@ $accountModel = new AccountModel($db);
 $applicantModel = new ApplicantModel($db);
 $adminModel = new AdminModel($db);
 $staffModel = new StaffModel($db);
+$marriageCourseInfoModel = new MarriageCourseInfoModel($db);
+$marriageCourseApplicationModel = new MarriageCourseApplicationModel($db);
 
 // Create a new instance of the controller
 $registrationController = new RegistrationController($accountModel, $applicantModel, $staffModel);
 $loginController = new LoginController($accountModel);
 $userProfileController = new UserProfileController($accountModel, $applicantModel, $adminModel, $staffModel);
 $resetPasswordController = new ResetPasswordController($accountModel, $applicantModel, $staffModel);
+$marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel);
 
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 switch ($action) {
-  
+
     case 'createAccount':
         $ic = $_POST['Applicant_ic'];
         $password = $_POST['Applicant_password'];
@@ -38,7 +41,7 @@ switch ($action) {
         $phoneNume = $_POST['Applicant_phoneNum'];
 
         $registrationController->applicantRegisterFunction($ic, "Pemohon", $password, $name, $gender, $phoneNume);
-        
+
         break;
 
     case 'registerStaff':
@@ -49,26 +52,26 @@ switch ($action) {
         $typeOfStaff = $_POST['typeOfStaff'];
         $alamat = $_POST['Staff_alamat'];
         $password = $_POST['Staff_password'];
-        
+
 
         $registrationController->staffRegisterFunction($name, $ic, $email, $noTel, $typeOfStaff, $alamat, $password, "Kakitangan");
-        
+
         break;
-    
+
     case 'loginAccount':
         $ic = $_POST['User_ic'];
         $password = $_POST['User_password'];
         $userType = $_POST['User_type'];
 
         $loginController->userLoginAccountFunction($ic, $password, $userType);
-        
+
         break;
 
     case 'resetPassword':
 
         $ic = isset($_GET['ic']) ? $_GET['ic'] : '';
         $newPass = $_POST['newpassword'];
-        
+
         $resetPasswordController->resetPassword($newPass, $ic);
 
         break;
@@ -76,7 +79,7 @@ switch ($action) {
 
         $ic = $_POST['formIC'];
         $email = $_POST['formEmail'];
-        
+
         $resetPasswordController->checkUserExists($ic, $email);
 
         break;
@@ -92,33 +95,33 @@ switch ($action) {
         $password = $_POST['Admin_password'];
 
         $loginController->adminLoginAccountFunction($id, $password);
-        
-        
+
+
         break;
 
     case 'viewProfile':
 
         $from = isset($_GET['from']) ? $_GET['from'] : '';
-        
+
         $userProfileController->viewProfileFunction($from);
-        
+
         break;
 
     case 'viewStaffList':
-    
+
         $userProfileController->viewStaffListFunction();
-        
+
         break;
 
     case 'viewApplicantList':
 
         $userProfileController->viewApplicantListFunction('viewListApplicant');
-        
+
         break;
     case 'adminIncentiveApplicantListView':
 
         $userProfileController->viewApplicantListFunction('adminIncentiveApplicantListView');
-        
+
         break;
 
     case 'viewProfileById':
@@ -126,8 +129,8 @@ switch ($action) {
         $viewId = isset($_GET['viewID']) ? $_GET['viewID'] : '';
         $type = isset($_GET['type']) ? $_GET['type'] : '';
 
-        $userProfileController->viewDetailsById($viewId,$type);
-        
+        $userProfileController->viewDetailsById($viewId, $type);
+
         break;
 
     case 'updateProfile':
@@ -150,12 +153,12 @@ switch ($action) {
         $alamatKerja = $_POST['Applicant_alamatKerja'];
         $noTelPenjabat = $_POST['Applicant_noTelPenjabat'];
 
-        
+
 
         $userProfileController->updateApplicantProfileFunction($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat);
-        
+
         break;
-    
+
     case 'updateStaffProfile':
         $name = $_POST['Staff_nama'];
         $email = $_POST['Staff_email'];
@@ -164,7 +167,7 @@ switch ($action) {
 
 
         $userProfileController->updateStaffProfileFunction($name, $email, $alamat, $noTel);
-        
+
         break;
 
     case 'updateAdminProfile':
@@ -176,11 +179,22 @@ switch ($action) {
 
 
         $userProfileController->updateAdminProfileFunction($nama, $email, $alamat, $noTel);
-        
+
+        break;
+
+    case 'viewlistOfMPC':
+        $organize = isset($_GET['organize']) ? $_GET['organize'] : '';
+
+        $marriagePreparationCourseController->viewListOfMPC($organize);
+
+        break;
+
+    case 'viewListOfApplicantMPC':
+
+        $marriagePreparationCourseController->viewListOfApplicantMPC();
+
         break;
 
     default:
         header('Location: ../app/View/ManageLogin/userLoginView.php');
-        
-
 }
