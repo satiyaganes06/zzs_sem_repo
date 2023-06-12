@@ -1,9 +1,11 @@
-<?php
++<?php
 
     // Start up your PHP Session
     session_start();
 
-   
+    //Decluration
+    $encodedData;
+    $decodedAdminData;
 
     //If the user is not logged in send him/her to the login form
     if(!isset($_SESSION['currentUserIC'])) {
@@ -19,12 +21,7 @@
 
 
         //Sidebar Active path
-        $_SESSION['route'] = 'marriageRegistrationStatus';
-         // Retrieve the serialized and URL-encoded data from the URL parameter
-      $encodedData = $_GET['returnInfo'];
-      
-      // Decode the URL-encoded data and unserialize it
-      $decodedApplicantData = unserialize(urldecode($encodedData));
+        $_SESSION['route'] = 'viewProfile';
     }
 
     
@@ -90,46 +87,28 @@
                     </div>
                     
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">PERMOHONAN PENDAFTARAN PERNIKAHAN</h2>
+                        <h2 id="contentTitle">PEMBAYARAN PENDAFTARAN</h2>
 
 
                         <div id="inMainContentOutline" class="table-responsive p-4">
-                            <form action="../../../public/index.php?action=marriageRegistrationVoluntary" id="" method="post">
-                            <label id = "kpin">No K/P Pemohon :</label> <input type ="text" name="kpPemohon" id="kp" value="<?php echo $decodedApplicantData['Applicant_IC']?>"> <br>
-                            <br><label id="categoryIn">Kategori Pendaftaran Nikah:</label><select name ="category" id="marriageCategory" onchange="changePage()">
-                                                                 <option value="voluntary" >Pendaftaran Nikah Sukarela</option>
-                                                                 <option value="withApproval" >Pendaftaran Nikah dengan Kebenaran</option>
+                            <label class="starlabel" >Harga pemohonan perkahwinan - RM45</label><br>
+                            <label class="starlabel" >Harga pemohonan perkahwinan - RM25</label>
+                            <br>
+                            <br>
+                            <label class="starlabel">Mohon Kad Kahwin : </label><select name ="bool" id="marriageCard">
+                                                                 <option value="yes" >Ya</option>
+                                                                 <option value="no" >Tidak</option>
                                                                  </select>
                             <br>
-                            <label class="starlabel">- Dokumen yang dimuat naik perlu beserta tandatangan dan cop pihak yang terlibat</label>
                             <label class="custom-file-upload">
-                            <input type="file" name="marriageApprovalFile"/>
-                            SURAT KEBENARAN BERKAHWIN
+                            <input type="file"/>
+                            SLIP PEMBAYARAN
                             </label>
                             <br>
                             <br>
-                            <label id ="AkuanNum">No. Akuan Terima Kebenaran Berkahwin:</label> <input type ="text" name="noAkuan" id="akuanIn"><br>
-                            <br>
-                            <br>
 
-                        <button type="button" name="return" id="buttonR" >Kembali</button><button type="submit" name="update" id="buttonU" onclick=''>Kemaskini Maklumat</button>
+                        <button type="button" name="return" id="buttonR" >Teruskan</button>
                             </form>
-                            <script>
-    function changePage() {
-      var selectElement = document.getElementById("marriageCategory");
-      var selectedValue = selectElement.options[selectElement.selectedIndex].value;
-
-      if (selectedValue === "withApproval") {
-        // Redirect to another page or perform other actions
-        window.location.href = "marriageRegistrationView.php";
-      } else if (selectedValue === "voluntary") {
-        // Redirect to another page or perform other actions
-        window.location.href = "marriageRegistrationVoluntaryView.php";
-      }
-
-      return false; // Prevent the form from submitting traditionally
-    }
-  </script>
                         </div>
                     </div>
                 </div>

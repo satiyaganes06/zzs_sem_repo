@@ -5,10 +5,12 @@ require_once '../app/Model/accountModel.php';
 require_once '../app/Model/applicantModel.php';
 require_once '../app/Model/adminModel.php';
 require_once '../app/Model/staffModel.php';
+require_once '../app/Model/marriageInfoModel.php';
 require_once '../app/Controller/php/registrationController.php';
 require_once '../app/Controller/php/loginController.php';
 require_once '../app/Controller/php/userProfileController.php';
 require_once '../app/Controller/php/resetPasswordController.php';
+require_once '../app/Controller/php/marriageRegistrationController.php';
 
 // Create a new database connection
 $db = (new Database())->connect();
@@ -20,6 +22,8 @@ $adminModel = new AdminModel($db);
 $staffModel = new StaffModel($db);
 $marriageCourseInfoModel = new MarriageCourseInfoModel($db);
 $marriageCourseApplicationModel = new MarriageCourseApplicationModel($db);
+$marriageInfoModel = new MarriageInfoModel($db);
+$waliModel = new WaliModel($db);
 
 // Create a new instance of the controller
 $registrationController = new RegistrationController($accountModel, $applicantModel, $staffModel);
@@ -28,6 +32,7 @@ $userProfileController = new UserProfileController($accountModel, $applicantMode
 $resetPasswordController = new ResetPasswordController($accountModel, $applicantModel, $staffModel);
 $marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel);
 
+$marriageRegistrationController = new MarriageRegistrationController($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel);
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
@@ -194,7 +199,45 @@ switch ($action) {
         $marriagePreparationCourseController->viewListOfApplicantMPC();
 
         break;
+    
+    case 'marriageRegistrationWithApproval':
+            $marriageId = $_POST['noAkuan'];
+            $waliIC = $_POST['waliIC'];
+            $witnessIC= $_POST['witnessIC'];
 
+            $marriageRegistrationController->marriageRegistrationWithApproval($marriageId, $waliIC, $witnessIC);
+            
+            break;
+
+    case 'updateMarriageRegistrationDetail';
+             $marriageId;
+             $waliName = $_POST['waliName'];
+             $partnerIC = $_POST['partnerIC'];
+             $requestDate = $_POST['requestDate'];
+             $marriageDate = $_POST['marriageDate'];
+             $marriageAddress = $_POST['requestDate'];
+             $dowryType = $_POST['dowryType'];
+             $dowry = $_POST['dowry'];
+             $gift = $_POST['gift'];
+             $relation = $_POST['relation'];
+             $waliIc;
+             $witnessIC;
+             $waliIC = $_POST['waliIC'];
+             $waliAddress = $_['waliAddress'];
+             $waliBirthDate = $_POST['waliBirthDate'];
+             $waliAge = $_POST['waliAge'];
+             $waliNumberPhone = $_POST['noTelWali'];
+             $marriageCertificateNo = NULL;
+
+             $marriageRegistrationController->updateMarriageInfo($marriageId, $waliIC, $witnessIC, $requestDate, $marriageDate, $marriageAddress, $dowryType, $dowry, $gift );
+             
+             $marriageRegistrationController->insertWaliInfo($waliIc, $waliAddress, $waliBirthDate, $waliAge, $waliName, $relation, $waliNumberPhone);
+             
+
+             break;
     default:
         header('Location: ../app/View/ManageLogin/userLoginView.php');
 }
+
+?>
+

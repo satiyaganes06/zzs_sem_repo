@@ -3,9 +3,7 @@
     // Start up your PHP Session
     session_start();
 
-    //Decluration
-    $encodedData;
-    $decodedAdminData;
+    
 
     //If the user is not logged in send him/her to the login form
     if(!isset($_SESSION['currentUserIC'])) {
@@ -13,7 +11,7 @@
         ?>
             <script>
                 alert("Access denied !!!")
-                window.location = "../ManageLogin/adminLoginView.php";
+                window.location = "../ManageLogin/userLoginView.php";
             </script>
         <?php
 
@@ -22,6 +20,12 @@
 
         //Sidebar Active path
         $_SESSION['route'] = 'marriageRegistrationStatus';
+         // Retrieve the serialized and URL-encoded data from the URL parameter
+      $encodedData = $_GET['returnInfo'];
+      var_dump($encodedData);
+      // Decode the URL-encoded data and unserialize it
+      $decodedApplicantData = unserialize(urldecode($encodedData));
+      var_dump($decodedApplicantData);
     }
 
     
@@ -92,20 +96,39 @@
 
 
                         <div id="inMainContentOutline" class="table-responsive p-4">
-                            <form>
-                        <label id = "kpin">No K/P Pemohon :</label> <input type ="text" name="kpPemohon" id="kp"> <br>
-                        <br><label id="categoryIn">Kategori Pendaftaran Nikah:</label><select name ="category" id="marriageCategory">
+                            <form action="../../../public/index.php?action=marriageRegistrationWithApproval" id="" method="post">
+                        <label id = "kpin">No K/P Pemohon :</label> <input type ="text" name="kpPemohon" id="kp" value="<?php echo $decodedApplicantData['Applicant_IC']?>"> <br>
+                        <br><label id="categoryIn">Kategori Pendaftaran Nikah:</label><select name ="category" id="marriageCategory" onchange="changePage()">
                                                                  <option value="withApproval" >Pendaftaran Nikah dengan Kebenaran</option>
                                                                  <option value="voluntary" >Pendaftaran Nikah Sukarela</option>
                                                                  </select>
                         <br>
                         <br>
                         <label id ="AkuanNum">No. Akuan Terima Kebenaran Berkahwin:</label> <input type ="text" name="noAkuan" id="akuanIn"><br>
+                        <br><br>
+                            <label id ="Label">No. IC Wali:</label><input type ="text" name="waliIC" id="akuanIn"><br><br><br>
+                            <label id ="Label">No. IC Saksi:</label><input type ="text" name="witnessIC" id="akuanIn">
                         <br>
                         <br>
 
                         <button type="button" name="return" id="buttonR" >Kembali</button><button type="button" name="update" id="buttonU">Kemaskini Maklumat</button>
                             </form>
+                            <script>
+    function changePage() {
+      var selectElement = document.getElementById("marriageCategory");
+      var selectedValue = selectElement.options[selectElement.selectedIndex].value;
+
+      if (selectedValue === "withApproval") {
+        // Redirect to another page or perform other actions
+        window.location.href = "marriageRegistrationView.php";
+      } else if (selectedValue === "voluntary") {
+        // Redirect to another page or perform other actions
+        window.location.href = "marriageRegistrationVoluntaryView.php";
+      }
+
+      return false; // Prevent the form from submitting traditionally
+    }
+  </script>
                         </div>
                     </div>
                 </div>

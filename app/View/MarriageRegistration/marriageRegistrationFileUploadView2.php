@@ -3,9 +3,7 @@
     // Start up your PHP Session
     session_start();
 
-    //Decluration
-    $encodedData;
-    $decodedAdminData;
+  
 
     //If the user is not logged in send him/her to the login form
     if(!isset($_SESSION['currentUserIC'])) {
@@ -22,6 +20,11 @@
 
         //Sidebar Active path
         $_SESSION['route'] = 'marriageRegistrationStatus';
+         // Retrieve the serialized and URL-encoded data from the URL parameter
+      $encodedData = $_GET['returnInfo'];
+      
+      // Decode the URL-encoded data and unserialize it
+      $decodedApplicantData = unserialize(urldecode($encodedData));
     }
 
     
