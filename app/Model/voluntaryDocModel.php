@@ -1,5 +1,5 @@
 <?php
-class SpecialIncentiveModel
+class VoluntaryDocModel
 {
 
     private $connect;

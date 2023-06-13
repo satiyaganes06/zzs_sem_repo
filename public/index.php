@@ -20,10 +20,23 @@ $accountModel = new AccountModel($db);
 $applicantModel = new ApplicantModel($db);
 $adminModel = new AdminModel($db);
 $staffModel = new StaffModel($db);
+$complaintModel = new ComplaintModel($db);
+$consultationModel = new ConsultationModel($db);
+$applicantOccupationModel = new ApplicantOccupationModel($db);
+$heirInfoModel = new HeirInfoModel($db);
+$documentModel = new DocumentModel($db);
+$specialIncentiveModel = new SpecialIncentiveModel($db);
+$marriageInfoModel = new MarriageInfoModel($db);
+$paymentModel = new PaymentModel($db);
 $marriageCourseInfoModel = new MarriageCourseInfoModel($db);
 $marriageCourseApplicationModel = new MarriageCourseApplicationModel($db);
-$marriageInfoModel = new MarriageInfoModel($db);
+$marriageRequestInfoModel = new MarriageRequestInfoModel($db);
 $waliModel = new WaliModel($db);
+$witnessModel = new WitnessModel($db);
+$marriageDocModel = new MarriageDocModel($db);
+$incentiveDocModel = new IncentiveDocModel($db);
+$marriageVoluntaryModel = new MarriageVoluntaryModel($db);
+$voluntaryDocModel = new VoluntaryDocModel($db);
 
 // Create a new instance of the controller
 $registrationController = new RegistrationController($accountModel, $applicantModel, $staffModel);

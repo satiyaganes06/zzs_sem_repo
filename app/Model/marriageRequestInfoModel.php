@@ -1,5 +1,5 @@
 <?php
-class SpecialIncentiveModel
+class MarriageRequestInfoModel
 {
 
     private $connect;
