@@ -5,12 +5,29 @@ require_once '../app/Model/accountModel.php';
 require_once '../app/Model/applicantModel.php';
 require_once '../app/Model/adminModel.php';
 require_once '../app/Model/staffModel.php';
+require_once '../app/Model/complaintModel.php';
+require_once '../app/Model/consultationModel.php';
+require_once '../app/Model/applicantOccupationModel.php';
+require_once '../app/Model/heirInfoModel.php';
+require_once '../app/Model/documentModel.php';
+require_once '../app/Model/specialIncentiveModel.php';
 require_once '../app/Model/marriageInfoModel.php';
+require_once '../app/Model/paymentModel.php';
+require_once '../app/Model/marriageCourseInfoModel.php';
+require_once '../app/Model/marriageCourseApplicationModel.php';
+require_once '../app/Model/marriageRequestInfoModel.php';
+require_once '../app/Model/waliModel.php';
+require_once '../app/Model/witnessModel.php';
+require_once '../app/Model/marriageDocModel.php';
+require_once '../app/Model/incentiveDocModel.php';
+require_once '../app/Model/marriageVoluntaryModel.php';
+require_once '../app/Model/voluntaryDocModel.php';
 require_once '../app/Controller/php/registrationController.php';
 require_once '../app/Controller/php/loginController.php';
 require_once '../app/Controller/php/userProfileController.php';
 require_once '../app/Controller/php/resetPasswordController.php';
 require_once '../app/Controller/php/marriageRegistrationController.php';
+require_once '../app/Controller/php/MarriagePreparationCourseController.php';
 
 // Create a new database connection
 $db = (new Database())->connect();
@@ -43,9 +60,8 @@ $registrationController = new RegistrationController($accountModel, $applicantMo
 $loginController = new LoginController($accountModel);
 $userProfileController = new UserProfileController($accountModel, $applicantModel, $adminModel, $staffModel);
 $resetPasswordController = new ResetPasswordController($accountModel, $applicantModel, $staffModel);
-$marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel);
-
 $marriageRegistrationController = new MarriageRegistrationController($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel);
+$marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel);
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 

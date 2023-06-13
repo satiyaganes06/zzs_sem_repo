@@ -14,7 +14,7 @@ class MarriageCourseApplicationModel
     {
 
         // Prepare SQL statement with placeholders to prevent SQL injection
-        $stmt = $this->connect->prepare('SELECT * FROM marriage_course_application');
+        $stmt = $this->connect->prepare('SELECT * FROM marriage_course_application ORDER BY RequestDate');
 
         // Execute SQL statement
         $stmt->execute();
