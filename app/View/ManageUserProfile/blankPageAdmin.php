@@ -63,7 +63,7 @@
           include_once('../Common/adminHeader.html');
         ?>
 
-        <!-- Main Content -->
+        <!-- Content -->
         <section class="mainPart container-fluid mt-3">
 
             <div class="d-flex justify-content-between h-100">
