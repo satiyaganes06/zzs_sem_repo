@@ -117,93 +117,93 @@ if (!isset($_SESSION['currentUserIC'])) {
             <div class="tab-content" id="ex-with-icons-content">
               <div class="tab-pane fade show active" id="ex-with-icons-tabs-1" role="tabpanel" aria-labelledby="ex-with-icons-tab-1">
 
-                <!-- Content 1-->
+                <!-- Content 1 Maklumat Pemohon-->
                 <div id="inMainContentOutline" class="table-responsive p-4">
                   <table class="table table-borderless table-sm">
 
                     <tbody>
                       <tr>
                         <th scope="row">Nama :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantName']; 
+                        <td><?php echo $decodedApplicantData['ApplicantName'];
                             ?></td>
 
                         <th scope="row">Umur :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantAge']; 
+                        <td><?php echo $decodedApplicantData['ApplicantAge'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">Tarikh Lahir :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantBirthDate']; 
+                        <td><?php echo $decodedApplicantData['ApplicantBirthDate'];
                             ?></td>
 
                         <th scope="row">Jantina :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantGender']; 
+                        <td><?php echo $decodedApplicantData['ApplicantGender'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">No. Kad Pengenalan :</th>
-                        <td><?php echo $decodedApplicantData['Applicant_Ic']; 
+                        <td><?php echo $decodedApplicantData['Applicant_Ic'];
                             ?></td>
 
                         <th scope="row">Bangsa :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantRace']; 
+                        <td><?php echo $decodedApplicantData['ApplicantRace'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">Email :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantEmail']; 
+                        <td><?php echo $decodedApplicantData['ApplicantEmail'];
                             ?></td>
 
                       </tr>
 
                       <tr>
                         <th scope="row">Alamat :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantAddress']; 
+                        <td><?php echo $decodedApplicantData['ApplicantAddress'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">No. Telefon(Bimbit) :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantPhoneNo']; 
+                        <td><?php echo $decodedApplicantData['ApplicantPhoneNo'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">No. Telefon(Rumah) :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantHomePhoneNo']; 
+                        <td><?php echo $decodedApplicantData['ApplicantHomePhoneNo'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">Taraf Pendidikan :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantEduLevel']; 
+                        <td><?php echo $decodedApplicantData['ApplicantEduLevel'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">Jawatan / Pekerjaan :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantPosition']; 
+                        <td><?php echo $decodedApplicantData['ApplicantPosition'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="col-2">Pendapatan :</th>
-                        <td>RM <?php echo $decodedApplicantData['ApplicantSalary']; 
+                        <td>RM <?php echo $decodedApplicantData['ApplicantSalary'];
                                 ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">Alamat Tempat Kerja :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantWorkAddress']; 
+                        <td><?php echo $decodedApplicantData['ApplicantWorkAddress'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">No. Telefon(Pejabat) :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo']; 
+                        <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
                             ?></td>
                       </tr>
                     </tbody>
@@ -213,93 +213,93 @@ if (!isset($_SESSION['currentUserIC'])) {
 
               <div class="tab-pane fade" id="ex-with-icons-tabs-2" role="tabpanel" aria-labelledby="ex-with-icons-tab-2">
 
-                <!-- Content 2-->
+                <!-- Content 2 Maklumat Pasangan-->
                 <div id="inMainContentOutline" class="table-responsive p-4">
                   <table class="table table-borderless table-sm">
 
                     <tbody>
                       <tr>
                         <th scope="row">Nama :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantName']; 
+                        <td><?php echo $decodedApplicantData['ApplicantName'];
                             ?></td>
 
                         <th scope="row">Umur :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantAge']; 
+                        <td><?php echo $decodedApplicantData['ApplicantAge'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">Tarikh Lahir :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantBirthDate']; 
+                        <td><?php echo $decodedApplicantData['ApplicantBirthDate'];
                             ?></td>
 
                         <th scope="row">Jantina :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantGender']; 
+                        <td><?php echo $decodedApplicantData['ApplicantGender'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">No. Kad Pengenalan :</th>
-                        <td><?php echo $decodedApplicantData['Applicant_Ic']; 
+                        <td><?php echo $decodedApplicantData['Applicant_Ic'];
                             ?></td>
 
                         <th scope="row">Bangsa :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantRace']; 
+                        <td><?php echo $decodedApplicantData['ApplicantRace'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">Email :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantEmail']; 
+                        <td><?php echo $decodedApplicantData['ApplicantEmail'];
                             ?></td>
 
                       </tr>
 
                       <tr>
                         <th scope="row">Alamat :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantAddress']; 
+                        <td><?php echo $decodedApplicantData['ApplicantAddress'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">No. Telefon(Bimbit) :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantPhoneNo']; 
+                        <td><?php echo $decodedApplicantData['ApplicantPhoneNo'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">No. Telefon(Rumah) :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantHomePhoneNo']; 
+                        <td><?php echo $decodedApplicantData['ApplicantHomePhoneNo'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">Taraf Pendidikan :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantEduLevel']; 
+                        <td><?php echo $decodedApplicantData['ApplicantEduLevel'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">Jawatan / Pekerjaan :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantPosition']; 
+                        <td><?php echo $decodedApplicantData['ApplicantPosition'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="col-2">Pendapatan :</th>
-                        <td>RM <?php echo $decodedApplicantData['ApplicantSalary']; 
+                        <td>RM <?php echo $decodedApplicantData['ApplicantSalary'];
                                 ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">Alamat Tempat Kerja :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantWorkAddress']; 
+                        <td><?php echo $decodedApplicantData['ApplicantWorkAddress'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">No. Telefon(Pejabat) :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo']; 
+                        <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
                             ?></td>
                       </tr>
                     </tbody>
@@ -308,19 +308,19 @@ if (!isset($_SESSION['currentUserIC'])) {
               </div>
 
               <div class="tab-pane fade" id="ex-with-icons-tabs-3" role="tabpanel" aria-labelledby="ex-with-icons-tab-3">
-                
-                <!-- Content 3-->
+
+                <!-- Content 3 Maklumat Perkahwinan-->
                 <div id="inMainContentOutline" class="table-responsive p-4">
                   <table class="table table-borderless table-sm">
 
                     <tbody>
                       <tr>
                         <th scope="row">Nama Pemohon :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantName']; 
+                        <td><?php echo $decodedApplicantData['ApplicantName'];
                             ?></td>
 
                         <th scope="row">No. Kad Pengenalan :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantAge']; 
+                        <td><?php echo $decodedApplicantData['Applicant_Ic'];
                             ?></td>
                       </tr>
 
@@ -355,47 +355,91 @@ if (!isset($_SESSION['currentUserIC'])) {
               </div>
 
               <div class="tab-pane fade" id="ex-with-icons-tabs-4" role="tabpanel" aria-labelledby="ex-with-icons-tab-4">
-                
-              <!-- Content 4-->
+
+                <!-- Content 4 Maklumat Pekerjaan-->
                 <div id="inMainContentOutline" class="table-responsive p-4">
                   <table class="table table-borderless table-sm">
 
                     <tbody>
                       <tr>
                         <th scope="row">Nama Pemohon :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantName']; 
+                        <td><?php echo $decodedApplicantData['ApplicantName'];
                             ?></td>
 
                         <th scope="row">No. Kad Pengenalan :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantAge']; 
+                        <td><?php echo $decodedApplicantData['Applicant_Ic'];
                             ?></td>
                       </tr>
 
                       <tr>
-                        <th scope="row">Nama Pasangan :</th>
-                        <td><?php //echo $decodedApplicantData['ApplicantBirthDate']; 
+                        <th scope="row">Jawatan / Pekerjaan :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantPosition'];
                             ?></td>
 
-                        <th scope="row">No. Kad Pengenalan :</th>
-                        <td><?php //echo $decodedApplicantData['ApplicantGender']; 
+                        <th scope="row">Jenis Pekerjaan :</th>
+                        <td>
+                          <div class="form form-width">
+                            <select class="browser-default custom-select-sm shadow rounded-3" name="User_type" required>
+                              <option class="text-muted" value="" disabled selected>Pilih</option>
+                              <option value="kerajaan">Kerajaan / Badan Berkanun</option>
+                              <option value="swasta">Kakitangan</option>
+                              <option value="sendiri">Bekerja Sendiri</option>
+                            </select>
+                          </div>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">Pendapatan :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantSalary'];
+                            ?></td>
+
+                        <th scope="row">Nama Syarikat :</th>
+                        <td>
+                          <div class="form form-width">
+                            <input type="text" id="formCompanyName" name="Company_name" class="form-control form-control-sm" value="<?php echo $decodedApplicantOccupationData['EmployerName']; ?>" />
+                          </div>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">Alamat Pejabat :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantWorkAddress'];
                             ?></td>
                       </tr>
 
                       <tr>
-                        <th scope="row">Tarikh Nikah :</th>
-                        <td><?php //echo $decodedMarriageData['MarriageDate'];
-                            ?></td>
-
-                        <th scope="row">Tempat Nikah :</th>
-                        <td><?php //echo $decodedMarriageData['MarriageAddress']; 
+                        <th scope="row">No. Tel Pejabat :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
                             ?></td>
                       </tr>
 
                       <tr>
-                        <th scope="row">No. Sijil Nikah :</th>
-                        <td><?php //echo $decodedMarriageData['MarriageCertificateNo']; 
-                            ?></td>
+                        <th scope="row">Nama Majikan :</th>
+                        <td>
+                          <div class="form form-width">
+                            <input type="text" id="formEmployerName" name="Employer_name" class="form-control form-control-sm" value="<?php echo $decodedApplicantOccupationData['EmployerName']; ?>" />
+                          </div>
+                        </td>
                       </tr>
+
+                      <tr>
+                        <th scope="row">No. Tel Majikan :</th>
+                        <td>
+                          <div class="form form-width">
+                            <input type="text" id="formEmployerPhoneNo" name="Employer_phoneNo " class="form-control form-control-sm" value="<?php echo $decodedApplicantOccupationData['EmployerPhoneNo']; ?>" />
+                          </div>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          <div class="d-flex justify-content-center">
+                            <button class="btn btn-block mt-3 text-dark" type="submit" data-mdb-ripple-color="dark">Simpan</button>
+                          </div>
+                        </td>
+                      </tr>
+
                     </tbody>
                   </table>
                 </div>

@@ -264,9 +264,31 @@ switch ($action) {
              
 
              break;
+    case 'updateProfile':
+        $occupationType = $_POST['OccupationType'];
+        $umur = $_POST['Applicant_umur'];
+        $tarikhTL = $_POST['Applicant_tarikhL'];
+        
+        $jantina = $_POST['Applicant_jantina'];
+        $bangsa = $_POST['Applicant_bangsa'];
+        $email = $_POST['Applicant_email'];
+        
+                $alamat = $_POST['Applicant_alamat'];
+                $noTel = $_POST['Applicant_noTel'];
+                $noTelRum = $_POST['Applicant_noTelRum'];
+        
+                $trafPen = $_POST['Applicant_trafPen'];
+                $jawatan = $_POST['Applicant_jawatan'];
+                $pendapatan = $_POST['Applicant_pendapatan'];
+        
+                $alamatKerja = $_POST['Applicant_alamatKerja'];
+                $noTelPenjabat = $_POST['Applicant_noTelPenjabat'];
+        
+        
+        
+                $userProfileController->updateApplicantProfileFunction($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat);
+        
+                break;
     default:
         header('Location: ../app/View/ManageLogin/userLoginView.php');
 }
-
-?>
-
