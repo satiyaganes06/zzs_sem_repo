@@ -87,16 +87,16 @@ body{
     border-radius: 10px;
 }
 
-.mainContentBg th{
-    border: 1px solid black;
-}
-
 .mainContentBg td{
     font-size: 14px;
     text-align: center;
     align-items: center;
     border: 1px solid black;
     padding: 10px;
+}
+
+.mainContentBg th{
+    border: 1px solid black;
 }
 
 div.nameEllipsis{
@@ -115,17 +115,12 @@ div.nameEllipsis{
 
 .tableHeaderBg{
     color: #000000;
-    background-color: #f8c779a5;
+    background-color: #F8C879;
 }
 
 #inMainContentOutline{
     height: 90%;
-    border: 2px solid #f8c779a5;
-}
-
-.accordion-item strong{
-    font-size: 14px;
-    color: #000000a1;
+    border: 2px solid #ababab;
 }
 
 .mainContentBg button{
@@ -141,10 +136,14 @@ div.nameEllipsis{
     background-color: #000000;
 }
 
+.accordion-item strong{
+    font-size: 14px;
+    color: #000000;
+}
+
 .accordion-button:not(.collapsed) {
     background-color: #EEC800;
 }
-
 
 @media only screen and (max-width: 1000px) {
     .sidebar {
@@ -232,4 +231,3 @@ div.nameEllipsis{
     }
 
 }
-

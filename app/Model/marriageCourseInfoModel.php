@@ -21,8 +21,8 @@ class MarriageCourseInfoModel
         else{
             $stmt = $this->connect->prepare('SELECT * FROM marriage_course_info WHERE organize = :organize');
             $stmt->bindParam(':organize', $organize);
-        
         }
+        
         // Execute SQL statement
         $stmt->execute();
 

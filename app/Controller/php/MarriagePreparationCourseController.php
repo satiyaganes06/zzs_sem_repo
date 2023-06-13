@@ -14,28 +14,28 @@ class MarriagePreparationCourseController
         $this->applicantModel = $applicantModel;
     }
 
-    public function viewListOfMPC($organize,$from)
+    public function viewListOfMPC($organize, $from)
     {
-        session_start();
-
         $listOfMPC = $this->marriageCourseInfoModel->getListOfMPC($organize);
+
+        session_start();
 
         $_SESSION['listOfMPC'] = $listOfMPC;
 
-        if($from == 'MPCView'){
-            ?>
-                <script>
-                    window.location = "../../View/MarriageCourse/MPCView.php";
-                </script>
-            <?php
-        
+        if ($from == 'MPCView') {
+?>
+            <script>
+                window.location = "../app/View/MarriageCourse/MPCView.php";
+            </script>
+        <?php
 
-        }elseif($from == 'manageMPC'){
-            ?>
-                <script>
-                    window.location = "../../View/MarriageCourse/ManageMPCView.php";
-                </script>
-            <?php
+
+        } elseif ($from == 'manageMPC') {
+        ?>
+            <script>
+                window.location = "../app/View/MarriageCourse/Manage<PCView.php";
+            </script>
+<?php
         }
     }
 

@@ -14,12 +14,12 @@ if (!isset($_SESSION['currentUserIC'])) {
 
 } else {
 
-    // Sidebar Active path
-    $_SESSION['route'] = 'MPCView';
-
     // Retrieve list of applicant information
     $result = $_SESSION['listOfMPC'];
     $bilNum = 0;
+
+    // Sidebar Active path
+    $_SESSION['route'] = 'MPCView';
 }
 
 
@@ -63,7 +63,7 @@ if (!isset($_SESSION['currentUserIC'])) {
         include_once('../Common/applicantHeader.html');
         ?>
 
-        <!-- Content -->
+        <!--Main Content -->
         <section class="mainPart container-fluid mt-3">
 
             <div class="d-flex justify-content-between h-100">
@@ -73,7 +73,6 @@ if (!isset($_SESSION['currentUserIC'])) {
                 include('../Common/sidebarApplicant.php');
                 ?>
 
-                <!-- Main Content -->
                 <div class="mainContent bg-white shadow rounded-2">
 
                     <div class="d-flex justify-content-between">
@@ -131,12 +130,10 @@ if (!isset($_SESSION['currentUserIC'])) {
                                             </td>
 
                                             <td class="" style="width: 15%;">
-
                                                 <?php echo $organize; ?>
                                             </td>
 
                                             <td class="" style="width: 30%;">
-
                                                 <?php echo $venue; ?>
                                             </td>
 
