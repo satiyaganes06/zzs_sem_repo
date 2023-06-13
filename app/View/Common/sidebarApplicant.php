@@ -20,6 +20,10 @@
     else if($route == 'MarriageRegistrationPayment'){
         $marriageRegistrationPaymentRoute = 'active' ;
     } 
+
+    else if($route == 'MPCView'){
+        $MPCViewRoute = 'active' ;
+    } 
     
     else if($route == 'appIncentiveView'){
         $appIncentiveViewRoute = 'active' ;
@@ -82,11 +86,11 @@
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-mdb-parent="#accordionFlushExample">
                         <div class="accordion-body">
 
-                            <a class="list-group-item
+                            <a class="list-group-item <?php echo $MPCViewRoute ?>
                                 list-group-item-action 
                                 px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../blankPage.php">
-                                Messages
+                                list-group-item-light" href="../../../public/index.php?action=viewlistOfMPC&organize=all&from=MPCView">
+                                Kursus Permohonan Berkahwin
                             </a>
                         </div>
                     </div>

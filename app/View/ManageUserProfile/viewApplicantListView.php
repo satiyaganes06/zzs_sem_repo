@@ -1,29 +1,28 @@
 <?php
-    // Start up your PHP Session
-    session_start();
+// Start up your PHP Session
+session_start();
 
-    //If the user is not logged in send him/her to the login form
-    if(!isset($_SESSION['currentUserIC'])) {
+//If the user is not logged in send him/her to the login form
+if (!isset($_SESSION['currentUserIC'])) {
 
-        ?>
-            <script>
-                alert("Access denied !!!")
-                window.location = "../ManageLogin/adminLoginView.php";
-            </script>
-        <?php
+?>
+    <script>
+        alert("Access denied !!!")
+        window.location = "../ManageLogin/adminLoginView.php";
+    </script>
+<?php
 
-    }else{
+} else {
 
-        //Sidebar Active path
-        $_SESSION['route'] = 'viewApplicantList';
+    //Sidebar Active path
+    $_SESSION['route'] = 'viewApplicantList';
 
-        // Retrieve list of applicant information
-        $result = $_SESSION['listOfApplicant'];
-        $bilNum = 0;
-        
-    }
-    
-    
+    // Retrieve list of applicant information
+    $result = $_SESSION['listOfApplicant'];
+    $bilNum = 0;
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +59,7 @@
 
         <!-- Header Section -->
         <?php
-          include_once('../Common/adminHeader.html');
+        include_once('../Common/adminHeader.html');
         ?>
 
         <!-- Main Content -->
@@ -70,7 +69,7 @@
 
                 <!-- Sidebar -->
                 <?php
-                    include('../Common/sidebarAdmin.php');
+                include('../Common/sidebarAdmin.php');
                 ?>
 
                 <div class="mainContent bg-white shadow rounded-2">
@@ -78,16 +77,16 @@
                     <div class="d-flex justify-content-between">
                         <button class="openbtn" onclick="openNav()"><i class="fas fa-bars"></i></button>
                         <div class="w-100"></div>
-                        
+
                         <div class="d-flex justify-content-end">
                             <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
                             <a class="commonButton" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
                     </div>
-                    
+
                     <div class="mainContentBg text-center p-3">
                         <h2 id="contentTitle">Senarai Pemohon Profil</h2>
-                        
+
                         <div id="inMainContentOutline" class="table-responsive p-4">
 
                             <table class="table table-bordered border-dark mb-0 align-middle">
@@ -95,50 +94,51 @@
                                     <tr>
                                         <th>Bil</th>
                                         <th>Staf Name</th>
-                                        <th ><div class="iCEllipsis">No. Kad Pengenalan</div></th>
+                                        <th>
+                                            <div class="iCEllipsis">No. Kad Pengenalan</div>
+                                        </th>
                                         <th>Jenis</th>
                                         <th>Operasi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+
                                     <?php
-                                        
-                                        foreach ($result as $row)
-                                        {   
-                                            $Applicant_name = $row['ApplicantName'];
-                                            $Applicant_ic = $row['Applicant_Ic'];
-                                            $Applicant_gender = $row['ApplicantGender'];
-                                            
-                                            ?>
-                                            
-                                                <tr>
-                                                    <td style="width: 5%;">
-                                                        <?php echo ++$bilNum ?>
-                                                    </td>
 
-                                                    <td class="" style="width: 40%;">
-                                                        
-                                                        <div class="nameEllipsis"><?php echo $Applicant_name;?></div>
-                                                    </td>
+                                    foreach ($result as $row) {
+                                        $Applicant_name = $row['ApplicantName'];
+                                        $Applicant_ic = $row['Applicant_Ic'];
+                                        $Applicant_gender = $row['ApplicantGender'];
 
-                                                    <td style="width: 20%;">
-                                                        <span><?php echo $Applicant_ic;?></span>
-                                                    </td>
+                                    ?>
 
-                                                    <td style="width: 20%;"><?php echo $Applicant_gender;?></td>
+                                        <tr>
+                                            <td style="width: 5%;">
+                                                <?php echo ++$bilNum ?>
+                                            </td>
 
-                                                    <td style="width: 15%;">
-                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded"  onclick="location.href='../../../public/index.php?action=viewProfileById&type=pemohon&viewID=<?php echo $Applicant_ic; ?>'">
-                                                            Lihat
-                                                        </button>
-                                                    </td>
-                                                </tr>
+                                            <td class="" style="width: 40%;">
 
-                                            <?php 
-                                        }?>
-                                    
-                                    
+                                                <div class="nameEllipsis"><?php echo $Applicant_name; ?></div>
+                                            </td>
+
+                                            <td style="width: 20%;">
+                                                <span><?php echo $Applicant_ic; ?></span>
+                                            </td>
+
+                                            <td style="width: 20%;"><?php echo $Applicant_gender; ?></td>
+
+                                            <td style="width: 15%;">
+                                                <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=viewProfileById&type=pemohon&viewID=<?php echo $Applicant_ic; ?>'">
+                                                    Lihat
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                    <?php
+                                    } ?>
+
+
                                 </tbody>
                             </table>
                         </div>
@@ -152,11 +152,11 @@
 
 
         <?php
-          // Footer 
-          include_once('../Common/footer.html');  
+        // Footer 
+        include_once('../Common/footer.html');
 
-          //Logout Model
-          include_once('../Common/logoutModel.html');
+        //Logout Model
+        include_once('../Common/logoutModel.html');
         ?>
 
     </div>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once '../app/Config/database.php';
 require_once '../app/Model/accountModel.php';
 require_once '../app/Model/applicantModel.php';
@@ -61,7 +61,7 @@ $loginController = new LoginController($accountModel);
 $userProfileController = new UserProfileController($accountModel, $applicantModel, $adminModel, $staffModel);
 $resetPasswordController = new ResetPasswordController($accountModel, $applicantModel, $staffModel);
 $marriageRegistrationController = new MarriageRegistrationController($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel);
-$marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel);
+$marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel, $applicantModel);
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
@@ -218,8 +218,9 @@ switch ($action) {
 
     case 'viewlistOfMPC':
         $organize = isset($_GET['organize']) ? $_GET['organize'] : '';
+        $from = isset($_GET['from']) ? $_GET['from'] : '';
 
-        $marriagePreparationCourseController->viewListOfMPC($organize);
+        $marriagePreparationCourseController->viewListOfMPC($organize,$from);
 
         break;
 

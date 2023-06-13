@@ -1,11 +1,6 @@
 <?php
-
 // Start up your PHP Session
 session_start();
-
-//Decluration
-$encodedData;
-$decodedAdminData;
 
 //If the user is not logged in send him/her to the login form
 if (!isset($_SESSION['currentUserIC'])) {
@@ -13,19 +8,23 @@ if (!isset($_SESSION['currentUserIC'])) {
 ?>
     <script>
         alert("Access denied !!!")
-        window.location = "../ManageLogin/adminLoginView.php";
+        window.location = "../ManageLogin/userLoginView.php";
     </script>
 <?php
 
 } else {
 
+    // Sidebar Active path
+    $_SESSION['route'] = 'MPCView';
 
-    //Sidebar Active path
-    $_SESSION['route'] = 'viewProfile';
+    // Retrieve list of applicant information
+    $result = $_SESSION['listOfMPC'];
+    $bilNum = 0;
 }
 
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +32,7 @@ if (!isset($_SESSION['currentUserIC'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZZS - View Profile</title>
+    <title>ZZS - Applicant Template Kholid Pemalas nak BUAT</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -47,7 +46,8 @@ if (!isset($_SESSION['currentUserIC'])) {
     <link rel="stylesheet" href="../../Bootstrap/mdb.min.css" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="../css/viewAdminProfileDetailsView.css">
+    <link rel="stylesheet" href="../css/viewListApplicantInterface.css">
+    <!-- <link rel="stylesheet" href="../css/tab.css"> -->
 
     <!-- Icon -->
     <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png" />
@@ -60,19 +60,20 @@ if (!isset($_SESSION['currentUserIC'])) {
 
         <!-- Header Section -->
         <?php
-        include_once('../Common/adminHeader.html');
+        include_once('../Common/applicantHeader.html');
         ?>
 
-        <!-- Main Content -->
+        <!-- Content -->
         <section class="mainPart container-fluid mt-3">
 
             <div class="d-flex justify-content-between h-100">
 
                 <!-- Sidebar -->
                 <?php
-                include('../Common/sidebarAdmin.php');
+                include('../Common/sidebarApplicant.php');
                 ?>
 
+                <!-- Main Content -->
                 <div class="mainContent bg-white shadow rounded-2">
 
                     <div class="d-flex justify-content-between">
@@ -80,80 +81,86 @@ if (!isset($_SESSION['currentUserIC'])) {
                         <div class="w-100"></div>
 
                         <div class="d-flex justify-content-end">
-                            <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
-                            <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
+                            <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: grey;"></i></a>
+                            <a class="commonButton" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right-to-bracket" style="color: grey;"></i></a>
                         </div>
                     </div>
-
+                    <!-- href="../../Config/logout.php" -->
                     <div class="mainContentBg text-center p-3">
                         <h2 id="contentTitle">Marriage Preparation Course</h2>
+
+                        <!-- YOUR CONTENT HERE -->
+
                         <form action="" method="post">
                             <label for="organize">Anjuran</label>
                             <input type="text" name="organize">&nbsp;&nbsp;
                             <input type="submit" value="Search">
                         </form>
 
-                        <table class="table table-bordered border-dark mb-0 align-middle">
-                            <thead class="tableHeaderBg">
-                                <tr>
-                                    <th>Bil</th>
-                                    <th>Anjuran</th>
-                                    <th>
-                                        <div class="iCEllipsis">Tempat</div>
-                                    </th>
-                                    <th>Tarikh</th>
-                                    <th>Kapasiti<br>Peserta</th>
-                                    <th>Kekosongan</th>
-                                    <th>Daftar<br>Penyertaan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        <div id="inMainContentOutline" class="table-responsive p-4">
 
-                                <?php
-                                foreach ($result as $row) {
-
-                                    $Staff_id = $row["Staff_Id"];
-                                    $Staff_name = $row['StaffName'];
-                                    $Staff_type = $row['StaffType'];
-                                ?>
+                            <table class="table table-bordered border-dark mb-0 align-middle">
+                                <thead class="tableHeaderBg">
                                     <tr>
-                                        <td style="width: 3%;">
-                                            <?php echo ++$bilNum; ?>
-                                        </td>
-
-                                        <td class="" style="width: 15%;">
-
-                                            <?php echo $Staff_name; ?>
-                                        </td>
-
-                                        <td class="" style="width: 30%;">
-
-                                            <?php echo $Staff_name; ?>
-                                        </td>
-
-                                        <td style="width: 20%;">
-                                            <span><?php echo $Staff_id; ?></span>
-                                        </td>
-
-                                        <td style="width: 10%;"><?php echo $Staff_type; ?></td>
-
-                                        <td style="width: 10%;"><?php echo $Staff_type; ?></td>
-
-                                        <td style="width: 12%;">
-                                            <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
-                                                Lihat
-                                            </button>
-                                        </td>
+                                        <th>Bil</th>
+                                        <th>Anjuran</th>
+                                        <th>
+                                            <div class="iCEllipsis">Tempat</div>
+                                        </th>
+                                        <th>Tarikh</th>
+                                        <th>Kapasiti Peserta</th>
+                                        <th>Kekosongan</th>
+                                        <th>Daftar Penyertaan</th>
                                     </tr>
+                                </thead>
+                                <tbody>
 
-                                <?php
-                                } ?>
+                                    <?php
+                                    foreach ($result as $row) {
+
+                                        $organize = $row["Organize"];
+                                        $venue = $row['Venue'];
+                                        $dateStart = $row['DateStart'];
+                                        $capacity = $row['Capacity'];
+                                        $vacancy = $row['Vacancy'];
+                                        $marriageCourseID = $row['Marriage_Course_Id'];
+                                    ?>
+                                        <tr>
+                                            <td style="width: 3%;">
+                                                <?php echo ++$bilNum; ?>
+                                            </td>
+
+                                            <td class="" style="width: 15%;">
+
+                                                <?php echo $organize; ?>
+                                            </td>
+
+                                            <td class="" style="width: 30%;">
+
+                                                <?php echo $venue; ?>
+                                            </td>
+
+                                            <td style="width: 20%;">
+                                                <span><?php echo $dateStart; ?></span>
+                                            </td>
+
+                                            <td style="width: 10%;"><?php echo $capacity; ?></td>
+
+                                            <td style="width: 10%;"><?php echo $vacancy; ?></td>
+
+                                            <td style="width: 12%;">
+                                                <a href="../../../public/index.php?marriageCourseID=<?php echo $marriageCourseID; ?>">DAFTAR SEKARANG</a>
+                                            </td>
+                                        </tr>
+
+                                    <?php
+                                    } ?>
 
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
 
-
+                        </div>
 
                     </div>
                 </div>
@@ -163,9 +170,14 @@ if (!isset($_SESSION['currentUserIC'])) {
         </section>
 
 
-        <!-- Footer -->
+
+
         <?php
+        // Footer 
         include_once('../Common/footer.html');
+
+        //Logout Model
+        include_once('../Common/logoutModel.html');
         ?>
 
     </div>
