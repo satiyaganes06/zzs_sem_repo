@@ -1,5 +1,3 @@
-
-
 <?php
 
     // Start up your PHP Session
