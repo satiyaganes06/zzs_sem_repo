@@ -62,10 +62,15 @@ class MarriagePreparationCourseController
         header('Location: ../app/View/MarriageCourse/ListOfApplicantMPCView.php');
     }
 
-    public function getMPCApplicantInfo()
+    public function getMPCApplicantInfo($organize, $venue, $dateStart, $dateFinish)
     {
         session_start();
         $applicantIC = $_SESSION['currentUserIC'];
+        $_SESSION['organize']=$organize;
+        $_SESSION['venue']=$venue;
+        $_SESSION['dateStart']=$dateStart;
+        $_SESSION['dateFinish']=$dateFinish;
+
         $applicantInfo = $this->applicantModel->getApplicantProfileInfo($applicantIC);
 
         header('Location: ../app/View/MarriageCourse/UploadProofOfPaymentMPCView.php?applicantInfo='.  urlencode(serialize($applicantInfo)));

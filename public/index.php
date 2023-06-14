@@ -234,9 +234,17 @@ switch ($action) {
         break;
 
     case 'getMPCApplicantInfo':
+        $from = isset($_GET['from']) ? $_GET['from'] : '';
 
-        $marriagePreparationCourseController->getMPCApplicantInfo();
+        if ($from = 'MPCView') {
+            $organize = isset($_GET['organize']) ? $_GET['organize'] : '';
+            $venue = isset($_GET['venue']) ? $_GET['venue'] : '';
+            $dateStart = isset($_GET['dateStart']) ? $_GET['dateStart'] : '';
+            $dateFinish = isset($_GET['dateFinish']) ? $_GET['dateFinish'] : '';
 
+
+            $marriagePreparationCourseController->getMPCApplicantInfo($organize, $venue, $dateStart, $dateFinish);
+        }
         break;
 
     case 'uploadProofOfPaymentMPC':
@@ -290,12 +298,12 @@ switch ($action) {
         $marriageRegistrationController->insertWaliInfo($waliIc, $waliAddress, $waliBirthDate, $waliAge, $waliName, $relation, $waliNumberPhone);
 
 
-             break;
+        break;
     case 'updateProfile':
         $occupationType = $_POST['OccupationType'];
         $umur = $_POST['Applicant_umur'];
         $tarikhTL = $_POST['Applicant_tarikhL'];
-        
+
         $jantina = $_POST['Applicant_jantina'];
         $bangsa = $_POST['Applicant_bangsa'];
         $email = $_POST['Applicant_email'];
