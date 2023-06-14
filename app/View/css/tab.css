@@ -1,0 +1,31 @@
+.nav-tabs .nav-item .nav-link {
+    border-radius: 20px;
+    margin-right: 5px;
+  }
+  
+  .nav-tabs .nav-item .nav-link.active {
+    color: #0a0a0a;
+    background-color: #ffd268;
+    border: 3px solid #ffd268;
+    border-radius: 20px;
+    margin-right: 5px;
+  }
+
+  .nav-tabs .nav-item .nav-link:hover {
+    color: #0a0a0a;
+    background-color: #ffffff;
+    border: 3px solid #ffffff;
+    border-radius: 20px;
+    margin-right: 5px;
+  }
+  
+  .tab-content .tab-pane {
+    color: #000000;
+    min-height: 200px;
+    height: auto;
+  }
+
+  .mainContentBg th ,td{
+    width: 20%;
+  }
+

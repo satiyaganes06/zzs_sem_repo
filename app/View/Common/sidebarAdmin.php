@@ -109,7 +109,7 @@ if ($route == 'viewProfile') {
                         <a class="list-group-item
                                 list-group-item-action <?php echo $listApplicantMPCRoute ?>
                                 px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../MarriageCourse/ListOfApplicantMPCView.php">
+                                list-group-item-light" href="../../../public/index.php?action=viewListOfApplicantMPC">
                             SENARAI PEMOHON PRA-PERKAHWINAN
                         </a>
 
@@ -130,7 +130,7 @@ if ($route == 'viewProfile') {
                         <a class="list-group-item
                                 list-group-item-action <?php echo $manageMPC ?>
                                 px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../MarriageCourse/ManageMPCView.php">
+                                list-group-item-light" href="../../../public/index.php?action=viewlistOfMPC&organize=all&from=manageMPC">
                             MAKLUMAT KURSUS PRA PERKAHWINAN
                         </a>
                     </div>

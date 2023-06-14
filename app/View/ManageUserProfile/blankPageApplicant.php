@@ -17,9 +17,13 @@ if (!isset($_SESSION['currentUserIC'])) {
 } else {
 
   // Sidebar Active path
-  $_SESSION['route'] = 'MPCView';
+  $_SESSION['route'] = 'appIncentiveView';
 
-  $result = $_SESSION['listOfMPC'];
+  // Retrieve the serialized and URL-encoded data from the URL parameter
+  //$encodedData = $_GET['returnInfo'];
+
+  // Decode the URL-encoded data and unserialize it
+  //$decodedApplicantData = unserialize(urldecode($encodedData));
 }
 ?>
 
@@ -86,76 +90,7 @@ if (!isset($_SESSION['currentUserIC'])) {
           <!-- href="../../Config/logout.php" -->
           <div class="mainContentBg text-center p-3">
 
-          <h2 id="contentTitle">Marriage Preparation Course</h2>
-
-<!-- YOUR CONTENT HERE -->
-
-<form action="" method="post">
-    <label for="organize">Anjuran</label>
-    <input type="text" name="organize">&nbsp;&nbsp;
-    <input type="submit" value="Search">
-</form>
-
-<div id="inMainContentOutline" class="table-responsive p-4">
-
-    <table class="table table-bordered border-dark mb-0 align-middle">
-        <thead class="tableHeaderBg">
-            <tr>
-                <th>Bil</th>
-                <th>Anjuran</th>
-                <th>
-                    <div class="iCEllipsis">Tempat</div>
-                </th>
-                <th>Tarikh</th>
-                <th>Kapasiti Peserta</th>
-                <th>Kekosongan</th>
-                <th>Daftar Penyertaan</th>
-            </tr>
-        </thead>
-        <tbody>
-
-            <?php
-            foreach ($result as $row) {
-                echo $result["Venue"];
-                $organize = $row["Organize"];
-                $venue = $row['Venue'];
-                $dateStart = $row['DateStart'];
-                $capacity = $row['Capacity'];
-                $vacancy = $row['Vacancy'];
-                $marriageCourseID = $row['Marriage_Course_Id'];
-            ?>
-                <tr>
-                    <td style="width: 3%;">
-                        <?php echo ++$bilNum; ?>
-                    </td>
-
-                    <td class="" style="width: 15%;">
-                        <?php echo $organize; ?>
-                    </td>
-
-                    <td class="" style="width: 30%;">
-                        <?php echo $venue; ?>
-                    </td>
-
-                    <td style="width: 20%;">
-                        <span><?php echo $dateStart; ?></span>
-                    </td>
-
-                    <td style="width: 10%;"><?php echo $capacity; ?></td>
-
-                    <td style="width: 10%;"><?php echo $vacancy; ?></td>
-
-                    <td style="width: 12%;">
-                        <a href="../../../public/index.php?marriageCourseID=<?php echo $marriageCourseID; ?>">DAFTAR SEKARANG</a>
-                    </td>
-                </tr>
-
-            <?php
-            } ?>
-
-
-        </tbody>
-    </table>
+            <!-- YOUR CONTENT HERE -->
 
           </div>
         </div>

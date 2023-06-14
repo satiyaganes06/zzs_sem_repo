@@ -3,8 +3,7 @@
     // Start up your PHP Session
     session_start();
 
-    //Decluration
-    $encodedData;
+    $decodedApplicantData;
     $decodedAdminData;
 
     //If the user is not logged in send him/her to the login form
@@ -22,6 +21,11 @@
 
         //Sidebar Active path
         $_SESSION['route'] = 'marriageRegistrationStatus';
+         // Retrieve the serialized and URL-encoded data from the URL parameter
+      $encodedData = $_GET['returnInfo'];
+      
+      // Decode the URL-encoded data and unserialize it
+      $decodedApplicantData = unserialize(urldecode($encodedData));
     }
 
     
@@ -91,6 +95,7 @@
 
 
                         <div id="inMainContentOutline" class="table-responsive p-4">
+                            <form action="../../../public/index.php?action=updateMarriageRegistrationDetail" id="" method="post">
                         <div class="section">
                             <label id="sectonTitle">MAKLUMAT PERKAHWINAN</label>
                         </div>
@@ -100,40 +105,27 @@
 <tr>
     <th scope="row">Tarikh Mohon :</th>
     <td>
-        
+    <div class="form form-width">
+            <input type="date" id="formDate" name="requestDate" class="form-control form-control-sm" value=""/>
+        </div>
     </td>
 
-    <th scope="row">Tempat Kahwin :</th>
-    <td>
-        
-        
-    </td>
+    
 </tr>
 
 <tr>
     <th scope="row">Nama Pemohon :</th>
     <td>
-        
+      <?php echo $decodedApplicantData['ApplicantName']; ?>
     </td>
 
-    <th scope="row">Negara :</th>
-    <td>
-        <div class="form form-width">
-            <input type="text" id="formJantina" name="jantina" class="form-control form-control-sm" value=""/>
-        </div>
-    </td>
 </tr>
 
 <tr>
-    <th scope="row">Nama Pasangan :</th>
+    <th scope="row">IC Pasangan :</th>
     <td>
-        
-    </td>
-
-    <th scope="row">Negeri :</th>
-    <td>
-        <div class="form form-width">
-            <input type="text" id="formBangsa" name="bangsa" class="form-control form-control-sm" value=""/>
+    <div class="form form-width">
+            <input type="text" id="formPartnerIC" name="partnerIC" class="form-control form-control-sm" value=""/>
         </div>
     </td>
     
@@ -153,7 +145,7 @@
     <th scope="row">Tarikh Akad Nikah :</th>
     <td>
         <div class="form form-width">
-            <input type="text" id="formNama" name="nama" class="form-control form-control-sm" value=""/>
+            <input type="text" id="formMarriageDate" name="marriageDate" class="form-control form-control-sm" value=""/>
         </div>
     </td>
 
@@ -161,7 +153,7 @@
     <td>
         
         <div class="form form-width">
-            <input type="text" id="formUmur" name="umur" class="form-control form-control-sm" value=""/>
+            <input type="text" id="formDowry" name="dowry" class="form-control form-control-sm" value=""/>
         </div>
     </td>
 </tr>
@@ -170,14 +162,14 @@
     <th scope="row">Alamat Tempat Perkahwinan :</th>
     <td>
         <div class="form form-width">
-            <input type="text" id="formTL" name="tarikhL" class="form-control form-control-sm" value="" placeholder="YYYY-MM-DD"/>
+            <input type="text" id="formMarriageAddress" name="marriageAdrress" class="form-control form-control-sm" value="" placeholder="YYYY-MM-DD"/>
         </div>
     </td>
 
     <th scope="row">Hantaran :</th>
     <td>
         <div class="form form-width">
-            <input type="text" id="formJantina" name="jantina" class="form-control form-control-sm" value=""/>
+            <input type="text" id="formGift" name="gift" class="form-control form-control-sm" value=""/>
         </div>
     </td>
 </tr>
@@ -186,7 +178,7 @@
     <th scope="row">Jenis Mas Kahwin :</th>
     <td>
     <div class="form form-width">
-            <input type="text" id="formJantina" name="jantina" class="form-control form-control-sm" value=""/>
+            <input type="text" id="formDowryType" name="dowryType" class="form-control form-control-sm" value=""/>
         </div>
     </td>
 
@@ -205,7 +197,7 @@
     <th scope="row">Nama Wali :</th>
     <td>
         <div class="form form-width">
-            <input type="text" id="formBangsa" name="bangsa" class="form-control form-control-sm" value=""/>
+            <input type="text" id="formWaliName" name="waliName" class="form-control form-control-sm" value=""/>
         </div>
         
     </td>
@@ -214,7 +206,7 @@
     <td>
         
     <div class="form form-width">
-            <input type="text" id="formBangsa" name="bangsa" class="form-control form-control-sm" value=""/>
+            <input type="text" id="formRelation" name="relation" class="form-control form-control-sm" value=""/>
         </div>
     </td>
 </tr>
@@ -223,14 +215,14 @@
     <th scope="row">No. Kad Pengenalan Wali :</th>
     <td>
     <div class="form form-width">
-            <input type="text" id="formBangsa" name="bangsa" class="form-control form-control-sm" value=""/>
+            <input type="text" id="formWaliIC" name="waliIC" class="form-control form-control-sm" value=""/>
         </div>
     </td>
 
     <th scope="row">Tarikh Nikah Ibu Bapa :</th>
     <td>
         <div class="form form-width">
-            <input type="text" id="formJantina" name="jantina" class="form-control form-control-sm" value=""/>
+            <input type="text" id="formParentMarriageDate" name="parentMarriageDate" class="form-control form-control-sm" value=""/>
         </div>
     </td>
 </tr>
@@ -239,24 +231,23 @@
     <th scope="row">Alamat Wali :</th>
     <td>
     <div class="form form-width">
-            <input type="text" id="formBangsa" name="bangsa" class="form-control form-control-sm" value=""/>
+            <input type="text" id="formWaliAddress" name="waliAddress" class="form-control form-control-sm" value=""/>
         </div>
     </td>
 
-    <th scope="row">No. Sijil Nikah Ibu Bapa :</th>
+    <th scope="row">No. Telefon Wali :</th>
     <td>
-        <div class="form form-width">
-            <input type="text" id="formBangsa" name="bangsa" class="form-control form-control-sm" value=""/>
+    <div class="form form-width">
+            <input type="text" id="formNoTelephoneWali" name="noTelWali" class="form-control form-control-sm" value=""/>
         </div>
     </td>
-    
 </tr>
 
 <tr>
 <th scope="row">Tarikh Lahir Wali :</th>
     <td>
         <div class="form form-width">
-            <input type="text" id="formBangsa" name="bangsa" class="form-control form-control-sm" value=""/>
+            <input type="text" id="formWaliBirthDate" name="waliBirthDate" class="form-control form-control-sm" value=""/>
         </div>
     </td>
 </tr>
@@ -265,7 +256,7 @@
 <th scope="row">Umur Wali :</th>
     <td>
         <div class="form form-width">
-            <input type="text" id="formBangsa" name="bangsa" class="form-control form-control-sm" value=""/>
+            <input type="text" id="formWaliAge" name="waliAge" class="form-control form-control-sm" value=""/>
         </div>
     </td>
 </tr>

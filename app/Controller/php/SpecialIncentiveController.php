@@ -6,7 +6,7 @@
         private $heirInfoModel;
         private $marriageInfoModel;
         private $incentiveDocModel;
-    }
+    
 
     //SpecialIncentive controller's constructor
     public function __construct($specialIncentiveModel, $applicantModel, $applicantOccupationModel, $heirInfoModel, $marriageInfoModel, $incentiveDocModel) {
@@ -17,4 +17,7 @@
         $this->marriageInfoModel = $marriageInfoModel;
         $this->incentiveDocModel = $incentiveDocModel;
     }
-?>
+
+}
+
+    //Applicant special incentive application function 

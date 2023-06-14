@@ -20,6 +20,14 @@
     else if($route == 'MarriageRegistrationPayment'){
         $marriageRegistrationPaymentRoute = 'active' ;
     } 
+
+    else if($route == 'MPCView'){
+        $MPCViewRoute = 'active' ;
+    } 
+    
+    else if($route == 'appIncentiveView'){
+        $appIncentiveViewRoute = 'active' ;
+    } 
 ?>
 
 <html>
@@ -78,11 +86,11 @@
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-mdb-parent="#accordionFlushExample">
                         <div class="accordion-body">
 
-                            <a class="list-group-item
+                            <a class="list-group-item <?php echo $MPCViewRoute ?>
                                 list-group-item-action 
                                 px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../blankPage.php">
-                                Messages
+                                list-group-item-light" href="../../../public/index.php?action=viewlistOfMPC&organize=all&from=MPCView">
+                                Kursus Permohonan Berkahwin
                             </a>
                         </div>
                     </div>
@@ -104,7 +112,7 @@
                             <a class="list-group-item
                                 list-group-item-action px-3 pt-1
                                 pb-1 border-0
-                                list-group-item-light" href="../blankPage.html">Settings</a>
+                                list-group-item-light" href="../MarriageRequest/RequestMarriageView.php?display=0">Settings</a>
                         </div>
                     </div>
                 </div>
@@ -257,9 +265,9 @@
                     <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-mdb-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             
-                            <a class="list-group-item 
+                            <a class="list-group-item <?php echo $appIncentiveViewRoute ?>
                             list-group-item-action border-0 px-3 pt-1 pb-1 
-                            list-group-item-light" href="../ManageSpecialIncentive/applicantIncentiveView.php">
+                            list-group-item-light" href="../../../public/index.php?action=viewProfile&from=insentifPemohon">
                             Permohonan
                             </a>
                             
