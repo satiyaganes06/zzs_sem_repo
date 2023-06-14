@@ -24,6 +24,12 @@
 
         //Sidebar Active path
         $_SESSION['route'] = 'viewProfile';
+
+        // Retrieve the serialized and URL-encoded data from the URL parameter
+        $applicantEncodedData = $_GET['applicantInfo'];
+
+        // Decode the URL-encoded data and unserialize it
+        $decodedApplicantData = unserialize(urldecode($applicantEncodedData));
     }
 
     
@@ -135,11 +141,20 @@
                                                     <td><?php echo $decodedApplicantData['ApplicantEmail'];
                                                         ?></td>
 
+                                                    <th scope="row">No. Telefon(Pejabat) :</th>
+                                                    <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
+                                                        ?></td>
                                                 </tr>
 
                                                 <tr>
                                                     <th scope="row">Alamat :</th>
                                                     <td><?php echo $decodedApplicantData['ApplicantAddress'];
+                                                        ?></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th scope="row">Alamat Tempat Kerja :</th>
+                                                    <td><?php echo $decodedApplicantData['ApplicantWorkAddress'];
                                                         ?></td>
                                                 </tr>
 
@@ -173,23 +188,13 @@
                                                             ?></td>
                                                 </tr>
 
-                                                <tr>
-                                                    <th scope="row">Alamat Tempat Kerja :</th>
-                                                    <td><?php echo $decodedApplicantData['ApplicantWorkAddress'];
-                                                        ?></td>
-                                                </tr>
-
-                                                <tr>
-                                                    <th scope="row">No. Telefon(Pejabat) :</th>
-                                                    <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
-                                                        ?></td>
-                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
-                                    <form action="">
+                                    <form action="../../../public/index.php?action=uploadProofOfPaymentMPC&typeOfFee=MPCPayment">
                                         <label for="proofOfPayment">Bukti Pembayaran</label>
                                         <input type="file" name="proofOfPayment">
+                                        <input type="submit" value="submit">
                                     </form>
 
                         

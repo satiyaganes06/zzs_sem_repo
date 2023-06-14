@@ -5,13 +5,15 @@ class MarriagePreparationCourseController
     private $marriageCourseInfoModel;
     private $marriageCourseApplicationModel;
     private $applicantModel;
+    private $paymentModel;
 
     //Login controller's constructor
-    public function __construct($marriageCourseInfoModel, $marriageCourseApplicationModel, $applicantModel)
+    public function __construct($marriageCourseInfoModel, $marriageCourseApplicationModel, $applicantModel, $paymentModel)
     {
         $this->marriageCourseInfoModel = $marriageCourseInfoModel;
         $this->marriageCourseApplicationModel = $marriageCourseApplicationModel;
         $this->applicantModel = $applicantModel;
+        $this->paymentModel = $paymentModel;
     }
 
     public function viewListOfMPC($organize, $from)
@@ -45,31 +47,56 @@ class MarriagePreparationCourseController
         $applicantNameList = [];
         $MPCApplicant = $this->marriageCourseApplicationModel->getListOfApplicationMPC();
 
-        // for ($x = 0; $x <= count($MPCApplicant); $x++) {
-        //     foreach ($MPCApplicant as $row) {
-        //         //$applicantNameList[$x] = $row["Applicant_IC"];
-        //         $applicant = $this->applicantModel->getApplicantProfileInfo($row["Applicant_IC"]);
-
-        //     }
-        //     $applicantNameList[$x] = $applicant["ApplicantName"];
-        //     echo $applicantNameList[$x] . "<br>";
-        // }
-
         $x = 0;
         foreach ($MPCApplicant as $row) {
-            //$applicantNameList[$x] = $row["Applicant_IC"];
+
             $applicant = $this->applicantModel->getApplicantProfileInfo($row["Applicant_IC"]);
             $applicantNameList[$x] = $applicant["ApplicantName"];
-            // echo $applicantNameList[$x] . "<br>";
+
             $x++;
         }
 
-        // echo count($MPCApplicant);
-        // echo $applicantNameList[0];
-        // echo $applicantNameList[1];
-
         $_SESSION['MPCApplicant']=$MPCApplicant;
         $_SESSION['applicantName']=$applicantNameList;
+
         header('Location: ../app/View/MarriageCourse/ListOfApplicantMPCView.php');
+    }
+
+    public function getMPCApplicantInfo()
+    {
+        session_start();
+        $applicantIC = $_SESSION['currentUserIC'];
+        $applicantInfo = $this->applicantModel->getApplicantProfileInfo($applicantIC);
+
+        header('Location: ../app/View/MarriageCourse/UploadProofOfPaymentMPCView.php?applicantInfo='.  urlencode(serialize($applicantInfo)));
+    }
+    
+    public function uploadProofOfPaymentMPC($typeOfFee)
+    {
+        session_start();
+        $applicantIC = $_SESSION['currentUserIC'];
+        $this->paymentModel->uploadPayment($typeOfFee, $applicantIC);
+
+        if($this->paymentModel->uploadPayment($typeOfFee, $applicantIC)){
+
+            // Display success message using JavaScript
+            $_SESSION['alert-success'] = "Berjaya memuat naik bukti pembayaran.";
+
+            // Redirect the page using JavaScript
+            // echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
+            header('Location: ../app/View/MarriageCourse/MPCView.php');
+            
+
+        }else{
+
+            // Display success message using JavaScript
+            $_SESSION['alert-fail'] = "Kegagalan memuat naik bukti pembayaran.";
+
+            // Redirect the page using JavaScript
+            // echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
+            header('Location: ../app/View/MarriageCourse/MPCView.php');
+
+
+        }
     }
 }

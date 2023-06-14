@@ -62,7 +62,7 @@ $loginController = new LoginController($accountModel);
 $userProfileController = new UserProfileController($accountModel, $applicantModel, $adminModel, $staffModel);
 $resetPasswordController = new ResetPasswordController($accountModel, $applicantModel, $staffModel);
 $marriageRegistrationController = new MarriageRegistrationController($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel);
-$marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel, $applicantModel);
+$marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel, $applicantModel, $paymentModel);
 $requestMarriageController = new RequestMarriageController($marriageInfoModel, $marriageRequestInfoModel, $applicantModel);
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
@@ -218,6 +218,7 @@ switch ($action) {
 
         break;
 
+        //Module 2 Section Start
     case 'viewlistOfMPC':
         $organize = isset($_GET['organize']) ? $_GET['organize'] : '';
         $from = isset($_GET['from']) ? $_GET['from'] : '';
@@ -232,6 +233,19 @@ switch ($action) {
 
         break;
 
+    case 'getMPCApplicantInfo':
+
+        $marriagePreparationCourseController->getMPCApplicantInfo();
+
+        break;
+
+    case 'uploadProofOfPaymentMPC':
+        $typeOfFee = isset($_GET['typeOfFee']) ? $_GET['typeOfFee'] : '';
+
+        $marriagePreparationCourseController->uploadProofOfPaymentMPC($typeOfFee);
+
+        break;
+
     case 'getApplicantAndPartnerInfo':
 
         $partnerIC = $_POST['partnerIC'];
@@ -239,6 +253,8 @@ switch ($action) {
         $requestMarriageController->getApplicantAndPartnerInfo($partnerIC, $applicantIC);
 
         break;
+
+        //Module 2 Section End ^^
 
     case 'marriageRegistrationWithApproval':
         $marriageId = $_POST['noAkuan'];

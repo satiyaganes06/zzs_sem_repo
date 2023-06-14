@@ -146,7 +146,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                     <td style="width: 10%;"><?php echo $vacancy; ?></td>
 
                     <td style="width: 12%;">
-                        <a href="../../../public/index.php?marriageCourseID=<?php echo $marriageCourseID; ?>">DAFTAR SEKARANG</a>
+                        <a href="../../../public/index.php?action=getMPCApplicantInfo">DAFTAR SEKARANG</a>
                     </td>
                 </tr>
 
