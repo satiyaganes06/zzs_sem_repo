@@ -104,21 +104,21 @@ if ($route == 'viewProfile') {
                         <a class="list-group-item
                                 list-group-item-action <?php echo $listApplicantMPCRoute ?>
                                 px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../../../public/index.php?action=viewListOfApplicantMPC">
+                                list-group-item-light" href="../../../public/index.php?action=viewListOfApplicantMPC&from=listOFApplicant">
                             SENARAI PEMOHON PRA-PERKAHWINAN
                         </a>
 
                         <a class="list-group-item
                                 list-group-item-action <?php echo $newApplicant ?>
                                 px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../MarriageCourse/NewApplicantView.php">
+                                list-group-item-light" href="../../../public/index.php?action=viewListOfApplicantMPC&from=newApplicant">
                             PERMOHONAN BARU
                         </a>
 
                         <a class="list-group-item
                                 list-group-item-action <?php echo $result ?>
                                 px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../MarriageCourse/ResultView.php">
+                                list-group-item-light" href="../../../public/index.php?action=viewListOfApplicantMPC&from=giveResultApplicant">
                             KEPUTUSAN PEMOHON
                         </a>
 

@@ -41,7 +41,7 @@ class MarriagePreparationCourseController
         }
     }
 
-    public function viewListOfApplicantMPC()
+    public function viewListOfApplicantMPC($from)
     {
         // session_start();
         $applicantNameList = [];
@@ -56,33 +56,39 @@ class MarriagePreparationCourseController
             $x++;
         }
 
-        $_SESSION['MPCApplicant']=$MPCApplicant;
-        $_SESSION['applicantName']=$applicantNameList;
+        $_SESSION['MPCApplicant'] = $MPCApplicant;
+        $_SESSION['applicantName'] = $applicantNameList;
 
-        header('Location: ../app/View/MarriageCourse/ListOfApplicantMPCView.php');
+        if ($from == 'listOFApplicant') {
+            header('Location: ../app/View/MarriageCourse/ListOfApplicantMPCView.php');
+        } elseif ($from == 'newApplicant') {
+            header('Location: ../app/View/MarriageCourse/NewApplicantView.php');
+        } else {
+            header('Location: ../app/View/MarriageCourse/ResultView.php');
+        }
     }
 
     public function getMPCApplicantInfo($organize, $venue, $dateStart, $dateFinish)
     {
         session_start();
         $applicantIC = $_SESSION['currentUserIC'];
-        $_SESSION['organize']=$organize;
-        $_SESSION['venue']=$venue;
-        $_SESSION['dateStart']=$dateStart;
-        $_SESSION['dateFinish']=$dateFinish;
+        $_SESSION['organize'] = $organize;
+        $_SESSION['venue'] = $venue;
+        $_SESSION['dateStart'] = $dateStart;
+        $_SESSION['dateFinish'] = $dateFinish;
 
         $applicantInfo = $this->applicantModel->getApplicantProfileInfo($applicantIC);
 
-        header('Location: ../app/View/MarriageCourse/UploadProofOfPaymentMPCView.php?applicantInfo='.  urlencode(serialize($applicantInfo)));
+        header('Location: ../app/View/MarriageCourse/UploadProofOfPaymentMPCView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
     }
-    
+
     public function uploadProofOfPaymentMPC($typeOfFee)
     {
         session_start();
         $applicantIC = $_SESSION['currentUserIC'];
         $this->paymentModel->uploadPayment($typeOfFee, $applicantIC);
 
-        if($this->paymentModel->uploadPayment($typeOfFee, $applicantIC)){
+        if ($this->paymentModel->uploadPayment($typeOfFee, $applicantIC)) {
 
             // Display success message using JavaScript
             $_SESSION['alert-success'] = "Berjaya memuat naik bukti pembayaran.";
@@ -90,9 +96,7 @@ class MarriagePreparationCourseController
             // Redirect the page using JavaScript
             // echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
             header('Location: ../app/View/MarriageCourse/MPCView.php');
-            
-
-        }else{
+        } else {
 
             // Display success message using JavaScript
             $_SESSION['alert-fail'] = "Kegagalan memuat naik bukti pembayaran.";
@@ -100,8 +104,6 @@ class MarriagePreparationCourseController
             // Redirect the page using JavaScript
             // echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
             header('Location: ../app/View/MarriageCourse/MPCView.php');
-
-
         }
     }
 }

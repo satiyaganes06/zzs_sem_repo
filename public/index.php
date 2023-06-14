@@ -228,8 +228,9 @@ switch ($action) {
         break;
 
     case 'viewListOfApplicantMPC':
+        $from = isset($_GET['from']) ? $_GET['from'] : '';
 
-        $marriagePreparationCourseController->viewListOfApplicantMPC();
+        $marriagePreparationCourseController->viewListOfApplicantMPC($from);
 
         break;
 
