@@ -19,11 +19,7 @@ if (!isset($_SESSION['currentUserIC'])) {
   // Sidebar Active path
   $_SESSION['route'] = 'MPCView';
 
-  // Retrieve the serialized and URL-encoded data from the URL parameter
-  $encodedData = $_GET['returnInfo'];
-
-  // Decode the URL-encoded data and unserialize it
-  $decodedApplicantData = unserialize(urldecode($encodedData));
+  $result = $_SESSION['listOfMPC'];
 }
 ?>
 
@@ -120,7 +116,7 @@ if (!isset($_SESSION['currentUserIC'])) {
 
             <?php
             foreach ($result as $row) {
-
+                echo $result["Venue"];
                 $organize = $row["Organize"];
                 $venue = $row['Venue'];
                 $dateStart = $row['DateStart'];

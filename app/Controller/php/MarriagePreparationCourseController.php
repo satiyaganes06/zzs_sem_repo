@@ -17,8 +17,8 @@ class MarriagePreparationCourseController
     public function viewListOfMPC($organize, $from)
     {
         $listOfMPC = $this->marriageCourseInfoModel->getListOfMPC($organize);
-
-        session_start();
+        // echo $listOfMPC['Venue'];
+        // //session_start();
 
         $_SESSION['listOfMPC'] = $listOfMPC;
 
