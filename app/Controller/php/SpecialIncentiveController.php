@@ -18,6 +18,19 @@
         $this->incentiveDocModel = $incentiveDocModel;
     }
 
-}
-
     //Applicant special incentive application function 
+    //Retrieve special incentive list from special incentive model
+    public function viewSpecialIncentiveListFunction($from) {
+
+        $listOfSpecialIncentive = $this->specialIncentiveModel->getAllSpecialIncentiveInfo();
+
+        session_start();
+        $_SESSION['listOfSpecialIncentive'] = $listOfSpecialIncentive;
+        
+            ?>
+                <script>
+                    window.location = "../app/View/ManageSpecialIncentive/adminIncentiveListView.php";
+                </script>
+            <?php
+    }
+}

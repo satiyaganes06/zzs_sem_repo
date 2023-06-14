@@ -449,11 +449,116 @@ if (!isset($_SESSION['currentUserIC'])) {
                 </form>
 
               </div>
+
               <div class="tab-pane fade" id="ex-with-icons-tabs-5" role="tabpanel" aria-labelledby="ex-with-icons-tab-5">
-                MAKLUMAT WARIS
+
+                <!-- form applicant's heir info update -->
+                <form action="../../../public/index.php?action=updateHeir" method="post" onsubmit="return userHeirUpdateValidate();">
+
+                  <!-- Content 5 Maklumat Waris-->
+                  <div id="inMainContentOutline" class="table-responsive p-4">
+                    <table class="table table-borderless table-sm">
+
+                      <tbody>
+                        <tr>
+                          <th scope="row">Nama Waris :</th>
+                          <td>
+                            <div class="form form-width">
+                              <input type="text" id="formHeirName" name="Heir_name" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirName']; ?>" />
+                            </div>
+                          </td>
+
+                          <th scope="row">Hubungan :</th>
+                          <td>
+                            <div class="form form-width">
+                              <input type="text" id="formHeirRelationship" name="Heir_relationship" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirRelationship']; ?>" />
+                            </div>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">No. Tel :</th>
+                          <td>
+                            <div class="form form-width">
+                              <input type="text" id="formHeirPhoneNo" name="Heir_PhoneNo" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirPhoneNo']; ?>" />
+                            </div>
+                          </td>
+
+                          <th scope="row">Email :</th>
+                          <td>
+                            <div class="form form-width">
+                              <input type="text" id="formHeirEmail" name="Heir_email" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirEmail']; ?>" />
+                            </div>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <div class="d-flex justify-content-center">
+                              <button class="btn btn-block mt-3 text-dark" type="submit" data-mdb-ripple-color="dark">Simpan</button>
+                            </div>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </form>
               </div>
+
               <div class="tab-pane fade" id="ex-with-icons-tabs-6" role="tabpanel" aria-labelledby="ex-with-icons-tab-6">
-                DOKUMEN SOKONGAN
+                <!-- form applicant's special incentive supporting info update -->
+                <form action="../../../public/index.php?action=updateHeir" method="post" onsubmit="return userSpecialIncentiveDocUpdateValidate();">
+
+                  <!-- Content 5 Maklumat Waris-->
+                  <div id="inMainContentOutline" class="table-responsive p-4">
+                    <table>
+
+                      <tbody>
+                        <tr>
+                          <th scope="row">Nama Waris :</th>
+                          <td>
+                            <div class="form form-width">
+                              <input type="text" id="formHeirName" name="Heir_name" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirName']; ?>" />
+                            </div>
+                          </td>
+
+                          <th scope="row">Hubungan :</th>
+                          <td>
+                            <div class="form form-width">
+                              <input type="text" id="formHeirRelationship" name="Heir_relationship" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirRelationship']; ?>" />
+                            </div>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">No. Tel :</th>
+                          <td>
+                            <div class="form form-width">
+                              <input type="text" id="formHeirPhoneNo" name="Heir_PhoneNo" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirPhoneNo']; ?>" />
+                            </div>
+                          </td>
+
+                          <th scope="row">Email :</th>
+                          <td>
+                            <div class="form form-width">
+                              <input type="text" id="formHeirEmail" name="Heir_email" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirEmail']; ?>" />
+                            </div>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <div class="d-flex justify-content-center">
+                              <button class="btn btn-block mt-3 text-dark" type="submit" data-mdb-ripple-color="dark">Simpan</button>
+                            </div>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </form>
               </div>
             </div>
             <!-- Tabs content  -->
