@@ -40,6 +40,7 @@ class ApplicantModel {
 
     return $userinfo;
   }
+  
 
   //Get all applicant data
   public function getAllApplicantInfo() {

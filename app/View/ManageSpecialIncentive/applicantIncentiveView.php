@@ -356,93 +356,98 @@ if (!isset($_SESSION['currentUserIC'])) {
 
               <div class="tab-pane fade" id="ex-with-icons-tabs-4" role="tabpanel" aria-labelledby="ex-with-icons-tab-4">
 
-                <!-- Content 4 Maklumat Pekerjaan-->
-                <div id="inMainContentOutline" class="table-responsive p-4">
-                  <table class="table table-borderless table-sm">
+                <!-- form applicant's occupation info update -->
+                <form action="../../../public/index.php?action=updateOccupation" method="post" onsubmit="return userOccupationUpdateValidate();">
 
-                    <tbody>
-                      <tr>
-                        <th scope="row">Nama Pemohon :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantName'];
-                            ?></td>
+                  <!-- Content 4 Maklumat Pekerjaan-->
+                  <div id="inMainContentOutline" class="table-responsive p-4">
+                    <table class="table table-borderless table-sm">
 
-                        <th scope="row">No. Kad Pengenalan :</th>
-                        <td><?php echo $decodedApplicantData['Applicant_Ic'];
-                            ?></td>
-                      </tr>
+                      <tbody>
+                        <tr>
+                          <th scope="row">Nama Pemohon :</th>
+                          <td><?php echo $decodedApplicantData['ApplicantName'];
+                              ?></td>
 
-                      <tr>
-                        <th scope="row">Jawatan / Pekerjaan :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantPosition'];
-                            ?></td>
+                          <th scope="row">No. Kad Pengenalan :</th>
+                          <td><?php echo $decodedApplicantData['Applicant_Ic'];
+                              ?></td>
+                        </tr>
 
-                        <th scope="row">Jenis Pekerjaan :</th>
-                        <td>
-                          <div class="form form-width">
-                            <select class="browser-default custom-select-sm shadow rounded-3" name="User_type" required>
-                              <option class="text-muted" value="" disabled selected>Pilih</option>
-                              <option value="kerajaan">Kerajaan / Badan Berkanun</option>
-                              <option value="swasta">Kakitangan</option>
-                              <option value="sendiri">Bekerja Sendiri</option>
-                            </select>
-                          </div>
-                        </td>
-                      </tr>
+                        <tr>
+                          <th scope="row">Jawatan / Pekerjaan :</th>
+                          <td><?php echo $decodedApplicantData['ApplicantPosition'];
+                              ?></td>
 
-                      <tr>
-                        <th scope="row">Pendapatan :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantSalary'];
-                            ?></td>
+                          <th scope="row">Jenis Pekerjaan :</th>
+                          <td>
+                            <div class="form form-width">
+                              <select class="browser-default custom-select-sm shadow rounded-3" name="User_type" required>
+                                <option class="text-muted" value="" disabled selected>Pilih</option>
+                                <option value="kerajaan">Kerajaan / Badan Berkanun</option>
+                                <option value="swasta">Kakitangan</option>
+                                <option value="sendiri">Bekerja Sendiri</option>
+                              </select>
+                            </div>
+                          </td>
+                        </tr>
 
-                        <th scope="row">Nama Syarikat :</th>
-                        <td>
-                          <div class="form form-width">
-                            <input type="text" id="formCompanyName" name="Company_name" class="form-control form-control-sm" value="<?php echo $decodedApplicantOccupationData['EmployerName']; ?>" />
-                          </div>
-                        </td>
-                      </tr>
+                        <tr>
+                          <th scope="row">Pendapatan :</th>
+                          <td><?php echo $decodedApplicantData['ApplicantSalary'];
+                              ?></td>
 
-                      <tr>
-                        <th scope="row">Alamat Pejabat :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantWorkAddress'];
-                            ?></td>
-                      </tr>
+                          <th scope="row">Nama Syarikat :</th>
+                          <td>
+                            <div class="form form-width">
+                              <input type="text" id="formCompanyName" name="Company_name" class="form-control form-control-sm" value="<?php echo $decodedApplicantOccupationData['EmployerName']; ?>" />
+                            </div>
+                          </td>
+                        </tr>
 
-                      <tr>
-                        <th scope="row">No. Tel Pejabat :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
-                            ?></td>
-                      </tr>
+                        <tr>
+                          <th scope="row">Alamat Pejabat :</th>
+                          <td><?php echo $decodedApplicantData['ApplicantWorkAddress'];
+                              ?></td>
+                        </tr>
 
-                      <tr>
-                        <th scope="row">Nama Majikan :</th>
-                        <td>
-                          <div class="form form-width">
-                            <input type="text" id="formEmployerName" name="Employer_name" class="form-control form-control-sm" value="<?php echo $decodedApplicantOccupationData['EmployerName']; ?>" />
-                          </div>
-                        </td>
-                      </tr>
+                        <tr>
+                          <th scope="row">No. Tel Pejabat :</th>
+                          <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
+                              ?></td>
+                        </tr>
 
-                      <tr>
-                        <th scope="row">No. Tel Majikan :</th>
-                        <td>
-                          <div class="form form-width">
-                            <input type="text" id="formEmployerPhoneNo" name="Employer_phoneNo " class="form-control form-control-sm" value="<?php echo $decodedApplicantOccupationData['EmployerPhoneNo']; ?>" />
-                          </div>
-                        </td>
-                      </tr>
+                        <tr>
+                          <th scope="row">Nama Majikan :</th>
+                          <td>
+                            <div class="form form-width">
+                              <input type="text" id="formEmployerName" name="Employer_name" class="form-control form-control-sm" value="<?php echo $decodedApplicantOccupationData['EmployerName']; ?>" />
+                            </div>
+                          </td>
+                        </tr>
 
-                      <tr>
-                        <td>
-                          <div class="d-flex justify-content-center">
-                            <button class="btn btn-block mt-3 text-dark" type="submit" data-mdb-ripple-color="dark">Simpan</button>
-                          </div>
-                        </td>
-                      </tr>
+                        <tr>
+                          <th scope="row">No. Tel Majikan :</th>
+                          <td>
+                            <div class="form form-width">
+                              <input type="text" id="formEmployerPhoneNo" name="Employer_phoneNo " class="form-control form-control-sm" value="<?php echo $decodedApplicantOccupationData['EmployerPhoneNo']; ?>" />
+                            </div>
+                          </td>
+                        </tr>
 
-                    </tbody>
-                  </table>
-                </div>
+                        <tr>
+                          <td>
+                            <div class="d-flex justify-content-center">
+                              <button class="btn btn-block mt-3 text-dark" type="submit" data-mdb-ripple-color="dark">Simpan</button>
+                            </div>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </form>
+
               </div>
               <div class="tab-pane fade" id="ex-with-icons-tabs-5" role="tabpanel" aria-labelledby="ex-with-icons-tab-5">
                 MAKLUMAT WARIS

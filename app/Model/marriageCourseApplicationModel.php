@@ -10,7 +10,7 @@ class MarriageCourseApplicationModel
         $this->connect = $database;
     }
 
-    public function getListOfApplicantMPC()
+    public function getListOfApplicationMPC()
     {
 
         // Prepare SQL statement with placeholders to prevent SQL injection
@@ -20,7 +20,7 @@ class MarriageCourseApplicationModel
         $stmt->execute();
 
         //Store the result of user from mySQL
-        $MPCApplicantinfo = $stmt->fetch(PDO::FETCH_ASSOC);
+        $MPCApplicantinfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $MPCApplicantinfo;
     }

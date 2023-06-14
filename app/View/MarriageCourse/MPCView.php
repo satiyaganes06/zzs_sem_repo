@@ -20,6 +20,7 @@ if (!isset($_SESSION['currentUserIC'])) {
   $_SESSION['route'] = 'MPCView';
   $bilNum = 0;
   $result = $_SESSION['listOfMPC'];
+  $bilNum = 0;
 }
 ?>
 
@@ -44,7 +45,7 @@ if (!isset($_SESSION['currentUserIC'])) {
   <link rel="stylesheet" href="../../Bootstrap/mdb.min.css" />
 
   <!--CSS-->
-  <link rel="stylesheet" href="../css/viewApplicantProfileDetailsView.css">
+  <link rel="stylesheet" href="../css/viewListApplicantInterface.css">
   <link rel="stylesheet" href="../css/tab.css">
 
   <!-- Icon -->
@@ -115,13 +116,14 @@ if (!isset($_SESSION['currentUserIC'])) {
         <tbody>
 
             <?php
-            foreach ($result as $row1) {
-                $organize = $row1['Organize'];
-                $venue = $row1['Venue'];
-                $dateStart = $row1['DateStart'];
-                $capacity = $row1['Capacity'];
-                $vacancy = $row1['Vacancy'];
-                $marriageCourseID = $row1['Marriage_Course_Id'];
+            foreach ($result as $row) {
+                $organize = $row["Organize"];
+                $venue = $row['Venue'];
+                $dateStart = $row['DateStart'];
+                $dateFinish = $row['DateFinish'];
+                $capacity = $row['Capacity'];
+                $vacancy = $row['Vacancy'];
+                $marriageCourseID = $row['Marriage_Course_Id'];
             ?>
                 <tr>
                     <td style="width: 3%;">
@@ -145,7 +147,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                     <td style="width: 10%;"><?php echo $vacancy; ?></td>
 
                     <td style="width: 12%;">
-                        <a href="../../../public/index.php?marriageCourseID=<?php echo $marriageCourseID; ?>">DAFTAR SEKARANG</a>
+                        <a href="../../../public/index.php?action=getMPCApplicantInfo&from=MPCView&organize=<?php echo $organize;?>&venue=<?php echo $venue;?>&dateStart=<?php echo $dateStart;?>&dateFinish=<?php echo $dateFinish;?>">DAFTAR SEKARANG</a>
                     </td>
                 </tr>
 

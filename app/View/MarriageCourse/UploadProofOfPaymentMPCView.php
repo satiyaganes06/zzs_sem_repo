@@ -1,32 +1,42 @@
-
-
 <?php
 
-    // Start up your PHP Session
-    session_start();
+// Start up your PHP Session
+session_start();
 
-    //Decluration
-    $encodedData;
-    $decodedAdminData;
+//Decluration
+$encodedData;
+$decodedAdminData;
 
-    //If the user is not logged in send him/her to the login form
-    if(!isset($_SESSION['currentUserIC'])) {
+//If the user is not logged in send him/her to the login form
+if (!isset($_SESSION['currentUserIC'])) {
 
-        ?>
-            <script>
-                alert("Access denied !!!")
-                window.location = "../ManageLogin/adminLoginView.php";
-            </script>
-        <?php
+?>
+    <script>
+        alert("Access denied !!!")
+        window.location = "../ManageLogin/adminLoginView.php";
+    </script>
+<?php
 
-    }else{
+} else {
 
 
-        //Sidebar Active path
-        $_SESSION['route'] = 'viewProfile';
-    }
+    //Sidebar Active path
+    $_SESSION['route'] = 'viewProfile';
 
-    
+    // Retrieve the serialized and URL-encoded data from the URL parameter
+    $applicantEncodedData = $_GET['applicantInfo'];
+
+    // Decode the URL-encoded data and unserialize it
+    $decodedApplicantData = unserialize(urldecode($applicantEncodedData));
+
+    // Get MPC data from previous page
+    $organize = $_SESSION['organize'];
+    $venue = $_SESSION['venue'];
+    $dateStart = $_SESSION['dateStart'];
+    $dateFinish = $_SESSION['dateFinish'];
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +59,7 @@
     <link rel="stylesheet" href="../../Bootstrap/mdb.min.css" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="../css/viewAdminProfileDetailsView.css">
+    <link rel="stylesheet" href="../css/viewApplicantProfileDetailsView.css">
 
     <!-- Icon -->
     <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png" />
@@ -62,7 +72,7 @@
 
         <!-- Header Section -->
         <?php
-          include_once('../Common/adminHeader.html');
+        include_once('../Common/adminHeader.html');
         ?>
 
         <!-- Main Content -->
@@ -72,7 +82,7 @@
 
                 <!-- Sidebar -->
                 <?php
-                    include('../Common/sidebarAdmin.php');
+                include('../Common/sidebarApplicant.php');
                 ?>
 
                 <div class="mainContent bg-white shadow rounded-2">
@@ -80,18 +90,126 @@
                     <div class="d-flex justify-content-between">
                         <button class="openbtn" onclick="openNav()"><i class="fas fa-bars"></i></button>
                         <div class="w-100"></div>
-                        
+
                         <div class="d-flex justify-content-end">
                             <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
                             <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
                     </div>
-                    
+
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">XX</h2>
+                        <!-- <h2 id="contentTitle">Buat Pembayaran</h2> -->
                         <!-- Your can code here -->
 
-                        
+                        <table class="table table-borderless table-sm">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Anjuran :</th>
+                                    <td><?php echo $organize; ?></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tempat :</th>
+                                    <td><?php echo $venue; ?></td>
+
+                                    <th scope="row">Tarikh :</th>
+                                    <td>(<?php echo $dateStart; ?> sehingga <?php echo $dateFinish; ?>)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr>
+
+
+                        <div id="inMainContentOutline" class="table-responsive p-4">
+                            <table class="table table-borderless table-sm">
+
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Nama :</th>
+                                        <td><?php echo $decodedApplicantData['ApplicantName'];
+                                            ?></td>
+
+                                        <th scope="row">Umur :</th>
+                                        <td><?php echo $decodedApplicantData['ApplicantAge'];
+                                            ?></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">Tarikh Lahir :</th>
+                                        <td><?php echo $decodedApplicantData['ApplicantBirthDate'];
+                                            ?></td>
+
+                                        <th scope="row">Jantina :</th>
+                                        <td><?php echo $decodedApplicantData['ApplicantGender'];
+                                            ?></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">No. Kad Pengenalan :</th>
+                                        <td><?php echo $decodedApplicantData['Applicant_Ic'];
+                                            ?></td>
+
+                                        <th scope="row">Bangsa :</th>
+                                        <td><?php echo $decodedApplicantData['ApplicantRace'];
+                                            ?></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">Email :</th>
+                                        <td><?php echo $decodedApplicantData['ApplicantEmail'];
+                                            ?></td>
+
+                                        <th scope="row">No. Telefon(Pejabat) :</th>
+                                        <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
+                                            ?></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">Alamat :</th>
+                                        <td><?php echo $decodedApplicantData['ApplicantAddress'];
+                                            ?></td>
+
+                                        <th scope="row">Alamat Tempat Kerja :</th>
+                                        <td><?php echo $decodedApplicantData['ApplicantWorkAddress'];
+                                            ?></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">No. Telefon(Bimbit) :</th>
+                                        <td><?php echo $decodedApplicantData['ApplicantPhoneNo'];
+                                            ?></td>
+
+                                        <th scope="row">No. Telefon(Rumah) :</th>
+                                        <td><?php echo $decodedApplicantData['ApplicantHomePhoneNo'];
+                                            ?></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">Taraf Pendidikan:</th>
+                                        <td><?php echo $decodedApplicantData['ApplicantEduLevel'];
+                                            ?></td>
+
+                                        <th scope="row">Jawatan / Pekerjaan :</th>
+                                        <td><?php echo $decodedApplicantData['ApplicantPosition'];
+                                            ?></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="col-2">Pendapatan :</th>
+                                        <td>RM <?php echo $decodedApplicantData['ApplicantSalary'];
+                                                ?></td>
+
+                                        <th scope="col-2">Bukti Pembayaran :</th>
+                                        <td>
+                                            <form action="../../../public/index.php?action=uploadProofOfPaymentMPC&typeOfFee=MPCPayment">
+                                                <input type="file" name="proofOfPayment"><input type="submit" value="submit">
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
 
@@ -102,7 +220,7 @@
 
         <!-- Footer -->
         <?php
-          include_once('../Common/footer.html');
+        include_once('../Common/footer.html');
         ?>
 
     </div>
