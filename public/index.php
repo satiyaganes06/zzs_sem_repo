@@ -28,6 +28,7 @@ require_once '../app/Controller/php/userProfileController.php';
 require_once '../app/Controller/php/resetPasswordController.php';
 require_once '../app/Controller/php/marriageRegistrationController.php';
 require_once '../app/Controller/php/MarriagePreparationCourseController.php';
+require_once '../app/Controller/php/RequestMarriageController.php';
 
 // Create a new database connection
 $db = (new Database())->connect();
@@ -62,6 +63,7 @@ $userProfileController = new UserProfileController($accountModel, $applicantMode
 $resetPasswordController = new ResetPasswordController($accountModel, $applicantModel, $staffModel);
 $marriageRegistrationController = new MarriageRegistrationController($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel);
 $marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel, $applicantModel);
+$requestMarriageController = new RequestMarriageController($marriageInfoModel, $marriageRequestInfoModel, $applicantModel);
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
@@ -229,7 +231,7 @@ switch ($action) {
         $marriagePreparationCourseController->viewListOfApplicantMPC();
 
         break;
-
+    
     case 'marriageRegistrationWithApproval':
         $marriageId = $_POST['noAkuan'];
         $waliIC = $_POST['waliIC'];
@@ -264,13 +266,12 @@ switch ($action) {
         $marriageRegistrationController->insertWaliInfo($waliIc, $waliAddress, $waliBirthDate, $waliAge, $waliName, $relation, $waliNumberPhone);
 
 
-        break;
-
-    case 'updateOccupation':
-        $occupationName = $_POST['OccupationName'];
+             break;
+    case 'updateProfile':
         $occupationType = $_POST['OccupationType'];
-        $applicantSalary = $_POST['ApplicantSalary'];
-
+        $umur = $_POST['Applicant_umur'];
+        $tarikhTL = $_POST['Applicant_tarikhL'];
+        
         $jantina = $_POST['Applicant_jantina'];
         $bangsa = $_POST['Applicant_bangsa'];
         $email = $_POST['Applicant_email'];

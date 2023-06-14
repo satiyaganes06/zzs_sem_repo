@@ -17,8 +17,8 @@ class MarriagePreparationCourseController
     public function viewListOfMPC($organize, $from)
     {
         $listOfMPC = $this->marriageCourseInfoModel->getListOfMPC($organize);
-
-        session_start();
+        // echo $listOfMPC['Venue'];
+        // //session_start();
 
         $_SESSION['listOfMPC'] = $listOfMPC;
 
@@ -41,11 +41,35 @@ class MarriagePreparationCourseController
 
     public function viewListOfApplicantMPC()
     {
-        session_start();
+        // session_start();
+        $applicantNameList = [];
+        $MPCApplicant = $this->marriageCourseApplicationModel->getListOfApplicationMPC();
 
-        $MPCApplicant = $this->marriageCourseApplicationModel->getListOfApplicantMPC();
-        $listOfApplicant = $this->applicantModel->getAllApplicantInfo();
+        // for ($x = 0; $x <= count($MPCApplicant); $x++) {
+        //     foreach ($MPCApplicant as $row) {
+        //         //$applicantNameList[$x] = $row["Applicant_IC"];
+        //         $applicant = $this->applicantModel->getApplicantProfileInfo($row["Applicant_IC"]);
 
-        header('Location: ../app/View/MarriageCourse/ListOfApplicantMPCView.php?returnInfo=' .  urlencode(serialize($MPCApplicant)));
+        //     }
+        //     $applicantNameList[$x] = $applicant["ApplicantName"];
+        //     echo $applicantNameList[$x] . "<br>";
+        // }
+
+        $x = 0;
+        foreach ($MPCApplicant as $row) {
+            //$applicantNameList[$x] = $row["Applicant_IC"];
+            $applicant = $this->applicantModel->getApplicantProfileInfo($row["Applicant_IC"]);
+            $applicantNameList[$x] = $applicant["ApplicantName"];
+            // echo $applicantNameList[$x] . "<br>";
+            $x++;
+        }
+
+        // echo count($MPCApplicant);
+        // echo $applicantNameList[0];
+        // echo $applicantNameList[1];
+
+        $_SESSION['MPCApplicant']=$MPCApplicant;
+        $_SESSION['applicantName']=$applicantNameList;
+        header('Location: ../app/View/MarriageCourse/ListOfApplicantMPCView.php');
     }
 }
