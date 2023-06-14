@@ -69,7 +69,6 @@ class AccountModel {
     // Verify password
     if ($user && password_verify($password, $user['UserPassword'])) {
       // Password is correct, start session
-      session_start();
       $_SESSION['accountId'] = $user['Account_Id'];
       $_SESSION['currentUserIC'] = $user['User_IC'];
       $_SESSION['currentUserType'] = $user['UserType'];

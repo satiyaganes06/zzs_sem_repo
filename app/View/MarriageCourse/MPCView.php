@@ -18,7 +18,7 @@ if (!isset($_SESSION['currentUserIC'])) {
 
   // Sidebar Active path
   $_SESSION['route'] = 'MPCView';
-
+  $bilNum = 0;
   $result = $_SESSION['listOfMPC'];
 }
 ?>
@@ -115,14 +115,13 @@ if (!isset($_SESSION['currentUserIC'])) {
         <tbody>
 
             <?php
-            foreach ($result as $row) {
-                echo $result["Venue"];
-                $organize = $row["Organize"];
-                $venue = $row['Venue'];
-                $dateStart = $row['DateStart'];
-                $capacity = $row['Capacity'];
-                $vacancy = $row['Vacancy'];
-                $marriageCourseID = $row['Marriage_Course_Id'];
+            foreach ($result as $row1) {
+                $organize = $row1['Organize'];
+                $venue = $row1['Venue'];
+                $dateStart = $row1['DateStart'];
+                $capacity = $row1['Capacity'];
+                $vacancy = $row1['Vacancy'];
+                $marriageCourseID = $row1['Marriage_Course_Id'];
             ?>
                 <tr>
                     <td style="width: 3%;">

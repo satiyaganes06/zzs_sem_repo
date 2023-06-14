@@ -9,7 +9,6 @@ class RequestMarriageController
     //Login controller's constructor
     public function __construct($marriageInfoModel, $marriageRequestInfoModel, $applicantModel)
     {
-        session_start();
         $this->marriageInfoModel = $marriageInfoModel;
         $this->marriageRequestInfoModel = $marriageRequestInfoModel;
         $this->applicantModel = $applicantModel;

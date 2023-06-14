@@ -78,7 +78,6 @@
 
             $listOfStaffs = $this->staffModel->getAllStaffInfo();
 
-            session_start();
             $_SESSION['listOfStaffs'] = $listOfStaffs;
 
             ?>
@@ -94,7 +93,6 @@
 
             $listOfApplicant = $this->applicantModel->getAllApplicantInfo();
 
-            session_start();
             $_SESSION['listOfApplicant'] = $listOfApplicant;
             
             if($from == 'viewListApplicant'){
