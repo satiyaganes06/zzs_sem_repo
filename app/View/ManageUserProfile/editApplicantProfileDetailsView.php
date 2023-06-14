@@ -118,7 +118,7 @@
                                         <th scope="row">Tarikh Lahir :</th>
                                         <td>
                                             <div class="form form-width">
-                                                <input type="text" id="formTL" name="Applicant_tarikhL" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantBirthDate']; ?>" placeholder="YYYY-MM-DD"/>
+                                                <input type="date" id="formTL" name="Applicant_tarikhL" class="form-control form-control-sm" value="<?php echo $decodedApplicantData['ApplicantBirthDate']; ?>" placeholder="YYYY-MM-DD"/>
                                             </div>
                                         </td>
 

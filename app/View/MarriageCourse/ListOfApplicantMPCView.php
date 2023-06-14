@@ -19,7 +19,6 @@ if (!isset($_SESSION['currentUserIC'])) {
 
 } else {
 
-
     //Sidebar Active path
     $_SESSION['route'] = 'listOfApplicantMPC';
 
@@ -146,7 +145,6 @@ if (!isset($_SESSION['currentUserIC'])) {
                                             </button>
                                         </td>
                                     </tr>
-
                                 <?php
                                 } ?>
 

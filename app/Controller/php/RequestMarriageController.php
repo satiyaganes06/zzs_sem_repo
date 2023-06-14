@@ -15,17 +15,44 @@ class RequestMarriageController
         $this->applicantModel = $applicantModel;
     }
 
-    public function getApplicantAndPartnerInfo($partnerIC, $applicantIC){
+    public function getApplicantAndPartnerInfo($partnerIC, $applicantIC)
+    {
 
         // session_start();
         $partnerInfo = $this->applicantModel->getApplicantProfileInfo($partnerIC);
         $applicantInfo = $this->applicantModel->getApplicantProfileInfo($applicantIC);
 
         // echo $applicantInfo['ApplicantName'] ."<br>". $partnerInfo['ApplicantName'];
-        header('Location: ../app/View/MarriageRequest/RequestMarriageView.php?display=1&partnerInfo='.urlencode(serialize($partnerInfo)).'&applicantInfo='.urlencode(serialize($applicantInfo)));
-
-
+        header('Location: ../app/View/MarriageRequest/RequestMarriageView.php?display=1&partnerInfo=' . urlencode(serialize($partnerInfo)) . '&applicantInfo=' . urlencode(serialize($applicantInfo)));
     }
 
-    
+    public function listOfMarriageRequestApplication($status)
+    {
+
+        $applicantName = [];
+        $applicantGender = [];
+        $x = 0;
+
+        $listOfRequestMarriageApplicantion = $this->marriageRequestInfoModel->listOfRequestMarriageApplicantion($status);
+
+        foreach ($listOfRequestMarriageApplicantion as $row) {
+
+            $applicantInfo = $this->applicantModel->getApplicantProfileInfo($row['Applicant_IC']);
+
+            $applicantName[$x] = $applicantInfo['ApplicantName'];
+            $applicantGender[$x] = $applicantInfo['ApplicantGender'];
+            $x++;
+        }
+
+        $_SESSION['applicantName'] = $applicantName;
+        $_SESSION['applicantGender'] = $applicantGender;
+        $_SESSION['listOfRequestMarriageApplicantion'] = $listOfRequestMarriageApplicantion;
+
+        if ($status == 'all'){
+            header('Location: ../app/View/MarriageRequest/ListApplicantView.php?');
+        }
+        else {
+            header('Location: ../app/View/MarriageRequest/ListApprovalRequestView.php?');
+        }
+    }
 }

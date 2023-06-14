@@ -8,15 +8,35 @@ $route = $_SESSION['route'];
 
 if ($route == 'viewProfile') {
     $viewProfileRoute = 'active';
+    $profileRouteSection = 'show';
+       
+    $profileRouteHeader = '';
+    $listApplicantMPCRouteHeader = 'collapsed';
+
 } else if ($route == 'editProfile') {
     $editProfileRoute = 'active';
+    $profileRouteSection = 'show';
+       
+    $profileRouteHeader = '';
+    $listApplicantMPCRouteHeader = 'collapsed';
+
 } else if ($route == 'viewStaffList') {
     $viewStaffListRoute = 'active';
+    $profileRouteSection = 'show';
+       
+    $profileRouteHeader = '';
+    $listApplicantMPCRouteHeader = 'collapsed';
+
 } else if ($route == 'viewApplicantList') {
     $viewApplicantListRoute = 'active';
+    $profileRouteSection = 'show';
+       
+    $profileRouteHeader = '';
+    $listApplicantMPCRouteHeader = 'collapsed';
+
 } else if ($route == 'listOfApplicantMPC') {
     $listApplicantMPCRoute = 'active';
-} else if ($route == 'newApplicant') {
+}else if ($route == 'newApplicant') {
     $newApplicant = 'active';
 } else if ($route == 'result') {
     $result = 'active';
@@ -47,13 +67,13 @@ if ($route == 'viewProfile') {
             <!-- Profile Accordion -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingOne">
-                    <button data-mdb-toggle="collapse" class="accordion-button rounded-5" type="button" data-mdb-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    <button data-mdb-toggle="collapse" class="accordion-button rounded-5 <?php echo $profileRouteHeader ?>" type="button" data-mdb-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                         <strong><i class="far
                                     fa-user-circle"></i> &nbsp;
                             PROFIL</strong>
                     </button>
                 </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-mdb-parent="#accordionFlushExample">
+                <div id="flush-collapseOne" class="accordion-collapse collapse <?php echo $profileRouteSection; ?>" aria-labelledby="flush-headingOne" data-mdb-parent="#accordionFlushExample">  
                     <div class="accordion-body">
 
                         <a class="list-group-item
@@ -91,34 +111,34 @@ if ($route == 'viewProfile') {
             <!-- Permohonan Kursus Pra-Perkahwinan Accordian -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingTwo">
-                    <button class="accordion-button collapsed
+                    <button class="accordion-button <?php echo $listApplicantMPCRouteHeader ?>
                             rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                         <strong><i class="far fa-clipboard"></i>
                             &nbsp; PERMOHONAN
                             KURSUS PRA-PERKAHWINAN</strong>
                     </button>
                 </h2>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-mdb-parent="#accordionFlushExample">
+                <div id="flush-collapseTwo" class="accordion-collapse collapse <?php echo $$listApplicantMPCRouteSection; ?>" aria-labelledby="flush-headingTwo" data-mdb-parent="#accordionFlushExample">
                     <div class="accordion-body">
 
                         <a class="list-group-item
                                 list-group-item-action <?php echo $listApplicantMPCRoute ?>
                                 px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../../../public/index.php?action=viewListOfApplicantMPC">
+                                list-group-item-light" href="../../../public/index.php?action=viewListOfApplicantMPC&from=listOFApplicant">
                             SENARAI PEMOHON PRA-PERKAHWINAN
                         </a>
 
                         <a class="list-group-item
                                 list-group-item-action <?php echo $newApplicant ?>
                                 px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../MarriageCourse/NewApplicantView.php">
+                                list-group-item-light" href="../../../public/index.php?action=viewListOfApplicantMPC&from=newApplicant">
                             PERMOHONAN BARU
                         </a>
 
                         <a class="list-group-item
                                 list-group-item-action <?php echo $result ?>
                                 px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../MarriageCourse/ResultView.php">
+                                list-group-item-light" href="../../../public/index.php?action=viewListOfApplicantMPC&from=giveResultApplicant">
                             KEPUTUSAN PEMOHON
                         </a>
 
@@ -148,14 +168,14 @@ if ($route == 'viewProfile') {
                         <a class="list-group-item
                                 list-group-item-action <?php echo $listApplicantRoute ?>
                                 px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../MarriageRequest/ListApplicantView.php">
+                                list-group-item-light" href="../../../public/index.php?action=listOfMarriageRequestApplication&status=all">
                             SENARAI PEMOHON
                         </a>
 
                         <a class="list-group-item
                                 list-group-item-action <?php echo $listApprovalRequestRoute ?>
                                 px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../MarriageRequest/ListApprovalRequestView.php">
+                                list-group-item-light" href="../../../public/index.php?action=listOfMarriageRequestApplication&status=new">
                             PEMOHON BARU
                         </a>
                     </div>
