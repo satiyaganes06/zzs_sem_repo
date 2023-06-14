@@ -18,7 +18,7 @@ if (!isset($_SESSION['currentUserIC'])) {
 
   // Sidebar Active path
   $_SESSION['route'] = 'MPCView';
-
+  $bilNum = 0;
   $result = $_SESSION['listOfMPC'];
   $bilNum = 0;
 }

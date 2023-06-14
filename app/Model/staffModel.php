@@ -95,6 +95,21 @@ class StaffModel {
       }
 
   }
+
+  //Applicant Search 
+  public function getStaffSearchInfo($term) {
+
+    // Prepare SQL statement with placeholders to prevent SQL injection
+    $stmt = $this->connect->prepare("SELECT * FROM `staff_info` WHERE CONCAT (`Staff_Id`, `StaffName`, `StaffEmail`, `StaffType`, `Account_Id`) LIKE '%".$term."%'");
+
+    // Execute SQL statement
+    $stmt->execute();
+
+    // Fetch all rows at once
+    $staffDetailsList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $staffDetailsList;
+  }  
   
 }
 

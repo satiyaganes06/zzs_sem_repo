@@ -108,11 +108,11 @@ function resetPasswordFormValidate(){
   var text;
   
   //Validation Condition
-  // if(password.length <= 8 || password.length >= 12){
-  //   text = "Sila masukkan Kata Laluan yang sah";
-  //   error_message.innerHTML = text;
-  //   return false;
-  // }
+  if(password.length <= 8 || password.length >= 12){
+    text = "Sila masukkan Kata Laluan yang sah";
+    error_message.innerHTML = text;
+    return false;
+  }
 
   if(password != confirm_password){
     text = "Kata laluan tidak sepadan";

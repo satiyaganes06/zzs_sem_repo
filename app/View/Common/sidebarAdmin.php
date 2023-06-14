@@ -8,14 +8,39 @@ $route = $_SESSION['route'];
 
 if ($route == 'viewProfile') {
     $viewProfileRoute = 'active';
+    $profileRouteSection = 'show';
+       
+    $profileRouteHeader = '';
+    $listApplicantMPCRouteHeader = 'collapsed';
+
 } else if ($route == 'editProfile') {
     $editProfileRoute = 'active';
+    $profileRouteSection = 'show';
+       
+    $profileRouteHeader = '';
+    $listApplicantMPCRouteHeader = 'collapsed';
+
 } else if ($route == 'viewStaffList') {
     $viewStaffListRoute = 'active';
+    $profileRouteSection = 'show';
+       
+    $profileRouteHeader = '';
+    $listApplicantMPCRouteHeader = 'collapsed';
+
 } else if ($route == 'viewApplicantList') {
     $viewApplicantListRoute = 'active';
+    $profileRouteSection = 'show';
+       
+    $profileRouteHeader = '';
+    $listApplicantMPCRouteHeader = 'collapsed';
+
 }else if ($route == 'listOfApplicantMPC') {
     $listApplicantMPCRoute = 'active';
+    $listApplicantMPCRouteSection = 'show';
+       
+    $listApplicantMPCRouteHeader = '';
+    $profileRouteHeader = 'collapsed';
+
 }else if ($route == 'newApplicant') {
     $newApplicant = 'active';
 }else if ($route == 'result') {
@@ -47,13 +72,13 @@ if ($route == 'viewProfile') {
             <!-- Profile Accordion -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingOne">
-                    <button data-mdb-toggle="collapse" class="accordion-button rounded-5" type="button" data-mdb-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    <button data-mdb-toggle="collapse" class="accordion-button rounded-5 <?php echo $profileRouteHeader ?>" type="button" data-mdb-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                         <strong><i class="far
                                     fa-user-circle"></i> &nbsp;
                             PROFIL</strong>
                     </button>
                 </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-mdb-parent="#accordionFlushExample">
+                <div id="flush-collapseOne" class="accordion-collapse collapse <?php echo $profileRouteSection; ?>" aria-labelledby="flush-headingOne" data-mdb-parent="#accordionFlushExample">  
                     <div class="accordion-body">
 
                         <a class="list-group-item
@@ -91,14 +116,14 @@ if ($route == 'viewProfile') {
             <!-- Permohonan Kursus Pra-Perkahwinan Accordian -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingTwo">
-                    <button class="accordion-button collapsed
+                    <button class="accordion-button <?php echo $listApplicantMPCRouteHeader ?>
                             rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                         <strong><i class="far fa-clipboard"></i>
                             &nbsp; PERMOHONAN
                             KURSUS PRA-PERKAHWINAN</strong>
                     </button>
                 </h2>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-mdb-parent="#accordionFlushExample">
+                <div id="flush-collapseTwo" class="accordion-collapse collapse <?php echo $$listApplicantMPCRouteSection; ?>" aria-labelledby="flush-headingTwo" data-mdb-parent="#accordionFlushExample">
                     <div class="accordion-body">
 
                         <a class="list-group-item

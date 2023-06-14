@@ -218,7 +218,14 @@ switch ($action) {
 
         break;
 
-        //Module 2 Section Start
+    case 'search':
+        $term = $_POST['search_term'];
+        $from = $_GET['from'];
+
+        $userProfileController->viewSearchListFunction($term, $from);
+        
+        break;
+
     case 'viewlistOfMPC':
         $organize = isset($_GET['organize']) ? $_GET['organize'] : '';
         $from = isset($_GET['from']) ? $_GET['from'] : '';
