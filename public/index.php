@@ -220,7 +220,7 @@ switch ($action) {
         $organize = isset($_GET['organize']) ? $_GET['organize'] : '';
         $from = isset($_GET['from']) ? $_GET['from'] : '';
 
-        $marriagePreparationCourseController->viewListOfMPC($organize,$from);
+        $marriagePreparationCourseController->viewListOfMPC($organize, $from);
 
         break;
 
@@ -229,67 +229,68 @@ switch ($action) {
         $marriagePreparationCourseController->viewListOfApplicantMPC();
 
         break;
-    
-    case 'marriageRegistrationWithApproval':
-            $marriageId = $_POST['noAkuan'];
-            $waliIC = $_POST['waliIC'];
-            $witnessIC= $_POST['witnessIC'];
 
-            $marriageRegistrationController->marriageRegistrationWithApproval($marriageId, $waliIC, $witnessIC);
-            
-            break;
+    case 'marriageRegistrationWithApproval':
+        $marriageId = $_POST['noAkuan'];
+        $waliIC = $_POST['waliIC'];
+        $witnessIC = $_POST['witnessIC'];
+
+        $marriageRegistrationController->marriageRegistrationWithApproval($marriageId, $waliIC, $witnessIC);
+
+        break;
 
     case 'updateMarriageRegistrationDetail';
-             $marriageId;
-             $waliName = $_POST['waliName'];
-             $partnerIC = $_POST['partnerIC'];
-             $requestDate = $_POST['requestDate'];
-             $marriageDate = $_POST['marriageDate'];
-             $marriageAddress = $_POST['requestDate'];
-             $dowryType = $_POST['dowryType'];
-             $dowry = $_POST['dowry'];
-             $gift = $_POST['gift'];
-             $relation = $_POST['relation'];
-             $waliIc;
-             $witnessIC;
-             $waliIC = $_POST['waliIC'];
-             $waliAddress = $_['waliAddress'];
-             $waliBirthDate = $_POST['waliBirthDate'];
-             $waliAge = $_POST['waliAge'];
-             $waliNumberPhone = $_POST['noTelWali'];
-             $marriageCertificateNo = NULL;
+        $marriageId;
+        $waliName = $_POST['waliName'];
+        $partnerIC = $_POST['partnerIC'];
+        $requestDate = $_POST['requestDate'];
+        $marriageDate = $_POST['marriageDate'];
+        $marriageAddress = $_POST['requestDate'];
+        $dowryType = $_POST['dowryType'];
+        $dowry = $_POST['dowry'];
+        $gift = $_POST['gift'];
+        $relation = $_POST['relation'];
+        $waliIc;
+        $witnessIC;
+        $waliIC = $_POST['waliIC'];
+        $waliAddress = $_['waliAddress'];
+        $waliBirthDate = $_POST['waliBirthDate'];
+        $waliAge = $_POST['waliAge'];
+        $waliNumberPhone = $_POST['noTelWali'];
+        $marriageCertificateNo = NULL;
 
-             $marriageRegistrationController->updateMarriageInfo($marriageId, $waliIC, $witnessIC, $requestDate, $marriageDate, $marriageAddress, $dowryType, $dowry, $gift );
-             
-             $marriageRegistrationController->insertWaliInfo($waliIc, $waliAddress, $waliBirthDate, $waliAge, $waliName, $relation, $waliNumberPhone);
-             
+        $marriageRegistrationController->updateMarriageInfo($marriageId, $waliIC, $witnessIC, $requestDate, $marriageDate, $marriageAddress, $dowryType, $dowry, $gift);
 
-             break;
-    case 'updateProfile':
+        $marriageRegistrationController->insertWaliInfo($waliIc, $waliAddress, $waliBirthDate, $waliAge, $waliName, $relation, $waliNumberPhone);
+
+
+        break;
+
+    case 'updateOccupation':
+        $occupationName = $_POST['OccupationName'];
         $occupationType = $_POST['OccupationType'];
-        $umur = $_POST['Applicant_umur'];
-        $tarikhTL = $_POST['Applicant_tarikhL'];
-        
+        $applicantSalary = $_POST['ApplicantSalary'];
+
         $jantina = $_POST['Applicant_jantina'];
         $bangsa = $_POST['Applicant_bangsa'];
         $email = $_POST['Applicant_email'];
-        
-                $alamat = $_POST['Applicant_alamat'];
-                $noTel = $_POST['Applicant_noTel'];
-                $noTelRum = $_POST['Applicant_noTelRum'];
-        
-                $trafPen = $_POST['Applicant_trafPen'];
-                $jawatan = $_POST['Applicant_jawatan'];
-                $pendapatan = $_POST['Applicant_pendapatan'];
-        
-                $alamatKerja = $_POST['Applicant_alamatKerja'];
-                $noTelPenjabat = $_POST['Applicant_noTelPenjabat'];
-        
-        
-        
-                $userProfileController->updateApplicantProfileFunction($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat);
-        
-                break;
+
+        $alamat = $_POST['Applicant_alamat'];
+        $noTel = $_POST['Applicant_noTel'];
+        $noTelRum = $_POST['Applicant_noTelRum'];
+
+        $trafPen = $_POST['Applicant_trafPen'];
+        $jawatan = $_POST['Applicant_jawatan'];
+        $pendapatan = $_POST['Applicant_pendapatan'];
+
+        $alamatKerja = $_POST['Applicant_alamatKerja'];
+        $noTelPenjabat = $_POST['Applicant_noTelPenjabat'];
+
+
+
+        $userProfileController->updateApplicantProfileFunction($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat);
+
+        break;
     default:
         header('Location: ../app/View/ManageLogin/userLoginView.php');
 }
