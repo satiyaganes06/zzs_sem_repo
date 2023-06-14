@@ -1,32 +1,36 @@
-
-
 <?php
 
-    // Start up your PHP Session
-    session_start();
+// Start up your PHP Session
+session_start();
 
-    //Decluration
-    $encodedData;
-    $decodedAdminData;
+//Decluration
+$encodedData;
+$decodedAdminData;
 
-    //If the user is not logged in send him/her to the login form
-    if(!isset($_SESSION['currentUserIC'])) {
+//If the user is not logged in send him/her to the login form
+if (!isset($_SESSION['currentUserIC'])) {
 
-        ?>
-            <script>
-                alert("Access denied !!!")
-                window.location = "../ManageLogin/adminLoginView.php";
-            </script>
-        <?php
+?>
+    <script>
+        alert("Access denied !!!")
+        window.location = "../ManageLogin/adminLoginView.php";
+    </script>
+<?php
 
-    }else{
+} else{
 
 
-        //Sidebar Active path
-        $_SESSION['route'] = 'listApplicant';
-    }
+    //Sidebar Active path
+    $_SESSION['route'] = 'listApplicant';
 
-    
+    $applicantName = $_SESSION['applicantName'];
+    $applicantGender = $_SESSION['applicantGender'];
+    $listOfRequestMarriageApplicantion = $_SESSION['listOfRequestMarriageApplicantion'];
+    $x = 0;
+    $bilNum = 1;
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +53,7 @@
     <link rel="stylesheet" href="../../Bootstrap/mdb.min.css" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="../css/viewAdminProfileDetailsView.css">
+    <link rel="stylesheet" href="../css/viewStaffListView.css">
 
     <!-- Icon -->
     <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png" />
@@ -62,7 +66,7 @@
 
         <!-- Header Section -->
         <?php
-          include_once('../Common/adminHeader.html');
+        include_once('../Common/adminHeader.html');
         ?>
 
         <!-- Main Content -->
@@ -72,7 +76,7 @@
 
                 <!-- Sidebar -->
                 <?php
-                    include('../Common/sidebarAdmin.php');
+                include('../Common/sidebarAdmin.php');
                 ?>
 
                 <div class="mainContent bg-white shadow rounded-2">
@@ -80,72 +84,73 @@
                     <div class="d-flex justify-content-between">
                         <button class="openbtn" onclick="openNav()"><i class="fas fa-bars"></i></button>
                         <div class="w-100"></div>
-                        
+
                         <div class="d-flex justify-content-end">
                             <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
                             <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
                     </div>
-                    
+
                     <div class="mainContentBg text-center p-3">
                         <h2 id="contentTitle">Senarai Pemohon Perkahwinan</h2>
                         <!-- Your can code here -->
 
                         <table class="table table-bordered border-dark mb-0 align-middle">
-                                <thead class="tableHeaderBg">
+                            <thead class="tableHeaderBg">
+                                <tr>
+                                    <th>Bil</th>
+                                    <th> Nama Peserta</th>
+                                    <th>No Kad Pengenalan</th>
+                                    <th>Jantina</th>
+                                    <th>Status</th>
+                                    <th>Operasi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <?php
+
+                                foreach ($listOfRequestMarriageApplicantion as $row) {
+
+                                    $RequestStatus = $row["RequestStatus"];
+                                    $Applicant_IC = $row["Applicant_IC"];
+                                ?>
                                     <tr>
-                                        <th>Bil</th>
-                                        <th ><div class="iCEllipsis">Nama Peserta</div></th>
-                                        <th>No Kad Pengenalan</th>
-                                        <th>Jantina</th>
-                                        <th>Operasi</th>
+                                        <td style="width: 3%;">
+                                            <?php echo ++$bilNum; ?>
+                                        </td>
+
+                                        <td style="width: 30%;">
+                                            <?php echo $applicantName[$x]; ?>
+                                        </td>
+
+                                        <td style="width: 25%;">
+                                            <span><?php echo $Applicant_IC; ?></span>
+                                        </td>
+
+                                        <td style="width: 15%;">
+                                            <?php echo $applicantGender[$x]; ?>
+                                        </td>
+
+                                        <td style="width: 15%;">
+                                            <?php echo $RequestStatus; ?>
+                                        </td>
+
+                                        <td style="width: 12%;">
+                                            <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
+                                                Lihat
+                                            </button>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    
-                                    <?php
-                                         
 
-                                        foreach ($result as $row)
-                                        {
-                                                
-                                                
-                                            $Staff_id = $row["Staff_Id"];
-                                            $Staff_name = $row['StaffName'];
-                                            $Staff_type = $row['StaffType'];
-                                            ?>
-                                                <tr>
-                                                    <td style="width: 3%;">
-                                                        <?php echo ++$bilNum; ?>
-                                                    </td>
+                                <?php
+                                } ?>
 
-                                                    <td class="" style="width: 45%;">
-                                                        
-                                                        <?php echo $Staff_name;?>
-                                                    </td>
 
-                                                    <td style="width: 25%;">
-                                                        <span><?php echo $Staff_id;?></span>
-                                                    </td>
+                            </tbody>
+                        </table>
 
-                                                    <td style="width: 15%;"><?php echo $Staff_type;?></td>
 
-                                                    <td style="width: 12%;">
-                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
-                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
-                                                            Lihat
-                                                        </button>
-                                                    </td>
-                                                </tr>
-
-                                            <?php 
-                                        }?>
-                                    
-                                    
-                                </tbody>
-                            </table>
-
-                        
                     </div>
                 </div>
 
@@ -156,7 +161,7 @@
 
         <!-- Footer -->
         <?php
-          include_once('../Common/footer.html');
+        include_once('../Common/footer.html');
         ?>
 
     </div>

@@ -148,14 +148,14 @@ if ($route == 'viewProfile') {
                         <a class="list-group-item
                                 list-group-item-action <?php echo $listApplicantRoute ?>
                                 px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../MarriageRequest/ListApplicantView.php">
+                                list-group-item-light" href="../../../public/index.php?action=listOfMarriageRequestApplication&status=all">
                             SENARAI PEMOHON
                         </a>
 
                         <a class="list-group-item
                                 list-group-item-action <?php echo $listApprovalRequestRoute ?>
                                 px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../MarriageRequest/ListApprovalRequestView.php">
+                                list-group-item-light" href="../../../public/index.php?action=listOfMarriageRequestApplication&status=new">
                             PEMOHON BARU
                         </a>
                     </div>

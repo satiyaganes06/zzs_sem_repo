@@ -263,6 +263,13 @@ switch ($action) {
 
         break;
 
+    case 'listOfMarriageRequestApplication':
+        $status = isset($_GET['status']) ? $_GET['status'] : '';
+
+        $requestMarriageController->listOfMarriageRequestApplication($status);
+
+        break;
+
         //Module 2 Section End ^^
 
     case 'marriageRegistrationWithApproval':
