@@ -8,14 +8,19 @@ $route = $_SESSION['route'];
 
 if ($route == 'viewProfile') {
     $viewProfileRoute = 'active';
+    $profileRouteAccordion = 'show';
 } else if ($route == 'editProfile') {
+    $profileRouteAccordion = 'show';
     $editProfileRoute = 'active';
 } else if ($route == 'viewStaffList') {
+    $profileRouteAccordion = 'show';
     $viewStaffListRoute = 'active';
 } else if ($route == 'viewApplicantList') {
+    $profileRouteAccordion = 'show';
     $viewApplicantListRoute = 'active';
 }else if ($route == 'listOfApplicantMPC') {
     $listApplicantMPCRoute = 'active';
+    $listApplicantMPCRouteAccordion = 'show';
 }else if ($route == 'newApplicant') {
     $newApplicant = 'active';
 }else if ($route == 'result') {
@@ -53,7 +58,7 @@ if ($route == 'viewProfile') {
                             PROFIL</strong>
                     </button>
                 </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-mdb-parent="#accordionFlushExample">
+                <div id="flush-collapseOne" class="accordion-collapse collapse <?php echo $profileRouteAccordion; ?>" aria-labelledby="flush-headingOne" data-mdb-parent="#accordionFlushExample">  
                     <div class="accordion-body">
 
                         <a class="list-group-item
@@ -98,7 +103,7 @@ if ($route == 'viewProfile') {
                             KURSUS PRA-PERKAHWINAN</strong>
                     </button>
                 </h2>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-mdb-parent="#accordionFlushExample">
+                <div id="flush-collapseTwo" class="accordion-collapse collapse <?php echo $$listApplicantMPCRouteAccordion; ?>" aria-labelledby="flush-headingTwo" data-mdb-parent="#accordionFlushExample">
                     <div class="accordion-body">
 
                         <a class="list-group-item

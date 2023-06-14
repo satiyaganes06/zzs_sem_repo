@@ -12,7 +12,7 @@ class AdminModel {
   public function getAdminProfileInfo($id) {
 
     // Prepare SQL statement with placeholders to prevent SQL injection
-    $stmt = $this->connect->prepare('SELECT * FROM Admin_Info WHERE Account_Id = :id');
+    $stmt = $this->connect->prepare('SELECT * FROM admin_info WHERE Account_Id = :id');
     $stmt->bindParam(':id', $id);
 
     // Execute SQL statement
@@ -31,7 +31,7 @@ class AdminModel {
     $id = $_SESSION['accountId'];
 
     // Prepare your update statement
-    $sql = "UPDATE Admin_Info set 
+    $sql = "UPDATE admin_info set 
                 AdminName = :nama, 
                 AdminEmail = :email, 
                 AdminAddress = :alamat, 

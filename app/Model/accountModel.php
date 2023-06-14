@@ -12,7 +12,7 @@ class AccountModel {
   public function getAccountInfo($account_id) {
 
     // Prepare SQL statement with placeholders to prevent SQL injection
-    $stmt = $this->connect->prepare('SELECT User_IC, UserType FROM Account_Info WHERE Account_Id = :id');
+    $stmt = $this->connect->prepare('SELECT User_IC, UserType FROM account_info WHERE Account_Id = :id');
     $stmt->bindParam(':id', $account_id);
 
     // Execute SQL statement
@@ -28,7 +28,7 @@ class AccountModel {
   public function checkUserExistByIc($ic) {
 
     // Prepare SQL statement with placeholders to prevent SQL injection
-    $stmt = $this->connect->prepare('SELECT * FROM Account_Info WHERE User_IC = :ic');
+    $stmt = $this->connect->prepare('SELECT * FROM account_info WHERE User_IC = :ic');
     $stmt->bindParam(':ic', $ic);
 
     // Execute SQL statement
@@ -44,7 +44,7 @@ class AccountModel {
   //This function will create new account in mySQL database
   public function createAccount($userIC, $userType, $userPassword) {
     $uniqid = uniqid();
-    $query = $this->connect->prepare("INSERT INTO Account_Info (Account_Id, User_IC, UserPassword, UserType) VALUES (?, ?, ?, ?)");
+    $query = $this->connect->prepare("INSERT INTO account_info (Account_Id, User_IC, UserPassword, UserType) VALUES (?, ?, ?, ?)");
     $query->execute([$uniqid, $userIC, $userPassword, $userType]);
 
 
@@ -56,7 +56,7 @@ class AccountModel {
   public function loginAccount($userIC, $password, $userType) {
     
     // Prepare SQL statement with placeholders to prevent SQL injection
-    $stmt = $this->connect->prepare("SELECT * FROM Account_Info WHERE UserType = :userType AND User_IC = :ic");
+    $stmt = $this->connect->prepare("SELECT * FROM account_info WHERE UserType = :userType AND User_IC = :ic");
     $stmt->bindParam(":userType", $userType);
     $stmt->bindParam(":ic", $userIC);
     
@@ -85,7 +85,7 @@ class AccountModel {
   public function adminLoginAccount($id, $password) {
     
     // Prepare SQL statement with placeholders to prevent SQL injection
-    $stmt = $this->connect->prepare("SELECT * FROM Account_Info WHERE Account_Id = :id");
+    $stmt = $this->connect->prepare("SELECT * FROM account_Info WHERE account_Id = :id");
     $stmt->bindParam(":id", $id);
     
     // Execute SQL statement
@@ -113,7 +113,7 @@ class AccountModel {
   public function storeOTP($otpCode, $ic){
 
       // Prepare your update statement
-      $sql = "UPDATE Account_Info set 
+      $sql = "UPDATE account_info set 
           otp = :otpCode
       WHERE User_Ic = :ic";
 
@@ -138,7 +138,7 @@ class AccountModel {
   public function resetToNewPassword($hashed_password, $ic){
 
     // Prepare your update statement
-    $sql = "UPDATE Account_Info set 
+    $sql = "UPDATE account_info set 
         UserPassword = :newpass
     WHERE User_Ic = :ic";
 

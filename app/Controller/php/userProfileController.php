@@ -224,6 +224,38 @@
             }
 
         }
+
+        //Retrieve staff list from applicant model
+        public function viewSearchListFunction($term, $from) {
+
+            
+            if($from == 'applicant'){
+                
+                $listOfApplicant = $this->applicantModel->getApplicantSearchInfo($term);
+
+                session_start();
+                $_SESSION['listOfApplicant'] = $listOfApplicant;
+                ?>
+                    <script>
+                        window.location = "../app/View/ManageUserProfile/viewApplicantListView.php";
+                    </script>
+                <?php
+            
+
+            }elseif($from == 'staff'){
+
+                $listOfStaff = $this->staffModel->getStaffSearchInfo($term);
+
+                session_start();
+                $_SESSION['listOfStaffs'] = $listOfStaff;
+
+                ?>
+                    <script>
+                        window.location = "../app/View/ManageUserProfile/viewStaffListView.php";
+                    </script>
+                <?php
+            }
+        }
     }
       
 ?>

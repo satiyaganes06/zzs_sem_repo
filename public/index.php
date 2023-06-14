@@ -179,6 +179,14 @@ switch ($action) {
         
         break;
 
+    case 'search':
+        $term = $_POST['search_term'];
+        $from = $_GET['from'];
+
+        $userProfileController->viewSearchListFunction($term, $from);
+        
+        break;
+
     default:
         header('Location: ../app/View/ManageLogin/userLoginView.php');
         

@@ -29,7 +29,7 @@ class ApplicantModel {
   public function getApplicantProfileInfo($userIC) {
 
     // Prepare SQL statement with placeholders to prevent SQL injection
-    $stmt = $this->connect->prepare('SELECT * FROM Applicant_Info WHERE Applicant_Ic = :ic');
+    $stmt = $this->connect->prepare('SELECT * FROM applicant_info WHERE Applicant_Ic = :ic');
     $stmt->bindParam(':ic', $userIC);
 
     // Execute SQL statement
@@ -45,7 +45,7 @@ class ApplicantModel {
   public function getAllApplicantInfo() {
 
     // Prepare SQL statement with placeholders to prevent SQL injection
-    $stmt = $this->connect->prepare('SELECT * FROM Applicant_Info');
+    $stmt = $this->connect->prepare('SELECT * FROM applicant_info');
 
     // Execute SQL statement
     $stmt->execute();
@@ -63,7 +63,7 @@ class ApplicantModel {
     $ic = $_SESSION['currentUserIC'];
 
     // Prepare your update statement
-    $sql = "UPDATE Applicant_Info set 
+    $sql = "UPDATE applicant_info set 
                 ApplicantName = :nama, 
                 ApplicantBirthDate = :tarikhTL, 
                 ApplicantAge = :umur, 
@@ -112,6 +112,20 @@ class ApplicantModel {
 
   }
   
+  //Applicant Search 
+  public function getApplicantSearchInfo($term) {
+
+    // Prepare SQL statement with placeholders to prevent SQL injection
+    $stmt = $this->connect->prepare("SELECT * FROM `applicant_info` WHERE CONCAT (`Applicant_Ic`, `ApplicantName`, `ApplicantEmail`, `ApplicantPhoneNo`, `Account_Id`) LIKE '%".$term."%'");
+
+    // Execute SQL statement
+    $stmt->execute();
+
+    // Fetch all rows at once
+    $applicantDetailsList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $applicantDetailsList;
+  }   
 }
 
 ?>
