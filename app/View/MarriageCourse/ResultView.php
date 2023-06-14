@@ -19,9 +19,14 @@ if (!isset($_SESSION['currentUserIC'])) {
 
 } else {
 
-
     //Sidebar Active path
     $_SESSION['route'] = 'result';
+
+    //Get List of Applicant MPCData
+    $MPCApplicant = $_SESSION['MPCApplicant'];
+    $applicantNameList = $_SESSION['applicantName'];
+
+    $bilNum = 0;
 }
 
 
@@ -47,7 +52,7 @@ if (!isset($_SESSION['currentUserIC'])) {
     <link rel="stylesheet" href="../../Bootstrap/mdb.min.css" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="../css/viewAdminProfileDetailsView.css">
+    <link rel="stylesheet" href="../css/viewStaffListView.css">
 
     <!-- Icon -->
     <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png" />
@@ -98,7 +103,6 @@ if (!isset($_SESSION['currentUserIC'])) {
                                         <div class="iCEllipsis">Nama Peserta</div>
                                     </th>
                                     <th>No Kad Pengenalan</th>
-                                    <th>Kehadiran</th>
                                     <th>Status</th>
                                     <th>Operasi</th>
                                 </tr>
@@ -107,13 +111,13 @@ if (!isset($_SESSION['currentUserIC'])) {
 
                                 <?php
 
+                                $num = 0;
+                                foreach ($MPCApplicant as $row) {
 
-                                foreach ($result as $row) {
 
-
-                                    $Staff_id = $row["Staff_Id"];
-                                    $Staff_name = $row['StaffName'];
-                                    $Staff_type = $row['StaffType'];
+                                    $RequestDate = $row["RequestDate"];
+                                    $Applicant_IC = $row['Applicant_IC'];
+                                    $MPCStatus = $row['MPCStatus'];
                                 ?>
                                     <tr>
                                         <td style="width: 3%;">
@@ -122,33 +126,26 @@ if (!isset($_SESSION['currentUserIC'])) {
 
                                         <td class="" style="width: 15%;">
 
-                                            <?php echo $Staff_name; ?>
+                                            <?php echo $RequestDate; ?>
                                         </td>
 
-                                        <td class="" style="width: 30%;">
+                                        <td class="" style="width: 40%;">
 
-                                            <?php echo $Staff_name; ?>
+                                            <?php echo $applicantNameList[$num++]; ?>
                                         </td>
 
                                         <td style="width: 20%;">
-                                            <span><?php echo $Staff_id; ?></span>
+                                            <span><?php echo $Applicant_IC; ?></span>
                                         </td>
 
-                                        <td style="width: 10%;">
-                                            <?php echo $Staff_type; ?>
-                                        </td>
-
-                                        <td style="width: 10%;">
-                                            <?php echo $Staff_type; ?>
-                                        </td>
+                                        <td style="width: 10%;"><?php echo $MPCStatus; ?></td>
 
                                         <td style="width: 12%;">
                                             <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
-                                                Lihat
+                                                Pass Or Fail
                                             </button>
                                         </td>
                                     </tr>
-
                                 <?php
                                 } ?>
 
