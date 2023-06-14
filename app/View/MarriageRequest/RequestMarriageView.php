@@ -100,7 +100,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                             <input type="submit" value="Search">
                         </form>
                         <?php
-                        if ($display==1) {
+                        if ($display == 1) {
                             // Retrieve the serialized and URL-encoded data from the URL parameter
                             $partnerEncodedData = $_GET['partnerInfo'];
                             $applicantEncodedData = $_GET['applicantInfo'];
@@ -165,11 +165,20 @@ if (!isset($_SESSION['currentUserIC'])) {
                                                     <td><?php echo $decodedApplicantData['ApplicantEmail'];
                                                         ?></td>
 
+                                                    <th scope="row">No. Telefon(Pejabat) :</th>
+                                                    <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
+                                                        ?></td>
                                                 </tr>
 
                                                 <tr>
                                                     <th scope="row">Alamat :</th>
                                                     <td><?php echo $decodedApplicantData['ApplicantAddress'];
+                                                        ?></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th scope="row">Alamat Tempat Kerja :</th>
+                                                    <td><?php echo $decodedApplicantData['ApplicantWorkAddress'];
                                                         ?></td>
                                                 </tr>
 
@@ -203,17 +212,6 @@ if (!isset($_SESSION['currentUserIC'])) {
                                                             ?></td>
                                                 </tr>
 
-                                                <tr>
-                                                    <th scope="row">Alamat Tempat Kerja :</th>
-                                                    <td><?php echo $decodedApplicantData['ApplicantWorkAddress'];
-                                                        ?></td>
-                                                </tr>
-
-                                                <tr>
-                                                    <th scope="row">No. Telefon(Pejabat) :</th>
-                                                    <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
-                                                        ?></td>
-                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -261,11 +259,21 @@ if (!isset($_SESSION['currentUserIC'])) {
                                                     <td><?php echo $decodedPartnerData['ApplicantEmail'];
                                                         ?></td>
 
+                                                    <th scope="row">No. Telefon(Pejabat) :</th>
+                                                    <td><?php echo $decodedPartnerData['ApplicantWorkPhoneNo'];
+                                                        ?></td>
+
                                                 </tr>
 
                                                 <tr>
                                                     <th scope="row">Alamat :</th>
                                                     <td><?php echo $decodedPartnerData['ApplicantAddress'];
+                                                        ?></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th scope="row">Alamat Tempat Kerja :</th>
+                                                    <td><?php echo $decodedPartnerData['ApplicantWorkAddress'];
                                                         ?></td>
                                                 </tr>
 
@@ -299,17 +307,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                                             ?></td>
                                                 </tr>
 
-                                                <tr>
-                                                    <th scope="row">Alamat Tempat Kerja :</th>
-                                                    <td><?php echo $decodedPartnerData['ApplicantWorkAddress'];
-                                                        ?></td>
-                                                </tr>
 
-                                                <tr>
-                                                    <th scope="row">No. Telefon(Pejabat) :</th>
-                                                    <td><?php echo $decodedPartnerData['ApplicantWorkPhoneNo'];
-                                                        ?></td>
-                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>

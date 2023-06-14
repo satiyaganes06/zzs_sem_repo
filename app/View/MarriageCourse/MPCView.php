@@ -20,6 +20,7 @@ if (!isset($_SESSION['currentUserIC'])) {
   $_SESSION['route'] = 'MPCView';
 
   $result = $_SESSION['listOfMPC'];
+  $bilNum = 0;
 }
 ?>
 
@@ -44,7 +45,7 @@ if (!isset($_SESSION['currentUserIC'])) {
   <link rel="stylesheet" href="../../Bootstrap/mdb.min.css" />
 
   <!--CSS-->
-  <link rel="stylesheet" href="../css/viewApplicantProfileDetailsView.css">
+  <link rel="stylesheet" href="../css/viewListApplicantInterface.css">
   <link rel="stylesheet" href="../css/tab.css">
 
   <!-- Icon -->
@@ -116,7 +117,6 @@ if (!isset($_SESSION['currentUserIC'])) {
 
             <?php
             foreach ($result as $row) {
-                echo $result["Venue"];
                 $organize = $row["Organize"];
                 $venue = $row['Venue'];
                 $dateStart = $row['DateStart'];
