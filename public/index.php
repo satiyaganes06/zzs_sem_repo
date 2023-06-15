@@ -61,7 +61,7 @@ $registrationController = new RegistrationController($accountModel, $applicantMo
 $loginController = new LoginController($accountModel);
 $userProfileController = new UserProfileController($accountModel, $applicantModel, $adminModel, $staffModel);
 $resetPasswordController = new ResetPasswordController($accountModel, $applicantModel, $staffModel);
-$marriageRegistrationController = new MarriageRegistrationController($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel);
+$marriageRegistrationController = new MarriageRegistrationController($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel, $marriageDocModel);
 $marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel, $applicantModel, $paymentModel);
 $requestMarriageController = new RequestMarriageController($marriageInfoModel, $marriageRequestInfoModel, $applicantModel);
 $SpecialIncentiveController = new SpecialIncentiveController($specialIncentiveModel, $applicantModel, $applicantOccupationModel, $heirInfoModel, $marriageInfoModel, $incentiveDocModel, $marriageRequestInfoModel);
@@ -298,13 +298,14 @@ switch ($action) {
         $marriageId = $_POST['noAkuan'];
         $waliIC = $_POST['waliIC'];
         $witnessIC = $_POST['witnessIC'];
+        
 
         $marriageRegistrationController->marriageRegistrationWithApproval($marriageId, $waliIC, $witnessIC);
 
         break;
 
     case 'updateMarriageRegistrationDetail';
-        $marriageId;
+        $marriageId = $_SESSION['marriageID'];
         $waliName = $_POST['waliName'];
         $partnerIC = $_POST['partnerIC'];
         $requestDate = $_POST['requestDate'];
@@ -314,8 +315,8 @@ switch ($action) {
         $dowry = $_POST['dowry'];
         $gift = $_POST['gift'];
         $relation = $_POST['relation'];
-        $waliIc;
-        $witnessIC;
+        $waliIc = $_SESSION['WaliIC'];
+        $witnessIC = $_SESSION['WitnessIC'];
         $waliIC = $_POST['waliIC'];
         $waliAddress = $_['waliAddress'];
         $waliBirthDate = $_POST['waliBirthDate'];
@@ -329,6 +330,26 @@ switch ($action) {
 
 
              break;
+     case 'uploadFile1':
+        
+        // Process each file input
+    $fileContents = [];
+    foreach ($_FILES['files']['name'] as $key => $filename) {
+        $tmpName = $_FILES['files']['tmp_name'][$key];
+
+        // Check if file is uploaded successfully
+        if ($_FILES['files']['error'][$key] === UPLOAD_ERR_OK) {
+            $fileContent = file_get_contents($tmpName);
+            $fileContents[] = $fileContent;
+        }
+    }
+
+    // Combine file contents into a single string
+    $combinedContent = implode(",", $fileContents);
+      
+        $marriageRegistrationController->uploadFileWithApproval($marriageId, $docId, $combinedContent);
+        break;
+                
     case 'updateProfile':
         $occupationType = $_POST['OccupationType'];
         $umur = $_POST['Applicant_umur'];
@@ -354,6 +375,7 @@ switch ($action) {
         $userProfileController->updateApplicantProfileFunction($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat);
 
         break;
+        
     default:
         header('Location: ../app/View/ManageLogin/userLoginView.php');
 }
