@@ -5,7 +5,7 @@
         private $applicantOccupationModel;
         private $consultationModel;
         private $staffModel;
-    
+    }
 
     //Consultation controller's constructor
     public function __construct($complaintModel, $applicantModel, $applicantOccupationModel, $consultationModel, $staffModel) {
@@ -15,6 +15,4 @@
         $this->consultationModel = $consultationModel;
         $this->staffModel = $staffModel;
     }
-
-}
 ?>

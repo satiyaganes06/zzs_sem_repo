@@ -64,7 +64,7 @@ $resetPasswordController = new ResetPasswordController($accountModel, $applicant
 $marriageRegistrationController = new MarriageRegistrationController($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel);
 $marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel, $applicantModel, $paymentModel);
 $requestMarriageController = new RequestMarriageController($marriageInfoModel, $marriageRequestInfoModel, $applicantModel);
-$SpecialIncentiveController = new SpecialIncentiveController($specialIncentiveModel, $applicantModel, $applicantOccupationModel, $heirInfoModel, $marriageInfoModel, $incentiveDocModel, $marriageRequestInfoModel);
+$SpecialIncentiveController = new SpecialIncentiveController($specialIncentiveModel, $applicantModel, $applicantOccupationModel, $heirInfoModel, $marriageInfoModel, $incentiveDocModel);
 
 // Action of Task
 $action = isset($_GET['action']) ? $_GET['action'] : '';
@@ -138,11 +138,11 @@ switch ($action) {
 
         break;
 
-    case 'viewApplicantPartnerMarriageInfo':
+    case 'viewProfile':
 
         $from = isset($_GET['from']) ? $_GET['from'] : '';
 
-        $SpecialIncentiveController->getApplicantPartnerMarriageInfo($from);
+        $userProfileController->viewProfileFunction($from);
 
         break;
 

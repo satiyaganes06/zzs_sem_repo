@@ -31,6 +31,8 @@
                 }else if($from == 'edit'){
                     header('Location: ../app/View/ManageUserProfile/editApplicantProfileDetailsView.php?returnInfo='.  urlencode(serialize($user)));
                     
+                }else if($from == 'insentifPemohon'){
+                    header('Location: ../app/View/ManageSpecialIncentive/applicantIncentiveView.php?returnInfo='.  urlencode(serialize($user)));
                 
                 }else if($from == 'aduanPemohon'){
                     header('Location: ../app/View/ManageComplaint/viewApplicantDetailsView.php?returnInfo='.  urlencode(serialize($user)));
@@ -120,6 +122,13 @@
                 </script>
             <?php
             }
+            // elseif($from == 'adminIncentiveApplicantListView'){
+            //     ?>
+            //         <script>
+            //             window.location = "../app/View/ManageSpecialIncentive/adminIncentiveListView.php";
+            //         </script>
+            //     <?php
+            // }
         }
 
         //Update the applicant profile data 
