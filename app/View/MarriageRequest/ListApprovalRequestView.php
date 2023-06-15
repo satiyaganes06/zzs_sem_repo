@@ -24,6 +24,12 @@
 
         //Sidebar Active path
         $_SESSION['route'] = 'listApprovalRequest';
+    
+        $applicantName = $_SESSION['applicantName'];
+        $applicantGender = $_SESSION['applicantGender'];
+        $listOfRequestMarriageApplicantion = $_SESSION['listOfRequestMarriageApplicantion'];
+        $x = 0;
+        $bilNum = 1;
     }
 
     
@@ -49,7 +55,7 @@
     <link rel="stylesheet" href="../../Bootstrap/mdb.min.css" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="../css/viewAdminProfileDetailsView.css">
+    <link rel="stylesheet" href="../css/viewStaffListView.css">
 
     <!-- Icon -->
     <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png" />
@@ -95,7 +101,7 @@
                                 <thead class="tableHeaderBg">
                                     <tr>
                                         <th>Bil</th>
-                                        <th ><div class="iCEllipsis">Nama Peserta</div></th>
+                                        <th >Nama Peserta</th>
                                         <th>No Kad Pengenalan</th>
                                         <th>Jantina</th>
                                         <th>Operasi</th>
@@ -106,37 +112,38 @@
                                     <?php
                                          
 
-                                        foreach ($result as $row)
-                                        {
-                                                
-                                                
-                                            $Staff_id = $row["Staff_Id"];
-                                            $Staff_name = $row['StaffName'];
-                                            $Staff_type = $row['StaffType'];
-                                            ?>
-                                                <tr>
-                                                    <td style="width: 3%;">
-                                                        <?php echo ++$bilNum; ?>
-                                                    </td>
+                                         foreach ($listOfRequestMarriageApplicantion as $row) {
 
-                                                    <td class="" style="width: 45%;">
-                                                        
-                                                        <?php echo $Staff_name;?>
-                                                    </td>
-
-                                                    <td style="width: 25%;">
-                                                        <span><?php echo $Staff_id;?></span>
-                                                    </td>
-
-                                                    <td style="width: 15%;"><?php echo $Staff_type;?></td>
-
-                                                    <td style="width: 12%;">
-                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
-                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
-                                                            Lihat
-                                                        </button>
-                                                    </td>
-                                                </tr>
+                                            $RequestStatus = $row["RequestStatus"];
+                                            $Applicant_IC = $row["Applicant_IC"];
+                                        ?>
+                                            <tr>
+                                                <td style="width: 3%;">
+                                                    <?php echo ++$bilNum; ?>
+                                                </td>
+        
+                                                <td style="width: 30%;">
+                                                    <?php echo $applicantName[$x]; ?>
+                                                </td>
+        
+                                                <td style="width: 25%;">
+                                                    <span><?php echo $Applicant_IC; ?></span>
+                                                </td>
+        
+                                                <td style="width: 15%;">
+                                                    <?php echo $applicantGender[$x]; ?>
+                                                </td>
+        
+                                                <td style="width: 15%;">
+                                                    <?php echo $RequestStatus; ?>
+                                                </td>
+        
+                                                <td style="width: 12%;">
+                                                    <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
+                                                        Lihat
+                                                    </button>
+                                                </td>
+                                            </tr>
 
                                             <?php 
                                         }?>

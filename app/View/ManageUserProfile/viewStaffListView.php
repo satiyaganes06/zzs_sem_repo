@@ -88,6 +88,18 @@
                         
                         <div id="inMainContentOutline" class="table-responsive p-4">
 
+                            <form action="../../../public/index.php?action=search&from=staff" method="post">
+                                <div class="input-group mb-4">
+                                    <div class="form-outline">
+                                        <input type="search" id="search_term" name="search_term" class="form-control" />
+                                        <label class="form-label" for="form1">Search</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-dark">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+
                             <table class="table table-bordered border-dark mb-0 align-middle">
                                 <thead class="tableHeaderBg">
                                     <tr>

@@ -15,12 +15,12 @@
 
     }else{
 
-        //Sidebar Active path
-        // $_SESSION['route'] = 'viewApplicantList';
-
         // Retrieve list of applicant information
-        $result = $_SESSION['listOfApplicant'];
-        $bilNum = 0;
+        $result = $_SESSION['listOfSpecialIncentive'];
+        $bilNum = 0; 
+
+        //Sidebar Active path
+        $_SESSION['route'] = 'adminIncentiveListView';
     }
     
 ?>
@@ -31,7 +31,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZZS - Special Incentive Application List</title>
+    <title>Senarai Pemohon</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -91,43 +91,47 @@
                             <table class="table table-bordered border-dark mb-0 align-middle">
                                 <thead class="tableHeaderBg">
                                     <tr>
-                                        <th>Bil</th>
+                                        <th>Bil.</th>
                                         <th>Tarikh Mohon</th>
                                         <th>Nama Pemohon</th>
-                                        <th >No. Kad Pengenalan</th>
+                                        <th>No. Kad Pengenalan</th>
                                         <th>Operasi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     
                                     <?php
+                                         
+
                                         foreach ($result as $row)
                                         {
-                                            $Applicant_ic = $row['Applicant_Ic'];
-                                            $Applicant_name = $row['ApplicantName'];
-                                            $IncentiveDate = $row['IncentiveDate'];
+                                                
+                                                
+                                            $Incentive_id = $row["Incentive_Id"];
+                                            $Applicant_IC = $row["Applicant_IC"];
+                                            $ApplicantName = $row["ApplicantName"];
+                                            $IncentiveDate = $row["IncentiveDate"];
+                                            $IncentiveStatus = $row['IncentiveStatus'];
                                             ?>
-                                                <tr>
+                                                <<tr>
                                                     <td style="width: 5%;">
                                                         <?php echo ++$bilNum; ?>
                                                     </td>
 
                                                     <td class="" style="width: 20%;">
                                                         
-                                                        <div class="nameEllipsis">
-                                                            <?php //echo $IncentiveDate; ?>
-                                                        </div>
+                                                        <div class="nameEllipsis"><?php echo $IncentiveDate;?></div>
                                                     </td>
 
                                                     <td style="width: 40%;">
-                                                        <span><?php echo $Applicant_name;?></span>
+                                                        <span><?php echo $ApplicantName;?></span>
                                                     </td>
 
-                                                    <td style="width: 20%;"><?php echo $Applicant_ic;?></td>
+                                                    <td style="width: 20%;"><?php echo $Staff_type;?></td>
 
                                                     <td style="width: 15%;">
                                                         <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
-                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
+                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $account_Id; ?>'">
                                                             Lihat
                                                         </button>
                                                     </td>

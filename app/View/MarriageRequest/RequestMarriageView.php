@@ -312,10 +312,17 @@ if (!isset($_SESSION['currentUserIC'])) {
                                         </table>
                                     </div>
                                 </div>
+                                <?php
+                                $partnerIc = $decodedPartnerData['Applicant_Ic'];
+                                $partnerName = $decodedPartnerData['ApplicantName'];
+                                $applicantName = $decodedApplicantData['ApplicantName'];
+                                ?>
+
+                                <form action="RequestMarriageFormView.php?partnerIc=<?php echo $partnerIc;?>&partnerName=<?php echo $partnerName;?>&applicantName=<?php echo $applicantName;?>">
+                                    <input type="submit" value="submit">
+                                </form>
 
                                 <div class="tab-pane fade" id="ex-with-icons-tabs-3" role="tabpanel" aria-labelledby="ex-with-icons-tab-3">
-
-
                                     <!-- Tabs content  -->
                                 </div>
                             </div>

@@ -22,6 +22,11 @@ if (!isset($_SESSION['currentUserIC'])) {
 
     //Sidebar Active path
     $_SESSION['route'] = 'manageMPC';
+
+    //Get the data
+    $listOfMPC = $_SESSION['listOfMPC'];
+
+    $bilNum = 0;
 }
 
 
@@ -47,8 +52,8 @@ if (!isset($_SESSION['currentUserIC'])) {
     <link rel="stylesheet" href="../../Bootstrap/mdb.min.css" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="../css/viewAdminProfileDetailsView.css">
-    <link rel="stylesheet" href="../css/ManageMPCView.css">
+    <link rel="stylesheet" href="../css/viewApplicantListView.css">
+    <!-- <link rel="stylesheet" href="../css/ManageMPCView.css"> -->
 
     <!-- Icon -->
     <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png" />
@@ -86,85 +91,94 @@ if (!isset($_SESSION['currentUserIC'])) {
                         </div>
                     </div>
                     <h2 id="contentTitle">Kursus Perkahwinan</h2>
-                    <div class="container">
-                        <!-- Your can code here -->
+                    <div id="inMainContentOutline" class="table-responsive p-4">
+                        <div class="container">
+                            <!-- Your can code here -->
 
-                        <div>
-                            <h3>Daftar Kursus Pra-Perkahwinan</h3>
-                            <form action="" method="post">
-                                <label for="organize">PAID : </label><input type="text" name="organize"><br>
-                                <label for="DateStart">Tarikh Mula : </label><input type="date" name="DateStart">
-                                <label for="DateFinish">Tarikh Tamat : </label><input type="date" name="DateFinish"><br>
-                                <label for="Venue">Tempat : </label><input type="text" name="Venue"><br>
-                                <label for="address">Alamat : </label><input type="text" name="address"><br>
-                                <label for="TimeStart">Masa Bermula : </label><input type="time" name="TimeStart">
-                                <label for="TimeFinish">Masa Tamat : </label><input type="time" name="TimeFinish"><br>
-                                <label for="StaffName">Pegawai Dihubungi : </label><input type="text" name="StaffName">
-                                <label for="StaffPhoneNumber">No Telefon : </label><input type="text" name="StaffPhoneNumber"><br>
-                                <label for="Capacity">Kapasiti : </label><input type="number" name="Capacity"><br>
-                                <label for="Notes">Catatan : </label><input type="text" name="Notes">
-                                <label for="publish">Terbitkan Umum : </label><input type="text" name="publish">
-                            </form>
+                            <div>
+                                <h5>Daftar Kursus Pra-Perkahwinan</h5>
+                                <form action="" method="post">
+                                    <label for="organize">PAID : </label><input type="text" name="organize"><br>
+                                    <label for="DateStart">Tarikh Mula : </label><input type="date" name="DateStart">
+                                    <label for="DateFinish">Tarikh Tamat : </label><input type="date" name="DateFinish"><br>
+                                    <label for="Venue">Tempat : </label><input type="text" name="Venue"><br>
+                                    <label for="address">Alamat : </label><input type="text" name="address"><br>
+                                    <label for="TimeStart">Masa Bermula : </label><input type="time" name="TimeStart">
+                                    <label for="TimeFinish">Masa Tamat : </label><input type="time" name="TimeFinish"><br>
+                                    <label for="StaffName">Pegawai Dihubungi : </label><input type="text" name="StaffName">
+                                    <label for="StaffPhoneNumber">No Telefon : </label><input type="text" name="StaffPhoneNumber"><br>
+                                    <label for="Capacity">Kapasiti : </label><input type="number" name="Capacity"><br>
+                                    <label for="Notes">Catatan : </label><input type="text" name="Notes">
+                                    <label for="publish">Terbitkan Umum : </label><input type="text" name="publish">
+                                </form>
+                            </div>
+
+
                         </div>
+                        <div class="container">
 
-
-                    </div>
-                    <div class="container">
-
-                        <table class="table table-bordered border-dark mb-0 align-middle">
-                            <thead class="tableHeaderBg">
-                                <tr>
-                                    <th>Bil</th>
-                                    <th>PAID</th>
-                                    <th>
-                                        <div class="iCEllipsis">Tempat</div>
-                                    </th>
-                                    <th>Tarikh</th>
-                                    <th>Kapasiti Peserta</th>
-                                    <th>Operasi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <?php
-
-
-                                //foreach ($result as $row) {
-
-
-                                    // $Staff_id = $row["Staff_Id"];
-                                    // $Staff_name = $row['StaffName'];
-                                    // $Staff_type = $row['StaffType'];
-                                ?>
+                            <table class="table table-bordered border-dark mb-0 align-middle">
+                                <thead class="tableHeaderBg">
                                     <tr>
-                                        <td style="width: 3%;">
-                                        </td>
-
-                                        <td class="" style="width: 15%;">
-                                        </td>
-
-                                        <td class="" style="width: 40%;">
-                                        </td>
-
-                                        <td style="width: 20%;">
-                                        </td>
-
-                                        <td style="width: 10%;">
-                                    </td>
-
-                                        <td style="width: 12%;">
-                                            <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
-                                                Lihat
-                                            </button>
-                                        </td>
+                                        <h6>
+                                            <th>Bil</th>
+                                            <th>PAID</th>
+                                            <th>
+                                                <div class="iCEllipsis">Tempat</div>
+                                            </th>
+                                            <th>Tarikh</th>
+                                            <th>Kapasiti Peserta</th>
+                                            <th>Operasi</th>
+                                        </h6>
                                     </tr>
+                                </thead>
+                                <tbody>
 
-                                <?php
-                                //} ?>
+                                    <?php
 
 
-                            </tbody>
-                        </table>
+                                    foreach ($listOfMPC as $row) {
+                                        $organize = $row["Organize"];
+                                        $venue = $row['Venue'];
+                                        $dateStart = $row['DateStart'];
+                                        $dateFinish = $row['DateFinish'];
+                                        $capacity = $row['Capacity'];
+                                    ?>
+                                        <tr>
+                                            <td style="width: 3%;">
+                                                <?php echo ++$bilNum; ?>
+                                            </td>
+
+                                            <td class="" style="width: 15%;">
+                                                <div class="iCEllipsis"><?php echo $organize; ?></div>
+                                            </td>
+
+                                            <td class="" style="width: 40%;">
+                                                <?php echo $venue; ?>
+                                            </td>
+
+                                            <td style="width: 20%;">
+                                                <?php echo $dateStart; ?>
+                                            </td>
+
+                                            <td style="width: 10%;">
+                                                <?php echo $capacity; ?>
+                                            </td>
+
+                                            <td style="width: 12%;">
+                                                <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php'">
+                                                    Edit
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                    <?php
+                                    } ?>
+
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 

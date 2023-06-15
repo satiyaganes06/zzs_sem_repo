@@ -18,7 +18,7 @@ if (!isset($_SESSION['currentUserIC'])) {
 
   // Sidebar Active path
   $_SESSION['route'] = 'MPCView';
-
+  $bilNum = 0;
   $result = $_SESSION['listOfMPC'];
   $bilNum = 0;
 }
@@ -120,6 +120,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                 $organize = $row["Organize"];
                 $venue = $row['Venue'];
                 $dateStart = $row['DateStart'];
+                $dateFinish = $row['DateFinish'];
                 $capacity = $row['Capacity'];
                 $vacancy = $row['Vacancy'];
                 $marriageCourseID = $row['Marriage_Course_Id'];
@@ -146,7 +147,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                     <td style="width: 10%;"><?php echo $vacancy; ?></td>
 
                     <td style="width: 12%;">
-                        <a href="../../../public/index.php?marriageCourseID=<?php echo $marriageCourseID; ?>">DAFTAR SEKARANG</a>
+                        <a href="../../../public/index.php?action=getMPCApplicantInfo&from=MPCView&organize=<?php echo $organize;?>&venue=<?php echo $venue;?>&dateStart=<?php echo $dateStart;?>&dateFinish=<?php echo $dateFinish;?>">DAFTAR SEKARANG</a>
                     </td>
                 </tr>
 
