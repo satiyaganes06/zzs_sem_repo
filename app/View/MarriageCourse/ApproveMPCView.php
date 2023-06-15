@@ -23,11 +23,11 @@ if (!isset($_SESSION['currentUserIC'])) {
     //Sidebar Active path
     $_SESSION['route'] = 'newApplicant';
 
-      // Retrieve the serialized and URL-encoded data from the URL parameter
-  $applicantEncodedData = $_GET['applicantInfo'];
+    // Retrieve the serialized and URL-encoded data from the URL parameter
+    $applicantEncodedData = $_GET['applicantInfo'];
 
-  // Decode the URL-encoded data and unserialize it
-  $decodedApplicantData = unserialize(urldecode($applicantEncodedData));
+    // Decode the URL-encoded data and unserialize it
+    $decodedApplicantData = unserialize(urldecode($applicantEncodedData));
 }
 
 
