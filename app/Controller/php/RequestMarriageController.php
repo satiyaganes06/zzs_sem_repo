@@ -56,4 +56,16 @@ class RequestMarriageController
             header('Location: ../app/View/MarriageRequest/ListApprovalRequestView.php?');
         }
     }
+
+    public function MarriageRequestApplicationInfo($applicantIC, $from)
+    {
+
+        $applicantInfo = $this->applicantModel->getApplicantProfileInfo($applicantIC);
+
+        if ($from == 'listApplicant') {
+            header('Location: ../app/View/MarriageRequest/ApplicantInfoView.php?applicantInfo=' . urlencode(serialize($applicantInfo)));
+        }else{
+            header('Location: ../app/View/MarriageRequest/ApproveRequestView.php?applicantInfo=' . urlencode(serialize($applicantInfo)));
+        }
+    }
 }

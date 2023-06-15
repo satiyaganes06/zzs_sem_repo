@@ -71,7 +71,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 switch ($action) {
 
-    //Tasks of System
+        //Tasks of System
     case 'createAccount':
         $ic = $_POST['Applicant_ic'];
         $password = $_POST['Applicant_password'];
@@ -170,8 +170,8 @@ switch ($action) {
         break;
     case 'viewComplaintListDetailsView':
 
-            $userProfileController->viewApplicantListFunction('viewComplaintListDetailsView');
-    
+        $userProfileController->viewApplicantListFunction('viewComplaintListDetailsView');
+
         break;
 
     case 'viewProfileById':
@@ -268,7 +268,7 @@ switch ($action) {
 
 
             $marriagePreparationCourseController->getMPCApplicantInfoForApplicant($organize, $venue, $dateStart, $dateFinish);
-        }else{
+        } else {
             $marriagePreparationCourseController->getMPCApplicantInfoForAdmin($from);
         }
         break;
@@ -296,6 +296,14 @@ switch ($action) {
 
         break;
 
+    case 'MarriageRequestApplicationInfo':
+        $applicantIC = isset($_GET['applicantIC']) ? $_GET['applicantIC'] : '';
+        $from = isset($_GET['from']) ? $_GET['from'] : '';
+
+        $requestMarriageController->MarriageRequestApplicationInfo($applicantIC, $from);
+
+        break;
+
         //Module 2 Section End ^^
 
 
@@ -303,7 +311,7 @@ switch ($action) {
         $marriageId = $_POST['noAkuan'];
         $waliIC = $_POST['waliIC'];
         $witnessIC = $_POST['witnessIC'];
-        
+
 
         $marriageRegistrationController->marriageRegistrationWithApproval($marriageId, $waliIC, $witnessIC);
 
@@ -334,27 +342,27 @@ switch ($action) {
         $marriageRegistrationController->insertWaliInfo($waliIc, $waliAddress, $waliBirthDate, $waliAge, $waliName, $relation, $waliNumberPhone);
 
 
-             break;
-     case 'uploadFile1':
-        
+        break;
+    case 'uploadFile1':
+
         // Process each file input
-    $fileContents = [];
-    foreach ($_FILES['files']['name'] as $key => $filename) {
-        $tmpName = $_FILES['files']['tmp_name'][$key];
+        $fileContents = [];
+        foreach ($_FILES['files']['name'] as $key => $filename) {
+            $tmpName = $_FILES['files']['tmp_name'][$key];
 
-        // Check if file is uploaded successfully
-        if ($_FILES['files']['error'][$key] === UPLOAD_ERR_OK) {
-            $fileContent = file_get_contents($tmpName);
-            $fileContents[] = $fileContent;
+            // Check if file is uploaded successfully
+            if ($_FILES['files']['error'][$key] === UPLOAD_ERR_OK) {
+                $fileContent = file_get_contents($tmpName);
+                $fileContents[] = $fileContent;
+            }
         }
-    }
 
-    // Combine file contents into a single string
-    $combinedContent = implode(",", $fileContents);
-      
+        // Combine file contents into a single string
+        $combinedContent = implode(",", $fileContents);
+
         $marriageRegistrationController->uploadFileWithApproval($marriageId, $docId, $combinedContent);
         break;
-                
+
     case 'updateProfile':
         $occupationType = $_POST['OccupationType'];
         $umur = $_POST['Applicant_umur'];
@@ -384,7 +392,7 @@ switch ($action) {
         echo "Its going";
 
         break;
-        
+
     default:
         header('Location: ../app/View/ManageLogin/userLoginView.php');
 }
