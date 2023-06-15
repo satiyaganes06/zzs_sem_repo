@@ -223,4 +223,25 @@ class MarriagePreparationCourseController
 
         }
     }
+
+    public function updateMPCView($marriageID){
+
+        if($this->marriageCourseInfoModel->updateMPCView($marriageID)){
+            ?>
+            <script>
+                alert("Data Sucessfully update");
+                window.href = "../../View/MarriageCourse/ManageMPCView.php";
+            </script>
+        <?php
+        }else{
+            ?>
+            <script>
+                alert("Data unsuccessfully update");
+                window.href = "../../../public/index.php?action=viewListOfMPC&from=manageMPC";
+            </script>
+        <?php
+        }
+        
+    }
 }
+?>

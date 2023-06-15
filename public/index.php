@@ -167,12 +167,12 @@ switch ($action) {
         $applicantData = $userProfileController->viewProfileFunction('specialIncentiveApplication');
         $marriageData = $SpecialIncentiveController->getMarriageInfo('specialIncentiveApplication');
         $partnerData = $SpecialIncentiveController->getPartnerInfo($marriageData['Partner_IC']);
-        
+
         $marriageInfoData = $SpecialIncentiveController->getMarriageInfoData($marriageData['Marriage_Id']);
         $occupationData = $SpecialIncentiveController->getOccupationInfo();
         $heirData = $SpecialIncentiveController->getHeirInfo();
 
-        header('Location: ../app/View/ManageSpecialIncentive/applicantIncentiveView.php?applicantData='.  urlencode(serialize($applicantData)) . '&marriageData=' . urlencode(serialize($marriageData)) . '&partnerData=' . urlencode(serialize($partnerData)) . '&marriageInfoData=' . urlencode(serialize($marriageInfoData)) . '&occupationData=' . urlencode(serialize($occupationData)) . '&heirData=' . urlencode(serialize($heirData)));
+        header('Location: ../app/View/ManageSpecialIncentive/applicantIncentiveView.php?applicantData=' .  urlencode(serialize($applicantData)) . '&marriageData=' . urlencode(serialize($marriageData)) . '&partnerData=' . urlencode(serialize($partnerData)) . '&marriageInfoData=' . urlencode(serialize($marriageInfoData)) . '&occupationData=' . urlencode(serialize($occupationData)) . '&heirData=' . urlencode(serialize($heirData)));
         break;
 
     case 'addOccupation':
@@ -210,8 +210,8 @@ switch ($action) {
 
     case 'viewComplaintListDetailsView':
 
-            $userProfileController->viewApplicantListFunction('viewComplaintListDetailsView');
-    
+        $userProfileController->viewApplicantListFunction('viewComplaintListDetailsView');
+
         break;
 
     case 'viewProfileById':
@@ -343,6 +343,13 @@ switch ($action) {
         $marriagePreparationCourseController->makeResult($result, $applicantIC, $approval);
         break;
 
+
+    case 'updateMPCView';
+        $marriageID = isset($_GET['marriageID']) ? $_GET['marriageID'] : '';
+
+        $marriagePreparationCourseController->updateMPCView($marriageID);
+        break;
+
     case 'getApplicantAndPartnerInfo':
 
         session_start();
@@ -380,15 +387,15 @@ switch ($action) {
 
         break;
 
-        case 'viewApplicantDetailsView':
-            $purpose = $_POST['purpose'];
-            $challenges = $_POST['challenges'];
-            $solution = $_POST['solution'];
-    
-            $complaintController->viewApplicantDetailsView($purpose, $challenges, $solution);
-    
-            break;
-    
+    case 'viewApplicantDetailsView':
+        $purpose = $_POST['purpose'];
+        $challenges = $_POST['challenges'];
+        $solution = $_POST['solution'];
+
+        $complaintController->viewApplicantDetailsView($purpose, $challenges, $solution);
+
+        break;
+
     case 'updateMarriageRegistrationDetail';
         $marriageId = $_SESSION['marriageID'];
         $waliName = $_POST['waliName'];

@@ -46,4 +46,39 @@ class MarriageCourseInfoModel
         return $MPCInfo;
 
     }
+
+    public function updateMPCView($marriageID){
+            
+            $stmt = $this->connect->prepare('UPDATE marriage_course_info 
+            SET Organize = :organize, 
+            DateStart = :dateStart, 
+            DateFinish = :dateFinish, 
+            TimeStart = :timeStart, 
+            TimeFinish = :timeFinish, 
+            Venue = :venue, 
+            StaffName = :staffName, 
+            StaffPhoneNumber = :staffPhoneNumber, 
+            Notes = :notes 
+            WHERE Marriage_Course_Id  = :marriageID');
+
+            $stmt->bindParam(':marriageID', $marriageID);
+            $stmt->bindParam(':organize', $_POST['organize']);
+            $stmt->bindParam(':dateStart', $_POST['dateStart']);
+            $stmt->bindParam(':dateFinish', $_POST['dateFinish']);
+            $stmt->bindParam(':timeStart', $_POST['timeStart']);
+            $stmt->bindParam(':timeFinish', $_POST['timeFinish']);
+            $stmt->bindParam(':venue', $_POST['venue']);
+            $stmt->bindParam(':staffName', $_POST['staffName']);
+            $stmt->bindParam(':staffPhoneNumber', $_POST['staffPhoneNumber']);
+            $stmt->bindParam(':notes', $_POST['notes']);
+    
+            // Execute SQL statement
+            if($stmt->execute()){
+                return true;
+            }else{
+                return false;
+            }
+    
+            
+    }
 }
