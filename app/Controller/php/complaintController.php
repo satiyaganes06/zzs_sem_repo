@@ -5,7 +5,7 @@
         private $applicantOccupationModel;
         private $consultationModel;
         private $staffModel;
-    }
+    
 
     //Complaint controller's constructor
     public function __construct($complaintModel, $applicantModel, $applicantOccupationModel, $consultationModel, $staffModel) {
@@ -15,4 +15,13 @@
         $this->consultationModel = $consultationModel;
         $this->staffModel = $staffModel;
     }
+
+    public function getAllComplaintInfo(){
+        $complaintInfo = $this->complaintModel->getAllComplaintInfo();
+        return $complaintInfo;
+    }
+
+
+
+}
 ?>

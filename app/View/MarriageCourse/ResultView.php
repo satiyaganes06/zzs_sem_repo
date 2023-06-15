@@ -100,7 +100,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                     <th>Bil</th>
                                     <th>Tarikh Mohon</th>
                                     <th>
-                                        <div class="iCEllipsis">Nama Peserta</div>
+                                        <div >Nama Peserta</div>
                                     </th>
                                     <th>No Kad Pengenalan</th>
                                     <th>Status</th>
@@ -129,7 +129,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                             <?php echo $RequestDate; ?>
                                         </td>
 
-                                        <td class="" style="width: 40%;">
+                                        <td class="" style="width: 32%;">
 
                                             <?php echo $applicantNameList[$num++]; ?>
                                         </td>
@@ -140,9 +140,12 @@ if (!isset($_SESSION['currentUserIC'])) {
 
                                         <td style="width: 10%;"><?php echo $MPCStatus; ?></td>
 
-                                        <td style="width: 12%;">
-                                            <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
-                                                Pass Or Fail
+                                        <td style="width: 20%;">
+                                            <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=makeResult&result=PASS&approval=LULUS&applicantIC=<?php echo $Applicant_IC; ?>'">
+                                                Pass
+                                            </button>
+                                            <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=makeResult&result=FAIL&approval=GAGAL&applicantIC=<?php echo $Applicant_IC; ?>'">
+                                                Fail
                                             </button>
                                         </td>
                                     </tr>

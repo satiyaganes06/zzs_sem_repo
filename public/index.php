@@ -29,6 +29,8 @@ require_once '../app/Controller/php/marriageRegistrationController.php';
 require_once '../app/Controller/php/MarriagePreparationCourseController.php';
 require_once '../app/Controller/php/RequestMarriageController.php';
 require_once '../app/Controller/php/SpecialIncentiveController.php';
+require_once '../app/Controller/php/complaintController.php';
+require_once '../app/Controller/php/consultationController.php';
 
 // Create a new database connection
 $db = (new Database())->connect();
@@ -61,10 +63,12 @@ $registrationController = new RegistrationController($accountModel, $applicantMo
 $loginController = new LoginController($accountModel);
 $userProfileController = new UserProfileController($accountModel, $applicantModel, $adminModel, $staffModel);
 $resetPasswordController = new ResetPasswordController($accountModel, $applicantModel, $staffModel);
-$marriageRegistrationController = new MarriageRegistrationController($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel, $marriageDocModel);
+$marriageRegistrationController = new MarriageRegistrationController($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel, $marriageDocModel, $marriageVoluntaryModel, $voluntaryDocModel);
 $marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel, $applicantModel, $paymentModel);
 $requestMarriageController = new RequestMarriageController($marriageInfoModel, $marriageRequestInfoModel, $applicantModel);
 $SpecialIncentiveController = new SpecialIncentiveController($specialIncentiveModel, $applicantModel, $applicantOccupationModel, $heirInfoModel, $marriageInfoModel, $incentiveDocModel);
+$ComplaintController = new complaintController($complaintModel, $applicantModel, $applicantOccupationModel, $consultationModel, $staffModel);
+$ConsultationController = new consultationController($complaintModel, $applicantModel, $applicantOccupationModel, $consultationModel, $staffModel);
 
 // Action of Task
 $action = isset($_GET['action']) ? $_GET['action'] : '';
@@ -168,10 +172,11 @@ switch ($action) {
         $SpecialIncentiveController->viewSpecialIncentiveListFunction('adminIncentiveListView');
 
         break;
+
     case 'viewComplaintListDetailsView':
 
-        $userProfileController->viewApplicantListFunction('viewComplaintListDetailsView');
-
+            $userProfileController->viewApplicantListFunction('viewComplaintListDetailsView');
+    
         break;
 
     case 'viewProfileById':
@@ -269,7 +274,8 @@ switch ($action) {
 
             $marriagePreparationCourseController->getMPCApplicantInfoForApplicant($organize, $venue, $dateStart, $dateFinish);
         } else {
-            $marriagePreparationCourseController->getMPCApplicantInfoForAdmin($from);
+            $applicantIC = isset($_GET['applicantIC']) ? $_GET['applicantIC'] : '';
+            $marriagePreparationCourseController->getMPCApplicantInfoForAdmin($from, $applicantIC);
         }
         break;
 
@@ -278,6 +284,21 @@ switch ($action) {
 
         $marriagePreparationCourseController->uploadProofOfPaymentMPC($typeOfFee);
 
+        break;
+
+    case 'makeApproval':
+        $approval = isset($_GET['approval']) ? $_GET['approval'] : '';
+        $applicantIC = isset($_GET['applicantIC']) ? $_GET['applicantIC'] : '';
+
+        $marriagePreparationCourseController->makeApproval($approval, $applicantIC);
+        break;
+
+    case 'makeResult':
+        $result = isset($_GET['result']) ? $_GET['result'] : '';
+        $applicantIC = isset($_GET['applicantIC']) ? $_GET['applicantIC'] : '';
+        $approval = isset($_GET['approval']) ? $_GET['approval'] : '';
+
+        $marriagePreparationCourseController->makeResult($result, $applicantIC, $approval);
         break;
 
     case 'getApplicantAndPartnerInfo':
@@ -300,7 +321,7 @@ switch ($action) {
         $applicantIC = isset($_GET['applicantIC']) ? $_GET['applicantIC'] : '';
         $from = isset($_GET['from']) ? $_GET['from'] : '';
 
-        $requestMarriageController->MarriageRequestApplicationInfo($applicantIC,$from );
+        $requestMarriageController->MarriageRequestApplicationInfo($applicantIC, $from);
 
         break;
 
@@ -311,19 +332,28 @@ switch ($action) {
         $marriageId = $_POST['noAkuan'];
         $waliIC = $_POST['waliIC'];
         $witnessIC = $_POST['witnessIC'];
-        
+
 
         $marriageRegistrationController->marriageRegistrationWithApproval($marriageId, $waliIC, $witnessIC);
 
         break;
 
+        case 'viewApplicantDetailsView':
+            $purpose = $_POST['purpose'];
+            $challenges = $_POST['challenges'];
+            $solution = $_POST['solution'];
+    
+            $complaintController->viewApplicantDetailsView($purpose, $challenges, $solution);
+    
+            break;
+    
     case 'updateMarriageRegistrationDetail';
         $marriageId = $_SESSION['marriageID'];
         $waliName = $_POST['waliName'];
         $partnerIC = $_POST['partnerIC'];
         $requestDate = $_POST['requestDate'];
         $marriageDate = $_POST['marriageDate'];
-        $marriageAddress = $_POST['requestDate'];
+        $marriageAddress = $_POST['marriageAdress'];
         $dowryType = $_POST['dowryType'];
         $dowry = $_POST['dowry'];
         $gift = $_POST['gift'];
@@ -342,27 +372,54 @@ switch ($action) {
         $marriageRegistrationController->insertWaliInfo($waliIc, $waliAddress, $waliBirthDate, $waliAge, $waliName, $relation, $waliNumberPhone);
 
 
-             break;
-     case 'uploadFile1':
-        
+        break;
+    case 'uploadFile1':
+
         // Process each file input
-    $fileContents = [];
-    foreach ($_FILES['files']['name'] as $key => $filename) {
-        $tmpName = $_FILES['files']['tmp_name'][$key];
+        $fileContents = [];
+        foreach ($_FILES['files']['name'] as $key => $filename) {
+            $tmpName = $_FILES['files']['tmp_name'][$key];
 
-        // Check if file is uploaded successfully
-        if ($_FILES['files']['error'][$key] === UPLOAD_ERR_OK) {
-            $fileContent = file_get_contents($tmpName);
-            $fileContents[] = $fileContent;
+            // Check if file is uploaded successfully
+            if ($_FILES['files']['error'][$key] === UPLOAD_ERR_OK) {
+                $fileContent = file_get_contents($tmpName);
+                $fileContents[] = $fileContent;
+            }
         }
-    }
 
-    // Combine file contents into a single string
-    $combinedContent = implode(",", $fileContents);
-      
+        // Combine file contents into a single string
+        $combinedContent = implode(",", $fileContents);
+
         $marriageRegistrationController->uploadFileWithApproval($marriageId, $docId, $combinedContent);
         break;
-                
+
+    case 'uploadFile2':
+        // Process each file input
+        $fileContents = [];
+        foreach ($_FILES['files']['name'] as $key => $filename) {
+            $tmpName = $_FILES['files']['tmp_name'][$key];
+
+            // Check if file is uploaded successfully
+            if ($_FILES['files']['error'][$key] === UPLOAD_ERR_OK) {
+                $fileContent = file_get_contents($tmpName);
+                $fileContents[] = $fileContent;
+            }
+        }
+
+        // Combine file contents into a single string
+        $combinedContent = implode(",", $fileContents);
+
+        $marriageRegistrationController->uploadFileVoluntary($voluntaryId, $docId, $combinedContent);
+        break;
+    case 'marriageRegistrationVoluntary':
+
+        $voluntaryId = $_POST['noAkuan'];
+        $ApplicantIC = $_POST['kpPemohon'];
+        $voluntaryFile = $_POST['marriageApprovalFile'];
+
+
+        $marriageRegistrationController->marriageRegistrationVoluntary($voluntaryId, $ApplicantIC, $voluntaryFile, $docId);
+        break;
     case 'updateProfile':
         $occupationType = $_POST['OccupationType'];
         $umur = $_POST['Applicant_umur'];
@@ -392,7 +449,7 @@ switch ($action) {
         echo "Its going";
 
         break;
-        
+
     default:
         header('Location: ../app/View/ManageLogin/userLoginView.php');
 }

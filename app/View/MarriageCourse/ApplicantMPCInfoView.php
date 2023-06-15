@@ -21,7 +21,7 @@ if (!isset($_SESSION['currentUserIC'])) {
 
 
   //Sidebar Active path
-  $_SESSION['route'] = 'viewProfile';
+  $_SESSION['route'] = 'listOfApplicantMPC';
 
   // Retrieve the serialized and URL-encoded data from the URL parameter
   $applicantEncodedData = $_GET['applicantInfo'];

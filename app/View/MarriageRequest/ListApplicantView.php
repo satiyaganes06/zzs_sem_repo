@@ -17,7 +17,7 @@ if (!isset($_SESSION['currentUserIC'])) {
     </script>
 <?php
 
-} else{
+} else {
 
 
     //Sidebar Active path
@@ -137,7 +137,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                         </td>
 
                                         <td style="width: 12%;">
-                                            <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=MarriageRequestApplicationInfo&from=listApplicant&applicantIC=<?php echo $Applicant_IC;?>'">
+                                            <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=MarriageRequestApplicationInfo&from=listApplicant&applicantIC=<?php echo $Applicant_IC; ?>'">
                                                 Lihat
                                             </button>
                                         </td>

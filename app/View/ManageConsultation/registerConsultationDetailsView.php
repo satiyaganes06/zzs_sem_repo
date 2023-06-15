@@ -89,15 +89,18 @@ if (!isset($_SESSION['currentUserIC'])) {
           </div>
           <!-- href="../../Config/logout.php" -->
           <div class="mainContentBg text-center p-3">
+            <h2 id="contentTitle">MAKLUMAT KHIDMAT NASIHAT</h2>
 
             <!-- Tabs content -->
-            <div class="tab-content" id="ex-with-icons-content">
+            <div id="inMainContentOutline" class="table-responsive p-4">
+                  <table class="table table-borderless table-sm">
 
                       <tbody>
+                        <tr>
                           <th scope="row">Tarikh :</th>
                           <td>
-                            <div class="form form-width">
-                              <input type="text" id="formConsultationDate" name="consultDate" class="form-control form-control-sm" value="<?php echo $decodedComplaintData['ConsultationDate']; ?>" />
+                            <div class="form">
+                              <input type="date" id="formConsultationDate" name="consultDate" value="" placeholder="YYYY-MM-DD"/>
                             </div>
                           </td>
                         </tr>
@@ -105,8 +108,8 @@ if (!isset($_SESSION['currentUserIC'])) {
                         <tr>
                           <th scope="row">Masa :</th>
                           <td>
-                            <div class="form form-width">
-                              <input type="text" id="formConsultationTime" name="consultTime" class="form-control form-control-sm" value="<?php echo $decodedComplaintData['ConsultationTime']; ?>" />
+                            <div class="form">
+                              <input type="time" id="formConsultationTime" name="consultTime" value="" />
                             </div>
                           </td>
                         </tr>
@@ -114,8 +117,23 @@ if (!isset($_SESSION['currentUserIC'])) {
                         <tr>
                           <th scope="row">Tempat :</th>
                           <td>
-                            <div class="form form-width">
-                              <input type="text" id="formConsultationPlace" name="consultPlace " class="form-control form-control-sm" value="<?php echo $decodedComplaintData['ConsultationPlace']; ?>" />
+                            <div class="form">
+                              <input type="text" id="formConsultationPlace" name="consultPlace " value="" />
+                            </div>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">Penasihat :</th>
+                          <td>
+                            <div class="form">
+                              <select class="browser-default custom-select-sm shadow rounded-3" name="advisor" required>
+                                <option class="text-muted" value="" disabled selected>Pilih</option>
+                                <option value="adlan">Adlan Dahnel</option>
+                                <option value="dinie">Dinie Amani</option>
+                                <option value="beng">Neo Beng Qu</option>
+                              </select>
+                              <button type="button" name="return" id="buttonS" onclick="location.href = '../ManageConsultation/viewConsultantProfileView.php';" >Lihat</button>
                             </div>
                           </td>
                         </tr>

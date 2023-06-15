@@ -105,9 +105,9 @@
 <tr>
     <th scope="row">Tarikh Mohon :</th>
     <td>
-    <div class="form form-width">
-            <input type="date" id="formDate" name="requestDate" class="form-control form-control-sm" value=""/>
-        </div>
+    <?php $currentDate = date("Y-m-d");
+          echo $currentDate
+    ?>
     </td>
 
     
