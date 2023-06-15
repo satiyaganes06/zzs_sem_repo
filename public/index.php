@@ -223,7 +223,7 @@ switch ($action) {
         $from = $_GET['from'];
 
         $userProfileController->viewSearchListFunction($term, $from);
-        
+
         break;
 
     case 'viewlistOfMPC':
