@@ -7,14 +7,18 @@ class marriageRegistrationController {
   private $marriageInfoModel;
   private $waliModel;
   private $marriageDocModel;
+  private $marriageVoluntaryModel;
+  private $voluntaryDocModel;
   //Registration controller's constructor
-  public function __construct($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel, $marriageDocModel) {
+  public function __construct($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel, $marriageDocModel, $marriageVoluntaryModel, $voluntaryDocModel) {
     $this->accountModel = $accountModel;
     $this->applicantModel = $applicantModel;
     $this->staffModel = $staffModel;
     $this->marriageInfoModel = $marriageInfoModel;
     $this->waliModel = $waliModel;
     $this->marriageDocModel = $marriageDocModel;
+    $this->marriageVoluntaryModel = $marriageVoluntaryModel;
+    $this->voluntaryDocModel = $voluntaryDocModel;
   }
 
   public function marriageRegistrationWithApproval($marriageId, $waliIC, $witnessIC) {
@@ -68,5 +72,9 @@ public function uploadFileWithApproval($marriageId, $docId, $combinedContent){
       </script>
   <?php
 }
+public function marriageRegistrationVoluntary($voluntaryId, $ApplicantIC, $voluntaryFile, $docId){
+  $this->marriageVoluntaryModel->registerVoluntary($voluntaryId, $ApplicantIC);
+  $this->voluntaryDocModel->uploadVoluntaryDoc($voluntaryId, $voluntaryFile, $docId);
 
+}
 }

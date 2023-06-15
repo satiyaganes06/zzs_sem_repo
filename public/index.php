@@ -61,7 +61,7 @@ $registrationController = new RegistrationController($accountModel, $applicantMo
 $loginController = new LoginController($accountModel);
 $userProfileController = new UserProfileController($accountModel, $applicantModel, $adminModel, $staffModel);
 $resetPasswordController = new ResetPasswordController($accountModel, $applicantModel, $staffModel);
-$marriageRegistrationController = new MarriageRegistrationController($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel, $marriageDocModel);
+$marriageRegistrationController = new MarriageRegistrationController($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel, $marriageDocModel, $marriageVoluntaryModel, $voluntaryDocModel);
 $marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel, $applicantModel, $paymentModel);
 $requestMarriageController = new RequestMarriageController($marriageInfoModel, $marriageRequestInfoModel, $applicantModel);
 $SpecialIncentiveController = new SpecialIncentiveController($specialIncentiveModel, $applicantModel, $applicantOccupationModel, $heirInfoModel, $marriageInfoModel, $incentiveDocModel);
@@ -324,7 +324,7 @@ switch ($action) {
         $partnerIC = $_POST['partnerIC'];
         $requestDate = $_POST['requestDate'];
         $marriageDate = $_POST['marriageDate'];
-        $marriageAddress = $_POST['requestDate'];
+        $marriageAddress = $_POST['marriageAdress'];
         $dowryType = $_POST['dowryType'];
         $dowry = $_POST['dowry'];
         $gift = $_POST['gift'];
@@ -363,7 +363,34 @@ switch ($action) {
 
         $marriageRegistrationController->uploadFileWithApproval($marriageId, $docId, $combinedContent);
         break;
+                
+    case 'uploadFile2':
+        // Process each file input
+        $fileContents = [];
+        foreach ($_FILES['files']['name'] as $key => $filename) {
+            $tmpName = $_FILES['files']['tmp_name'][$key];
 
+            // Check if file is uploaded successfully
+            if ($_FILES['files']['error'][$key] === UPLOAD_ERR_OK) {
+                $fileContent = file_get_contents($tmpName);
+                $fileContents[] = $fileContent;
+            }
+        }
+
+        // Combine file contents into a single string
+        $combinedContent = implode(",", $fileContents);
+
+        $marriageRegistrationController->uploadFileVoluntary($voluntaryId, $docId, $combinedContent);
+        break;
+    case 'marriageRegistrationVoluntary':
+        
+        $voluntaryId = $_POST['noAkuan'];
+        $ApplicantIC = $_POST['kpPemohon'];
+        $voluntaryFile = $_POST['marriageApprovalFile'];
+        
+
+        $marriageRegistrationController->marriageRegistrationVoluntary($voluntaryId, $ApplicantIC, $voluntaryFile, $docId);
+        break;
     case 'updateProfile':
         $occupationType = $_POST['OccupationType'];
         $umur = $_POST['Applicant_umur'];
