@@ -204,8 +204,14 @@ switch ($action) {
 
     case 'adminIncentiveListView':
 
-        $SpecialIncentiveController->viewSpecialIncentiveListFunction('adminIncentiveListView');
+        $SpecialIncentiveController->adminIncentiveListView();
 
+        break;
+
+    case 'specialIncentiveApplicationAdmin':
+
+        $applicantData = $userProfileController->viewProfileFunction('specialIncentiveApplication');
+        
         break;
 
     case 'viewComplaintListDetailsView':

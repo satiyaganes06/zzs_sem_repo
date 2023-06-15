@@ -15,12 +15,16 @@
 
     }else{
 
-        // Retrieve list of applicant information
-        $result = $_SESSION['listOfSpecialIncentive'];
-        $bilNum = 0; 
-
         //Sidebar Active path
         $_SESSION['route'] = 'adminIncentiveListView';
+
+        //Retrive special incentive list from special incentive model
+        $listOfSpecialIncentive = $_SESSION['listOfSpecialIncentive'];
+
+        //Retrive applicant name from applicant model
+        $applicantName = $_SESSION['applicantName'];
+
+        $bilNum = 0;
     }
     
 ?>
@@ -101,19 +105,16 @@
                                 <tbody>
                                     
                                     <?php
-                                         
-
-                                        foreach ($result as $row)
+                                        foreach ($listOfSpecialIncentive as $row)
                                         {
-                                                
-                                                
+        
                                             $Incentive_id = $row["Incentive_Id"];
                                             $Applicant_IC = $row["Applicant_IC"];
-                                            $ApplicantName = $row["ApplicantName"];
+                                            $ApplicantName = $applicantName[$bilNum];
                                             $IncentiveDate = $row["IncentiveDate"];
                                             $IncentiveStatus = $row['IncentiveStatus'];
                                             ?>
-                                                <<tr>
+                                                <tr>
                                                     <td style="width: 5%;">
                                                         <?php echo ++$bilNum; ?>
                                                     </td>
@@ -127,17 +128,17 @@
                                                         <span><?php echo $ApplicantName;?></span>
                                                     </td>
 
-                                                    <td style="width: 20%;"><?php echo $Staff_type;?></td>
+                                                    <td style="width: 20%;"><?php echo $Applicant_IC;?></td>
 
                                                     <td style="width: 15%;">
                                                         <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
-                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $account_Id; ?>'">
+                                                            onclick="location.href='../../../public/index.php?action=specialIncentiveApplicationAdmin'">
                                                             Lihat
                                                         </button>
                                                     </td>
                                                 </tr>
 
-                                            <?php 
+                                            <?php $bilNum++;
                                         }?>
                                     
                                     

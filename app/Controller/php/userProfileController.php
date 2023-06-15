@@ -117,14 +117,6 @@
                 <?php
             
 
-            }elseif($from == 'adminIncentiveListView'){
-                ?>
-                    <script>
-                        window.location = "../app/View/ManageSpecialIncentive/adminIncentiveListView.php";
-                    </script>
-                <?php
-
-
             }elseif($from == 'viewComplaintListDetailsView'){
             ?>
                 <script>
