@@ -75,6 +75,23 @@ public function uploadFileWithApproval($marriageId, $docId, $combinedContent){
 public function marriageRegistrationVoluntary($voluntaryId, $ApplicantIC, $voluntaryFile, $docId){
   $this->marriageVoluntaryModel->registerVoluntary($voluntaryId, $ApplicantIC);
   $this->voluntaryDocModel->uploadVoluntaryDoc($voluntaryId, $voluntaryFile, $docId);
+  
+  session_start();
+  ?>
+      <script>
+          window.location = "../app/View/MarriageRegistration/marriageRegistrationFileUpload2View.php";
+      </script>
+  <?php
 
+}
+public function uploadFileVoluntary($voluntaryId, $docId, $combinedContent){
+  $this->voluntaryDocModel->uploadFileVoluntary($voluntaryId, $docId, $combinedContent);
+
+  session_start();
+  ?>
+      <script>
+          window.location = "../app/View/MarriageRegistration/marriageRegistrationStatusView.php";
+      </script>
+  <?php
 }
 }
