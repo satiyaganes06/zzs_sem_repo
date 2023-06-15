@@ -139,7 +139,7 @@
                                                 </td>
         
                                                 <td style="width: 12%;">
-                                                    <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=MarriageRequestApplicationInfo&from=listApprovalRequest&applicantIC=<?php echo $Applicant_IC;?>''">
+                                                    <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
                                                         Lihat
                                                     </button>
                                                 </td>

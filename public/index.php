@@ -71,7 +71,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 switch ($action) {
 
-        //Tasks of System
+    //Tasks of System
     case 'createAccount':
         $ic = $_POST['Applicant_ic'];
         $password = $_POST['Applicant_password'];
@@ -165,8 +165,8 @@ switch ($action) {
         break;
     case 'viewComplaintListDetailsView':
 
-        $userProfileController->viewApplicantListFunction('viewComplaintListDetailsView');
-
+            $userProfileController->viewApplicantListFunction('viewComplaintListDetailsView');
+    
         break;
 
     case 'viewProfileById':
@@ -263,7 +263,7 @@ switch ($action) {
 
 
             $marriagePreparationCourseController->getMPCApplicantInfoForApplicant($organize, $venue, $dateStart, $dateFinish);
-        } else {
+        }else{
             $marriagePreparationCourseController->getMPCApplicantInfoForAdmin($from);
         }
         break;
@@ -288,14 +288,6 @@ switch ($action) {
         $status = isset($_GET['status']) ? $_GET['status'] : '';
 
         $requestMarriageController->listOfMarriageRequestApplication($status);
-
-        break;
-
-    case 'MarriageRequestApplicationInfo':
-        $applicantIC = isset($_GET['applicantIC']) ? $_GET['applicantIC'] : '';
-        $from = isset($_GET['from']) ? $_GET['from'] : '';
-
-        $requestMarriageController->MarriageRequestApplicationInfo($applicantIC,$from );
 
         break;
 
@@ -338,6 +330,7 @@ switch ($action) {
 
 
              break;
+<<<<<<< HEAD
      case 'uploadFile1':
         
         // Process each file input
@@ -358,6 +351,8 @@ switch ($action) {
         $marriageRegistrationController->uploadFileWithApproval($marriageId, $docId, $combinedContent);
         break;
                 
+=======
+>>>>>>> parent of c3ab777 (15/6)
     case 'updateProfile':
         $occupationType = $_POST['OccupationType'];
         $umur = $_POST['Applicant_umur'];
