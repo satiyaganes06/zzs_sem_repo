@@ -92,7 +92,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                     </div>
 
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">XX</h2>
+                        <h2 id="contentTitle">MMembuat Pengesahan</h2>
                         <!-- Your can code here -->
 
                         <!-- From Here -->
