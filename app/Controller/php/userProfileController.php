@@ -103,13 +103,14 @@
                 <?php
             
 
-            }elseif($from == 'adminIncentiveApplicantListView'){
-                ?>
-                    <script>
-                        window.location = "../app/View/ManageSpecialIncentive/adminIncentive_applicantListView.php";
-                    </script>
-                <?php
             }
+            // elseif($from == 'adminIncentiveApplicantListView'){
+            //     ?>
+            //         <script>
+            //             window.location = "../app/View/ManageSpecialIncentive/adminIncentiveListView.php";
+            //         </script>
+            //     <?php
+            // }
         }
 
         //Update the applicant profile data 
