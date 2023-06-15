@@ -31,6 +31,8 @@
                 }else if($from == 'edit'){
                     header('Location: ../app/View/ManageUserProfile/editApplicantProfileDetailsView.php?returnInfo='.  urlencode(serialize($user)));
                     
+                }else if($from == 'insentifPemohon'){
+                    header('Location: ../app/View/ManageSpecialIncentive/applicantIncentiveView.php?returnInfo='.  urlencode(serialize($user)));
                 
                 }else if($from == 'aduanPemohon'){
                     header('Location: ../app/View/ManageComplaint/viewApplicantDetailsView.php?returnInfo='.  urlencode(serialize($user)));
@@ -79,6 +81,8 @@
         //Retrieve staff list from staff model
         public function viewStaffListFunction() {
 
+            session_start();
+
             $listOfStaffs = $this->staffModel->getAllStaffInfo();
 
             $_SESSION['listOfStaffs'] = $listOfStaffs;
@@ -94,6 +98,8 @@
         //Retrieve staff list from applicant model
         public function viewApplicantListFunction($from) {
 
+            session_start();
+
             $listOfApplicant = $this->applicantModel->getAllApplicantInfo();
 
             $_SESSION['listOfApplicant'] = $listOfApplicant;
@@ -106,10 +112,10 @@
                 <?php
             
 
-            }elseif($from == 'adminIncentiveApplicantListView'){
+            }elseif($from == 'adminIncentiveListView'){
                 ?>
                     <script>
-                        window.location = "../app/View/ManageSpecialIncentive/adminIncentive_applicantListView.php";
+                        window.location = "../app/View/ManageSpecialIncentive/adminIncentiveListView.php";
                     </script>
                 <?php
 
@@ -121,6 +127,13 @@
                 </script>
             <?php
             }
+            // elseif($from == 'adminIncentiveApplicantListView'){
+            //     ?>
+            //         <script>
+            //             window.location = "../app/View/ManageSpecialIncentive/adminIncentiveListView.php";
+            //         </script>
+            //     <?php
+            // }
         }
 
         //Update the applicant profile data 

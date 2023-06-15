@@ -23,25 +23,10 @@ class MarriageRequestInfoModel
         $stmt->execute();
 
         //Store the result of user from mySQL
-        $listOfRequestMarriageApplication = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $listOfRequestMarriageApplicantion = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        return $listOfRequestMarriageApplication;
+        return $listOfRequestMarriageApplicantion;
         
-    }
-
-    public function requestMarriageApplicantInfo($applicantIC) {
-
-        $stmt = $this->connect->prepare("SELECT * FROM marriage_request_info WHERE Applicant_IC = '$applicantIC'");
-
-        // Execute SQL statement
-        $stmt->execute();
-
-        //Store the result of user from mySQL
-        $requestMarriageApplicationInfo = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        return $requestMarriageApplicationInfo;
-        
-
     }
 
 }

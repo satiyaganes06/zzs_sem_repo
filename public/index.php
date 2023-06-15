@@ -64,7 +64,7 @@ $resetPasswordController = new ResetPasswordController($accountModel, $applicant
 $marriageRegistrationController = new MarriageRegistrationController($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel, $marriageDocModel);
 $marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel, $applicantModel, $paymentModel);
 $requestMarriageController = new RequestMarriageController($marriageInfoModel, $marriageRequestInfoModel, $applicantModel);
-$SpecialIncentiveController = new SpecialIncentiveController($specialIncentiveModel, $applicantModel, $applicantOccupationModel, $heirInfoModel, $marriageInfoModel, $incentiveDocModel, $marriageRequestInfoModel);
+$SpecialIncentiveController = new SpecialIncentiveController($specialIncentiveModel, $applicantModel, $applicantOccupationModel, $heirInfoModel, $marriageInfoModel, $incentiveDocModel);
 
 // Action of Task
 $action = isset($_GET['action']) ? $_GET['action'] : '';
@@ -138,11 +138,11 @@ switch ($action) {
 
         break;
 
-    case 'viewApplicantPartnerMarriageInfo':
+    case 'viewProfile':
 
         $from = isset($_GET['from']) ? $_GET['from'] : '';
 
-        $SpecialIncentiveController->getApplicantPartnerMarriageInfo($from);
+        $userProfileController->viewProfileFunction($from);
 
         break;
 
@@ -155,6 +155,11 @@ switch ($action) {
     case 'viewApplicantList':
 
         $userProfileController->viewApplicantListFunction('viewListApplicant');
+
+        break;
+    case 'specialIncentiveApplication':
+
+        $userProfileController->viewProfileFunction('specialIncentiveApplication');
 
         break;
 
@@ -376,6 +381,10 @@ switch ($action) {
 
 
         $userProfileController->updateApplicantProfileFunction($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat);
+
+        break;
+    case 'adminIncentiveApplicantListView':
+        echo "Its going";
 
         break;
         
