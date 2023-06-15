@@ -97,7 +97,7 @@ if (!isset($_SESSION['currentUserIC'])) {
 
                         <div id="inMainContentOutline" class="table-responsive p-4">
                             <table class="table table-borderless table-sm">
-                                <form action="" method="post">
+                                <form action="../../../public/index.php?action=updateMPCView" method="post">
                                     <tbody>
                                         <tr>
                                             <th scope="row">PAID :</th>
