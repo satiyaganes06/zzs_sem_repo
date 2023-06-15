@@ -187,7 +187,7 @@
                             <a class="list-group-item <?php echo $reqMarriageViewRoute ?>
                                 list-group-item-action px-3 pt-1
                                 pb-1 border-0
-                                list-group-item-light" href="../MarriageRequest/RequestMarriageView.php?display=0">Settings</a>
+                                list-group-item-light" href="../MarriageRequest/RequestMarriageView.php?display=0">Permohonan Berkahwin</a>
                         </div>
                     </div>
                 </div>
