@@ -350,6 +350,10 @@ switch ($action) {
         $userProfileController->updateApplicantProfileFunction($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat);
 
         break;
+    case 'adminIncentiveApplicantListView':
+        echo "Its going";
+
+        break;
     default:
         header('Location: ../app/View/ManageLogin/userLoginView.php');
 }

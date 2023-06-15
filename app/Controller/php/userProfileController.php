@@ -80,6 +80,8 @@
         //Retrieve staff list from staff model
         public function viewStaffListFunction() {
 
+            session_start();
+
             $listOfStaffs = $this->staffModel->getAllStaffInfo();
 
             $_SESSION['listOfStaffs'] = $listOfStaffs;
@@ -94,6 +96,8 @@
 
         //Retrieve staff list from applicant model
         public function viewApplicantListFunction($from) {
+
+            session_start();
 
             $listOfApplicant = $this->applicantModel->getAllApplicantInfo();
 
