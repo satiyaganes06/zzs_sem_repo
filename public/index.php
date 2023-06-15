@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once '../app/Config/database.php';
 require_once '../app/Model/accountModel.php';
 require_once '../app/Model/applicantModel.php';
@@ -161,6 +160,11 @@ switch ($action) {
 
         $SpecialIncentiveController->viewSpecialIncentiveListFunction('adminIncentiveListView');
 
+        break;
+    case 'viewComplaintListDetailsView':
+
+            $userProfileController->viewApplicantListFunction('viewComplaintListDetailsView');
+    
         break;
 
     case 'viewProfileById':
