@@ -157,6 +157,11 @@ switch ($action) {
         $userProfileController->viewApplicantListFunction('viewListApplicant');
 
         break;
+    case 'specialIncentiveApplication':
+
+        $userProfileController->viewProfileFunction('specialIncentiveApplication');
+
+        break;
 
     case 'adminIncentiveListView':
 

@@ -337,7 +337,7 @@ if ($route == 'viewProfile') {
                             <a class="list-group-item 
                             list-group-item-action 
                             border-0 px-3 pt-1 pb-1 
-                            list-group-item-light" href="../../../public/index.php?action=adminIncentiveApplicantListView">
+                            list-group-item-light" href="../../../public/index.php?action=adminIncentiveListView">
                             Senarai Permohonan
                         </a>
                     </div>

@@ -107,10 +107,10 @@
                 <?php
             
 
-            }elseif($from == 'adminIncentiveApplicantListView'){
+            }elseif($from == 'adminIncentiveListView'){
                 ?>
                     <script>
-                        window.location = "../app/View/ManageSpecialIncentive/adminIncentive_applicantListView.php";
+                        window.location = "../app/View/ManageSpecialIncentive/adminIncentiveListView.php";
                     </script>
                 <?php
 

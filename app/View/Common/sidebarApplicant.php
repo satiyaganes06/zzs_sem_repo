@@ -341,7 +341,7 @@
                             
                             <a class="list-group-item <?php echo $appIncentiveViewRoute ?>
                             list-group-item-action border-0 px-3 pt-1 pb-1 
-                            list-group-item-light" href="../../../public/index.php?action=viewProfile&from=insentifPemohon">
+                            list-group-item-light" href="../../../public/index.php?action=specialIncentiveApplication">
                             Permohonan
                             </a>
                             
