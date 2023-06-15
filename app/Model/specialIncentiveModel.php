@@ -17,5 +17,19 @@ class SpecialIncentiveModel
         return $specialIncentiveList;
     }
 
+    public function addRejection($rejectionReason) {
+
+        session_start();
+        $userIC = $_SESSION['currentUserIC'];
+
+        //Prepare update statement
+        $query = $this->connect->prepare("INSERT INTO special_incentive_info (Applicant_IC, RejectionReason) VALUES (?, ?)");
+
+        //Execute update statement
+        $query->execute([$userIC, $rejectionReason]);
+
+        header("Location: ../../../public/index.php?action=specialIncentiveApplication");
+    }
+
 }
 ?>

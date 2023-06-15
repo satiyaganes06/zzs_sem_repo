@@ -67,7 +67,12 @@
 
     public function addIncentiveDoc($doc) {
 
-        $incentiveDocInfo = $this->incentiveDocModel->addIncentiveDoc();
+        $this->incentiveDocModel->addIncentiveDoc($doc);
+    }
+
+    public function getIncentiveDoc() {
+
+        $incentiveDocInfo = $this->incentiveDocModel->getIncentiveDoc();
 
         return $incentiveDocInfo;
     }
@@ -100,6 +105,11 @@
         $partner = $this->applicantModel->getApplicantProfileInfo($partner_IC);
 
         return $partner;
+    }
+
+    public function addRejection($rejectionReason) {
+
+        $this->specialIncentiveModel->addRejection($rejectionReason);
     }
 
 }

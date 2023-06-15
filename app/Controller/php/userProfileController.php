@@ -35,7 +35,15 @@
                     return $user; //ni satiya buat bukan salah aku
                     //header('Location: ../app/View/ManageSpecialIncentive/applicantIncentiveView.php?returnInfo='.  urlencode(serialize($user)));
                 
-                }else if($from == 'aduanPemohon'){
+                }else if($from == 'specialIncentiveApplicationAdmin'){
+                    return $user; //ni satiya buat bukan salah aku
+                    //header('Location: ../app/View/ManageSpecialIncentive/applicantIncentiveView.php?returnInfo='.  urlencode(serialize($user)));
+                }
+                else if($from == 'specialIncentiveApproval'){
+                    return $user; //ni satiya buat bukan salah aku
+                    //header('Location: ../app/View/ManageSpecialIncentive/applicantIncentiveView.php?returnInfo='.  urlencode(serialize($user)));
+                }
+                else if($from == 'aduanPemohon'){
                     header('Location: ../app/View/ManageComplaint/viewApplicantDetailsView.php?returnInfo='.  urlencode(serialize($user)));
                 
                 }else if($from == 'khidmatNasihatPemohon'){

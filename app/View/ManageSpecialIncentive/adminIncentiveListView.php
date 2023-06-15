@@ -18,11 +18,15 @@
         //Sidebar Active path
         $_SESSION['route'] = 'adminIncentiveListView';
 
-        //Retrive special incentive list from special incentive model
+        // Retrieve the serialized and URL-encoded data from the URL parameter
         $listOfSpecialIncentive = $_SESSION['listOfSpecialIncentive'];
+        $encodedApplicantData = $_GET['applicantData'];
 
         //Retrive applicant name from applicant model
         $applicantName = $_SESSION['applicantName'];
+
+        // Decode the URL-encoded data and unserialize it// Decode the URL-encoded data and unserialize it
+        $decodedApplicantData = unserialize(urldecode($encodedApplicantData));
 
         $bilNum = 0;
     }
@@ -119,21 +123,25 @@
                                                         <?php echo ++$bilNum; ?>
                                                     </td>
 
-                                                    <td class="" style="width: 20%;">
+                                                    <td style="width: 15%;">
                                                         
-                                                        <div class="nameEllipsis"><?php echo $IncentiveDate;?></div>
+                                                        <?php echo $IncentiveDate;?>
                                                     </td>
 
                                                     <td style="width: 40%;">
-                                                        <span><?php echo $ApplicantName;?></span>
+                                                        <?php echo $ApplicantName;?>
                                                     </td>
 
-                                                    <td style="width: 20%;"><?php echo $Applicant_IC;?></td>
+                                                    <td style="width: 15%;"><?php echo $Applicant_IC;?></td>
 
-                                                    <td style="width: 15%;">
+                                                    <td style="width: 25%;">
                                                         <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
                                                             onclick="location.href='../../../public/index.php?action=specialIncentiveApplicationAdmin'">
                                                             Lihat
+                                                        </button>
+                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
+                                                            onclick="location.href='../../../public/index.php?action=specialIncentiveApproval'">
+                                                            Kelulusan
                                                         </button>
                                                     </td>
                                                 </tr>

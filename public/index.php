@@ -210,8 +210,22 @@ switch ($action) {
 
     case 'specialIncentiveApplicationAdmin':
 
-        $applicantData = $userProfileController->viewProfileFunction('specialIncentiveApplication');
+        $applicantData = $userProfileController->viewProfileFunction('specialIncentiveApplicationAdmin');
         
+        break;
+
+    case 'specialIncentiveApproval':
+
+        $applicantData = $userProfileController->viewProfileFunction('specialIncentiveApproval');
+
+        break;
+        
+    case 'addRejection':
+
+        $rejectionReason = $_POST['RejectionReason'];
+
+        $SpecialIncentiveController->addRejection($rejectionReason);
+
         break;
 
     case 'viewComplaintListDetailsView':
