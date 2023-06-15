@@ -50,6 +50,7 @@ if (!isset($_SESSION['currentUserIC'])) {
   <!--CSS-->
   <link rel="stylesheet" href="../css/viewApplicantProfileDetailsView.css">
   <link rel="stylesheet" href="../css/tab.css">
+  <link rel="stylesheet" href="../css/editApplicantProfileDetailsView.css">
 
   <!-- Icon -->
   <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png" />
@@ -89,7 +90,7 @@ if (!isset($_SESSION['currentUserIC'])) {
           </div>
           <!-- href="../../Config/logout.php" -->
           <div class="mainContentBg text-center p-3">
-
+           
             <!-- Tabs navs -->
             <ul class="nav nav-tabs mb-3 flex-nowrap " id="ex-with-icons" role="tablist">
               <li class="nav-item" role="presentation">
@@ -296,54 +297,49 @@ if (!isset($_SESSION['currentUserIC'])) {
                         <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
                             ?></td>
                       </tr>
-
-                      <tr>
-                        <th scope="row">No.Sijil Pra-Perkahwinan :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
-                            ?></td>
-                      </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="ex-with-icons-tabs-3" role="tabpanel" aria-labelledby="ex-with-icons-tab-3">
-
+              <form action="" id="" method="post"> 
                   <!-- Content 3 Aduan-->
                   <div id="inMainContentOutline" class="table-responsive p-4">
                     <table class="table table-borderless table-sm">
 
                       <tbody>
-                          <th scope="row">Tujuan Aduan :</th>
+                          <th scope="row">TUJUAN ADUAN :</th>
                           <td>
                             <div class="form form-width">
-                              <input type="text" id="formPurpose" name="purpose" class="form-control form-control-sm" value="<?php echo $decodedComplaintData['Purpose']; ?>" />
+                              <input type="text" id="formPurpose" name="purpose" class="form-control form-control-sm" value="" />
                             </div>
                           </td>
                         </tr>
 
                         <tr>
-                          <th scope="row">Cabaran :</th>
+                          <th scope="row">CABARAN :</th>
                           <td>
                             <div class="form form-width">
-                              <input type="text" id="formChallenges" name="challenges" class="form-control form-control-sm" value="<?php echo $decodedComplaintData['Challenges']; ?>" />
+                              <input type="text" id="formChallenges" name="challenges" class="form-control form-control-sm" value="" />
                             </div>
                           </td>
                         </tr>
 
                         <tr>
-                          <th scope="row">Solusi :</th>
+                          <th scope="row">SOLUSI :</th>
                           <td>
                             <div class="form form-width">
-                              <input type="text" id="formSolution" name="solution " class="form-control form-control-sm" value="<?php echo $decodedComplaintData['Solution']; ?>" />
+                              <input type="text" id="formSolution" name="solution " class="form-control form-control-sm" value="" />
                             </div>
                           </td>
                         </tr>
 
                         <tr>
                           <td>
-                            <div class="d-flex justify-content-center">
+                            <br><br><div class="d-flex justify-content-center">
                               <button class="btn btn-block mt-3 text-dark" type="submit" data-mdb-ripple-color="dark">Simpan</button>
+                              <button class="btn btn-block mt-3 text-dark" type="submit" data-mdb-ripple-color="dark">Hantar</button>
                             </div>
                           </td>
                         </tr>
@@ -351,16 +347,21 @@ if (!isset($_SESSION['currentUserIC'])) {
                       </tbody>
                     </table>
                   </div>
-                </form>
+                 </form>
 
               </div>
-              <div class="tab-pane fade" id="ex-with-icons-tabs-5" role="tabpanel" aria-labelledby="ex-with-icons-tab-4">
+
+              <div class="tab-pane fade" id="ex-with-icons-tabs-4" role="tabpanel" aria-labelledby="ex-with-icons-tab-4">
 
                 <!-- Content 4 Status-->
                 <div id="inMainContentOutline" class="table-responsive p-4">
                   <table class="table table-borderless table-sm">
-
+                    
                     <tbody>
+                      <tr>
+                        <th scope="row">MAKLUMAT PEMOHON :</th>
+                      </tr>
+
                       <tr>
                         <th scope="row">Nama Pengadu :</th>
                         <td><?php echo $decodedApplicantData['ApplicantName'];
@@ -408,6 +409,20 @@ if (!isset($_SESSION['currentUserIC'])) {
                         <td><?php echo $decodedApplicantData['ApplicantAddress'];
                             ?></td>
                       </tr>
+
+                      <tr>
+                        <th scope="row">Status Permohonan :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantAddress'];
+                            ?></td>
+                      </tr>
+
+                      <tr>
+                          <td>
+                            <div class="d-flex justify-content-center">
+                              <button class="btn btn-block mt-3 text-dark" type="submit" data-mdb-ripple-color="dark">Keluar</button>
+                            </div>
+                          </td>
+                        </tr>
                     </tbody>
                   </table>
                 </div>

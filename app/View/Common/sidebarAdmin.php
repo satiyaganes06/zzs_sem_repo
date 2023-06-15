@@ -310,7 +310,7 @@ if ($route == 'viewProfile') {
                         </a>
 
                         <a class="list-group-item list-group-item-action border-0 mt-1 px-3 pt-1 pb-1
-                                        list-group-item-light" href="../blankPage.html">Khidmat
+                                        list-group-item-light" href="../../../public/index.php?action=viewConsutationListDetailsView">Khidmat
                             Nasihat
                         </a>
 

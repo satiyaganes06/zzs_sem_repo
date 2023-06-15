@@ -44,6 +44,10 @@
         $appDetailsViewRoute = 'active' ;
     } 
     
+    else if($route == 'consultDetailsView'){
+        $consultDetailsViewRoute = 'active' ;
+    } 
+
     else if($route == 'appIncentiveView'){
         $appIncentiveViewRoute = 'active' ;
     } 
@@ -265,7 +269,7 @@
                             </a>
 
                             <a class="list-group-item list-group-item-action border-0 mt-1 px-3 pt-1 pb-1
-                                        list-group-item-light" href="../blankPage.html">Khidmat
+                                        list-group-item-light" href="../../../public/index.php?action=viewProfile&from=khidmatNasihatPemohon">Khidmat
                                 Nasihat
                             </a>
 

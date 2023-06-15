@@ -36,6 +36,9 @@
                 
                 }else if($from == 'aduanPemohon'){
                     header('Location: ../app/View/ManageComplaint/viewApplicantDetailsView.php?returnInfo='.  urlencode(serialize($user)));
+                
+                }else if($from == 'khidmatNasihatPemohon'){
+                    header('Location: ../app/View/ManageConsultation/registerConsultationDetailsView.php?returnInfo='.  urlencode(serialize($user)));
                     
                 }
                 
@@ -120,14 +123,23 @@
                     window.location = "../app/View/ManageComplaint/viewComplaintListDetailsView.php";
                 </script>
             <?php
-            }
-            // elseif($from == 'adminIncentiveApplicantListView'){
-            //     ?>
-            //         <script>
-            //             window.location = "../app/View/ManageSpecialIncentive/adminIncentiveListView.php";
-            //         </script>
-            //     <?php
-            // }
+
+            }elseif($from == 'viewConsultationListDetailsView'){
+            ?>
+                <script>
+                    window.location = "../app/View/ManageConsultation/viewConsultationListDetailsView.php";
+                </script>
+            <?php
+
+            }elseif($from == 'viewConsultationListDetailsView2'){
+                ?>
+                    <script>
+                        window.location = "../app/View/ManageConsultation/viewConsultationListDetailsView.php";
+                    </script>
+                <?php
+    
+                }
+
         }
 
         //Update the applicant profile data 
