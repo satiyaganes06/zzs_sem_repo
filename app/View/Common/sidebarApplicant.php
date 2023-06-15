@@ -24,6 +24,10 @@
     else if($route == 'MPCView'){
         $MPCViewRoute = 'active' ;
     } 
+
+    else if($route == 'appDetailsView'){
+        $appDetailsViewRoute = 'active' ;
+    } 
     
     else if($route == 'appIncentiveView'){
         $appIncentiveViewRoute = 'active' ;
@@ -239,8 +243,9 @@
                     <div id="flush-collapseFive" class="accordion-collapse
                                 collapse" aria-labelledby="flush-headingFive" data-mdb-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <a class="list-group-item list-group-item-action border-0 px-3 pt-1 pb-1
-                                        list-group-item-light" href="../blankPage.html">Borang
+                            <a class="list-group-item <?php echo $appDetailsViewRoute ?>
+                            list-group-item-action border-0 px-3 pt-1 pb-1
+                            list-group-item-light" href="../../../public/index.php?action=viewProfile&from=aduanPemohon">Borang
                                 Aduan
                             </a>
 

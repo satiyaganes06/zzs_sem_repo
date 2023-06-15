@@ -159,6 +159,11 @@ switch ($action) {
         $userProfileController->viewApplicantListFunction('adminIncentiveApplicantListView');
 
         break;
+    case 'viewComplaintListDetailsView':
+
+            $userProfileController->viewApplicantListFunction('viewComplaintListDetailsView');
+    
+        break;
 
     case 'viewProfileById':
         //Applicant or staff id which help to view their profile

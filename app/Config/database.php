@@ -7,12 +7,13 @@ class Database {
     private $db_name = "zzs_db";
     private $username = "root";
     private $password = "";
+    private $port = 3308;
 
     
     public function connect() {
         $conn = null;
         try {
-            $conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+            $conn = new PDO("mysql:host=" . $this->host . ";port=" . $this->port .";dbname=" . $this->db_name, $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
         } catch (PDOException $exception) {
