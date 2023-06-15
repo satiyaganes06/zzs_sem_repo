@@ -66,10 +66,12 @@ $marriagePreparationCourseController = new MarriagePreparationCourseController($
 $requestMarriageController = new RequestMarriageController($marriageInfoModel, $marriageRequestInfoModel, $applicantModel);
 $SpecialIncentiveController = new SpecialIncentiveController($specialIncentiveModel, $applicantModel, $applicantOccupationModel, $heirInfoModel, $marriageInfoModel, $incentiveDocModel);
 
+// Action of Task
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 switch ($action) {
 
+    //Tasks of System
     case 'createAccount':
         $ic = $_POST['Applicant_ic'];
         $password = $_POST['Applicant_password'];

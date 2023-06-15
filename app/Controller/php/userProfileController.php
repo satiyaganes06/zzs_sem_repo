@@ -37,6 +37,7 @@
                 }else if($from == 'aduanPemohon'){
                     header('Location: ../app/View/ManageComplaint/viewApplicantDetailsView.php?returnInfo='.  urlencode(serialize($user)));
                     
+                    
                 }
                 
 
