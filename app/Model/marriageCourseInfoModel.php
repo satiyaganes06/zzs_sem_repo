@@ -31,4 +31,19 @@ class MarriageCourseInfoModel
 
         return $listOfMPC;
     }
+
+    public function getMPCInfo($marriageCourseID){
+
+        $stmt = $this->connect->prepare('SELECT * FROM marriage_course_info WHERE Marriage_Course_Id  = :marriageCourseID');
+        $stmt->bindParam(':marriageCourseID', $marriageCourseID);
+
+        // Execute SQL statement
+        $stmt->execute();
+
+        //Store the result of user from mySQL
+        $MPCInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $MPCInfo;
+
+    }
 }

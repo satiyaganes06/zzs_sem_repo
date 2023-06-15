@@ -28,7 +28,7 @@ class MarriageInfoModel {
      
     session_start();
     $ic = $_SESSION['currentUserIC'];
-
+    
     // Prepare your update statement
     $sql = "UPDATE marriage_info set 
                 Wali_IC =:waliIC

@@ -42,24 +42,11 @@ class ComplaintModel {
     //Store the result of user from mySQL
     $userinfo = $stmt->fetch(PDO::FETCH_ASSOC);  
 
-    return $complaintinfo;
+    return $userinfo;
   }
 
-  //Get all complaint data
-  public function getAllComplaintInfo() {
-
-    // Prepare SQL statement with placeholders to prevent SQL injection
-    $stmt = $this->connect->prepare('SELECT * FROM Complaint_Info');
-
-    // Execute SQL statement
-    $stmt->execute();
-
-    // Fetch all rows at once
-    $complaintDetailsList = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    return $complaintDetailsList;
-  }   
-
+  
+  
   //Update complaint data using user ic 
   public function updateApplicantProfileInfo($tujuan, $cabaran, $solusi) {
      
@@ -93,6 +80,20 @@ class ComplaintModel {
       }
 
   }
+//Get all complaint data
+  public function getAllComplaintInfo() {
+
+    // Prepare SQL statement with placeholders to prevent SQL injection
+    $stmt = $this->connect->prepare('SELECT * FROM complaint_info');
+
+    // Execute SQL statement
+    $stmt->execute();
+
+    // Fetch all rows at once
+    $complaintDetailsList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $complaintDetailsList;
+  }  
   
 }
 

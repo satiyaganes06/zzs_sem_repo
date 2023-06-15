@@ -12,6 +12,7 @@ if ($route == 'viewProfile') {
        
     $profileRouteHeader = '';
     $listApplicantMPCRouteHeader = 'collapsed';
+    $nikahMPCRouteHeader = 'collapsed';
 
 } else if ($route == 'editProfile') {
     $editProfileRoute = 'active';
@@ -19,6 +20,7 @@ if ($route == 'viewProfile') {
        
     $profileRouteHeader = '';
     $listApplicantMPCRouteHeader = 'collapsed';
+    $nikahMPCRouteHeader = 'collapsed';
 
 } else if ($route == 'viewStaffList') {
     $viewStaffListRoute = 'active';
@@ -26,6 +28,7 @@ if ($route == 'viewProfile') {
        
     $profileRouteHeader = '';
     $listApplicantMPCRouteHeader = 'collapsed';
+    $nikahMPCRouteHeader = 'collapsed';
 
 } else if ($route == 'viewApplicantList') {
     $viewApplicantListRoute = 'active';
@@ -33,6 +36,7 @@ if ($route == 'viewProfile') {
        
     $profileRouteHeader = '';
     $listApplicantMPCRouteHeader = 'collapsed';
+    $nikahMPCRouteHeader = 'collapsed';
 
 }else if ($route == 'listOfApplicantMPC') {
     $listApplicantMPCRoute = 'active';
@@ -40,17 +44,43 @@ if ($route == 'viewProfile') {
        
     $listApplicantMPCRouteHeader = '';
     $profileRouteHeader = 'collapsed';
+    $nikahMPCRouteHeader = 'collapsed';
 
 }else if ($route == 'newApplicant') {
     $newApplicant = 'active';
+    $listApplicantMPCRouteSection = 'show';
+       
+    $listApplicantMPCRouteHeader = '';
+    $profileRouteHeader = 'collapsed';
+    $nikahMPCRouteHeader = 'collapsed';
 }else if ($route == 'result') {
     $result = 'active';
+    $listApplicantMPCRouteSection = 'show';
+       
+    $listApplicantMPCRouteHeader = '';
+    $profileRouteHeader = 'collapsed';
+    $nikahMPCRouteHeader = 'collapsed';
 }else if ($route == 'manageMPC') {
     $manageMPC = 'active';
+    $listApplicantMPCRouteSection = 'show';
+       
+    $listApplicantMPCRouteHeader = '';
+    $profileRouteHeader = 'collapsed';
+    $nikahMPCRouteHeader = 'collapsed';
 }else if ($route == 'listApplicant') {
     $listApplicantRoute = 'active';
+    $nikahMPCRouteSection = 'show';
+    
+    $nikahMPCRouteHeader = '';
+    $listApplicantMPCRouteHeader = 'collapsed';
+    $profileRouteHeader = 'collapsed';
 }else if ($route == 'listApprovalRequest') {
     $listApprovalRequestRoute = 'active';
+    $nikahMPCRouteSection = 'show';
+    
+    $nikahMPCRouteHeader = '';
+    $listApplicantMPCRouteHeader = 'collapsed';
+    $profileRouteHeader = 'collapsed';
 }
 
 
@@ -123,7 +153,7 @@ if ($route == 'viewProfile') {
                             KURSUS PRA-PERKAHWINAN</strong>
                     </button>
                 </h2>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse <?php echo $$listApplicantMPCRouteSection; ?>" aria-labelledby="flush-headingTwo" data-mdb-parent="#accordionFlushExample">
+                <div id="flush-collapseTwo" class="accordion-collapse collapse <?php echo $listApplicantMPCRouteSection; ?>" aria-labelledby="flush-headingTwo" data-mdb-parent="#accordionFlushExample">
                     <div class="accordion-body">
 
                         <a class="list-group-item
@@ -160,14 +190,14 @@ if ($route == 'viewProfile') {
             <!-- Permohonan Berkahwin Accordian -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingThree">
-                    <button class="accordion-button collapsed
+                    <button class="accordion-button <?php echo $nikahMPCRouteHeader ?>
                             rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
                         <strong><i class="far fa-clipboard"></i>
                             &nbsp; PERMOHONAN
                             KAHWIN</strong>
                     </button>
                 </h2>
-                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-mdb-parent="#accordionFlushExample">
+                <div id="flush-collapseThree" class="accordion-collapse collapse <?php echo $nikahMPCRouteSection; ?>" aria-labelledby="flush-headingThree" data-mdb-parent="#accordionFlushExample">
                     <div class="accordion-body">
 
                         <a class="list-group-item
@@ -315,7 +345,7 @@ if ($route == 'viewProfile') {
                         </a>
 
                         <a class="list-group-item list-group-item-action border-0 mt-1 px-3 pt-1 pb-1
-                                        list-group-item-light" href="../blankPage.html">Khidmat
+                                        list-group-item-light" href="../../../public/index.php?action=viewConsutationListDetailsView">Khidmat
                             Nasihat
                         </a>
 

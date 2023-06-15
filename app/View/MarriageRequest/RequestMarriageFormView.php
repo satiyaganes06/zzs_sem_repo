@@ -21,7 +21,7 @@ if (!isset($_SESSION['currentUserIC'])) {
 
 
     //Sidebar Active path
-    $_SESSION['route'] = 'appIncentiveView';
+    $_SESSION['route'] = 'reqMarriageView';
 
     //Get the Data From Previous page
     $partnerIc = $_GET['partnerIc'];

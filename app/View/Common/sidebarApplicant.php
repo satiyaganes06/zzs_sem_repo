@@ -79,6 +79,8 @@
         $appIncentiveRouteHeader = 'collapsed';
     } 
     
+    else if($route == 'consultDetailsView'){
+        $consultDetailsViewRoute = 'active' ;
     else if($route == 'reqMarriageView'){
         $reqMarriageViewRoute = 'active' ;
         $reqMarriageRouteSection = 'show';
@@ -187,7 +189,7 @@
                             <a class="list-group-item <?php echo $reqMarriageViewRoute ?>
                                 list-group-item-action px-3 pt-1
                                 pb-1 border-0
-                                list-group-item-light" href="../MarriageRequest/RequestMarriageView.php?display=0">Settings</a>
+                                list-group-item-light" href="../MarriageRequest/RequestMarriageView.php?display=0">Permohonan Berkahwin</a>
                         </div>
                     </div>
                 </div>
@@ -319,7 +321,7 @@
                             </a>
 
                             <a class="list-group-item list-group-item-action border-0 mt-1 px-3 pt-1 pb-1
-                                        list-group-item-light" href="../blankPage.html">Khidmat
+                                        list-group-item-light" href="../../../public/index.php?action=viewProfile&from=khidmatNasihatPemohon">Khidmat
                                 Nasihat
                             </a>
 

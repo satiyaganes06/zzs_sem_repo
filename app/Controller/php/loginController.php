@@ -25,9 +25,9 @@ class LoginController {
           $_SESSION['alert-success'] = "Berjaya log masuk.";
 
           // Redirect the page using JavaScript
-          echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
+          echo '<script>window.location.href = "index.php?action=viewlistOfMPC&organize=all&from=MPCView";</script>';
             
-            
+         
         }elseif($userType == 'Kakitangan'){
 
             // Display success message using JavaScript

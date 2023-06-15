@@ -1,28 +1,32 @@
 <?php
 
-    // Start up your PHP Session
-    session_start();
+// Start up your PHP Session
+session_start();
 
-    //If the user is not logged in send him/her to the login form
-    if(!isset($_SESSION['currentUserIC'])) {
 
-        ?>
-            <script>
-                alert("Access denied !!!")
-                window.location = "../ManageLogin/adminLoginView.php";
-            </script>
-        <?php
+//If the user is not logged in send him/her to the login form
+if (!isset($_SESSION['currentUserIC'])) {
 
-    }else{
+?>
+  <script>
+    alert("Access denied !!!")
+    window.location = "../ManageLogin/userLoginView.php";
+  </script>
+<?php
 
-        //Sidebar Active path
-        // $_SESSION['route'] = 'viewApplicantList';
+} else {
 
-        // Retrieve list of applicant information
-        $result = $_SESSION['listOfApplicant'];
-        $bilNum = 0;
-    }
+  // Sidebar Active path
+  $_SESSION['route'] = 'appDetailsView';
+
+  // Retrieve the serialized and URL-encoded data from the URL parameter
+  $encodedData = $_GET['returnuserInfo'];
+
+  // Decode the URL-encoded data and unserialize it
+  $decodedApplicantData = unserialize(urldecode($encodedData));
     
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +35,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZZS - Special Incentive Application List</title>
+    <title>ZZS - Complaint Approval</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -81,14 +85,13 @@
                             <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
                             <a class="commonButton" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
-                    </div>
+                    </div>  
                     
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">Senarai Pemohon</h2>
 
-                        <div id="inMainContentOutline" class="table-responsive p-4">
-                    <table class="table table-borderless table-sm">
-
+                    <!-- Tabs content -->
+                    <div id="inMainContentOutline" class="table-responsive p-4">
+                    <h2 id="contentTitle">MAKLUMAT PEMOHON:</h2>
                     <tbody>
                       <tr>
                         <th scope="row">Nama Pengadu :</th>
@@ -113,7 +116,7 @@
                         <td><?php echo $decodedApplicantData['ApplicantAddress'];
                             ?></td>
                       </tr>
-
+                      <br>
                       <tr>
                         <th scope="row">Nama Yang Di Adu :</th>
                         <td><?php echo $decodedApplicantData['ApplicantName'];
@@ -137,17 +140,39 @@
                         <td><?php echo $decodedApplicantData['ApplicantAddress'];
                             ?></td>
                       </tr>
-                    </tbody>
-                  </table>
-                </div>
 
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-link btn-md bg-dark text-light btn-rounded mt-3" type="submit" onclick="location.href='../ManageRegistration/staffRegisterView.php'" data-mdb-ripple-color="dark">Tambah Staf</button>
-                        </div>
-                    </div>
+                      <tr>
+                        <th scope="row">ADUAN :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantAddress'];
+                            ?></td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">CABARAN :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantAddress'];
+                            ?></td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">SOLUSI :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantAddress'];
+                            ?></td>
+                      </tr>
+
+                      <tr>
+                          <td>
+                            <div class="d-flex justify-content-center">
+                              <button class="btn btn-block mt-3 text-dark" type="submit" data-mdb-ripple-color="dark">Terima</button>
+                            </div>
+                          </td>
+                        </tr>
+                    </tbody>
+                 </div>
+                 <!-- Tabs content -->
                 </div>
 
             </div>
+            
 
         </section>
 

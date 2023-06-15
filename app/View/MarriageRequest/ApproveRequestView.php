@@ -92,7 +92,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                     </div>
 
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">XX</h2>
+                        <h2 id="contentTitle">MMembuat Pengesahan</h2>
                         <!-- Your can code here -->
 
                         <!-- From Here -->
@@ -142,17 +142,15 @@ if (!isset($_SESSION['currentUserIC'])) {
 
                                         <tr>
                                             <th scope="row">Alamat :</th>
-                                            <td><?php echo $decodedApplicantData['ApplicantAddress'];
-                                                ?></td>
+                                            <td colspan="2"><?php echo $decodedApplicantData['ApplicantAddress'];
+                                                            ?></td>
                                         </tr>
 
                                         <tr>
                                             <th scope="row">No. Telefon(Bimbit) :</th>
                                             <td><?php echo $decodedApplicantData['ApplicantPhoneNo'];
                                                 ?></td>
-                                        </tr>
 
-                                        <tr>
                                             <th scope="row">No. Telefon(Rumah) :</th>
                                             <td><?php echo $decodedApplicantData['ApplicantHomePhoneNo'];
                                                 ?></td>
@@ -162,9 +160,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                             <th scope="row">Taraf Pendidikan :</th>
                                             <td><?php echo $decodedApplicantData['ApplicantEduLevel'];
                                                 ?></td>
-                                        </tr>
 
-                                        <tr>
                                             <th scope="row">Jawatan / Pekerjaan :</th>
                                             <td><?php echo $decodedApplicantData['ApplicantPosition'];
                                                 ?></td>
@@ -178,8 +174,8 @@ if (!isset($_SESSION['currentUserIC'])) {
 
                                         <tr>
                                             <th scope="row">Alamat Tempat Kerja :</th>
-                                            <td><?php echo $decodedApplicantData['ApplicantWorkAddress'];
-                                                ?></td>
+                                            <td colspan="2"><?php echo $decodedApplicantData['ApplicantWorkAddress'];
+                                                            ?></td>
                                         </tr>
 
                                         <tr>

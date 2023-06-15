@@ -62,6 +62,9 @@ if (!isset($_SESSION['currentUserIC'])) {
     include_once('../Common/applicantHeader.html');
     ?>
 
+    <!-- Toast -->
+    <?php include('../Common/alert.php'); ?>
+
     <!-- Content -->
     <section class="mainPart container-fluid mt-3">
 
@@ -188,6 +191,16 @@ if (!isset($_SESSION['currentUserIC'])) {
       document.getElementById("mySidepanel").style.width = "0";
     }
   </script>
+
+  <!-- JavaScript to close the toast after 4 seconds -->
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var toast = document.querySelector('.toast');
+        var timer = setTimeout(function () {
+          toast.classList.remove('show');
+        }, 4000);
+      });
+    </script>
 
   <!--Controller-->
   <script src="../../Controller/js/valiation.js"></script>
