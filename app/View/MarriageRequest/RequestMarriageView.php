@@ -186,9 +186,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                                     <th scope="row">No. Telefon(Bimbit) :</th>
                                                     <td><?php echo $decodedApplicantData['ApplicantPhoneNo'];
                                                         ?></td>
-                                                </tr>
 
-                                                <tr>
                                                     <th scope="row">No. Telefon(Rumah) :</th>
                                                     <td><?php echo $decodedApplicantData['ApplicantHomePhoneNo'];
                                                         ?></td>
@@ -198,9 +196,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                                     <th scope="row">Taraf Pendidikan :</th>
                                                     <td><?php echo $decodedApplicantData['ApplicantEduLevel'];
                                                         ?></td>
-                                                </tr>
 
-                                                <tr>
                                                     <th scope="row">Jawatan / Pekerjaan :</th>
                                                     <td><?php echo $decodedApplicantData['ApplicantPosition'];
                                                         ?></td>
@@ -281,9 +277,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                                     <th scope="row">No. Telefon(Bimbit) :</th>
                                                     <td><?php echo $decodedPartnerData['ApplicantPhoneNo'];
                                                         ?></td>
-                                                </tr>
 
-                                                <tr>
                                                     <th scope="row">No. Telefon(Rumah) :</th>
                                                     <td><?php echo $decodedPartnerData['ApplicantHomePhoneNo'];
                                                         ?></td>
@@ -293,9 +287,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                                     <th scope="row">Taraf Pendidikan :</th>
                                                     <td><?php echo $decodedPartnerData['ApplicantEduLevel'];
                                                         ?></td>
-                                                </tr>
 
-                                                <tr>
                                                     <th scope="row">Jawatan / Pekerjaan :</th>
                                                     <td><?php echo $decodedPartnerData['ApplicantPosition'];
                                                         ?></td>
@@ -305,22 +297,26 @@ if (!isset($_SESSION['currentUserIC'])) {
                                                     <th scope="col-2">Pendapatan :</th>
                                                     <td>RM <?php echo $decodedPartnerData['ApplicantSalary'];
                                                             ?></td>
+
+                                                    
+                                                    <td><?php
+                                                    $partnerIc = $decodedPartnerData['Applicant_Ic'];
+                                                    $partnerName = $decodedPartnerData['ApplicantName'];
+                                                    $applicantName = $decodedApplicantData['ApplicantName'];
+                                                    ?>
+                                                    <form action="RequestMarriageFormView.php?partnerIc=<?php echo $partnerIc; ?>&partnerName=<?php echo $partnerName; ?>&applicantName=<?php echo $applicantName; ?>">
+                                                        <input type="submit" value="submit">
+                                                    </form></td>
+
+                                                    
                                                 </tr>
-
-
                                             </tbody>
+                                            <tr>
+
                                         </table>
+
                                     </div>
                                 </div>
-                                <?php
-                                $partnerIc = $decodedPartnerData['Applicant_Ic'];
-                                $partnerName = $decodedPartnerData['ApplicantName'];
-                                $applicantName = $decodedApplicantData['ApplicantName'];
-                                ?>
-
-                                <form action="RequestMarriageFormView.php?partnerIc=<?php echo $partnerIc;?>&partnerName=<?php echo $partnerName;?>&applicantName=<?php echo $applicantName;?>">
-                                    <input type="submit" value="submit">
-                                </form>
 
                                 <div class="tab-pane fade" id="ex-with-icons-tabs-3" role="tabpanel" aria-labelledby="ex-with-icons-tab-3">
                                     <!-- Tabs content  -->
