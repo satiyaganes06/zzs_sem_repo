@@ -7,7 +7,7 @@ class Database {
     private $db_name = "zzs_db";
     private $username = "root";
     private $password = "";
-    private $port = 3308;
+    private $port = 3306;
 
     
     public function connect() {
