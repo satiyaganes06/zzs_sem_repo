@@ -20,10 +20,20 @@ if (!isset($_SESSION['currentUserIC'])) {
   $_SESSION['route'] = 'appIncentiveView';
 
   // Retrieve the serialized and URL-encoded data from the URL parameter
-  $encodedData = $_GET['returnInfo'];
+  $encodedApplicantData = $_GET['applicantData'];
+  $encodedMarriageData = $_GET['marriageData'];
+  $encodedPartnerData = $_GET['partnerData'];
+  $encodedMarriageInfoData = $_GET['marriageInfoData'];
+  $encodedOccupationData = $_GET['occupationData'];
+  $encodedHeirData = $_GET['heirData'];
 
   // Decode the URL-encoded data and unserialize it
-  $decodedApplicantData = unserialize(urldecode($encodedData));
+  $decodedApplicantData = unserialize(urldecode($encodedApplicantData));
+  $decodedMarriageData = unserialize(urldecode($encodedMarriageData));
+  $decodedPartnerData = unserialize(urldecode($encodedPartnerData));
+  $decodedMarriageInfoData = unserialize(urldecode($encodedMarriageInfoData));
+  $decodedOccupationData = unserialize(urldecode($encodedOccupationData));
+  $decodedHeirData = unserialize(urldecode($encodedHeirData));
 }
 ?>
 
@@ -50,6 +60,7 @@ if (!isset($_SESSION['currentUserIC'])) {
   <!--CSS-->
   <link rel="stylesheet" href="../css/viewApplicantProfileDetailsView.css">
   <link rel="stylesheet" href="../css/tab.css">
+  <link rel="stylesheet" href="../css/editApplicantProfileDetailsView.css">
 
   <!-- Icon -->
   <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png" />
@@ -220,86 +231,86 @@ if (!isset($_SESSION['currentUserIC'])) {
                     <tbody>
                       <tr>
                         <th scope="row">Nama :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantName'];
+                        <td><?php echo $decodedPartnerData['ApplicantName'];
                             ?></td>
 
                         <th scope="row">Umur :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantAge'];
+                        <td><?php echo $decodedPartnerData['ApplicantAge'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">Tarikh Lahir :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantBirthDate'];
+                        <td><?php echo $decodedPartnerData['ApplicantBirthDate'];
                             ?></td>
 
                         <th scope="row">Jantina :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantGender'];
+                        <td><?php echo $decodedPartnerData['ApplicantGender'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">No. Kad Pengenalan :</th>
-                        <td><?php echo $decodedApplicantData['Applicant_Ic'];
+                        <td><?php echo $decodedPartnerData['Applicant_Ic'];
                             ?></td>
 
                         <th scope="row">Bangsa :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantRace'];
+                        <td><?php echo $decodedPartnerData['ApplicantRace'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">Email :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantEmail'];
+                        <td><?php echo $decodedPartnerData['ApplicantEmail'];
                             ?></td>
 
                       </tr>
 
                       <tr>
                         <th scope="row">Alamat :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantAddress'];
+                        <td><?php echo $decodedPartnerData['ApplicantAddress'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">No. Telefon(Bimbit) :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantPhoneNo'];
+                        <td><?php echo $decodedPartnerData['ApplicantPhoneNo'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">No. Telefon(Rumah) :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantHomePhoneNo'];
+                        <td><?php echo $decodedPartnerData['ApplicantHomePhoneNo'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">Taraf Pendidikan :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantEduLevel'];
+                        <td><?php echo $decodedPartnerData['ApplicantEduLevel'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">Jawatan / Pekerjaan :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantPosition'];
+                        <td><?php echo $decodedPartnerData['ApplicantPosition'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="col-2">Pendapatan :</th>
-                        <td>RM <?php echo $decodedApplicantData['ApplicantSalary'];
+                        <td>RM <?php echo $decodedPartnerData['ApplicantSalary'];
                                 ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">Alamat Tempat Kerja :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantWorkAddress'];
+                        <td><?php echo $decodedPartnerData['ApplicantWorkAddress'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">No. Telefon(Pejabat) :</th>
-                        <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
+                        <td><?php echo $decodedPartnerData['ApplicantWorkPhoneNo'];
                             ?></td>
                       </tr>
                     </tbody>
@@ -326,27 +337,27 @@ if (!isset($_SESSION['currentUserIC'])) {
 
                       <tr>
                         <th scope="row">Nama Pasangan :</th>
-                        <td><?php //echo $decodedApplicantData['ApplicantBirthDate']; 
+                        <td><?php echo $decodedPartnerData['ApplicantName'];
                             ?></td>
 
                         <th scope="row">No. Kad Pengenalan :</th>
-                        <td><?php //echo $decodedApplicantData['ApplicantGender']; 
+                        <td><?php echo $decodedPartnerData['Applicant_Ic'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">Tarikh Nikah :</th>
-                        <td><?php //echo $decodedMarriageData['MarriageDate'];
+                        <td><?php echo $decodedMarriageInfoData['MarriageDate'];
                             ?></td>
 
                         <th scope="row">Tempat Nikah :</th>
-                        <td><?php //echo $decodedMarriageData['MarriageAddress']; 
+                        <td><?php echo $decodedMarriageInfoData['MarriageAddress'];
                             ?></td>
                       </tr>
 
                       <tr>
                         <th scope="row">No. Sijil Nikah :</th>
-                        <td><?php //echo $decodedMarriageData['MarriageCertificateNo']; 
+                        <td><?php echo $decodedMarriageInfoData['MarriageCertificateNo'];
                             ?></td>
                       </tr>
                     </tbody>
@@ -357,7 +368,7 @@ if (!isset($_SESSION['currentUserIC'])) {
               <div class="tab-pane fade" id="ex-with-icons-tabs-4" role="tabpanel" aria-labelledby="ex-with-icons-tab-4">
 
                 <!-- form applicant's occupation info update -->
-                <form action="../../../public/index.php?action=updateOccupation" method="post" onsubmit="return userOccupationUpdateValidate();">
+                <form action="../../../public/index.php?action=addOccupation" method="post">
 
                   <!-- Content 4 Maklumat Pekerjaan-->
                   <div id="inMainContentOutline" class="table-responsive p-4">
@@ -382,10 +393,10 @@ if (!isset($_SESSION['currentUserIC'])) {
                           <th scope="row">Jenis Pekerjaan :</th>
                           <td>
                             <div class="form form-width">
-                              <select class="browser-default custom-select-sm shadow rounded-3" name="User_type" required>
+                              <select class="browser-default custom-select-sm shadow rounded-3" name="OccupationType" required>
                                 <option class="text-muted" value="" disabled selected>Pilih</option>
                                 <option value="kerajaan">Kerajaan / Badan Berkanun</option>
-                                <option value="swasta">Kakitangan</option>
+                                <option value="swasta">Swasta</option>
                                 <option value="sendiri">Bekerja Sendiri</option>
                               </select>
                             </div>
@@ -399,9 +410,21 @@ if (!isset($_SESSION['currentUserIC'])) {
 
                           <th scope="row">Nama Syarikat :</th>
                           <td>
-                            <div class="form form-width">
-                              <input type="text" id="formCompanyName" name="Company_name" class="form-control form-control-sm" value="<?php echo $decodedApplicantOccupationData['EmployerName']; ?>" />
-                            </div>
+                            <?php
+                            if ($decodedOccupationData == null) {
+                            ?>
+                              <div class="form form-width">
+                                <input type="text" id="formCompanyName" name="CompanyName" class="form-control form-control-sm" />
+                              </div>
+                            <?php
+                            } else {
+                            ?>
+                              <div class="form form-width">
+                                <input type="text" id="formCompanyName" name="CompanyName" class="form-control form-control-sm" value="<?php echo $decodedOccupationData["CompanyName"] ?>" />
+                              </div>
+
+                            <?php
+                            } ?>
                           </td>
                         </tr>
 
@@ -420,18 +443,44 @@ if (!isset($_SESSION['currentUserIC'])) {
                         <tr>
                           <th scope="row">Nama Majikan :</th>
                           <td>
-                            <div class="form form-width">
-                              <input type="text" id="formEmployerName" name="Employer_name" class="form-control form-control-sm" value="<?php echo $decodedApplicantOccupationData['EmployerName']; ?>" />
-                            </div>
+                            <?php
+                            if ($decodedOccupationData == null) {
+                            ?>
+                              <div class="form form-width">
+                                <input type="text" id="formEmployerName" name="EmployerName" class="form-control form-control-sm" />
+                              </div>
+                            <?php
+                            } else {
+                            ?>
+                              <div class="form form-width">
+                                <input type="text" id="formEmployerName" name="EmployerName" class="form-control form-control-sm" value="<?php echo $decodedOccupationData["EmployerName"] ?>" />
+                              </div>
+
+                            <?php
+                            } ?>
+
                           </td>
                         </tr>
 
                         <tr>
                           <th scope="row">No. Tel Majikan :</th>
                           <td>
-                            <div class="form form-width">
-                              <input type="text" id="formEmployerPhoneNo" name="Employer_phoneNo " class="form-control form-control-sm" value="<?php echo $decodedApplicantOccupationData['EmployerPhoneNo']; ?>" />
-                            </div>
+                            <?php
+                            if ($decodedOccupationData == null) {
+                            ?>
+                              <div class="form form-width">
+                                <input type="text" id="formEmployerPhoneNo" name="EmployerPhoneNo" class="form-control form-control-sm" />
+                              </div>
+                            <?php
+                            } else {
+                            ?>
+                              <div class="form form-width">
+                                <input type="text" id="formEmployerPhoneNo" name="EmployerPhoneNo" class="form-control form-control-sm" value="<?php echo $decodedOccupationData["EmployerPhoneNo"] ?>" />
+                              </div>
+
+                            <?php
+                            } ?>
+
                           </td>
                         </tr>
 
@@ -453,7 +502,7 @@ if (!isset($_SESSION['currentUserIC'])) {
               <div class="tab-pane fade" id="ex-with-icons-tabs-5" role="tabpanel" aria-labelledby="ex-with-icons-tab-5">
 
                 <!-- form applicant's heir info update -->
-                <form action="../../../public/index.php?action=updateHeir" method="post" onsubmit="return userHeirUpdateValidate();">
+                <form action="../../../public/index.php?action=addHeir" method="post">
 
                   <!-- Content 5 Maklumat Waris-->
                   <div id="inMainContentOutline" class="table-responsive p-4">
@@ -463,32 +512,81 @@ if (!isset($_SESSION['currentUserIC'])) {
                         <tr>
                           <th scope="row">Nama Waris :</th>
                           <td>
-                            <div class="form form-width">
-                              <input type="text" id="formHeirName" name="Heir_name" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirName']; ?>" />
-                            </div>
+
+                            <?php
+                            if (empty($decodedHeirData)) {
+                            ?>
+                              <div class="form form-width">
+                                <input type="text" id="formHeirName" name="HeirName" class="form-control form-control-sm" />
+                              </div>
+                            <?php
+                            } else {
+                            ?>
+                              <div class="form form-width">
+                                <input type="text" id="formHeirName" name="HeirName" class="form-control form-control-sm" value="<?php echo $decodedHeirData["HeirName"] ?>" />
+                              </div>
+                            <?php
+                            } ?>
+
                           </td>
 
                           <th scope="row">Hubungan :</th>
                           <td>
-                            <div class="form form-width">
-                              <input type="text" id="formHeirRelationship" name="Heir_relationship" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirRelationship']; ?>" />
-                            </div>
+                            <?php
+                            if ($decodedHeirData == null) {
+                            ?>
+                              <div class="form form-width">
+                                <input type="text" id="formHeirRelationship" name="HeirRelationship" class="form-control form-control-sm" />
+                              </div>
+                            <?php
+                            } else {
+                            ?>
+                              <div class="form form-width">
+                                <input type="text" id="formHeirRelationship" name="HeirRelationship" class="form-control form-control-sm" value="<?php echo $decodedHeirData["HeirRelationship"] ?>" />
+                              </div>
+                            <?php
+                            } ?>
+
                           </td>
                         </tr>
 
                         <tr>
                           <th scope="row">No. Tel :</th>
                           <td>
-                            <div class="form form-width">
-                              <input type="text" id="formHeirPhoneNo" name="Heir_PhoneNo" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirPhoneNo']; ?>" />
-                            </div>
+                            <?php
+                            if ($decodedHeirData == null) {
+                            ?>
+                              <div class="form form-width">
+                                <input type="text" id="formHeirPhoneNo" name="HeirPhoneNo" class="form-control form-control-sm" />
+                              </div>
+                            <?php
+                            } else {
+                            ?>
+                              <div class="form form-width">
+                                <input type="text" id="formHeirPhoneNo" name="HeirPhoneNo" class="form-control form-control-sm" value="<?php echo $decodedHeirData["HeirPhoneNo"] ?>" />
+                              </div>
+                            <?php
+                            } ?>
+
                           </td>
 
                           <th scope="row">Email :</th>
                           <td>
-                            <div class="form form-width">
-                              <input type="text" id="formHeirEmail" name="Heir_email" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirEmail']; ?>" />
-                            </div>
+                            <?php
+                            if ($decodedHeirData == null) {
+                            ?>
+                              <div class="form form-width">
+                                <input type="text" id="formHeirEmail" name="HeirEmail" class="form-control form-control-sm" />
+                              </div>
+                            <?php
+                            } else {
+                            ?>
+                              <div class="form form-width">
+                                <input type="text" id="formHeirEmail" name="HeirEmail" class="form-control form-control-sm" value="<?php echo $decodedHeirData["HeirEmail"] ?>" />
+                              </div>
+                            <?php
+                            } ?>
+
                           </td>
                         </tr>
 
@@ -508,42 +606,44 @@ if (!isset($_SESSION['currentUserIC'])) {
 
               <div class="tab-pane fade" id="ex-with-icons-tabs-6" role="tabpanel" aria-labelledby="ex-with-icons-tab-6">
                 <!-- form applicant's special incentive supporting info update -->
-                <form action="../../../public/index.php?action=updateHeir" method="post" onsubmit="return userSpecialIncentiveDocUpdateValidate();">
+                <form action="../../../public/index.php?action=addIncentiveDoc" method="post">
 
-                  <!-- Content 5 Maklumat Waris-->
+                  <!-- Content 6 Dokumen-->
                   <div id="inMainContentOutline" class="table-responsive p-4">
                     <table>
 
                       <tbody>
                         <tr>
-                          <th scope="row">Nama Waris :</th>
+                          <th scope="row">Penyata Gaji / Pengesahan Pendapatan :</th>
                           <td>
                             <div class="form form-width">
-                              <input type="text" id="formHeirName" name="Heir_name" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirName']; ?>" />
+                              <label class="custom-file-upload">
+                                <input type="file" name="PenyataGaji" class="form-control form-control-sm" />
+                              </label>
                             </div>
                           </td>
 
-                          <th scope="row">Hubungan :</th>
+                          <th scope="row">Catatan Akad Nikah :</th>
                           <td>
-                            <div class="form form-width">
-                              <input type="text" id="formHeirRelationship" name="Heir_relationship" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirRelationship']; ?>" />
-                            </div>
+                            <label class="custom-file-upload">
+                              <input type="file" name="AkadNikah" class="form-control form-control-sm" />
+                            </label>
                           </td>
                         </tr>
 
                         <tr>
-                          <th scope="row">No. Tel :</th>
+                          <th scope="row">Akaun Permastautinan :</th>
                           <td>
-                            <div class="form form-width">
-                              <input type="text" id="formHeirPhoneNo" name="Heir_PhoneNo" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirPhoneNo']; ?>" />
-                            </div>
+                            <label class="custom-file-upload">
+                              <input type="file" name="AkuanPermastautinan" class="form-control form-control-sm" />
+                            </label>
                           </td>
 
-                          <th scope="row">Email :</th>
+                          <th scope="row">Penyata bank :</th>
                           <td>
-                            <div class="form form-width">
-                              <input type="text" id="formHeirEmail" name="Heir_email" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirEmail']; ?>" />
-                            </div>
+                            <label class="custom-file-upload">
+                              <input type="file" name="PenyataBank" class="form-control form-control-sm" />
+                            </label>
                           </td>
                         </tr>
 
@@ -557,6 +657,9 @@ if (!isset($_SESSION['currentUserIC'])) {
 
                       </tbody>
                     </table>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <button class="btn btn-block mt-3 text-dark" type="submit" data-mdb-ripple-color="dark">HANTAR</button>
                   </div>
                 </form>
               </div>
