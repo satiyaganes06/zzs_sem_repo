@@ -201,7 +201,8 @@ if (!isset($_SESSION['currentUserIC'])) {
                                         <th scope="col-2">Bukti Pembayaran :</th>
                                         <td>
                                             <form action="../../../public/index.php?action=uploadProofOfPaymentMPC&typeOfFee=MPCPayment">
-                                                <input type="file" name="proofOfPayment"><input type="submit" value="submit">
+                                                <input type="file" name="proofOfPayment">
+                                                <br><br><input type="submit" value="submit" class="btn btn-dark">
                                             </form>
                                         </td>
                                     </tr>
