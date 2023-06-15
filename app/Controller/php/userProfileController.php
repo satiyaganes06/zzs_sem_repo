@@ -34,8 +34,9 @@
                 
                 }else if($from == 'aduanPemohon'){
                     header('Location: ../app/View/ManageComplaint/viewApplicantDetailsView.php?returnInfo='.  urlencode(serialize($user)));
-                    
-                    
+                 
+                }else if($from == 'daftarNikah'){
+                    header('Location: ../app/View/MarriageRegistration/marriageRegistrationView.php?returnInfo='. urlencode(serialize($user)));
                 }
                 
 

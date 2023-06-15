@@ -3,7 +3,10 @@
     // Start up your PHP Session
     session_start();
 
-    
+    // save marriage id
+    $_SESSION['marriageID'] = $_POST['NoAkuan'];
+    $_SESSION['WaliIC'] = $_POST['WaliIC'];
+    $_SESSION['WitnessIC'] = $_POST['WitnessIC'];
 
     //If the user is not logged in send him/her to the login form
     if(!isset($_SESSION['currentUserIC'])) {
@@ -20,12 +23,13 @@
 
         //Sidebar Active path
         $_SESSION['route'] = 'marriageRegistrationStatus';
+
          // Retrieve the serialized and URL-encoded data from the URL parameter
       $encodedData = $_GET['returnInfo'];
-      var_dump($encodedData);
+      
       // Decode the URL-encoded data and unserialize it
       $decodedApplicantData = unserialize(urldecode($encodedData));
-      var_dump($decodedApplicantData);
+        
     }
 
     
@@ -106,12 +110,12 @@
                         <br>
                         <label id ="AkuanNum">No. Akuan Terima Kebenaran Berkahwin:</label> <input type ="text" name="noAkuan" id="akuanIn"><br>
                         <br><br>
-                            <label id ="Label">No. IC Wali:</label><input type ="text" name="waliIC" id="akuanIn"><br><br><br>
-                            <label id ="Label">No. IC Saksi:</label><input type ="text" name="witnessIC" id="akuanIn">
+                            <label id ="AkuanNum">No. IC Wali:</label><input type ="text" name="waliIC" id="akuanIn"><br><br><br>
+                            <label id ="AkuanNum">No. IC Saksi:</label><input type ="text" name="witnessIC" id="akuanIn">
                         <br>
                         <br>
 
-                        <button type="button" name="return" id="buttonR" >Kembali</button><button type="button" name="update" id="buttonU">Kemaskini Maklumat</button>
+                        <button type="button" name="return" id="buttonR" >Kembali</button><button type="submit" name="update" id="buttonU">Kemaskini Maklumat</button>
                             </form>
                             <script>
     function changePage() {
