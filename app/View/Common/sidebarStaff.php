@@ -226,7 +226,7 @@
                                 collapse" aria-labelledby="flush-headingFive" data-mdb-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             <a class="list-group-item list-group-item-action border-0 px-3 pt-1 pb-1
-                                        list-group-item-light" href="../blankPage.html">Borang
+                                        list-group-item-light" href="../../../public/index.php?action=viewComplaintListDetailsView">Borang
                                 Aduan
                             </a>
 

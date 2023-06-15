@@ -73,6 +73,7 @@ class AccountModel {
       $_SESSION['accountId'] = $user['Account_Id'];
       $_SESSION['currentUserIC'] = $user['User_IC'];
       $_SESSION['currentUserType'] = $user['UserType'];
+      
       return true;
       
     } else {

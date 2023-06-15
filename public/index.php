@@ -28,6 +28,7 @@ require_once '../app/Controller/php/resetPasswordController.php';
 require_once '../app/Controller/php/marriageRegistrationController.php';
 require_once '../app/Controller/php/MarriagePreparationCourseController.php';
 require_once '../app/Controller/php/RequestMarriageController.php';
+require_once '../app/Controller/php/SpecialIncentiveController.php';
 
 // Create a new database connection
 $db = (new Database())->connect();
@@ -63,6 +64,7 @@ $resetPasswordController = new ResetPasswordController($accountModel, $applicant
 $marriageRegistrationController = new MarriageRegistrationController($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel);
 $marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel, $applicantModel, $paymentModel);
 $requestMarriageController = new RequestMarriageController($marriageInfoModel, $marriageRequestInfoModel, $applicantModel);
+$SpecialIncentiveController = new SpecialIncentiveController($specialIncentiveModel, $applicantModel, $applicantOccupationModel, $heirInfoModel, $marriageInfoModel, $incentiveDocModel);
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
@@ -153,10 +155,16 @@ switch ($action) {
         $userProfileController->viewApplicantListFunction('viewListApplicant');
 
         break;
-    case 'adminIncentiveApplicantListView':
 
-        $userProfileController->viewApplicantListFunction('adminIncentiveApplicantListView');
+    case 'adminIncentiveListView':
 
+        $SpecialIncentiveController->viewSpecialIncentiveListFunction('adminIncentiveListView');
+
+        break;
+    case 'viewComplaintListDetailsView':
+
+            $userProfileController->viewApplicantListFunction('viewComplaintListDetailsView');
+    
         break;
 
     case 'viewProfileById':
@@ -222,7 +230,7 @@ switch ($action) {
         $from = $_GET['from'];
 
         $userProfileController->viewSearchListFunction($term, $from);
-        
+
         break;
 
     case 'viewlistOfMPC':
@@ -269,7 +277,15 @@ switch ($action) {
 
         break;
 
+    case 'listOfMarriageRequestApplication':
+        $status = isset($_GET['status']) ? $_GET['status'] : '';
+
+        $requestMarriageController->listOfMarriageRequestApplication($status);
+
+        break;
+
         //Module 2 Section End ^^
+
 
     case 'marriageRegistrationWithApproval':
         $marriageId = $_POST['noAkuan'];
@@ -305,7 +321,7 @@ switch ($action) {
         $marriageRegistrationController->insertWaliInfo($waliIc, $waliAddress, $waliBirthDate, $waliAge, $waliName, $relation, $waliNumberPhone);
 
 
-        break;
+             break;
     case 'updateProfile':
         $occupationType = $_POST['OccupationType'];
         $umur = $_POST['Applicant_umur'];

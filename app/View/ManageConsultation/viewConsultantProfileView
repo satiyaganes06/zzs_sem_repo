@@ -1,0 +1,96 @@
+<?php
+
+// Start up your PHP Session
+session_start();
+
+
+//If the user is not logged in send him/her to the login form
+if (!isset($_SESSION['currentUserIC'])) {
+
+?>
+  <script>
+    alert("Access denied !!!")
+    window.location = "../ManageLogin/userLoginView.php";
+  </script>
+<?php
+
+} else {
+
+  // Sidebar Active path
+  $_SESSION['route'] = 'consultDetailsView';
+
+  // Retrieve the serialized and URL-encoded data from the URL parameter
+  $encodedData = $_GET['returnInfo'];
+
+  // Decode the URL-encoded data and unserialize it
+  $decodedApplicantData = unserialize(urldecode($encodedData));
+}
+?>
+
+<html>
+
+<head>
+<title> ACER </title>
+
+  <style>
+    /* Style the body */
+    body {
+      font-family: Helvetica;
+      margin: 0;
+    }
+
+    /* Header */
+    .header {
+      padding: 5px;
+      background: #ececec;
+      color: black;
+      font-size: 10px;
+      height: 12px;
+    }
+
+    /* Page Content */
+    .content {
+      padding: 20px;
+    }
+
+    /* FSKKP */
+    .FSKKP {
+      font-family: Consolas;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <h7>File &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; View &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Favorites &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tools &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Help &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h7>
+    <hr>
+  </div>
+
+  <div class="FSKKP">
+    <h1 style="font-size:30px;">Penasihat 1</h1>
+<img src="Penasihat 1.png" width="600" height="600">
+    
+    <hr>
+    <h1 style="font-size:25px;">Newest Acer Aspire 5 15.6" FHD Laptop Computer Ryzen 3 3350U Quad-Core Mobile Processor 16GB RAM 512GB SSD, Backlit KB, Fingerprint Reader, WiFi6, HDMI, Windows 11 S Model , E.S 32GB USB Card</h1>
+    <p1> About this item
+[Display] 15.6 inches Full HD (1920 x 1080) Widescreen LED backlit IPS Display; AMD Radeon Vega 6 Mobile Graphics
+[Processor] AAMD Ryzen 3 3350U delivers desktop-class performance and amazing battery life in a slim notebook. With Precision Boost, get up to 3.5GHz for your high-demand applications
+[Memory and Hard Drive]16GB DDR4 memory for multitasking Adequate high-bandwidth RAM to smoothly run multiple applications and browser tabs all at once. 512GB SSD provides massive storage space for huge files, so that you can store important digital data and work your way through it with ease. Enhance the overall performance of the laptop for business, student, daily usage
+[Ports and Operating System]1 USB 3.1 Gen 1 Port, 2 USB 2.0 Ports & 1 HDMI Port with HDCP support,802.11ac Wi-Fi6; Backlit Keyboard; Up to 7.5 Hours Battery Life, Maximum Power Supply Wattage 65 W
+[Premium Design] Backlit Keyboard and Fingerprint Reader: Biometric fingerprint reader and Windows Hello sign-in options help keep your Acer PC secure, E.S 32GB USB card, Windows 11 home S model </p1>
+
+    
+  </div>
+
+</body>
+
+<head>
+  <style>
+    p {
+      text-align: center;
+    }
+  </style>
+</head>
+
+</html>

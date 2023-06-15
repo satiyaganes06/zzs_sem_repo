@@ -1,13 +1,7 @@
-
-
 <?php
 
     // Start up your PHP Session
     session_start();
-
-    //Decluration
-    $encodedData;
-    $decodedAdminData;
 
     //If the user is not logged in send him/her to the login form
     if(!isset($_SESSION['currentUserIC'])) {
@@ -21,17 +15,13 @@
 
     }else{
 
+        // Retrieve list of applicant information
+        $result = $_SESSION['listOfSpecialIncentive'];
+        $bilNum = 0; 
 
         //Sidebar Active path
-        $_SESSION['route'] = 'listApprovalRequest';
-    
-        $applicantName = $_SESSION['applicantName'];
-        $applicantGender = $_SESSION['applicantGender'];
-        $listOfRequestMarriageApplicantion = $_SESSION['listOfRequestMarriageApplicantion'];
-        $x = 0;
-        $bilNum = 1;
+        $_SESSION['route'] = 'adminIncentiveListView';
     }
-
     
 ?>
 <!DOCTYPE html>
@@ -41,7 +31,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZZS - View Profile</title>
+    <title>Senarai Pemohon</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -89,21 +79,22 @@
                         
                         <div class="d-flex justify-content-end">
                             <a class="commonButton" onclick=""><i class="fas fa-gear" style="color: black;"></i></a>
-                            <a class="commonButton" href="../../Config/logout.php"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
+                            <a class="commonButton" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right-to-bracket" style="color: black;"></i></a>
                         </div>
                     </div>
                     
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">Senarai Pengesahan Pemohonan Perkahwinan</h2>
-                        <!-- Your can code here -->
+                        <h2 id="contentTitle">Senarai Pemohon</h2>
+                        
+                        <div id="inMainContentOutline" class="table-responsive p-4">
 
-                        <table class="table table-bordered border-dark mb-0 align-middle">
+                            <table class="table table-bordered border-dark mb-0 align-middle">
                                 <thead class="tableHeaderBg">
                                     <tr>
-                                        <th>Bil</th>
-                                        <th >Nama Peserta</th>
-                                        <th>No Kad Pengenalan</th>
-                                        <th>Jantina</th>
+                                        <th>Bil.</th>
+                                        <th>Tarikh Mohon</th>
+                                        <th>Nama Pemohon</th>
+                                        <th>No. Kad Pengenalan</th>
                                         <th>Operasi</th>
                                     </tr>
                                 </thead>
@@ -112,38 +103,39 @@
                                     <?php
                                          
 
-                                         foreach ($listOfRequestMarriageApplicantion as $row) {
-
-                                            $RequestStatus = $row["RequestStatus"];
+                                        foreach ($result as $row)
+                                        {
+                                                
+                                                
+                                            $Incentive_id = $row["Incentive_Id"];
                                             $Applicant_IC = $row["Applicant_IC"];
-                                        ?>
-                                            <tr>
-                                                <td style="width: 3%;">
-                                                    <?php echo ++$bilNum; ?>
-                                                </td>
-        
-                                                <td style="width: 30%;">
-                                                    <?php echo $applicantName[$x]; ?>
-                                                </td>
-        
-                                                <td style="width: 25%;">
-                                                    <span><?php echo $Applicant_IC; ?></span>
-                                                </td>
-        
-                                                <td style="width: 15%;">
-                                                    <?php echo $applicantGender[$x]; ?>
-                                                </td>
-        
-                                                <td style="width: 15%;">
-                                                    <?php echo $RequestStatus; ?>
-                                                </td>
-        
-                                                <td style="width: 12%;">
-                                                    <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
-                                                        Lihat
-                                                    </button>
-                                                </td>
-                                            </tr>
+                                            $ApplicantName = $row["ApplicantName"];
+                                            $IncentiveDate = $row["IncentiveDate"];
+                                            $IncentiveStatus = $row['IncentiveStatus'];
+                                            ?>
+                                                <<tr>
+                                                    <td style="width: 5%;">
+                                                        <?php echo ++$bilNum; ?>
+                                                    </td>
+
+                                                    <td class="" style="width: 20%;">
+                                                        
+                                                        <div class="nameEllipsis"><?php echo $IncentiveDate;?></div>
+                                                    </td>
+
+                                                    <td style="width: 40%;">
+                                                        <span><?php echo $ApplicantName;?></span>
+                                                    </td>
+
+                                                    <td style="width: 20%;"><?php echo $Staff_type;?></td>
+
+                                                    <td style="width: 15%;">
+                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
+                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $account_Id; ?>'">
+                                                            Lihat
+                                                        </button>
+                                                    </td>
+                                                </tr>
 
                                             <?php 
                                         }?>
@@ -151,8 +143,11 @@
                                     
                                 </tbody>
                             </table>
+                        </div>
 
-                        
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-link btn-md bg-dark text-light btn-rounded mt-3" type="submit" onclick="location.href='../ManageRegistration/staffRegisterView.php'" data-mdb-ripple-color="dark">Tambah Staf</button>
+                        </div>
                     </div>
                 </div>
 
@@ -161,9 +156,12 @@
         </section>
 
 
-        <!-- Footer -->
         <?php
-          include_once('../Common/footer.html');
+          // Footer 
+          include_once('../Common/footer.html');  
+
+          //Logout Model
+          include_once('../Common/logoutModel.html');
         ?>
 
     </div>
@@ -187,6 +185,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

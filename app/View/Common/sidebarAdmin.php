@@ -34,22 +34,17 @@ if ($route == 'viewProfile') {
     $profileRouteHeader = '';
     $listApplicantMPCRouteHeader = 'collapsed';
 
-}else if ($route == 'listOfApplicantMPC') {
+} else if ($route == 'listOfApplicantMPC') {
     $listApplicantMPCRoute = 'active';
-    $listApplicantMPCRouteSection = 'show';
-       
-    $listApplicantMPCRouteHeader = '';
-    $profileRouteHeader = 'collapsed';
-
 }else if ($route == 'newApplicant') {
     $newApplicant = 'active';
-}else if ($route == 'result') {
+} else if ($route == 'result') {
     $result = 'active';
-}else if ($route == 'manageMPC') {
+} else if ($route == 'manageMPC') {
     $manageMPC = 'active';
-}else if ($route == 'listApplicant') {
+} else if ($route == 'listApplicant') {
     $listApplicantRoute = 'active';
-}else if ($route == 'listApprovalRequest') {
+} else if ($route == 'listApprovalRequest') {
     $listApprovalRequestRoute = 'active';
 }
 
@@ -173,14 +168,14 @@ if ($route == 'viewProfile') {
                         <a class="list-group-item
                                 list-group-item-action <?php echo $listApplicantRoute ?>
                                 px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../MarriageRequest/ListApplicantView.php">
+                                list-group-item-light" href="../../../public/index.php?action=listOfMarriageRequestApplication&status=all">
                             SENARAI PEMOHON
                         </a>
 
                         <a class="list-group-item
                                 list-group-item-action <?php echo $listApprovalRequestRoute ?>
                                 px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../MarriageRequest/ListApprovalRequestView.php">
+                                list-group-item-light" href="../../../public/index.php?action=listOfMarriageRequestApplication&status=new">
                             PEMOHON BARU
                         </a>
                     </div>
@@ -310,7 +305,7 @@ if ($route == 'viewProfile') {
                                 collapse" aria-labelledby="flush-headingFive" data-mdb-parent="#accordionFlushExample">
                     <div class="accordion-body">
                         <a class="list-group-item list-group-item-action border-0 px-3 pt-1 pb-1
-                                        list-group-item-light" href="../blankPage.html">Borang
+                                        list-group-item-light" href="../../../public/index.php?action=viewComplaintListDetailsView">Borang
                             Aduan
                         </a>
 
@@ -323,23 +318,24 @@ if ($route == 'viewProfile') {
                 </div>
             </div>
 
-                <!-- Insentif Khas Accordian -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingSix">
-                        <button class="accordion-button collapsed rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-                            <strong><i class="fas fa-dollar-sign"></i>&nbsp;
-                                INSENTIF KHAS
-                            </strong>
-                        </button>
-                    </h2>
-                    <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-mdb-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <a class="list-group-item 
-                            list-group-item-action 
-                            border-0 px-3 pt-1 pb-1 
-                            list-group-item-light" href="../../../public/index.php?action=adminIncentiveApplicantListView">
-                            Senarai Permohonan
+            <!-- Insentif Khas Accordian -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingSix">
+                    <button class="accordion-button collapsed rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                        <strong><i class="fas fa-dollar-sign"></i>&nbsp;
+                            INSENTIF KHAS
+                        </strong>
+                    </button>
+                </h2>
+                <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-mdb-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <a class="list-group-item
+                                list-group-item-action <?php echo $viewSpecialIncentiveListRoute ?>
+                                px-3 border-0 pt-1 pb-1
+                                list-group-item-light" href="../../../public/index.php?action=adminIncentiveListView">
+                            Senarai Pemohon
                         </a>
+
                     </div>
                 </div>
             </div>

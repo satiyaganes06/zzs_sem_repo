@@ -17,7 +17,7 @@ if (!isset($_SESSION['currentUserIC'])) {
 } else {
 
   // Sidebar Active path
-  $_SESSION['route'] = 'appIncentiveView';
+  $_SESSION['route'] = 'appDetailsView';
 
   // Retrieve the serialized and URL-encoded data from the URL parameter
   $encodedData = $_GET['returnInfo'];
@@ -34,7 +34,7 @@ if (!isset($_SESSION['currentUserIC'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZZS - Special Incentive Application</title>
+  <title>ZZS - Complaint Application</title>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -99,16 +99,10 @@ if (!isset($_SESSION['currentUserIC'])) {
                 <a class="nav-link p-2" id="ex-with-icons-tab-2" data-mdb-toggle="tab" href="#ex-with-icons-tabs-2" role="tab" aria-controls="ex-with-icons-tabs-2" aria-selected="false">Maklumat Pasangan</a>
               </li>
               <li class="nav-item" role="presentation">
-                <a class="nav-link p-2" id="ex-with-icons-tab-3" data-mdb-toggle="tab" href="#ex-with-icons-tabs-3" role="tab" aria-controls="ex-with-icons-tabs-3" aria-selected="false">Maklumat Perkahwinan</a>
+                <a class="nav-link p-2" id="ex-with-icons-tab-3" data-mdb-toggle="tab" href="#ex-with-icons-tabs-3" role="tab" aria-controls="ex-with-icons-tabs-3" aria-selected="false">Aduan</a>
               </li>
               <li class="nav-item" role="presentation">
-                <a class="nav-link p-2" id="ex-with-icons-tab-4" data-mdb-toggle="tab" href="#ex-with-icons-tabs-4" role="tab" aria-controls="ex-with-icons-tabs-4" aria-selected="false">Maklumat Pekerjaan</a>
-              </li>
-              <li class="nav-item" role="presentation">
-                <a class="nav-link p-2" id="ex-with-icons-tab-5" data-mdb-toggle="tab" href="#ex-with-icons-tabs-5" role="tab" aria-controls="ex-with-icons-tabs-5" aria-selected="false">Maklumat Waris</a>
-              </li>
-              <li class="nav-item" role="presentation">
-                <a class="nav-link p-2" id="ex-with-icons-tab-6" data-mdb-toggle="tab" href="#ex-with-icons-tabs-6" role="tab" aria-controls="ex-with-icons-tabs-6" aria-selected="false">Dokumen Sokongan</a>
+                <a class="nav-link p-2" id="ex-with-icons-tab-4" data-mdb-toggle="tab" href="#ex-with-icons-tabs-4" role="tab" aria-controls="ex-with-icons-tabs-4" aria-selected="false">Status</a>
               </li>
             </ul>
             <!-- Tabs navs -->
@@ -302,6 +296,12 @@ if (!isset($_SESSION['currentUserIC'])) {
                         <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
                             ?></td>
                       </tr>
+
+                      <tr>
+                        <th scope="row">No.Sijil Pra-Perkahwinan :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
+                            ?></td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -309,256 +309,108 @@ if (!isset($_SESSION['currentUserIC'])) {
 
               <div class="tab-pane fade" id="ex-with-icons-tabs-3" role="tabpanel" aria-labelledby="ex-with-icons-tab-3">
 
-                <!-- Content 3 Maklumat Perkahwinan-->
+                  <!-- Content 3 Aduan-->
+                  <div id="inMainContentOutline" class="table-responsive p-4">
+                    <table class="table table-borderless table-sm">
+
+                      <tbody>
+                          <th scope="row">Tujuan Aduan :</th>
+                          <td>
+                            <div class="form form-width">
+                              <input type="text" id="formPurpose" name="purpose" class="form-control form-control-sm" value="<?php echo $decodedComplaintData['Purpose']; ?>" />
+                            </div>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">Cabaran :</th>
+                          <td>
+                            <div class="form form-width">
+                              <input type="text" id="formChallenges" name="challenges" class="form-control form-control-sm" value="<?php echo $decodedComplaintData['Challenges']; ?>" />
+                            </div>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">Solusi :</th>
+                          <td>
+                            <div class="form form-width">
+                              <input type="text" id="formSolution" name="solution " class="form-control form-control-sm" value="<?php echo $decodedComplaintData['Solution']; ?>" />
+                            </div>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <div class="d-flex justify-content-center">
+                              <button class="btn btn-block mt-3 text-dark" type="submit" data-mdb-ripple-color="dark">Simpan</button>
+                            </div>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </form>
+
+              </div>
+              <div class="tab-pane fade" id="ex-with-icons-tabs-5" role="tabpanel" aria-labelledby="ex-with-icons-tab-4">
+
+                <!-- Content 4 Status-->
                 <div id="inMainContentOutline" class="table-responsive p-4">
                   <table class="table table-borderless table-sm">
 
                     <tbody>
                       <tr>
-                        <th scope="row">Nama Pemohon :</th>
+                        <th scope="row">Nama Pengadu :</th>
                         <td><?php echo $decodedApplicantData['ApplicantName'];
                             ?></td>
+                      </tr>
 
+                      <tr>
                         <th scope="row">No. Kad Pengenalan :</th>
                         <td><?php echo $decodedApplicantData['Applicant_Ic'];
                             ?></td>
                       </tr>
 
                       <tr>
-                        <th scope="row">Nama Pasangan :</th>
-                        <td><?php //echo $decodedApplicantData['ApplicantBirthDate']; 
+                        <th scope="row">No. Telefon :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantPhoneNo'];
                             ?></td>
+                      </tr>
 
+                      <tr>
+                        <th scope="row">Alamat :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantAddress'];
+                            ?></td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">Nama Yang Di Adu :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantName'];
+                            ?></td>
+                      </tr>
+
+                      <tr>
                         <th scope="row">No. Kad Pengenalan :</th>
-                        <td><?php //echo $decodedApplicantData['ApplicantGender']; 
+                        <td><?php echo $decodedApplicantData['Applicant_Ic'];
                             ?></td>
                       </tr>
 
                       <tr>
-                        <th scope="row">Tarikh Nikah :</th>
-                        <td><?php //echo $decodedMarriageData['MarriageDate'];
-                            ?></td>
-
-                        <th scope="row">Tempat Nikah :</th>
-                        <td><?php //echo $decodedMarriageData['MarriageAddress']; 
+                        <th scope="row">No. Telefon :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantPhoneNo'];
                             ?></td>
                       </tr>
 
                       <tr>
-                        <th scope="row">No. Sijil Nikah :</th>
-                        <td><?php //echo $decodedMarriageData['MarriageCertificateNo']; 
+                        <th scope="row">Alamat :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantAddress'];
                             ?></td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-              </div>
-
-              <div class="tab-pane fade" id="ex-with-icons-tabs-4" role="tabpanel" aria-labelledby="ex-with-icons-tab-4">
-
-                <!-- form applicant's occupation info update -->
-                <form action="../../../public/index.php?action=updateOccupation" method="post" onsubmit="return userOccupationUpdateValidate();">
-
-                  <!-- Content 4 Maklumat Pekerjaan-->
-                  <div id="inMainContentOutline" class="table-responsive p-4">
-                    <table class="table table-borderless table-sm">
-
-                      <tbody>
-                        <tr>
-                          <th scope="row">Nama Pemohon :</th>
-                          <td><?php echo $decodedApplicantData['ApplicantName'];
-                              ?></td>
-
-                          <th scope="row">No. Kad Pengenalan :</th>
-                          <td><?php echo $decodedApplicantData['Applicant_Ic'];
-                              ?></td>
-                        </tr>
-
-                        <tr>
-                          <th scope="row">Jawatan / Pekerjaan :</th>
-                          <td><?php echo $decodedApplicantData['ApplicantPosition'];
-                              ?></td>
-
-                          <th scope="row">Jenis Pekerjaan :</th>
-                          <td>
-                            <div class="form form-width">
-                              <select class="browser-default custom-select-sm shadow rounded-3" name="User_type" required>
-                                <option class="text-muted" value="" disabled selected>Pilih</option>
-                                <option value="kerajaan">Kerajaan / Badan Berkanun</option>
-                                <option value="swasta">Kakitangan</option>
-                                <option value="sendiri">Bekerja Sendiri</option>
-                              </select>
-                            </div>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <th scope="row">Pendapatan :</th>
-                          <td><?php echo $decodedApplicantData['ApplicantSalary'];
-                              ?></td>
-
-                          <th scope="row">Nama Syarikat :</th>
-                          <td>
-                            <div class="form form-width">
-                              <input type="text" id="formCompanyName" name="Company_name" class="form-control form-control-sm" value="<?php echo $decodedApplicantOccupationData['EmployerName']; ?>" />
-                            </div>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <th scope="row">Alamat Pejabat :</th>
-                          <td><?php echo $decodedApplicantData['ApplicantWorkAddress'];
-                              ?></td>
-                        </tr>
-
-                        <tr>
-                          <th scope="row">No. Tel Pejabat :</th>
-                          <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
-                              ?></td>
-                        </tr>
-
-                        <tr>
-                          <th scope="row">Nama Majikan :</th>
-                          <td>
-                            <div class="form form-width">
-                              <input type="text" id="formEmployerName" name="Employer_name" class="form-control form-control-sm" value="<?php echo $decodedApplicantOccupationData['EmployerName']; ?>" />
-                            </div>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <th scope="row">No. Tel Majikan :</th>
-                          <td>
-                            <div class="form form-width">
-                              <input type="text" id="formEmployerPhoneNo" name="Employer_phoneNo " class="form-control form-control-sm" value="<?php echo $decodedApplicantOccupationData['EmployerPhoneNo']; ?>" />
-                            </div>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td>
-                            <div class="d-flex justify-content-center">
-                              <button class="btn btn-block mt-3 text-dark" type="submit" data-mdb-ripple-color="dark">Simpan</button>
-                            </div>
-                          </td>
-                        </tr>
-
-                      </tbody>
-                    </table>
-                  </div>
-                </form>
-
-              </div>
-
-              <div class="tab-pane fade" id="ex-with-icons-tabs-5" role="tabpanel" aria-labelledby="ex-with-icons-tab-5">
-
-                <!-- form applicant's heir info update -->
-                <form action="../../../public/index.php?action=updateHeir" method="post" onsubmit="return userHeirUpdateValidate();">
-
-                  <!-- Content 5 Maklumat Waris-->
-                  <div id="inMainContentOutline" class="table-responsive p-4">
-                    <table class="table table-borderless table-sm">
-
-                      <tbody>
-                        <tr>
-                          <th scope="row">Nama Waris :</th>
-                          <td>
-                            <div class="form form-width">
-                              <input type="text" id="formHeirName" name="Heir_name" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirName']; ?>" />
-                            </div>
-                          </td>
-
-                          <th scope="row">Hubungan :</th>
-                          <td>
-                            <div class="form form-width">
-                              <input type="text" id="formHeirRelationship" name="Heir_relationship" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirRelationship']; ?>" />
-                            </div>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <th scope="row">No. Tel :</th>
-                          <td>
-                            <div class="form form-width">
-                              <input type="text" id="formHeirPhoneNo" name="Heir_PhoneNo" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirPhoneNo']; ?>" />
-                            </div>
-                          </td>
-
-                          <th scope="row">Email :</th>
-                          <td>
-                            <div class="form form-width">
-                              <input type="text" id="formHeirEmail" name="Heir_email" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirEmail']; ?>" />
-                            </div>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td>
-                            <div class="d-flex justify-content-center">
-                              <button class="btn btn-block mt-3 text-dark" type="submit" data-mdb-ripple-color="dark">Simpan</button>
-                            </div>
-                          </td>
-                        </tr>
-
-                      </tbody>
-                    </table>
-                  </div>
-                </form>
-              </div>
-
-              <div class="tab-pane fade" id="ex-with-icons-tabs-6" role="tabpanel" aria-labelledby="ex-with-icons-tab-6">
-                <!-- form applicant's special incentive supporting info update -->
-                <form action="../../../public/index.php?action=updateHeir" method="post" onsubmit="return userSpecialIncentiveDocUpdateValidate();">
-
-                  <!-- Content 5 Maklumat Waris-->
-                  <div id="inMainContentOutline" class="table-responsive p-4">
-                    <table>
-
-                      <tbody>
-                        <tr>
-                          <th scope="row">Nama Waris :</th>
-                          <td>
-                            <div class="form form-width">
-                              <input type="text" id="formHeirName" name="Heir_name" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirName']; ?>" />
-                            </div>
-                          </td>
-
-                          <th scope="row">Hubungan :</th>
-                          <td>
-                            <div class="form form-width">
-                              <input type="text" id="formHeirRelationship" name="Heir_relationship" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirRelationship']; ?>" />
-                            </div>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <th scope="row">No. Tel :</th>
-                          <td>
-                            <div class="form form-width">
-                              <input type="text" id="formHeirPhoneNo" name="Heir_PhoneNo" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirPhoneNo']; ?>" />
-                            </div>
-                          </td>
-
-                          <th scope="row">Email :</th>
-                          <td>
-                            <div class="form form-width">
-                              <input type="text" id="formHeirEmail" name="Heir_email" class="form-control form-control-sm" value="<?php echo $decodedApplicantHeirData['HeirEmail']; ?>" />
-                            </div>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td>
-                            <div class="d-flex justify-content-center">
-                              <button class="btn btn-block mt-3 text-dark" type="submit" data-mdb-ripple-color="dark">Simpan</button>
-                            </div>
-                          </td>
-                        </tr>
-
-                      </tbody>
-                    </table>
-                  </div>
-                </form>
               </div>
             </div>
             <!-- Tabs content  -->

@@ -85,61 +85,61 @@
                     
                     <div class="mainContentBg text-center p-3">
                         <h2 id="contentTitle">Senarai Pemohon</h2>
-                        
+
                         <div id="inMainContentOutline" class="table-responsive p-4">
+                    <table class="table table-borderless table-sm">
 
-                            <table class="table table-bordered border-dark mb-0 align-middle">
-                                <thead class="tableHeaderBg">
-                                    <tr>
-                                        <th>Bil</th>
-                                        <th>Tarikh Mohon</th>
-                                        <th>Nama Pemohon</th>
-                                        <th >No. Kad Pengenalan</th>
-                                        <th>Operasi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    
-                                    <?php
-                                        foreach ($result as $row)
-                                        {
-                                            $Applicant_ic = $row['Applicant_Ic'];
-                                            $Applicant_name = $row['ApplicantName'];
-                                            $IncentiveDate = $row['IncentiveDate'];
-                                            ?>
-                                                <tr>
-                                                    <td style="width: 5%;">
-                                                        <?php echo ++$bilNum; ?>
-                                                    </td>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Nama Pengadu :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantName'];
+                            ?></td>
+                      </tr>
 
-                                                    <td class="" style="width: 20%;">
-                                                        
-                                                        <div class="nameEllipsis">
-                                                            <?php //echo $IncentiveDate; ?>
-                                                        </div>
-                                                    </td>
+                      <tr>
+                        <th scope="row">No. Kad Pengenalan :</th>
+                        <td><?php echo $decodedApplicantData['Applicant_Ic'];
+                            ?></td>
+                      </tr>
 
-                                                    <td style="width: 40%;">
-                                                        <span><?php echo $Applicant_name;?></span>
-                                                    </td>
+                      <tr>
+                        <th scope="row">No. Telefon :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantPhoneNo'];
+                            ?></td>
+                      </tr>
 
-                                                    <td style="width: 20%;"><?php echo $Applicant_ic;?></td>
+                      <tr>
+                        <th scope="row">Alamat :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantAddress'];
+                            ?></td>
+                      </tr>
 
-                                                    <td style="width: 15%;">
-                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
-                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
-                                                            Lihat
-                                                        </button>
-                                                    </td>
-                                                </tr>
+                      <tr>
+                        <th scope="row">Nama Yang Di Adu :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantName'];
+                            ?></td>
+                      </tr>
 
-                                            <?php 
-                                        }?>
-                                    
-                                    
-                                </tbody>
-                            </table>
-                        </div>
+                      <tr>
+                        <th scope="row">No. Kad Pengenalan :</th>
+                        <td><?php echo $decodedApplicantData['Applicant_Ic'];
+                            ?></td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">No. Telefon :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantPhoneNo'];
+                            ?></td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">Alamat :</th>
+                        <td><?php echo $decodedApplicantData['ApplicantAddress'];
+                            ?></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
 
                         <div class="d-flex justify-content-center">
                             <button class="btn btn-link btn-md bg-dark text-light btn-rounded mt-3" type="submit" onclick="location.href='../ManageRegistration/staffRegisterView.php'" data-mdb-ripple-color="dark">Tambah Staf</button>
