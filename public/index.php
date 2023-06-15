@@ -281,6 +281,13 @@ switch ($action) {
 
         break;
 
+    case 'makeApproval':
+        $approval = isset($_GET['approval']) ? $_GET['approval'] : '';
+        $applicantIC = isset($_GET['applicantIC']) ? $_GET['applicantIC'] : '';
+
+        $marriagePreparationCourseController->makeApproval($approval, $applicantIC);
+        break;
+
     case 'getApplicantAndPartnerInfo':
 
         session_start();

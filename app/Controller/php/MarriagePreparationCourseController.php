@@ -36,7 +36,7 @@ class MarriagePreparationCourseController
             <script>
                 window.location = "../app/View/MarriageCourse/ManageMPCView.php";
             </script>
-<?php
+            <?php
         }
     }
 
@@ -81,23 +81,6 @@ class MarriagePreparationCourseController
         header('Location: ../app/View/MarriageCourse/UploadProofOfPaymentMPCView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
     }
 
-    public function getMPCApplicantInfoForAdmin($from, $applicantIC)
-    {
-        session_start();
-        
-        $applicantInfo = $this->applicantModel->getApplicantProfileInfo($applicantIC);
-
-        if ($from == 'listOfApplicant') {
-
-            header('Location: ../app/View/MarriageCourse/ApplicantMPCInfoView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
-        
-        }else if($from == 'listOfNewApplicant'){
-
-            header('Location: ../app/View/MarriageCourse/ApproveMPCView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
-
-        }
-    }
-
     public function uploadProofOfPaymentMPC($typeOfFee)
     {
         session_start();
@@ -120,6 +103,61 @@ class MarriagePreparationCourseController
             // Redirect the page using JavaScript
             // echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
             header('Location: ../app/View/MarriageCourse/MPCView.php');
+        }
+    }
+
+    public function makeApproval($approval, $applicantIC)
+    {
+        session_start();
+
+        if ($approval == 'reject') {
+            if ($this->marriageCourseApplicationModel->deleteApplication($applicantIC)) {
+            ?>
+
+                <script>
+                    alert("Data Sucessfully delete");
+                    window.href = "../../../public/index.php?action=viewListOfApplicantMPC&from=newApplicant";
+                </script>
+            <?php
+            }else{
+                ?>
+                <script>
+                    alert("Data unsuccessfully delete");
+                    window.href = "../../../public/index.php?action=viewListOfApplicantMPC&from=newApplicant";
+                </script>
+            <?php
+            }
+        } else {
+            if ($this->marriageCourseApplicationModel->updateStatus($approval, $applicantIC)) {
+                ?>
+                <script>
+                    alert("Data Sucessfully update");
+                    window.href = "../../../public/index.php?action=viewListOfApplicantMPC&from=newApplicant";
+                </script>
+            <?php
+            }else{
+                ?>
+                <script>
+                    alert("Data unsuccessfully update");
+                    window.href = "../../../public/index.php?action=viewListOfApplicantMPC&from=newApplicant";
+                </script>
+            <?php
+            }
+        }
+    }
+
+    public function getMPCApplicantInfoForAdmin($from, $applicantIC)
+    {
+        session_start();
+
+        $applicantInfo = $this->applicantModel->getApplicantProfileInfo($applicantIC);
+
+        if ($from == 'listOfApplicant') {
+
+            header('Location: ../app/View/MarriageCourse/ApplicantMPCInfoView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
+        } else if ($from == 'listOfNewApplicant') {
+
+            header('Location: ../app/View/MarriageCourse/ApproveMPCView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
         }
     }
 }

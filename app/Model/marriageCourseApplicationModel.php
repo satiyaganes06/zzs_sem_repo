@@ -24,5 +24,43 @@ class MarriageCourseApplicationModel
 
         return $MPCApplicantinfo;
     }
+
+    public function deleteApplication($applicantIC)
+    {
+
+        // Prepare SQL statement with placeholders to prevent SQL injection
+        $stmt = $this->connect->prepare("DELETE FROM  marriage_course_application WHERE Applicant_IC  = '$applicantIC'");
+
+        // Execute SQL statement
+        if ($stmt->execute() === TRUE) {
+            return true;
+        } else {
+
+            return false;
+        }
+    }
+
+    public function updateStatus($approval, $applicantIC)
+    {
+
+        // Prepare your update statement
+        $sql = "UPDATE marriage_course_application set 
+                MPCStatus = :approval
+                WHERE Applicant_IC = :applicantIC";
+
+        // Prepare the statement
+        $stmt = $this->connect->prepare($sql);
+
+        // Bind parameters
+        $stmt->bindParam(':approval', $approval);
+        $stmt->bindParam(':applicantIC', $applicantIC);
+
+        // Execute the statement
+        if ($stmt->execute() === TRUE) {
+            return true;
+        } else {
+
+            return false;
+        }
+    }
 }
-?>

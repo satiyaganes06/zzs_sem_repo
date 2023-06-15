@@ -23,11 +23,11 @@ if (!isset($_SESSION['currentUserIC'])) {
     //Sidebar Active path
     $_SESSION['route'] = 'newApplicant';
 
-      // Retrieve the serialized and URL-encoded data from the URL parameter
-  $applicantEncodedData = $_GET['applicantInfo'];
+    // Retrieve the serialized and URL-encoded data from the URL parameter
+    $applicantEncodedData = $_GET['applicantInfo'];
 
-  // Decode the URL-encoded data and unserialize it
-  $decodedApplicantData = unserialize(urldecode($applicantEncodedData));
+    // Decode the URL-encoded data and unserialize it
+    $decodedApplicantData = unserialize(urldecode($applicantEncodedData));
 }
 
 
@@ -124,7 +124,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                         </tr>
 
                                         <tr>
-                                            <th scope="row">No. Kad Pengenalan :</th>
+                                            <th scope="row">No.Kad Pengenalan:</th>
                                             <td><?php echo $decodedApplicantData['Applicant_Ic'];
                                                 ?></td>
 
@@ -142,18 +142,16 @@ if (!isset($_SESSION['currentUserIC'])) {
 
                                         <tr>
                                             <th scope="row">Alamat :</th>
-                                            <td><?php echo $decodedApplicantData['ApplicantAddress'];
-                                                ?></td>
+                                            <td colspan="2"><?php echo $decodedApplicantData['ApplicantAddress'];
+                                                            ?></td>
                                         </tr>
 
                                         <tr>
-                                            <th scope="row">No. Telefon(Bimbit) :</th>
+                                            <th scope="row">No.Telefon(Bimbit) :</th>
                                             <td><?php echo $decodedApplicantData['ApplicantPhoneNo'];
                                                 ?></td>
-                                        </tr>
 
-                                        <tr>
-                                            <th scope="row">No. Telefon(Rumah) :</th>
+                                            <th scope="row">No.Telefon(Rumah) :</th>
                                             <td><?php echo $decodedApplicantData['ApplicantHomePhoneNo'];
                                                 ?></td>
                                         </tr>
@@ -162,10 +160,8 @@ if (!isset($_SESSION['currentUserIC'])) {
                                             <th scope="row">Taraf Pendidikan :</th>
                                             <td><?php echo $decodedApplicantData['ApplicantEduLevel'];
                                                 ?></td>
-                                        </tr>
 
-                                        <tr>
-                                            <th scope="row">Jawatan / Pekerjaan :</th>
+                                            <th scope="row">Jawatan/Pekerjaan :</th>
                                             <td><?php echo $decodedApplicantData['ApplicantPosition'];
                                                 ?></td>
                                         </tr>
@@ -174,18 +170,30 @@ if (!isset($_SESSION['currentUserIC'])) {
                                             <th scope="col-2">Pendapatan :</th>
                                             <td>RM <?php echo $decodedApplicantData['ApplicantSalary'];
                                                     ?></td>
-                                        </tr>
 
-                                        <tr>
-                                            <th scope="row">Alamat Tempat Kerja :</th>
-                                            <td><?php echo $decodedApplicantData['ApplicantWorkAddress'];
-                                                ?></td>
-                                        </tr>
-
-                                        <tr>
                                             <th scope="row">No. Telefon(Pejabat) :</th>
                                             <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
                                                 ?></td>
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row" style="width: 200px;">Alamat Tempat Kerja:</th>
+                                            <td colspan="2"><?php echo $decodedApplicantData['ApplicantWorkAddress'];
+                                                            ?></td>
+                                        </tr>
+
+                                        <tr>
+
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a href="../../../public/index.php?action=makeApproval&approval=PESERTA&applicantIC=<?php echo $decodedApplicantData['Applicant_IC '];?>">
+                                                    <button class="btn btn-dark">Terima</button>
+                                                </a>
+                                                <a href="../../../public/index.php?action=makeApproval&approval=reject&applicantIC=<?php echo $decodedApplicantData['Applicant_IC '];?>">
+                                                    <button class="btn btn-dark">Tolak</button>
+                                                </a>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
