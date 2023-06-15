@@ -158,16 +158,14 @@
                   <!-- IC -->
                   <div class="form-outline bg-white rounded-4">
                     <input type="text" id="formIC" name="User_ic" class="form-control form-control-sm mb-4 text-dark rounded-3" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Kad Pengenalan">
-                    <!-- <input type="text" id="formIC" name="User_ic" class="form-control form-control-sm mb-4 text-dark rounded-3" />
-                    <label class="form-label" for="formIC">Kad Pengenalan</label> -->
+                    
                   </div>
 
                   <!-- Password -->
                   <!-- <input type="password" id="password" class="form-control mb-4 shadow rounded-3" placeholder="Password" > -->
                   <div class="form-outline bg-white rounded-4">
                     <input type="password" id="formPassword" name="User_password" class="form-control form-control-sm mb-4 text-dark rounded-3" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Kata Laluan">
-                    <!-- <input type="password" id="formPassword" name="User_password" class="form-control form-control-sm mb-4 shadow rounded-3" />
-                    <label class="form-label" for="formPassword">Kata Laluan</label> -->
+                    
                   </div>
 
                   

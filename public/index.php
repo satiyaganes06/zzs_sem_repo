@@ -29,6 +29,8 @@ require_once '../app/Controller/php/marriageRegistrationController.php';
 require_once '../app/Controller/php/MarriagePreparationCourseController.php';
 require_once '../app/Controller/php/RequestMarriageController.php';
 require_once '../app/Controller/php/SpecialIncentiveController.php';
+require_once '../app/Controller/php/complaintController.php';
+require_once '../app/Controller/php/consultationController.php';
 
 // Create a new database connection
 $db = (new Database())->connect();
@@ -65,6 +67,8 @@ $marriageRegistrationController = new MarriageRegistrationController($accountMod
 $marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel, $applicantModel, $paymentModel);
 $requestMarriageController = new RequestMarriageController($marriageInfoModel, $marriageRequestInfoModel, $applicantModel);
 $SpecialIncentiveController = new SpecialIncentiveController($specialIncentiveModel, $applicantModel, $applicantOccupationModel, $heirInfoModel, $marriageInfoModel, $incentiveDocModel);
+$ComplaintController = new complaintController($complaintModel, $applicantModel, $applicantOccupationModel, $consultationModel, $staffModel);
+$ConsultationController = new consultationController($complaintModel, $applicantModel, $applicantOccupationModel, $consultationModel, $staffModel);
 
 // Action of Task
 $action = isset($_GET['action']) ? $_GET['action'] : '';
@@ -168,10 +172,11 @@ switch ($action) {
         $SpecialIncentiveController->viewSpecialIncentiveListFunction('adminIncentiveListView');
 
         break;
+
     case 'viewComplaintListDetailsView':
 
-        $userProfileController->viewApplicantListFunction('viewComplaintListDetailsView');
-
+            $userProfileController->viewApplicantListFunction('viewComplaintListDetailsView');
+    
         break;
 
     case 'viewProfileById':
@@ -340,6 +345,15 @@ switch ($action) {
 
         break;
 
+        case 'viewApplicantDetailsView':
+            $purpose = $_POST['purpose'];
+            $challenges = $_POST['challenges'];
+            $solution = $_POST['solution'];
+    
+            $complaintController->viewApplicantDetailsView($purpose, $challenges, $solution);
+    
+            break;
+    
     case 'updateMarriageRegistrationDetail';
         $marriageId = $_SESSION['marriageID'];
         $waliName = $_POST['waliName'];

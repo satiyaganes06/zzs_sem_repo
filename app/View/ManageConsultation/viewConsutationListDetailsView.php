@@ -19,7 +19,7 @@
         // $_SESSION['route'] = 'viewApplicantList';
 
         // Retrieve list of applicant information
-        $result = $_SESSION['listOfApplicant'];
+        $result = $_SESSION['listOfConsultation'];
         $bilNum = 0;
     }
     
@@ -31,7 +31,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZZS - Consultation List</title>
+    <title>ZZS - Consultation Application List</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -84,9 +84,20 @@
                     </div>
                     
                     <div class="mainContentBg text-center p-3">
-                        <h2 id="contentTitle">Senarai Temu Janji</h2>
                         
                         <div id="inMainContentOutline" class="table-responsive p-4">
+
+                        <form action="../../../public/index.php?action=search&from=applicant" method="post">
+                                <div class="input-group mb-4">
+                                    <div class="form-outline">
+                                        <input type="search" id="search_term" name="search_term" class="form-control" />
+                                        <label class="form-label" for="form1">Masukkan nombor kad pengenalan</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-dark">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </form>
 
                             <table class="table table-bordered border-dark mb-0 align-middle">
                                 <thead class="tableHeaderBg">
@@ -94,8 +105,11 @@
                                         <th>Bil</th>
                                         <th>Tarikh</th>
                                         <th>Masa</th>
-                                        <th >Nama Penasihat</th>
                                         <th>Tempat</th>
+                                        <th>Nama Pemohon</th>
+                                        <th>No. Kad Pengenalan</th>
+                                        <th>Nama Penasihat</th>
+                                        <th>Operasi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -103,9 +117,12 @@
                                     <?php
                                         foreach ($result as $row)
                                         {
-                                            $ConsultationDate = $row['ConsultationDate'];
-                                            $ConsultationTime = $row['ConsultationTime'];
-                                            $ConsultationPlace = $row['ConsultationPlace'];
+                                            $Applicant_ic = $row['Applicant_IC'];
+                                            $Applicant_name = $row['ApplicantName'];
+                                            $consultationDate = $row['ConsultationDate'];
+                                            $consultationTime = $row['ConsultationTime'];
+                                            $consultationPlace = $row['ConsultationPlace'];
+                                            $Staff_name = $row['StaffName']
                                             ?>
                                                 <tr>
                                                     <td style="width: 5%;">
@@ -115,7 +132,21 @@
                                                     <td class="" style="width: 20%;">
                                                         
                                                         <div class="nameEllipsis">
-                                                            <?php //echo $ConsultationDate; ?>
+                                                            <?php echo $consultationDate;?>
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="" style="width: 20%;">
+                                                        
+                                                        <div class="nameEllipsis">
+                                                            <?php echo $consultationTime;?>
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="" style="width: 20%;">
+                                                        
+                                                        <div class="nameEllipsis">
+                                                            <?php echo $consultationPlace;?>
                                                         </div>
                                                     </td>
 
@@ -125,10 +156,20 @@
 
                                                     <td style="width: 20%;"><?php echo $Applicant_ic;?></td>
 
+                                                    <td style="width: 20%;"><?php echo $Staff_id;?></td>
+
                                                     <td style="width: 15%;">
                                                         <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
-                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
-                                                            Lihat
+                                                            onclick="location.href='../ManageComplaint/approveComplaintDetailsView.php'">
+                                                            Aduan
+                                                        </button>
+                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
+                                                            onclick="location.href='../ManageConsultation/viewConsultationDetailsView.php'">
+                                                            Profil
+                                                        </button>
+                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
+                                                            onclick="location.href='../ManageConsultation/updateConsultationDetailsView.php'">
+                                                            Edit
                                                         </button>
                                                     </td>
                                                 </tr>

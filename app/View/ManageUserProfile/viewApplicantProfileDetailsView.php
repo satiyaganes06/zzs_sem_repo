@@ -69,8 +69,7 @@
 
 <body>
 
-    <!-- Toast -->
-    <?php include('../Common/alert.php'); ?>
+    
 
     <div class="container-md-8 container-sm-12 row d-flex
             justify-content-center">
@@ -216,15 +215,7 @@
         }
     </script>
 
-    <!-- JavaScript to close the toast after 4 seconds -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        var toast = document.querySelector('.toast');
-        var timer = setTimeout(function () {
-          toast.classList.remove('show');
-        }, 4000);
-      });
-    </script>
+    
 
     <!--Controller-->
     <script src="../../Controller/js/valiation.js"></script>
