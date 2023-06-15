@@ -18,8 +18,8 @@
     }else{
 
 
-        //Sidebar Active path
-        $_SESSION['route'] = 'marriageRegistrationStatus';
+      //Sidebar Active path
+      $_SESSION['route'] = 'marriageRegistrationStatus';
          // Retrieve the serialized and URL-encoded data from the URL parameter
       $encodedData = $_GET['returnInfo'];
       
