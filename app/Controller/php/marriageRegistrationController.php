@@ -6,13 +6,15 @@ class marriageRegistrationController {
   private $staffModel;
   private $marriageInfoModel;
   private $waliModel;
+  private $marriageDocModel;
   //Registration controller's constructor
-  public function __construct($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel) {
+  public function __construct($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel, $marriageDocModel) {
     $this->accountModel = $accountModel;
     $this->applicantModel = $applicantModel;
     $this->staffModel = $staffModel;
     $this->marriageInfoModel = $marriageInfoModel;
     $this->waliModel = $waliModel;
+    $this->marriageDocModel = $marriageDocModel;
   }
 
   public function marriageRegistrationWithApproval($marriageId, $waliIC, $witnessIC) {
@@ -24,7 +26,7 @@ class marriageRegistrationController {
 
     ?>
         <script>
-            return $marriageId, $waliIC, $witnessIC; 
+              
             window.location = "../app/View/MarriageRegistration/marriageRegistrationUpdateView.php";
             
         </script>
@@ -56,4 +58,15 @@ public function insertWaliInfo($waliIc, $waliAddress, $waliBirthDate, $waliAge, 
       </script>
   <?php
 }
+public function uploadFileWithApproval($marriageId, $docId, $combinedContent){
+  $this->marriageDocModel->insertWithApprovalDoc($marriageId, $docId, $combinedContent);
+
+  session_start();
+  ?>
+      <script>
+          window.location = "../app/View/MarriageRegistration/marriageRegistrationStatusView.php";
+      </script>
+  <?php
+}
+
 }
