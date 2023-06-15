@@ -69,4 +69,22 @@ class MarriageInfoModel {
       }
 
   }
+
+  public function getMarriageInfoData($marriageId){
+
+    // Prepare SQL statement with placeholders to prevent SQL injection
+    $stmt = $this->connect->prepare("SELECT * FROM marriage_info WHERE Marriage_Id  = '$marriageId'");
+    
+
+    // Execute SQL statement
+    $stmt->execute();
+
+    //Store the result of user from mySQL
+    $marriageInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+
+    return $marriageInfo;
+    
+}
 }

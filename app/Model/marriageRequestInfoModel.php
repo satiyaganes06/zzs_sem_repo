@@ -29,5 +29,23 @@ class MarriageRequestInfoModel
         
     }
 
+    public function getMarriageInfo($applicant_IC){
+
+        // Prepare SQL statement with placeholders to prevent SQL injection
+        $stmt = $this->connect->prepare("SELECT * FROM marriage_request_info WHERE Applicant_IC = '$applicant_IC'");
+        
+
+        // Execute SQL statement
+        $stmt->execute();
+
+        //Store the result of user from mySQL
+        $requestMarriageApplication = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    
+
+        return $requestMarriageApplication;
+        
+    }
+
 }
 ?>

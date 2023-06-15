@@ -64,7 +64,7 @@ $resetPasswordController = new ResetPasswordController($accountModel, $applicant
 $marriageRegistrationController = new MarriageRegistrationController($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel, $marriageDocModel);
 $marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel, $applicantModel, $paymentModel);
 $requestMarriageController = new RequestMarriageController($marriageInfoModel, $marriageRequestInfoModel, $applicantModel);
-$SpecialIncentiveController = new SpecialIncentiveController($specialIncentiveModel, $applicantModel, $applicantOccupationModel, $heirInfoModel, $marriageInfoModel, $incentiveDocModel);
+$SpecialIncentiveController = new SpecialIncentiveController($specialIncentiveModel, $applicantModel, $applicantOccupationModel, $heirInfoModel, $marriageInfoModel, $incentiveDocModel, $marriageRequestInfoModel);
 
 // Action of Task
 $action = isset($_GET['action']) ? $_GET['action'] : '';
@@ -129,6 +129,7 @@ switch ($action) {
         $resetPasswordController->checkOTP($ic, $otp);
 
         break;
+
     case 'adminLoginAccount':
         $id = $_POST['Admin_id'];
         $password = $_POST['Admin_password'];
@@ -159,7 +160,41 @@ switch ($action) {
         break;
     case 'specialIncentiveApplication':
 
-        $userProfileController->viewProfileFunction('specialIncentiveApplication');
+        $applicantData = $userProfileController->viewProfileFunction('specialIncentiveApplication');
+        $marriageData = $SpecialIncentiveController->getMarriageInfo('specialIncentiveApplication');
+        $partnerData = $SpecialIncentiveController->getPartnerInfo($marriageData['Partner_IC']);
+        
+        $marriageInfoData = $SpecialIncentiveController->getMarriageInfoData($marriageData['Marriage_Id']);
+        $occupationData = $SpecialIncentiveController->getOccupationInfo();
+        $heirData = $SpecialIncentiveController->getHeirInfo();
+
+        header('Location: ../app/View/ManageSpecialIncentive/applicantIncentiveView.php?applicantData='.  urlencode(serialize($applicantData)) . '&marriageData=' . urlencode(serialize($marriageData)) . '&partnerData=' . urlencode(serialize($partnerData)) . '&marriageInfoData=' . urlencode(serialize($marriageInfoData)) . '&occupationData=' . urlencode(serialize($occupationData)) . '&heirData=' . urlencode(serialize($heirData)));
+        break;
+
+    case 'addOccupation':
+        $occupationType = $_POST['OccupationType'];
+        $companyName = $_POST['CompanyName'];
+        $employerName = $_POST['EmployerName'];
+        $employerPhoneNo = $_POST['EmployerPhoneNo'];
+
+        $SpecialIncentiveController->addOccupation($occupationType, $companyName, $employerName, $employerPhoneNo);
+
+        break;
+
+    case 'addHeir':
+        $heirName = $_POST['HeirName'];
+        $heirRelationship = $_POST['HeirRelationship'];
+        $heirPhoneNo = $_POST['HeirPhoneNo'];
+        $heirEmail = $_POST['HeirEmail'];
+
+        $SpecialIncentiveController->addHeir($heirName, $heirRelationship, $heirPhoneNo, $heirEmail);
+
+        break;
+
+    case 'addIncentiveDoc':
+        $doc = $_POST['Doc'];
+
+        $SpecialIncentiveController->addIncentiveDoc($doc);
 
         break;
 
