@@ -184,15 +184,15 @@ if (!isset($_SESSION['currentUserIC'])) {
                                             <td><?php echo $decodedApplicantData['ApplicantWorkPhoneNo'];
                                                 ?></td>
                                         </tr>
-                                        <div class="d-flex justify-content-center">
-                                            <button class="btn btn-link btn-md bg-dark text-light btn-rounded mt-3 " type="submit" data-mdb-ripple-color="dark">Tolak</button>
-                                        </div>
-                                        <div class="d-flex justify-content-center">
-                                            <button class="btn btn-link btn-md bg-dark text-light btn-rounded mt-3 " type="submit" data-mdb-ripple-color="dark">Terima</button>
-                                        </div>
+
                                     </tbody>
+
                                 </table>
-                            </div>
+                                <div class="d-flex justify-content-end">
+                                    <button class="btn btn-link btn-md bg-dark text-light btn-rounded mt-3 mr-2 " type="submit" data-mdb-ripple-color="dark">Terima</button>
+                                    <button class="btn btn-link btn-md bg-dark text-light btn-rounded mt-3 " type="submit" data-mdb-ripple-color="dark">Tolak</button>
+                                </div>
+                            
                         </div>
                         <!--To Here -->
 
