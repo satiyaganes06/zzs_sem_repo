@@ -235,6 +235,8 @@ switch ($action) {
 
         break;
 
+        //Module 2 Section Start ^^
+
     case 'viewlistOfMPC':
         $organize = isset($_GET['organize']) ? $_GET['organize'] : '';
         $from = isset($_GET['from']) ? $_GET['from'] : '';
@@ -253,14 +255,16 @@ switch ($action) {
     case 'getMPCApplicantInfo':
         $from = isset($_GET['from']) ? $_GET['from'] : '';
 
-        if ($from = 'MPCView') {
+        if ($from == 'MPCView') {
             $organize = isset($_GET['organize']) ? $_GET['organize'] : '';
             $venue = isset($_GET['venue']) ? $_GET['venue'] : '';
             $dateStart = isset($_GET['dateStart']) ? $_GET['dateStart'] : '';
             $dateFinish = isset($_GET['dateFinish']) ? $_GET['dateFinish'] : '';
 
 
-            $marriagePreparationCourseController->getMPCApplicantInfo($organize, $venue, $dateStart, $dateFinish);
+            $marriagePreparationCourseController->getMPCApplicantInfoForApplicant($organize, $venue, $dateStart, $dateFinish);
+        }else{
+            $marriagePreparationCourseController->getMPCApplicantInfoForAdmin($from);
         }
         break;
 

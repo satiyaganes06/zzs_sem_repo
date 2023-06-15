@@ -28,6 +28,7 @@ class RequestMarriageController
 
     public function listOfMarriageRequestApplication($status)
     {
+        session_start();
 
         $applicantName = [];
         $applicantGender = [];
