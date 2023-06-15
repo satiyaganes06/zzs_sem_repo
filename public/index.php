@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once '../app/Config/database.php';
 require_once '../app/Model/accountModel.php';
 require_once '../app/Model/applicantModel.php';
