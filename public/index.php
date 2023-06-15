@@ -250,6 +250,13 @@ switch ($action) {
 
         break;
 
+    case 'getMPCInfo':
+        $marriageCourseID = isset($_GET['marriageCourseID']) ? $_GET['marriageCourseID'] : '';
+
+        $marriagePreparationCourseController->getMPCInfo($marriageCourseID);
+
+        break;
+
     case 'viewListOfApplicantMPC':
         $from = isset($_GET['from']) ? $_GET['from'] : '';
 

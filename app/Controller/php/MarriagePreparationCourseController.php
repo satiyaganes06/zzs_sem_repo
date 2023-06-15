@@ -40,6 +40,14 @@ class MarriagePreparationCourseController
         }
     }
 
+    public function getMPCInfo($marriageCourseID){
+
+        $MPCInfo = $this->marriageCourseInfoModel->getMPCInfo($marriageCourseID);
+        
+        header('Location: ../app/View/MarriageCourse/EditMPCView.php?MPCInfo=' . urlencode(serialize($MPCInfo)));
+
+    }
+
     public function viewListOfApplicantMPC($from)
     {
         session_start();
