@@ -12,6 +12,10 @@
        
         $profileRouteHeader = '';
         $MPCRouteHeader = 'collapsed';
+        $reqMarriageRouteHeader = 'collapsed';
+        $marriageRegistrationRouteHeader = 'collapsed';
+        $appDetailsRouteHeader = 'collapsed';
+        $appIncentiveRouteHeader = 'collapsed';
         
 
     }else if($route == 'editProfile'){
@@ -20,32 +24,84 @@
 
         $profileRouteHeader = '';
         $MPCRouteHeader = 'collapsed';
+        $reqMarriageRouteHeader = 'collapsed';
+        $marriageRegistrationRouteHeader = 'collapsed';
+        $appDetailsRouteHeader = 'collapsed';
+        $appIncentiveRouteHeader = 'collapsed';
         
     }
     
     else if($route == 'marriageRegistrationStatus'){
         $marriageRegistrationStatusRoute = 'active' ;
+        $marriageRegistrationRouteSection = 'show';
+
+        $marriageRegistrationRouteHeader = '';
+        $profileRouteHeader = 'collapsed';
+        $MPCRouteHeader = 'collapsed';
+        $reqMarriageRouteHeader = 'collapsed';
+        $appDetailsRouteHeader = 'collapsed';
+        $appIncentiveRouteHeader = 'collapsed';
     } 
     
-    else if($route == 'MarriageRegistrationPayment'){
+    else if($route == 'marriageRegistrationPayment'){
         $marriageRegistrationPaymentRoute = 'active' ;
+        $marriageRegistrationRouteSection = 'show';
+
+        $marriageRegistrationRouteHeader = '';
+        $profileRouteHeader = 'collapsed';
+        $MPCRouteHeader = 'collapsed';
+        $reqMarriageRouteHeader = 'collapsed';
+        $appDetailsRouteHeader = 'collapsed';
+        $appIncentiveRouteHeader = 'collapsed';
     } 
 
     else if($route == 'MPCView'){
         $MPCViewRoute = 'active' ;
         $MPCRouteSection = 'show';
-        $MPCRouteHeader = '';
 
+        $MPCRouteHeader = '';
         $profileRouteHeader = 'collapsed';
-        
+        $reqMarriageRouteHeader = 'collapsed';
+        $marriageRegistrationRouteHeader = 'collapsed';
+        $appDetailsRouteHeader = 'collapsed';
+        $appIncentiveRouteHeader = 'collapsed';
     } 
 
     else if($route == 'appDetailsView'){
         $appDetailsViewRoute = 'active' ;
+        $appDetailsRouteSection = 'show';
+
+        $appDetailsRouteHeader = '';
+        $MPCRouteHeader = 'collapsed';
+        $profileRouteHeader = 'collapsed';
+        $reqMarriageRouteHeader = 'collapsed';
+        $marriageRegistrationRouteHeader = 'collapsed';
+        $appIncentiveRouteHeader = 'collapsed';
     } 
     
+    else if($route == 'reqMarriageView'){
+        $reqMarriageViewRoute = 'active' ;
+        $reqMarriageRouteSection = 'show';
+
+        $reqMarriageRouteHeader = '';
+        $MPCRouteHeader = 'collapsed';
+        $profileRouteHeader = 'collapsed';
+        $marriageRegistrationRouteHeader = 'collapsed';
+        $appDetailsRouteHeader = 'collapsed';
+        $appIncentiveRouteHeader = 'collapsed';
+    } 
+
     else if($route == 'appIncentiveView'){
         $appIncentiveViewRoute = 'active' ;
+        $appIncentiveViewRouteSection = 'show';
+
+        $appIncentiveRouteHeader = '';
+        $reqMarriageRouteHeader = 'collapsed';
+        $MPCRouteHeader = 'collapsed';
+        $profileRouteHeader = 'collapsed';
+        $marriageRegistrationRouteHeader = 'collapsed';
+        $appDetailsRouteHeader = 'collapsed';
+        
     } 
 ?>
 
@@ -118,17 +174,17 @@
                 <!-- Permohonan Berkahwin Accordian -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingThree">
-                        <button class="accordion-button collapsed
+                        <button class="accordion-button <?php echo $reqMarriageRouteHeader ?> 
                             rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
                             <strong><i class="far fa-clipboard"></i>
                                 &nbsp; PERMOHONAN
                                 BERKAHWINAN</strong>
                         </button>
                     </h2>
-                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-mdb-parent="#accordionFlushExample">
+                    <div id="flush-collapseThree" class="accordion-collapse collapse <?php echo $reqMarriageRouteSection ?>" aria-labelledby="flush-headingThree" data-mdb-parent="#accordionFlushExample">
                         <div class="accordion-body">
 
-                            <a class="list-group-item
+                            <a class="list-group-item <?php echo $reqMarriageViewRoute ?>
                                 list-group-item-action px-3 pt-1
                                 pb-1 border-0
                                 list-group-item-light" href="../MarriageRequest/RequestMarriageView.php?display=0">Settings</a>
@@ -139,7 +195,7 @@
                 <!-- Pendaftaran Nikah Accordian -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingfour">
-                        <button class="accordion-button collapsed
+                        <button class="accordion-button <?php echo $marriageRegistrationRouteHeader ?> 
                             rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
                             <strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi
                                     bi-calendar-plus" viewBox="0
@@ -166,16 +222,15 @@
                                 PENDAFTARAN NIKAH</strong>
                         </button>
                     </h2>
-                    <div id="flush-collapseFour" class="accordion-collapse
-                                collapse" aria-labelledby="flush-headingFour" data-mdb-parent="#accordionFlushExample">
+                    <div id="flush-collapseFour" class="accordion-collapse collapse <?php echo $marriageRegistrationRouteSection ?>" aria-labelledby="flush-headingFour" data-mdb-parent="#accordionFlushExample">
                         <div class="accordion-body">
 
-                            <a class="list-group-item
+                            <a class="list-group-item <?php echo $marriageRegistrationStatusRoute ?>
                                         list-group-item-action 
                                         border-0 px-3 pt-1 pb-1
                                         list-group-item-light" href="../MarriageRegistration/marriageRegistrationStatusView.php">Status</a>
                             <a class="list-group-item
-                                        list-group-item-action<?php echo $marriageRegistrationPaymentRoute ?>
+                                        list-group-item-action <?php echo $marriageRegistrationPaymentRoute ?>
                                         border-0 mt-1 px-3 pt-1
                                         pb-1
                                         list-group-item-light" href="../MarriageCard/marriageCardPaymentView.php">Pembayaran</a>
@@ -186,8 +241,7 @@
                 <!-- ADUAN DAN KHIDMAT NASIHAT Accordian -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingFive">
-                        <button class="accordion-button
-                                collapsed rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                        <button class="accordion-button rounded-5 <?php echo $appDetailsRouteHeader ?> " type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
                             <strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi
                                         bi-telephone-inbound" viewBox="0 0 16
                                         16">
@@ -255,7 +309,7 @@
                                 DAN KHIDMAT NASIHAT</strong>
                         </button>
                     </h2>
-                    <div id="flush-collapseFive" class="accordion-collapse
+                    <div id="flush-collapseFive" class="accordion-collapse <?php echo $appDetailsRouteSection ?> 
                                 collapse" aria-labelledby="flush-headingFive" data-mdb-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             <a class="list-group-item <?php echo $appDetailsViewRoute ?>
@@ -276,13 +330,13 @@
                 <!-- Insentif Khas Accordian -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingSix">
-                        <button class="accordion-button collapsed rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                        <button class="accordion-button <?php echo $appIncentiveRouteHeader ?> rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
                             <strong><i class="fas fa-dollar-sign"></i>&nbsp;
                                 INSENTIF KHAS
                             </strong>
                         </button>
                     </h2>
-                    <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-mdb-parent="#accordionFlushExample">
+                    <div id="flush-collapseSix" class="accordion-collapse collapse <?php echo $appIncentiveViewRouteSection ?> " aria-labelledby="flush-headingSix" data-mdb-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             
                             <a class="list-group-item <?php echo $appIncentiveViewRoute ?>

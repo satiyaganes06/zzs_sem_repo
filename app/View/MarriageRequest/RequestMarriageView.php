@@ -17,7 +17,7 @@ if (!isset($_SESSION['currentUserIC'])) {
 } else {
 
     // Sidebar Active path
-    $_SESSION['route'] = 'appIncentiveView';
+    $_SESSION['route'] = 'reqMarriageView';
 
     // // Retrieve the serialized and URL-encoded data from the URL parameter
     // $partnerEncodedData = $_GET['partnerInfo'];

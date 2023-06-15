@@ -21,7 +21,7 @@
 
 
         //Sidebar Active path
-        $_SESSION['route'] = 'viewProfile';
+        $_SESSION['route'] = 'marriageRegistrationPayment';
     }
 
     

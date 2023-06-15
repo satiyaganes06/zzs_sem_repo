@@ -273,6 +273,7 @@ switch ($action) {
 
     case 'getApplicantAndPartnerInfo':
 
+        session_start();
         $partnerIC = $_POST['partnerIC'];
         $applicantIC = $_SESSION["currentUserIC"];
         $requestMarriageController->getApplicantAndPartnerInfo($partnerIC, $applicantIC);
