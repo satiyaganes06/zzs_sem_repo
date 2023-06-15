@@ -304,9 +304,8 @@ if (!isset($_SESSION['currentUserIC'])) {
                                                     $partnerName = $decodedPartnerData['ApplicantName'];
                                                     $applicantName = $decodedApplicantData['ApplicantName'];
                                                     ?>
-                                                    <form action="RequestMarriageFormView.php?partnerIc=<?php echo $partnerIc; ?>&partnerName=<?php echo $partnerName; ?>&applicantName=<?php echo $applicantName; ?>">
-                                                        <input type="submit" value="submit">
-                                                    </form></td>
+                                                    <a href="../../View/MarriageRequest/RequestMarriageFormView.php?partnerIc=<?php echo $partnerIc; ?>&partnerName=<?php echo $partnerName; ?>&applicantName=<?php echo $applicantName; ?>"><button class="btn btn-dark">Confirm</button></a>
+                                                    </td>
 
                                                     
                                                 </tr>

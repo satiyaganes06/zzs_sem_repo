@@ -28,6 +28,7 @@ class RequestMarriageController
 
     public function listOfMarriageRequestApplication($status)
     {
+        session_start();
 
         $applicantName = [];
         $applicantGender = [];
@@ -48,11 +49,22 @@ class RequestMarriageController
         $_SESSION['applicantGender'] = $applicantGender;
         $_SESSION['listOfRequestMarriageApplicantion'] = $listOfRequestMarriageApplicantion;
 
-        if ($status == 'all'){
+        if ($status == 'all') {
             header('Location: ../app/View/MarriageRequest/ListApplicantView.php?');
-        }
-        else {
+        } else {
             header('Location: ../app/View/MarriageRequest/ListApprovalRequestView.php?');
+        }
+    }
+
+    public function MarriageRequestApplicationInfo($applicantIC, $from)
+    {
+
+        $applicantInfo = $this->applicantModel->getApplicantProfileInfo($applicantIC);
+
+        if ($from == 'listApplicant') {
+            header('Location: ../app/View/MarriageRequest/ApplicantInfoView.php?applicantInfo=' . urlencode(serialize($applicantInfo)));
+        }else{
+            header('Location: ../app/View/MarriageRequest/ApproveRequestView.php?applicantInfo=' . urlencode(serialize($applicantInfo)));
         }
     }
 }

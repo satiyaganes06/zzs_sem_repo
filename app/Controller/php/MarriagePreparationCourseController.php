@@ -18,6 +18,7 @@ class MarriagePreparationCourseController
 
     public function viewListOfMPC($organize, $from)
     {
+        session_start();
         $listOfMPC = $this->marriageCourseInfoModel->getListOfMPC($organize);
 
         $_SESSION['listOfMPC'] = $listOfMPC;
@@ -41,7 +42,7 @@ class MarriagePreparationCourseController
 
     public function viewListOfApplicantMPC($from)
     {
-        // session_start();
+        session_start();
         $applicantNameList = [];
         $MPCApplicant = $this->marriageCourseApplicationModel->getListOfApplicationMPC();
 
@@ -66,7 +67,7 @@ class MarriagePreparationCourseController
         }
     }
 
-    public function getMPCApplicantInfo($organize, $venue, $dateStart, $dateFinish)
+    public function getMPCApplicantInfoForApplicant($organize, $venue, $dateStart, $dateFinish)
     {
         session_start();
         $applicantIC = $_SESSION['currentUserIC'];
@@ -78,6 +79,24 @@ class MarriagePreparationCourseController
         $applicantInfo = $this->applicantModel->getApplicantProfileInfo($applicantIC);
 
         header('Location: ../app/View/MarriageCourse/UploadProofOfPaymentMPCView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
+    }
+
+    public function getMPCApplicantInfoForAdmin($from)
+    {
+        session_start();
+        $applicantIC = $_SESSION['currentUserIC'];
+
+        $applicantInfo = $this->applicantModel->getApplicantProfileInfo($applicantIC);
+
+        if ($from == 'listOfApplicant') {
+
+            header('Location: ../app/View/MarriageCourse/ApplicantMPCInfoView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
+        
+        }else if($from == 'listOfNewApplicant'){
+
+            header('Location: ../app/View/MarriageCourse/ApprovedMPCView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
+
+        }
     }
 
     public function uploadProofOfPaymentMPC($typeOfFee)

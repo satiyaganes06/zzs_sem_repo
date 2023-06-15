@@ -36,8 +36,9 @@
                 
                 }else if($from == 'aduanPemohon'){
                     header('Location: ../app/View/ManageComplaint/viewApplicantDetailsView.php?returnInfo='.  urlencode(serialize($user)));
-                    
-                    
+                 
+                }else if($from == 'daftarNikah'){
+                    header('Location: ../app/View/MarriageRegistration/marriageRegistrationView.php?returnInfo='. urlencode(serialize($user)));
                 }
                 
 
@@ -80,6 +81,8 @@
         //Retrieve staff list from staff model
         public function viewStaffListFunction() {
 
+            session_start();
+
             $listOfStaffs = $this->staffModel->getAllStaffInfo();
 
             $_SESSION['listOfStaffs'] = $listOfStaffs;
@@ -94,6 +97,8 @@
 
         //Retrieve staff list from applicant model
         public function viewApplicantListFunction($from) {
+
+            session_start();
 
             $listOfApplicant = $this->applicantModel->getAllApplicantInfo();
 

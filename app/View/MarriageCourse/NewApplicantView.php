@@ -141,7 +141,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                         <td style="width: 10%;"><?php echo $MPCStatus; ?></td>
 
                                         <td style="width: 12%;">
-                                            <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $Staff_id; ?>'">
+                                            <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=getMPCApplicantInfo&from=listOfNewApplicant'">
                                                 Buat Kelulusan
                                             </button>
                                         </td>

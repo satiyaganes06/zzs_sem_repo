@@ -27,8 +27,8 @@ class MarriageCourseInfoModel
         $stmt->execute();
 
         //Store the result of user from mySQL
-        $MPCinfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $listOfMPC = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        return $MPCinfo;
+        return $listOfMPC;
     }
 }
