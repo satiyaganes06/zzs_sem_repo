@@ -81,11 +81,10 @@ class MarriagePreparationCourseController
         header('Location: ../app/View/MarriageCourse/UploadProofOfPaymentMPCView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
     }
 
-    public function getMPCApplicantInfoForAdmin($from)
+    public function getMPCApplicantInfoForAdmin($from, $applicantIC)
     {
         session_start();
-        $applicantIC = $_SESSION['currentUserIC'];
-
+        
         $applicantInfo = $this->applicantModel->getApplicantProfileInfo($applicantIC);
 
         if ($from == 'listOfApplicant') {
@@ -94,7 +93,7 @@ class MarriagePreparationCourseController
         
         }else if($from == 'listOfNewApplicant'){
 
-            header('Location: ../app/View/MarriageCourse/ApprovedMPCView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
+            header('Location: ../app/View/MarriageCourse/ApproveMPCView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
 
         }
     }

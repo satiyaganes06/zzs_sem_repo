@@ -118,6 +118,8 @@ if (!isset($_SESSION['currentUserIC'])) {
                                     $RequestDate = $row["RequestDate"];
                                     $Applicant_IC = $row['Applicant_IC'];
                                     $MPCStatus = $row['MPCStatus'];
+
+                                    $applicantName = $applicantNameList[$num++];
                                 ?>
                                     <tr>
                                         <td style="width: 3%;">
@@ -131,7 +133,7 @@ if (!isset($_SESSION['currentUserIC'])) {
 
                                         <td class="" style="width: 40%;">
 
-                                            <?php echo $applicantNameList[$num++]; ?>
+                                            <?php echo $applicantName; ?>
                                         </td>
 
                                         <td style="width: 20%;">
@@ -141,7 +143,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                         <td style="width: 10%;"><?php echo $MPCStatus; ?></td>
 
                                         <td style="width: 12%;">
-                                            <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=getMPCApplicantInfo&from=listOfNewApplicant'">
+                                            <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=getMPCApplicantInfo&from=listOfNewApplicant&applicantIC=<?php echo $Applicant_IC;?>'">
                                                 Buat Kelulusan
                                             </button>
                                         </td>

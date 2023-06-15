@@ -269,7 +269,8 @@ switch ($action) {
 
             $marriagePreparationCourseController->getMPCApplicantInfoForApplicant($organize, $venue, $dateStart, $dateFinish);
         } else {
-            $marriagePreparationCourseController->getMPCApplicantInfoForAdmin($from);
+            $applicantIC = isset($_GET['applicantIC']) ? $_GET['applicantIC'] : '';
+            $marriagePreparationCourseController->getMPCApplicantInfoForAdmin($from, $applicantIC);
         }
         break;
 
