@@ -33,7 +33,7 @@ class MarriagePreparationCourseController
         } elseif ($from == 'manageMPC') {
         ?>
             <script>
-                window.location = "../app/View/MarriageCourse/Manage<PCView.php";
+                window.location = "../app/View/MarriageCourse/ManageMPCView.php";
             </script>
 <?php
         }
