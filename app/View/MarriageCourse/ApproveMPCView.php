@@ -181,16 +181,18 @@ if (!isset($_SESSION['currentUserIC'])) {
                                             <td colspan="2"><?php echo $decodedApplicantData['ApplicantWorkAddress'];
                                                             ?></td>
                                         </tr>
-
+                                        <?php
+                                        $applicantIC = $decodedApplicantData['Applicant_Ic'];
+                                        ?>
                                         <tr>
 
                                             <td></td>
                                             <td></td>
                                             <td>
-                                                <a href="../../../public/index.php?action=makeApproval&approval=PESERTA&applicantIC=<?php echo $decodedApplicantData['Applicant_IC '];?>">
+                                                <a href="../../../public/index.php?action=makeApproval&approval=PESERTA&applicantIC=<?php echo $applicantIC;?>">
                                                     <button class="btn btn-dark">Terima</button>
                                                 </a>
-                                                <a href="../../../public/index.php?action=makeApproval&approval=reject&applicantIC=<?php echo $decodedApplicantData['Applicant_IC '];?>">
+                                                <a href="../../../public/index.php?action=makeApproval&approval=reject&applicantIC=<?php echo $applicantIC?>">
                                                     <button class="btn btn-dark">Tolak</button>
                                                 </a>
                                             </td>

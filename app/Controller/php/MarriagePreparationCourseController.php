@@ -44,25 +44,56 @@ class MarriagePreparationCourseController
     {
         session_start();
         $applicantNameList = [];
-        $MPCApplicant = $this->marriageCourseApplicationModel->getListOfApplicationMPC();
-
-        $x = 0;
-        foreach ($MPCApplicant as $row) {
-
-            $applicant = $this->applicantModel->getApplicantProfileInfo($row["Applicant_IC"]);
-            $applicantNameList[$x] = $applicant["ApplicantName"];
-
-            $x++;
-        }
-
-        $_SESSION['MPCApplicant'] = $MPCApplicant;
-        $_SESSION['applicantName'] = $applicantNameList;
 
         if ($from == 'listOFApplicant') {
+
+            $MPCApplicant = $this->marriageCourseApplicationModel->getAllListOfApplicationMPC();
+            $x = 0;
+            foreach ($MPCApplicant as $row) {
+
+                $applicant = $this->applicantModel->getApplicantProfileInfo($row["Applicant_IC"]);
+                $applicantNameList[$x] = $applicant["ApplicantName"];
+
+                $x++;
+            }
+
+            $_SESSION['MPCApplicant'] = $MPCApplicant;
+            $_SESSION['applicantName'] = $applicantNameList;
+
             header('Location: ../app/View/MarriageCourse/ListOfApplicantMPCView.php');
+
         } elseif ($from == 'newApplicant') {
+
+                $MPCApplicant = $this->marriageCourseApplicationModel->getListOfApplicationMPC('DALAM PROSES');
+                $x = 0;
+                foreach ($MPCApplicant as $row) {
+    
+                    $applicant = $this->applicantModel->getApplicantProfileInfo($row["Applicant_IC"]);
+                    $applicantNameList[$x] = $applicant["ApplicantName"];
+    
+                    $x++;
+                }
+
+            $_SESSION['MPCApplicant'] = $MPCApplicant;
+            $_SESSION['applicantName'] = $applicantNameList;
+
             header('Location: ../app/View/MarriageCourse/NewApplicantView.php');
+
         } else {
+
+                $MPCApplicant = $this->marriageCourseApplicationModel->getListOfApplicationMPC('PESERTA');
+                $x = 0;
+                foreach ($MPCApplicant as $row) {
+    
+                    $applicant = $this->applicantModel->getApplicantProfileInfo($row["Applicant_IC"]);
+                    $applicantNameList[$x] = $applicant["ApplicantName"];
+    
+                    $x++;
+                }
+
+            $_SESSION['MPCApplicant'] = $MPCApplicant;
+            $_SESSION['applicantName'] = $applicantNameList;
+
             header('Location: ../app/View/MarriageCourse/ResultView.php');
         }
     }
@@ -106,6 +137,21 @@ class MarriagePreparationCourseController
         }
     }
 
+    public function getMPCApplicantInfoForAdmin($from, $applicantIC)
+    {
+        session_start();
+
+        $applicantInfo = $this->applicantModel->getApplicantProfileInfo($applicantIC);
+
+        if ($from == 'listOfApplicant') {
+
+            header('Location: ../app/View/MarriageCourse/ApplicantMPCInfoView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
+        } else if ($from == 'listOfNewApplicant') {
+
+            header('Location: ../app/View/MarriageCourse/ApproveMPCView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
+        }
+    }
+
     public function makeApproval($approval, $applicantIC)
     {
         session_start();
@@ -119,8 +165,8 @@ class MarriagePreparationCourseController
                     window.href = "../../../public/index.php?action=viewListOfApplicantMPC&from=newApplicant";
                 </script>
             <?php
-            }else{
-                ?>
+            } else {
+            ?>
                 <script>
                     alert("Data unsuccessfully delete");
                     window.href = "../../../public/index.php?action=viewListOfApplicantMPC&from=newApplicant";
@@ -129,14 +175,14 @@ class MarriagePreparationCourseController
             }
         } else {
             if ($this->marriageCourseApplicationModel->updateStatus($approval, $applicantIC)) {
-                ?>
+            ?>
                 <script>
                     alert("Data Sucessfully update");
                     window.href = "../../../public/index.php?action=viewListOfApplicantMPC&from=newApplicant";
                 </script>
             <?php
-            }else{
-                ?>
+            } else {
+            ?>
                 <script>
                     alert("Data unsuccessfully update");
                     window.href = "../../../public/index.php?action=viewListOfApplicantMPC&from=newApplicant";
@@ -146,18 +192,27 @@ class MarriagePreparationCourseController
         }
     }
 
-    public function getMPCApplicantInfoForAdmin($from, $applicantIC)
+    public function makeResult($result, $applicantIC, $approval)
     {
-        session_start();
 
-        $applicantInfo = $this->applicantModel->getApplicantProfileInfo($applicantIC);
+        if ($this->marriageCourseApplicationModel->updateResult($result, $applicantIC, $approval)) {
 
-        if ($from == 'listOfApplicant') {
+            ?>
+            <script>
+                alert("Data Sucessfully update");
+                window.href = "../../../public/index.php?action=viewListOfApplicantMPC&from=giveResultApplicant";
+            </script>
+        <?php
 
-            header('Location: ../app/View/MarriageCourse/ApplicantMPCInfoView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
-        } else if ($from == 'listOfNewApplicant') {
+        } else {
 
-            header('Location: ../app/View/MarriageCourse/ApproveMPCView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
+        ?>
+            <script>
+                alert("Data unsuccessfully update");
+                window.href = "../../../public/index.php?action=viewListOfApplicantMPC&from=giveResultApplicant";
+            </script>
+<?php
+
         }
     }
 }

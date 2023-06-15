@@ -288,6 +288,14 @@ switch ($action) {
         $marriagePreparationCourseController->makeApproval($approval, $applicantIC);
         break;
 
+    case 'makeResult':
+        $result = isset($_GET['result']) ? $_GET['result'] : '';
+        $applicantIC = isset($_GET['applicantIC']) ? $_GET['applicantIC'] : '';
+        $approval = isset($_GET['approval']) ? $_GET['approval'] : '';
+
+        $marriagePreparationCourseController->makeResult($result, $applicantIC, $approval);
+        break;
+
     case 'getApplicantAndPartnerInfo':
 
         session_start();
@@ -370,7 +378,7 @@ switch ($action) {
 
         $marriageRegistrationController->uploadFileWithApproval($marriageId, $docId, $combinedContent);
         break;
-                
+
     case 'uploadFile2':
         // Process each file input
         $fileContents = [];
@@ -390,11 +398,11 @@ switch ($action) {
         $marriageRegistrationController->uploadFileVoluntary($voluntaryId, $docId, $combinedContent);
         break;
     case 'marriageRegistrationVoluntary':
-        
+
         $voluntaryId = $_POST['noAkuan'];
         $ApplicantIC = $_POST['kpPemohon'];
         $voluntaryFile = $_POST['marriageApprovalFile'];
-        
+
 
         $marriageRegistrationController->marriageRegistrationVoluntary($voluntaryId, $ApplicantIC, $voluntaryFile, $docId);
         break;
