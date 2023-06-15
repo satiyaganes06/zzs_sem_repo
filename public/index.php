@@ -335,7 +335,6 @@ switch ($action) {
 
 
              break;
-<<<<<<< HEAD
      case 'uploadFile1':
         
         // Process each file input
@@ -356,8 +355,6 @@ switch ($action) {
         $marriageRegistrationController->uploadFileWithApproval($marriageId, $docId, $combinedContent);
         break;
                 
-=======
->>>>>>> parent of c3ab777 (15/6)
     case 'updateProfile':
         $occupationType = $_POST['OccupationType'];
         $umur = $_POST['Applicant_umur'];
