@@ -9,6 +9,17 @@ class MarriageDocModel
     {
         $this->connect = $database;
     }
+   
+    //insert file
+    public function insertWithApprovalDoc($marriageId, $docId, $docLink){
 
+        $query = $this->connect->prepare("
+        INSERT INTO marriage_doc
+        (Marriage_Id,
+        Doc_id,
+        DocLink
+    ) VALUES (?,?,?)");
+    return $query->execute([ $marriageId, $docId, $docLink]);
+    }
 }
 ?>

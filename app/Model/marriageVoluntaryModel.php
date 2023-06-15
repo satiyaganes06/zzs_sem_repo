@@ -9,6 +9,16 @@ class MarriageVoluntaryModel
     {
         $this->connect = $database;
     }
-
+    
+    public function registerVoluntary($voluntaryId, $ApplicantIC){
+        $query = $this->connect->prepare("
+          INSERT INTO marriage_voluntary_info
+          (Voluntary_id,
+          Applicant_IC
+      ) VALUES (?,?)");
+  
+      //return to marriage registration controller
+      return $query->execute([ $voluntaryId, $ApplicantIC]);
+    }
 }
 ?>

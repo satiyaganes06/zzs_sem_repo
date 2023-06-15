@@ -94,6 +94,7 @@
 
 
                         <div id="inMainContentOutline" class="table-responsive p-4">
+                        <form method="POST" enctype="multipart/form-data" action="../../../public/index.php?action=uploadFile2">
                         <table class="table table-borderless table-sm">
                             
                         <label class="starlabel">- Dokumen yang dimuat naik perlu beserta tandatangan dan cop pihak yang terlibat</label>
@@ -101,7 +102,7 @@
                         <tr>  
                         <td align="left">  
                         <label class="custom-file-upload">
-                            <input type="file"/>
+                            <input type="file[]"/>
                             SLIP PERMOHONAN PENDAFTARAN PERKAHWINAN
                         </label>
                         </td>
@@ -109,7 +110,7 @@
                         <tr>
                         <td align="left">
                             <label class="custom-file-upload">
-                            <input type="file"/>
+                            <input type="file[]"/>
                             BORANG KEBENARAN PERKAHWINAN
                             </label>
                          </td>
@@ -117,7 +118,7 @@
                         <tr>
                         <td align="left">
                              <label class="custom-file-upload">
-                            <input type="file"/>
+                            <input type="file[]"/>
                             PENGESAHAN MEMELUK AGAMA ISLAM
                             </label>
                         </td>
@@ -126,7 +127,7 @@
                             <tr>
                             <td align="left">
                                 <label class="custom-file-upload">
-                            <input type="file"/>
+                            <input type="file[]"/>
                             SURAT PERAKUAN NIKAH
                             </label>
                             </td>
@@ -135,7 +136,7 @@
                             <tr>
                             <td align="left">
                                 <label class="custom-file-upload">
-                            <input type="file"/>
+                            <input type="file[]"/>
                             GAMBAR BERUKURAN PASSPORT PENGANTIN LELAKI
                             </label>
                             </td>
@@ -144,7 +145,7 @@
                             <tr>
                             <td align="left">
                                 <label class="custom-file-upload">
-                            <input type="file"/>
+                            <input type="file[]"/>
                             GAMBAR BERUKURAN PASSPORT PENGANTIN PEREMPUAN
                             </label>
                             </td>
@@ -154,7 +155,7 @@
                             <tr>
                             <td align="left">
                                 <label class="custom-file-upload">
-                            <input type="file"/>
+                            <input type="file[]"/>
                             SURAT AKUAN PERMASTAUTIN
                             </label>
                             </td>
@@ -162,6 +163,7 @@
                             </tr>
                          
                            </table>
+                        </form>
                         <button type="button" name="return" id="buttonR" >Simpan</button><button type="button" name="return" id="buttonR" >Hantar</button>
                             
                         </div>

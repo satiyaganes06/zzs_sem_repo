@@ -21,7 +21,7 @@
 
 
         //Sidebar Active path
-        $_SESSION['route'] = 'viewProfile';
+        $_SESSION['route'] = 'marriageRegistrationPayment';
     }
 
     
@@ -101,7 +101,7 @@
                                                                  </select>
                             <br>
                             <label class="custom-file-upload">
-                            <input type="file"/>
+                            <input type="filePayment"/>
                             SLIP PEMBAYARAN
                             </label>
                             <br>

@@ -18,8 +18,8 @@
     }else{
 
 
-        //Sidebar Active path
-        $_SESSION['route'] = 'marriageRegistrationStatus';
+      //Sidebar Active path
+      $_SESSION['route'] = 'marriageRegistrationStatus';
          // Retrieve the serialized and URL-encoded data from the URL parameter
       $encodedData = $_GET['returnInfo'];
       
@@ -95,8 +95,8 @@
 
                         <div id="inMainContentOutline" class="table-responsive p-4">
                             <label id="kpSpousein">No Kad Pengenalan Pasangan</label><Input type="text" id="kpSpouse" name="kpSpouse" value="">
-                            <button type="button" name="return" id="buttonS" >Cari</button><button type="button" name="return" id="buttonS" onclick="location.href = '../MarriageRegistration/marriageRegistrationView.php';" >Daftar</button>
-                        <table id="tablestatus">
+                            <button type="button" name="return" id="buttonS" >Cari</button><button type="button" name="return" id="buttonS" onclick="window.location ='marriageRegistrationView.php'" >Daftar</button>
+                        <table class="table table-bordered">
             <tr>
                 <th>Bil</th>
                 <th>No K/P Pasangan</th>
@@ -105,14 +105,12 @@
                 <th>Status</th>
                 <th>Operasi</th>
             </tr>
-            <!-- PHP CODE TO FETCH DATA FROM ROWS -->
-            <?php
-                // LOOP TILL END OF DATA
-                
-            ?>
+            
             <tr>
                 <!-- FETCHING DATA FROM EACH
                     ROW OF EVERY COLUMN -->
+                <td></td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>

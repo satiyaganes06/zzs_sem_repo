@@ -31,15 +31,21 @@
                 }else if($from == 'edit'){
                     header('Location: ../app/View/ManageUserProfile/editApplicantProfileDetailsView.php?returnInfo='.  urlencode(serialize($user)));
                     
-                }else if($from == 'insentifPemohon'){
+                }else if($from == 'specialIncentiveApplication'){
                     header('Location: ../app/View/ManageSpecialIncentive/applicantIncentiveView.php?returnInfo='.  urlencode(serialize($user)));
                 
                 }else if($from == 'aduanPemohon'){
                     header('Location: ../app/View/ManageComplaint/viewApplicantDetailsView.php?returnInfo='.  urlencode(serialize($user)));
+<<<<<<< HEAD
                 
                 }else if($from == 'khidmatNasihatPemohon'){
                     header('Location: ../app/View/ManageConsultation/registerConsultationDetailsView.php?returnInfo='.  urlencode(serialize($user)));
                     
+=======
+                 
+                }else if($from == 'daftarNikah'){
+                    header('Location: ../app/View/MarriageRegistration/marriageRegistrationView.php?returnInfo='. urlencode(serialize($user)));
+>>>>>>> 4540f9c308855c48bd317fb51acedec274f67af5
                 }
                 
 
@@ -82,6 +88,8 @@
         //Retrieve staff list from staff model
         public function viewStaffListFunction() {
 
+            session_start();
+
             $listOfStaffs = $this->staffModel->getAllStaffInfo();
 
             $_SESSION['listOfStaffs'] = $listOfStaffs;
@@ -97,6 +105,8 @@
         //Retrieve staff list from applicant model
         public function viewApplicantListFunction($from) {
 
+            session_start();
+
             $listOfApplicant = $this->applicantModel->getAllApplicantInfo();
 
             $_SESSION['listOfApplicant'] = $listOfApplicant;
@@ -109,10 +119,10 @@
                 <?php
             
 
-            }elseif($from == 'adminIncentiveApplicantListView'){
+            }elseif($from == 'adminIncentiveListView'){
                 ?>
                     <script>
-                        window.location = "../app/View/ManageSpecialIncentive/adminIncentive_applicantListView.php";
+                        window.location = "../app/View/ManageSpecialIncentive/adminIncentiveListView.php";
                     </script>
                 <?php
 
@@ -123,6 +133,7 @@
                     window.location = "../app/View/ManageComplaint/viewComplaintListDetailsView.php";
                 </script>
             <?php
+<<<<<<< HEAD
 
             }elseif($from == 'viewConsultationListDetailsView'){
             ?>
@@ -140,6 +151,9 @@
     
                 }
 
+=======
+            }
+>>>>>>> 4540f9c308855c48bd317fb51acedec274f67af5
         }
 
         //Update the applicant profile data 

@@ -23,11 +23,12 @@ class RequestMarriageController
         $applicantInfo = $this->applicantModel->getApplicantProfileInfo($applicantIC);
 
         // echo $applicantInfo['ApplicantName'] ."<br>". $partnerInfo['ApplicantName'];
-        header('Location: ../app/View/MarriageRequest/RequestMarriageView.php?display=1&partnerInfo=' . urlencode(serialize($partnerInfo)) . '&applicantInfo=' . urlencode(serialize($applicantInfo)));
+        header('Location: ../app/View/MarriageRequest/RequestMarriageView.php?display=1&partnerInfo='.urlencode(serialize($partnerInfo)).'&applicantInfo='.urlencode(serialize($applicantInfo)));
     }
 
     public function listOfMarriageRequestApplication($status)
     {
+        session_start();
 
         $applicantName = [];
         $applicantGender = [];
@@ -53,6 +54,18 @@ class RequestMarriageController
         }
         else {
             header('Location: ../app/View/MarriageRequest/ListApprovalRequestView.php?');
+        }
+    }
+
+    public function MarriageRequestApplicationInfo($applicantIC, $from)
+    {
+
+        $applicantInfo = $this->applicantModel->getApplicantProfileInfo($applicantIC);
+
+        if ($from == 'listApplicant') {
+            header('Location: ../app/View/MarriageRequest/ApplicantInfoView.php?applicantInfo=' . urlencode(serialize($applicantInfo)));
+        }else{
+            header('Location: ../app/View/MarriageRequest/ApproveRequestView.php?applicantInfo=' . urlencode(serialize($applicantInfo)));
         }
     }
 }
