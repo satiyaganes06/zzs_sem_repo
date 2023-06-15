@@ -95,7 +95,7 @@
 
                         <div id="inMainContentOutline" class="table-responsive p-4">
                             <label id="kpSpousein">No Kad Pengenalan Pasangan</label><Input type="text" id="kpSpouse" name="kpSpouse" value="">
-                            <button type="button" name="return" id="buttonS" >Cari</button><button type="button" name="return" id="buttonS" onclick="location.href = '../MarriageRegistration/marriageRegistrationView.php';" >Daftar</button>
+                            <button type="button" name="return" id="buttonS" >Cari</button><button type="button" name="return" id="buttonS" onclick="window.location ='marriageRegistrationView.php'" >Daftar</button>
                         <table class="table table-bordered">
             <tr>
                 <th>Bil</th>
