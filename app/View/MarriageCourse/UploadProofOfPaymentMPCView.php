@@ -21,7 +21,7 @@ if (!isset($_SESSION['currentUserIC'])) {
 
 
     //Sidebar Active path
-    $_SESSION['route'] = 'viewProfile';
+    $_SESSION['route'] = 'MPCView';
 
     // Retrieve the serialized and URL-encoded data from the URL parameter
     $applicantEncodedData = $_GET['applicantInfo'];
@@ -72,7 +72,7 @@ if (!isset($_SESSION['currentUserIC'])) {
 
         <!-- Header Section -->
         <?php
-        include_once('../Common/adminHeader.html');
+        include_once('../Common/applicantHeader.html');
         ?>
 
         <!-- Main Content -->
