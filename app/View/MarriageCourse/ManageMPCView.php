@@ -143,6 +143,8 @@ if (!isset($_SESSION['currentUserIC'])) {
                                         $dateStart = $row['DateStart'];
                                         $dateFinish = $row['DateFinish'];
                                         $capacity = $row['Capacity'];
+                                        $marriageCourseID = $row['Marriage_Course_Id'];
+                                        echo $marriageCourseID;
                                     ?>
                                         <tr>
                                             <td style="width: 3%;">
@@ -166,7 +168,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                             </td>
 
                                             <td style="width: 12%;">
-                                                <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php'">
+                                                <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" onclick="location.href='../../../public/index.php?action=getMPCInfo&marriageCourseID=<?php echo $marriageCourseID;?>'">
                                                     Edit
                                                 </button>
                                             </td>

@@ -66,7 +66,7 @@ $resetPasswordController = new ResetPasswordController($accountModel, $applicant
 $marriageRegistrationController = new MarriageRegistrationController($accountModel, $applicantModel, $staffModel, $marriageInfoModel, $waliModel, $marriageDocModel, $marriageVoluntaryModel, $voluntaryDocModel);
 $marriagePreparationCourseController = new MarriagePreparationCourseController($marriageCourseInfoModel, $marriageCourseApplicationModel, $applicantModel, $paymentModel);
 $requestMarriageController = new RequestMarriageController($marriageInfoModel, $marriageRequestInfoModel, $applicantModel);
-$SpecialIncentiveController = new SpecialIncentiveController($specialIncentiveModel, $applicantModel, $applicantOccupationModel, $heirInfoModel, $marriageInfoModel, $incentiveDocModel);
+$SpecialIncentiveController = new SpecialIncentiveController($specialIncentiveModel, $applicantModel, $applicantOccupationModel, $heirInfoModel, $marriageInfoModel, $incentiveDocModel, $marriageRequestInfoModel);
 $ComplaintController = new complaintController($complaintModel, $applicantModel, $applicantOccupationModel, $consultationModel, $staffModel);
 $ConsultationController = new consultationController($complaintModel, $applicantModel, $applicantOccupationModel, $consultationModel, $staffModel);
 
@@ -133,6 +133,7 @@ switch ($action) {
         $resetPasswordController->checkOTP($ic, $otp);
 
         break;
+
     case 'adminLoginAccount':
         $id = $_POST['Admin_id'];
         $password = $_POST['Admin_password'];
@@ -163,20 +164,74 @@ switch ($action) {
         break;
     case 'specialIncentiveApplication':
 
-        $userProfileController->viewProfileFunction('specialIncentiveApplication');
+        $applicantData = $userProfileController->viewProfileFunction('specialIncentiveApplication');
+        $marriageData = $SpecialIncentiveController->getMarriageInfo('specialIncentiveApplication');
+        $partnerData = $SpecialIncentiveController->getPartnerInfo($marriageData['Partner_IC']);
+
+        $marriageInfoData = $SpecialIncentiveController->getMarriageInfoData($marriageData['Marriage_Id']);
+        $occupationData = $SpecialIncentiveController->getOccupationInfo();
+        $heirData = $SpecialIncentiveController->getHeirInfo();
+
+        header('Location: ../app/View/ManageSpecialIncentive/applicantIncentiveView.php?applicantData=' .  urlencode(serialize($applicantData)) . '&marriageData=' . urlencode(serialize($marriageData)) . '&partnerData=' . urlencode(serialize($partnerData)) . '&marriageInfoData=' . urlencode(serialize($marriageInfoData)) . '&occupationData=' . urlencode(serialize($occupationData)) . '&heirData=' . urlencode(serialize($heirData)));
+        break;
+
+    case 'addOccupation':
+        $occupationType = $_POST['OccupationType'];
+        $companyName = $_POST['CompanyName'];
+        $employerName = $_POST['EmployerName'];
+        $employerPhoneNo = $_POST['EmployerPhoneNo'];
+
+        $SpecialIncentiveController->addOccupation($occupationType, $companyName, $employerName, $employerPhoneNo);
+
+        break;
+
+    case 'addHeir':
+        $heirName = $_POST['HeirName'];
+        $heirRelationship = $_POST['HeirRelationship'];
+        $heirPhoneNo = $_POST['HeirPhoneNo'];
+        $heirEmail = $_POST['HeirEmail'];
+
+        $SpecialIncentiveController->addHeir($heirName, $heirRelationship, $heirPhoneNo, $heirEmail);
+
+        break;
+
+    case 'addIncentiveDoc':
+        $doc = $_POST['Doc'];
+
+        $SpecialIncentiveController->addIncentiveDoc($doc);
 
         break;
 
     case 'adminIncentiveListView':
 
-        $SpecialIncentiveController->viewSpecialIncentiveListFunction('adminIncentiveListView');
+        $SpecialIncentiveController->adminIncentiveListView();
+
+        break;
+
+    case 'specialIncentiveApplicationAdmin':
+
+        $applicantData = $userProfileController->viewProfileFunction('specialIncentiveApplicationAdmin');
+        
+        break;
+
+    case 'specialIncentiveApproval':
+
+        $applicantData = $userProfileController->viewProfileFunction('specialIncentiveApproval');
+
+        break;
+        
+    case 'addRejection':
+
+        $rejectionReason = $_POST['RejectionReason'];
+
+        $SpecialIncentiveController->addRejection($rejectionReason);
 
         break;
 
     case 'viewComplaintListDetailsView':
 
-            $userProfileController->viewApplicantListFunction('viewComplaintListDetailsView');
-    
+        $userProfileController->viewApplicantListFunction('viewComplaintListDetailsView');
+
         break;
 
     case 'viewProfileById':
@@ -255,6 +310,13 @@ switch ($action) {
 
         break;
 
+    case 'getMPCInfo':
+        $marriageCourseID = isset($_GET['marriageCourseID']) ? $_GET['marriageCourseID'] : '';
+
+        $marriagePreparationCourseController->getMPCInfo($marriageCourseID);
+
+        break;
+
     case 'viewListOfApplicantMPC':
         $from = isset($_GET['from']) ? $_GET['from'] : '';
 
@@ -301,6 +363,13 @@ switch ($action) {
         $marriagePreparationCourseController->makeResult($result, $applicantIC, $approval);
         break;
 
+
+    case 'updateMPCView';
+        $marriageID = isset($_GET['marriageID']) ? $_GET['marriageID'] : '';
+
+        $marriagePreparationCourseController->updateMPCView($marriageID);
+        break;
+
     case 'getApplicantAndPartnerInfo':
 
         session_start();
@@ -338,15 +407,15 @@ switch ($action) {
 
         break;
 
-        case 'viewApplicantDetailsView':
-            $purpose = $_POST['purpose'];
-            $challenges = $_POST['challenges'];
-            $solution = $_POST['solution'];
-    
-            $complaintController->viewApplicantDetailsView($purpose, $challenges, $solution);
-    
-            break;
-    
+    case 'viewApplicantDetailsView':
+        $purpose = $_POST['purpose'];
+        $challenges = $_POST['challenges'];
+        $solution = $_POST['solution'];
+
+        $complaintController->viewApplicantDetailsView($purpose, $challenges, $solution);
+
+        break;
+
     case 'updateMarriageRegistrationDetail';
         $marriageId = $_SESSION['marriageID'];
         $waliName = $_POST['waliName'];

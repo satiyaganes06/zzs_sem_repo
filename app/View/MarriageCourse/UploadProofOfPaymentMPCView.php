@@ -60,6 +60,7 @@ if (!isset($_SESSION['currentUserIC'])) {
 
     <!--CSS-->
     <link rel="stylesheet" href="../css/viewApplicantProfileDetailsView.css">
+    <link rel="stylesheet" href="../css/editApplicantProfileDetailsView.css">
 
     <!-- Icon -->
     <link rel="shortcut icon" type="image/jpg" href="../../Assert/web_logo.png" />
@@ -202,7 +203,10 @@ if (!isset($_SESSION['currentUserIC'])) {
                                         <td>
                                             <form action="../../../public/index.php?action=uploadProofOfPaymentMPC&typeOfFee=MPCPayment">
                                                 <input type="file" name="proofOfPayment">
-                                                <br><br><input type="submit" value="submit" class="btn btn-dark">
+
+                                                <div class="d-flex justify-content-center">
+                                                <button class="btn btn-block mt-3 text-dark" type="submit" data-mdb-ripple-color="dark">HANTAR</button>
+                                                </div>
                                             </form>
                                         </td>
                                     </tr>
