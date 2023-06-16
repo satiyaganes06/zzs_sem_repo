@@ -254,12 +254,12 @@ if ($route == 'viewProfile') {
                         <a class="list-group-item
                                         list-group-item-action
                                         border-0 px-3 pt-1 pb-1
-                                        list-group-item-light" href="../blankPage.html">Status</a>
+                                        list-group-item-light" href="../MarriageRegistration/adminMarriageRegistrationViewListStatus.php">Status</a>
                         <a class="list-group-item
                                         list-group-item-action
                                         border-0 mt-1 px-3 pt-1
                                         pb-1
-                                        list-group-item-light" href="../blankPage.html">Pembayaran</a>
+                                        list-group-item-light" href="../MarriageRegistration/adminUpdateMarriageRegistrationStatusView.php">Pembayaran</a>
                     </div>
                 </div>
             </div>
