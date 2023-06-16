@@ -36,16 +36,13 @@
                 
                 }else if($from == 'aduanPemohon'){
                     header('Location: ../app/View/ManageComplaint/viewApplicantDetailsView.php?returnInfo='.  urlencode(serialize($user)));
-<<<<<<< HEAD
                 
                 }else if($from == 'khidmatNasihatPemohon'){
                     header('Location: ../app/View/ManageConsultation/registerConsultationDetailsView.php?returnInfo='.  urlencode(serialize($user)));
                     
-=======
                  
                 }else if($from == 'daftarNikah'){
                     header('Location: ../app/View/MarriageRegistration/marriageRegistrationView.php?returnInfo='. urlencode(serialize($user)));
->>>>>>> 4540f9c308855c48bd317fb51acedec274f67af5
                 }
                 
 
@@ -133,7 +130,6 @@
                     window.location = "../app/View/ManageComplaint/viewComplaintListDetailsView.php";
                 </script>
             <?php
-<<<<<<< HEAD
 
             }elseif($from == 'viewConsultationListDetailsView'){
             ?>
@@ -149,11 +145,9 @@
                     </script>
                 <?php
     
-                }
+                
 
-=======
             }
->>>>>>> 4540f9c308855c48bd317fb51acedec274f67af5
         }
 
         //Update the applicant profile data 

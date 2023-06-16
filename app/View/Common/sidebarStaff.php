@@ -8,10 +8,79 @@
 
     if($route == 'viewProfile'){
         $viewProfileRoute = 'active' ;
+        $profileRouteSection = 'show';
+           
+        $profileRouteHeader = '';
+        $listApplicantMPCRouteHeader = 'collapsed';
+        $nikahMPCRouteHeader = 'collapsed';
 
     }else if($route == 'editProfile'){
         $editProfileRoute = 'active' ;
+        $profileRouteSection = 'show';
+           
+        $profileRouteHeader = '';
+        $listApplicantMPCRouteHeader = 'collapsed';
+        $nikahMPCRouteHeader = 'collapsed';
 
+    }else if ($route == 'viewStaffList') {
+        $viewStaffListRoute = 'active';
+        $profileRouteSection = 'show';
+           
+        $profileRouteHeader = '';
+        $listApplicantMPCRouteHeader = 'collapsed';
+        $nikahMPCRouteHeader = 'collapsed';
+    
+    } else if ($route == 'viewApplicantList') {
+        $viewApplicantListRoute = 'active';
+        $profileRouteSection = 'show';
+           
+        $profileRouteHeader = '';
+        $listApplicantMPCRouteHeader = 'collapsed';
+        $nikahMPCRouteHeader = 'collapsed';
+    
+    }else if ($route == 'listOfApplicantMPC') {
+        $listApplicantMPCRoute = 'active';
+        $listApplicantMPCRouteSection = 'show';
+           
+        $listApplicantMPCRouteHeader = '';
+        $profileRouteHeader = 'collapsed';
+        $nikahMPCRouteHeader = 'collapsed';
+    
+    }else if ($route == 'newApplicant') {
+        $newApplicant = 'active';
+        $listApplicantMPCRouteSection = 'show';
+           
+        $listApplicantMPCRouteHeader = '';
+        $profileRouteHeader = 'collapsed';
+        $nikahMPCRouteHeader = 'collapsed';
+    }else if ($route == 'result') {
+        $result = 'active';
+        $listApplicantMPCRouteSection = 'show';
+           
+        $listApplicantMPCRouteHeader = '';
+        $profileRouteHeader = 'collapsed';
+        $nikahMPCRouteHeader = 'collapsed';
+    }else if ($route == 'manageMPC') {
+        $manageMPC = 'active';
+        $listApplicantMPCRouteSection = 'show';
+           
+        $listApplicantMPCRouteHeader = '';
+        $profileRouteHeader = 'collapsed';
+        $nikahMPCRouteHeader = 'collapsed';
+    }else if ($route == 'listApplicant') {
+        $listApplicantRoute = 'active';
+        $nikahMPCRouteSection = 'show';
+        
+        $nikahMPCRouteHeader = '';
+        $listApplicantMPCRouteHeader = 'collapsed';
+        $profileRouteHeader = 'collapsed';
+    }else if ($route == 'listApprovalRequest') {
+        $listApprovalRequestRoute = 'active';
+        $nikahMPCRouteSection = 'show';
+        
+        $nikahMPCRouteHeader = '';
+        $listApplicantMPCRouteHeader = 'collapsed';
+        $profileRouteHeader = 'collapsed';
     }
     
 ?>
@@ -59,65 +128,51 @@
                     </div>
                 </div>
 
-                <!-- Permohonan Kursus Pra-Perkahwinan Accordian -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwo">
-                        <button class="accordion-button collapsed
-                            rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            <strong><i class="far fa-clipboard"></i>
-                                &nbsp; PERMOHONAN
-                                KURSUS PRA-PERKAHWINAN</strong>
-                        </button>
-                    </h2>
-                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-mdb-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-
-                            <a class="list-group-item
-                                list-group-item-action 
-                                px-3 border-0 pt-1 pb-1
-                                list-group-item-light" href="../blankPage.php">
-                                Messages
-                            </a>
-                        </div>
-                    </div>
-                </div>      
-
-                <!-- Permohonan Berkahwin Accordian -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingThree">
-                        <button class="accordion-button collapsed
+                 <!-- Permohonan Berkahwin Accordian -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button <?php echo $nikahMPCRouteHeader ?>
                             rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                            <strong><i class="far fa-clipboard"></i>
-                                &nbsp; PERMOHONAN
-                                BERKAHWINAN</strong>
-                        </button>
-                    </h2>
-                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-mdb-parent="#accordionFlushExample">
-                        <div class="accordion-body">
+                        <strong><i class="far fa-clipboard"></i>
+                            &nbsp; PERMOHONAN
+                            KAHWIN</strong>
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse <?php echo $nikahMPCRouteSection; ?>" aria-labelledby="flush-headingThree" data-mdb-parent="#accordionFlushExample">
+                    <div class="accordion-body">
 
-                            <a class="list-group-item
-                                list-group-item-action px-3 pt-1
-                                pb-1 border-0
-                                list-group-item-light" href="../blankPage.html">Settings</a>
-                        </div>
+                        <a class="list-group-item
+                                list-group-item-action <?php echo $listApplicantRoute ?>
+                                px-3 border-0 pt-1 pb-1
+                                list-group-item-light" href="../../../public/index.php?action=listOfMarriageRequestApplication&status=all">
+                            SENARAI PEMOHON
+                        </a>
+
+                        <a class="list-group-item
+                                list-group-item-action <?php echo $listApprovalRequestRoute ?>
+                                px-3 border-0 pt-1 pb-1
+                                list-group-item-light" href="../../../public/index.php?action=listOfMarriageRequestApplication&status=new">
+                            PEMOHON BARU
+                        </a>
                     </div>
                 </div>
+            </div>
 
-                <!-- Pendaftaran Nikah Accordian -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingfour">
-                        <button class="accordion-button collapsed
+            <!-- Pendaftaran Nikah Accordian -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingfour">
+                    <button class="accordion-button collapsed
                             rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                            <strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi
+                        <strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi
                                     bi-calendar-plus" viewBox="0
                                     0 16 16">
-                                    <path d="M8 7a.5.5 0 0 1
+                                <path d="M8 7a.5.5 0 0 1
                                         .5.5V9H10a.5.5 0 0 1 0
                                         1H8.5v1.5a.5.5 0 0 1-1
                                         0V10H6a.5.5 0 0 1
                                         0-1h1.5V7.5A.5.5 0 0 1 8
                                         7z" />
-                                    <path d="M3.5 0a.5.5 0 0
+                                <path d="M3.5 0a.5.5 0 0
                                             1 .5.5V1h8V.5a.5.5 0
                                             0 1 1
                                             0V1h1a2 2 0 0 1 2
@@ -129,36 +184,36 @@
                                             4v10a1 1 0 0 0 1
                                             1h12a1 1 0 0 0
                                             1-1V4H1z" />
-                                </svg> &nbsp;
-                                PENDAFTARAN NIKAH</strong>
-                        </button>
-                    </h2>
-                    <div id="flush-collapseFour" class="accordion-collapse
+                            </svg> &nbsp;
+                            PENDAFTARAN NIKAH</strong>
+                    </button>
+                </h2>
+                <div id="flush-collapseFour" class="accordion-collapse
                                 collapse" aria-labelledby="flush-headingFour" data-mdb-parent="#accordionFlushExample">
-                        <div class="accordion-body">
+                    <div class="accordion-body">
 
-                            <a class="list-group-item
+                        <a class="list-group-item
                                         list-group-item-action
                                         border-0 px-3 pt-1 pb-1
                                         list-group-item-light" href="../blankPage.html">Status</a>
-                            <a class="list-group-item
+                        <a class="list-group-item
                                         list-group-item-action
                                         border-0 mt-1 px-3 pt-1
                                         pb-1
                                         list-group-item-light" href="../blankPage.html">Pembayaran</a>
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- ADUAN DAN KHIDMAT NASIHAT Accordian -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingFive">
-                        <button class="accordion-button
+            <!-- ADUAN DAN KHIDMAT NASIHAT Accordian -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingFive">
+                    <button class="accordion-button
                                 collapsed rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-                            <strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi
+                        <strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi
                                         bi-telephone-inbound" viewBox="0 0 16
                                         16">
-                                    <path d="M15.854.146a.5.5
+                                <path d="M15.854.146a.5.5
                                             0 0 1 0
                                             .708L11.707
                                             5H14.5a.5.5 0 0
@@ -218,29 +273,29 @@
                                             18.634 18.634 0
                                             0
                                             1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
-                                </svg> &nbsp; ADUAN
-                                DAN KHIDMAT NASIHAT</strong>
-                        </button>
-                    </h2>
-                    <div id="flush-collapseFive" class="accordion-collapse
+                            </svg> &nbsp; ADUAN
+                            DAN KHIDMAT NASIHAT</strong>
+                    </button>
+                </h2>
+                <div id="flush-collapseFive" class="accordion-collapse
                                 collapse" aria-labelledby="flush-headingFive" data-mdb-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <a class="list-group-item list-group-item-action border-0 px-3 pt-1 pb-1
-                                        list-group-item-light" href="../../../public/index.php?action=viewComplaintListDetailsView">Borang
-                                Aduan
-                            </a>
+                    <div class="accordion-body">
+                        <a class="list-group-item list-group-item-action border-0 px-3 pt-1 pb-1
+                                        list-group-item-light" href="../blankPage.html">Borang
+                            Aduan
+                        </a>
 
-                            <a class="list-group-item list-group-item-action border-0 mt-1 px-3 pt-1 pb-1
+                        <a class="list-group-item list-group-item-action border-0 mt-1 px-3 pt-1 pb-1
                                         list-group-item-light" href="../../../public/index.php?action=viewConsutationListDetailsView">Khidmat
-                                Nasihat
-                            </a>
+                            Nasihat
+                        </a>
 
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                 <!-- Insentif Khas Accordian -->
-                 <div class="accordion-item">
+                <!-- Insentif Khas Accordian -->
+                <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingSix">
                         <button class="accordion-button collapsed rounded-5" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
                             <strong><i class="fas fa-dollar-sign"></i>&nbsp;
@@ -253,12 +308,12 @@
                             <a class="list-group-item 
                             list-group-item-action 
                             border-0 px-3 pt-1 pb-1 
-                            list-group-item-light" href="../ManageSpecialIncentive/adminIncentive_applicantListView.php">
+                            list-group-item-light" href="../../../public/index.php?action=adminIncentiveListView">
                             Senarai Permohonan
                         </a>
-                        </div>
                     </div>
                 </div>
+            </div>
 
             </div>
 

@@ -63,8 +63,8 @@ class LoginController {
         $_SESSION['alert-success'] = "Berjaya log masuk.";
 
         // Redirect the page using JavaScript
-        echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
-        
+        echo '<script>window.location.href = "index.php?action=viewListOfApplicantMPC&from=listOFApplicant";</script>';
+       
     }else{
 
         //If the user not exists, it will show error message 
