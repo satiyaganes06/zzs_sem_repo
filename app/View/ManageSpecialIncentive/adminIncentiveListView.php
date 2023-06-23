@@ -20,13 +20,13 @@
 
         // Retrieve the serialized and URL-encoded data from the URL parameter
         $listOfSpecialIncentive = $_SESSION['listOfSpecialIncentive'];
-        $encodedApplicantData = $_GET['applicantData'];
+     //   $encodedApplicantData = $_GET['applicantData'];
 
         //Retrive applicant name from applicant model
         $applicantName = $_SESSION['applicantName'];
 
         // Decode the URL-encoded data and unserialize it// Decode the URL-encoded data and unserialize it
-        $decodedApplicantData = unserialize(urldecode($encodedApplicantData));
+     //   $decodedApplicantData = unserialize(urldecode($encodedApplicantData));
 
         $bilNum = 0;
     }
@@ -152,10 +152,6 @@
                                     
                                 </tbody>
                             </table>
-                        </div>
-
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-link btn-md bg-dark text-light btn-rounded mt-3" type="submit" onclick="location.href='../ManageRegistration/staffRegisterView.php'" data-mdb-ripple-color="dark">Tambah Staf</button>
                         </div>
                     </div>
                 </div>
