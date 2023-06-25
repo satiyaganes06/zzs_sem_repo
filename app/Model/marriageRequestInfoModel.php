@@ -52,14 +52,14 @@ class MarriageRequestInfoModel
         // Prepare your update statement
         $sql = "UPDATE marriage_request_info set 
                 RequestStatus = :status,
-                WHERE Applicant_IC = :applicantIc";
+                WHERE Applicant_IC = :Ic";
 
         // Prepare the statement
         $stmt = $this->connect->prepare($sql);
 
         // Bind parameters
         $stmt->bindParam(':status', $status);
-        $stmt->bindParam(':applicantIc', $applicantIc);
+        $stmt->bindParam(':Ic', $applicantIc);
 
         // Execute the statement
         if ($stmt->execute()) {
