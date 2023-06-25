@@ -97,7 +97,7 @@ if (!isset($_SESSION['currentUserIC'])) {
 
                             <div>
                                 <h5>Daftar Kursus Pra-Perkahwinan</h5>
-                                <form action="" method="post">
+                                <form action="../../../public/index.php?action=insertMPCView" method="post">
                                     <label for="organize">PAID : </label><input type="text" name="organize"><br>
                                     <label for="DateStart">Tarikh Mula : </label><input type="date" name="DateStart">
                                     <label for="DateFinish">Tarikh Tamat : </label><input type="date" name="DateFinish"><br>

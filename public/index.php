@@ -211,7 +211,7 @@ switch ($action) {
     case 'specialIncentiveApplicationAdmin':
 
         $applicantData = $userProfileController->viewProfileFunction('specialIncentiveApplicationAdmin');
-        
+
         break;
 
     case 'specialIncentiveApproval':
@@ -219,7 +219,7 @@ switch ($action) {
         $applicantData = $userProfileController->viewProfileFunction('specialIncentiveApproval');
 
         break;
-        
+
     case 'addRejection':
 
         $rejectionReason = $_POST['RejectionReason'];
@@ -364,12 +364,32 @@ switch ($action) {
         break;
 
 
+    case 'insertMPCView';
+
+        $organize = $_POST['organize'];
+        $DateStart = $_POST['DateStart'];
+        $DateFinish = $_POST['DateFinish'];
+        $Venue = $_POST['Venue'];
+        $TimeStart = $_POST['TimeStart'];
+        $TimeFinish = $_POST['TimeFinish'];
+        $StaffName = $_POST['StaffName'];
+        $StaffPhoneNumber = $_POST['StaffPhoneNumber'];
+        $Capacity = $_POST['Capacity'];
+        $Notes = $_POST['Notes'];
+
+        $marriagePreparationCourseController->insertMPCView($organize, $DateStart, $DateFinish, $Venue, $TimeStart, $TimeFinish, $StaffName, $StaffPhoneNumber, $Capacity, $Notes);
+        break;
+
+
     case 'updateMPCView';
         $marriageID = isset($_GET['marriageID']) ? $_GET['marriageID'] : '';
 
         echo $marriageID;
         //$marriagePreparationCourseController->updateMPCView($marriageID);
         break;
+
+
+        //Request Marriage Start
 
     case 'getApplicantAndPartnerInfo':
 

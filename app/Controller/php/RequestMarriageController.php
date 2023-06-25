@@ -77,7 +77,8 @@ class RequestMarriageController
         }
     }
 
-    public function approveMarriageRequest($status, $applicantIc){
+    public function approveMarriageRequest($status, $applicantIc)
+    {
 
         if ($this->marriageRequestInfoModel->approveMarriageRequest($status, $applicantIc)){
 

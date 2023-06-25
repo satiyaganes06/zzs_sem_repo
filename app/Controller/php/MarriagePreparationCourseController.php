@@ -40,12 +40,12 @@ class MarriagePreparationCourseController
         }
     }
 
-    public function getMPCInfo($marriageCourseID){
+    public function getMPCInfo($marriageCourseID)
+    {
 
         $MPCInfo = $this->marriageCourseInfoModel->getMPCInfo($marriageCourseID);
-        
-        header('Location: ../app/View/MarriageCourse/EditMPCView.php?MPCInfo=' . urlencode(serialize($MPCInfo)));
 
+        header('Location: ../app/View/MarriageCourse/EditMPCView.php?MPCInfo=' . urlencode(serialize($MPCInfo)));
     }
 
     public function viewListOfApplicantMPC($from)
@@ -69,35 +69,33 @@ class MarriagePreparationCourseController
             $_SESSION['applicantName'] = $applicantNameList;
 
             header('Location: ../app/View/MarriageCourse/ListOfApplicantMPCView.php');
-
         } elseif ($from == 'newApplicant') {
 
-                $MPCApplicant = $this->marriageCourseApplicationModel->getListOfApplicationMPC('DALAM PROSES');
-                $x = 0;
-                foreach ($MPCApplicant as $row) {
-    
-                    $applicant = $this->applicantModel->getApplicantProfileInfo($row["Applicant_IC"]);
-                    $applicantNameList[$x] = $applicant["ApplicantName"];
-    
-                    $x++;
-                }
+            $MPCApplicant = $this->marriageCourseApplicationModel->getListOfApplicationMPC('DALAM PROSES');
+            $x = 0;
+            foreach ($MPCApplicant as $row) {
+
+                $applicant = $this->applicantModel->getApplicantProfileInfo($row["Applicant_IC"]);
+                $applicantNameList[$x] = $applicant["ApplicantName"];
+
+                $x++;
+            }
 
             $_SESSION['MPCApplicant'] = $MPCApplicant;
             $_SESSION['applicantName'] = $applicantNameList;
 
             header('Location: ../app/View/MarriageCourse/NewApplicantView.php');
-
         } else {
 
-                $MPCApplicant = $this->marriageCourseApplicationModel->getListOfApplicationMPC('PESERTA');
-                $x = 0;
-                foreach ($MPCApplicant as $row) {
-    
-                    $applicant = $this->applicantModel->getApplicantProfileInfo($row["Applicant_IC"]);
-                    $applicantNameList[$x] = $applicant["ApplicantName"];
-    
-                    $x++;
-                }
+            $MPCApplicant = $this->marriageCourseApplicationModel->getListOfApplicationMPC('PESERTA');
+            $x = 0;
+            foreach ($MPCApplicant as $row) {
+
+                $applicant = $this->applicantModel->getApplicantProfileInfo($row["Applicant_IC"]);
+                $applicantNameList[$x] = $applicant["ApplicantName"];
+
+                $x++;
+            }
 
             $_SESSION['MPCApplicant'] = $MPCApplicant;
             $_SESSION['applicantName'] = $applicantNameList;
@@ -219,29 +217,49 @@ class MarriagePreparationCourseController
                 alert("Data unsuccessfully update");
                 window.href = "../../../public/index.php?action=viewListOfApplicantMPC&from=giveResultApplicant";
             </script>
-<?php
+        <?php
 
         }
     }
 
-    public function updateMPCView($marriageID){
+    public function insertMPCView($organize, $DateStart, $DateFinish, $Venue, $TimeStart, $TimeFinish, $StaffName, $StaffPhoneNumber, $Capacity, $Notes)
+    {
 
-        if($this->marriageCourseInfoModel->updateMPCView($marriageID)){
-            ?>
+        if ($this->marriageCourseInfoModel->insertMPCView($organize, $DateStart, $DateFinish, $Venue, $TimeStart, $TimeFinish, $StaffName, $StaffPhoneNumber, $Capacity, $Notes)) {
+        ?>
             <script>
-                alert("Data Sucessfully update");
-                window.href = "../../View/MarriageCourse/ManageMPCView.php";
+                alert("Data Sucessfully Insert");
+                window.href = "../../../public/index.php?action=viewlistOfMPC&organize=all&from=manageMPC";
             </script>
         <?php
-        }else{
-            ?>
+        } else {
+        ?>
             <script>
-                alert("Data unsuccessfully update");
-                window.href = "../../../public/index.php?action=viewListOfMPC&from=manageMPC";
+                alert("Data unsuccessfully Insert");
+                window.href = "../../../public/index.php?action=viewlistOfMPC&organize=all&from=manageMPC";
             </script>
         <?php
         }
-        
+    }
+
+    public function updateMPCView($marriageID)
+    {
+
+        if ($this->marriageCourseInfoModel->updateMPCView($marriageID)) {
+        ?>
+            <script>
+                alert("Data Sucessfully update");
+                window.href = "../../../public/index.php?action=getMPCInfo&marriageCourseID=<?php echo $marriageID; ?>";
+            </script>
+        <?php
+        } else {
+        ?>
+            <script>
+                alert("Data unsuccessfully update");
+                window.href = "../../../public/index.php?action=getMPCInfo&marriageCourseID=<?php echo $marriageID; ?>";
+            </script>
+<?php
+        }
     }
 }
 ?>
