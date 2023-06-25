@@ -23,7 +23,7 @@ class VoluntaryDocModel
     }
 
     public function uploadFileVoluntary($voluntaryId, $docId, $combinedContent){
-        $query = "SELECT DocLink FROM voluntary_doc WHERE Doc_id = $docId";
+        
         try {
             $stmt = $this->connect->prepare("SELECT DocLink FROM voluntary_doc WHERE Doc_id = $docId");
             $stmt->execute();
