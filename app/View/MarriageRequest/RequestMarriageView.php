@@ -19,14 +19,7 @@ if (!isset($_SESSION['currentUserIC'])) {
     // Sidebar Active path
     $_SESSION['route'] = 'reqMarriageView';
 
-    // // Retrieve the serialized and URL-encoded data from the URL parameter
-    // $partnerEncodedData = $_GET['partnerInfo'];
-    // $applicantEncodedData = $_GET['applicantInfo'];
-
-    // // Decode the URL-encoded data and unserialize it
-    // $decodedPartnerData = unserialize(urldecode($partnerEncodedData));
-    // $decodedApplicantData = unserialize(urldecode($applicantEncodedData));
-
+    //Get data
     $display = $_GET['display'];
 }
 ?>

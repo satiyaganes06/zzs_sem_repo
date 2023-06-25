@@ -113,7 +113,6 @@ if (!isset($_SESSION['currentUserIC'])) {
 
                                 foreach ($listOfRequestMarriageApplicantion as $row) {
 
-                                    $RequestStatus = $row["RequestStatus"];
                                     $Applicant_IC = $row["Applicant_IC"];
                                 ?>
                                     <tr>
@@ -134,7 +133,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                         </td>
 
                                         <td style="width: 15%;">
-                                            <?php echo $RequestStatus; ?>
+                                            <?php echo $row["RequestStatus"]; ?>
                                         </td>
 
                                         <td style="width: 12%;">
