@@ -41,7 +41,7 @@ class VoluntaryDocModel
             $combinedValue = $existingValue . "," . implode(",", $newFiles);
         
             // Update the attribute with the combined value in the database
-            $updateQuery = "UPDATE your_table SET DocLink = :combinedValue WHERE id = 1";
+            $updateQuery = "UPDATE voluntary_doc SET DocLink = :combinedValue WHERE id = 1";
         
             try {
                 $updateStmt = $this->connect->prepare($updateQuery);
