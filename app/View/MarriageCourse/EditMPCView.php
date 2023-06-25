@@ -3,10 +3,6 @@
 // Start up your PHP Session
 session_start();
 
-//Decluration
-$encodedData;
-$decodedAdminData;
-
 //If the user is not logged in send him/her to the login form
 if (!isset($_SESSION['currentUserIC'])) {
 
@@ -155,7 +151,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                         <tr>
                                             <th scope="row">Catatan :</th>
                                             <td colspan="3">
-                                                <input type="text" placeholder="<?php echo $decodedMPCData['Notes']; ?>"style="width: 510px;height: 100px" name="dateStart">
+                                                <input type="text" placeholder="<?php echo $decodedMPCData['Notes']; ?>"style="width: 510px;height: 100px" name="notes">
                                             </td>
                                         </tr>
                                         <td>

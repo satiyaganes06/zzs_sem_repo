@@ -138,13 +138,8 @@ if (!isset($_SESSION['currentUserIC'])) {
 
 
                                     foreach ($listOfMPC as $row) {
-                                        $organize = $row["Organize"];
-                                        $venue = $row['Venue'];
-                                        $dateStart = $row['DateStart'];
-                                        $dateFinish = $row['DateFinish'];
-                                        $capacity = $row['Capacity'];
+                                        
                                         $marriageCourseID = $row['Marriage_Course_Id'];
-                                        echo $marriageCourseID;
                                     ?>
                                         <tr>
                                             <td style="width: 3%;">
@@ -152,19 +147,19 @@ if (!isset($_SESSION['currentUserIC'])) {
                                             </td>
 
                                             <td class="" style="width: 15%;">
-                                                <div class="iCEllipsis"><?php echo $organize; ?></div>
+                                                <div class="iCEllipsis"><?php echo $row["Organize"]; ?></div>
                                             </td>
 
                                             <td class="" style="width: 40%;">
-                                                <?php echo $venue; ?>
+                                                <?php echo $row['Venue']; ?>
                                             </td>
 
                                             <td style="width: 20%;">
-                                                <?php echo $dateStart; ?>
+                                                <?php echo $row['DateStart']; ?>
                                             </td>
 
                                             <td style="width: 10%;">
-                                                <?php echo $capacity; ?>
+                                                <?php echo $row['Capacity'];; ?>
                                             </td>
 
                                             <td style="width: 12%;">

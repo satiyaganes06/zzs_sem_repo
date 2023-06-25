@@ -3,10 +3,6 @@
 // Start up your PHP Session
 session_start();
 
-//Decluration
-$encodedData;
-$decodedAdminData;
-
 //If the user is not logged in send him/her to the login form
 if (!isset($_SESSION['currentUserIC'])) {
 

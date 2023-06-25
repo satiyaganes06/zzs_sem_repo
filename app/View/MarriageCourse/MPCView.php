@@ -20,7 +20,6 @@ if (!isset($_SESSION['currentUserIC'])) {
   $_SESSION['route'] = 'MPCView';
   $bilNum = 0;
   $listOfMPC = $_SESSION['listOfMPC'];
-  $bilNum = 0;
 }
 ?>
 
