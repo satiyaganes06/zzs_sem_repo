@@ -118,30 +118,30 @@ class MarriagePreparationCourseController
         header('Location: ../app/View/MarriageCourse/UploadProofOfPaymentMPCView.php?applicantInfo=' .  urlencode(serialize($applicantInfo)));
     }
 
-    public function uploadProofOfPaymentMPC($typeOfFee)
-    {
-        session_start();
-        $applicantIC = $_SESSION['currentUserIC'];
-        $this->paymentModel->uploadPayment($typeOfFee, $applicantIC);
+    // public function uploadProofOfPaymentMPC($typeOfFee)
+    // {
+    //     session_start();
+    //     $applicantIC = $_SESSION['currentUserIC'];
+    //     $this->paymentModel->uploadPayment($typeOfFee, $applicantIC);
 
-        if ($this->paymentModel->uploadPayment($typeOfFee, $applicantIC)) {
+    //     if ($this->paymentModel->uploadPayment($typeOfFee, $applicantIC)) {
 
-            // Display success message using JavaScript
-            $_SESSION['alert-success'] = "Berjaya memuat naik bukti pembayaran.";
+    //         // Display success message using JavaScript
+    //         $_SESSION['alert-success'] = "Berjaya memuat naik bukti pembayaran.";
 
-            // Redirect the page using JavaScript
-            // echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
-            header('Location: ../app/View/MarriageCourse/MPCView.php');
-        } else {
+    //         // Redirect the page using JavaScript
+    //         // echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
+    //         header('Location: ../app/View/MarriageCourse/MPCView.php');
+    //     } else {
 
-            // Display success message using JavaScript
-            $_SESSION['alert-fail'] = "Kegagalan memuat naik bukti pembayaran.";
+    //         // Display success message using JavaScript
+    //         $_SESSION['alert-fail'] = "Kegagalan memuat naik bukti pembayaran.";
 
-            // Redirect the page using JavaScript
-            // echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
-            header('Location: ../app/View/MarriageCourse/MPCView.php');
-        }
-    }
+    //         // Redirect the page using JavaScript
+    //         // echo '<script>window.location.href = "index.php?action=viewProfile&from=view";</script>';
+    //         header('Location: ../app/View/MarriageCourse/MPCView.php');
+    //     }
+    // }
 
     public function getMPCApplicantInfoForAdmin($from, $applicantIC)
     {
