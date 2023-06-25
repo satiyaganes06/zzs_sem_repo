@@ -117,7 +117,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                 ?>
                                     <tr>
                                         <td style="width: 3%;">
-                                            <?php echo ++$bilNum; ?>
+                                            <?php echo $bilNum++; ?>
                                         </td>
 
                                         <td style="width: 30%;">

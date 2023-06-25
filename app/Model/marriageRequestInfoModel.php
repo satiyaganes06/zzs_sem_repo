@@ -15,8 +15,8 @@ class MarriageRequestInfoModel
         // Prepare SQL statement with placeholders to prevent SQL injection
         if($status == 'all'){
             $stmt = $this->connect->prepare("SELECT * FROM marriage_request_info");
-        }else{
-            $stmt = $this->connect->prepare("SELECT * FROM marriage_request_info WHERE RequestStatus = '$status'");
+        }else if($status == 'new'){
+            $stmt = $this->connect->prepare("SELECT * FROM marriage_request_info WHERE RequestStatus = 'DALAM PROSES'");
         }
 
         // Execute SQL statement
@@ -47,5 +47,26 @@ class MarriageRequestInfoModel
         
     }
 
+    public function approveMarriageRequest($status, $applicantIc){
+
+        // Prepare your update statement
+        $sql = "UPDATE marriage_request_info set 
+                RequestStatus = :status,
+                WHERE Applicant_IC = :applicantIc";
+
+        // Prepare the statement
+        $stmt = $this->connect->prepare($sql);
+
+        // Bind parameters
+        $stmt->bindParam(':status', $status);
+        $stmt->bindParam(':applicantIc', $applicantIc);
+
+        // Execute the statement
+        if ($stmt->execute()) {
+            return true;
+        } else {
+
+            return false;
+        }
+    }
 }
-?>

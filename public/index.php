@@ -347,7 +347,8 @@ switch ($action) {
     case 'updateMPCView';
         $marriageID = isset($_GET['marriageID']) ? $_GET['marriageID'] : '';
 
-        $marriagePreparationCourseController->updateMPCView($marriageID);
+        echo $marriageID;
+        //$marriagePreparationCourseController->updateMPCView($marriageID);
         break;
 
     case 'getApplicantAndPartnerInfo':
@@ -371,6 +372,14 @@ switch ($action) {
         $from = isset($_GET['from']) ? $_GET['from'] : '';
 
         $requestMarriageController->MarriageRequestApplicationInfo($applicantIC, $from);
+
+        break;
+
+    case 'approveMarriageRequest';
+        $status = isset($_GET['status']) ? $_GET['status'] : '';
+        $applicantIc = isset($_GET['applicantIc']) ? $_GET['applicantIc'] : '';
+
+        $requestMarriageController->approveMarriageRequest($status, $applicantIc);
 
         break;
 

@@ -50,10 +50,10 @@ class RequestMarriageController
         $_SESSION['listOfRequestMarriageApplicantion'] = $listOfRequestMarriageApplicantion;
 
         if ($status == 'all'){
-            header('Location: ../app/View/MarriageRequest/ListApplicantView.php?');
+            header('Location: ../app/View/MarriageRequest/ListApplicantView.php');
         }
         else {
-            header('Location: ../app/View/MarriageRequest/ListApprovalRequestView.php?');
+            header('Location: ../app/View/MarriageRequest/ListApprovalRequestView.php');
         }
     }
 
@@ -68,4 +68,26 @@ class RequestMarriageController
             header('Location: ../app/View/MarriageRequest/ApproveRequestView.php?applicantInfo=' . urlencode(serialize($applicantInfo)));
         }
     }
-}
+
+    public function approveMarriageRequest($status, $applicantIc){
+
+        if ($this->marriageRequestInfoModel->approveMarriageRequest($status, $applicantIc)){
+
+            ?>
+                <script>
+                    alert("Data Sucessfully update");
+                    window.href = "../../../public/index.php?action=listOfMarriageRequestApplication&status=new";
+                </script>
+            <?php
+            } else {
+            ?>
+                <script>
+                    alert("Data unsuccessfully update");
+                    window.href = "../../../public/index.php?action=listOfMarriageRequestApplication&status=new";
+                </script>
+            <?php
+            }
+        }
+
+    }
+

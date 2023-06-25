@@ -97,12 +97,12 @@ if (!isset($_SESSION['currentUserIC'])) {
 
                         <div id="inMainContentOutline" class="table-responsive p-4">
                             <table class="table table-borderless table-sm">
-                                <form action="../../../public/index.php?action=updateMPCView&marriageID=<?php echo $decodedMPCData['Marriage_Id ']; ?>" method="post">
+                                <form action="../../../public/index.php" method='post'>
                                     <tbody>
                                         <tr>
                                             <th scope="row">PAID :</th>
                                             <td colspan="3">
-                                                <input type="text" placeholder="<?php echo $decodedMPCData['Organize']; ?>" style="width: 510px;">
+                                                <input type="text" placeholder="<?php echo $decodedMPCData['Organize']; ?>" style="width: 510px;" name="organize">
                                             </td>
 
                                         </tr>
@@ -110,58 +110,59 @@ if (!isset($_SESSION['currentUserIC'])) {
                                         <tr>
                                             <th scope="row">Tarikh Mula :</th>
                                             <td>
-                                                <input type="date" placeholder="<?php echo $decodedMPCData['DateStart']; ?>">
+                                                <input type="date" placeholder="<?php echo $decodedMPCData['DateStart']; ?>" name="dateStart">
                                             </td>
 
                                             <th scope="row">Tarikh Akhir :</th>
                                             <td>
-                                                <input type="date" placeholder="<?php echo $decodedMPCData['DateFinish']; ?>">
+                                                <input type="date" placeholder="<?php echo $decodedMPCData['DateFinish']; ?>" name="dateFinish">
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <th scope="row">Masa Dari :</th>
                                             <td>
-                                                <input type="time" placeholder="<?php echo $decodedMPCData['TimeStart']; ?>">
+                                                <input type="time" placeholder="<?php echo $decodedMPCData['TimeStart']; ?>" name="timeStart">
                                             </td>
 
                                             <th scope="row">Masa Hingga :</th>
                                             <td>
-                                                <input type="time" placeholder="<?php echo $decodedMPCData['TimeFinish']; ?>">
+                                                <input type="time" placeholder="<?php echo $decodedMPCData['TimeFinish']; ?>" name="timeFinish">
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <th scope="row">Tempat :</th>
                                             <td colspan="3">
-                                                <input type="text" placeholder="<?php echo $decodedMPCData['Venue']; ?>" style="width: 510px;">
+                                                <input type="text" placeholder="<?php echo $decodedMPCData['Venue']; ?>" style="width: 510px;" name="venue">
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <th scope="row">Pegawai Dihubungi :</th>
                                             <td colspan="3">
-                                                <input type="text" placeholder="<?php echo $decodedMPCData['StaffName']; ?>" style="width: 510px;">
+                                                <input type="text" placeholder="<?php echo $decodedMPCData['StaffName']; ?>" style="width: 510px;" name="staffName">
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <th scope="row">No. Telefon :</th>
                                             <td>
-                                                <input type="text" placeholder="<?php echo $decodedMPCData['StaffPhoneNumber']; ?>">
+                                                <input type="text" placeholder="<?php echo $decodedMPCData['StaffPhoneNumber']; ?>" name="staffPhoneNum">
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <th scope="row">Catatan :</th>
                                             <td colspan="3">
-                                                <input type="text" placeholder="<?php echo $decodedMPCData['Notes']; ?>"style="width: 510px;height: 100px">
+                                                <input type="text" placeholder="<?php echo $decodedMPCData['Notes']; ?>"style="width: 510px;height: 100px" name="dateStart">
                                             </td>
                                         </tr>
                                         <td>
                                             <input type="submit" value="submit" class="btn btn-dark">
                                         </td>
                                     </tbody>
+                                    <input type="text">
                                 </form>
 
                             </table>

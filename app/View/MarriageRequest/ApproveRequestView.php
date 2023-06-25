@@ -186,11 +186,14 @@ if (!isset($_SESSION['currentUserIC'])) {
                                         </tr>
 
                                     </tbody>
+                                    <?php
+                                    $applicantIc=$decodedApplicantData['Applicant_Ic'];;
+                                    ?>
 
                                 </table>
                                 <div class="d-flex justify-content-end">
-                                    <button class="btn btn-link btn-md bg-dark text-light btn-rounded mt-3 mr-2 " type="submit" data-mdb-ripple-color="dark">Terima</button>
-                                    <button class="btn btn-link btn-md bg-dark text-light btn-rounded mt-3 " type="submit" data-mdb-ripple-color="dark">Tolak</button>
+                                    <a href="../../../public/index.php?action=approveMarriageRequest&status=terima&applicantIc=<?php echo $applicantIc?>"><button class="btn btn-link btn-md bg-dark text-light btn-rounded mt-3 mr-2 " type="submit" data-mdb-ripple-color="dark">Terima</button></a>
+                                    <a href="../../../public/index.php?action=approveMarriageRequest&status=tolak&applicantIc=<?php echo $applicantIc?>"><button class="btn btn-link btn-md bg-dark text-light btn-rounded mt-3 " type="submit" data-mdb-ripple-color="dark">Tolak</button></a>
                                 </div>
                             
                         </div>
