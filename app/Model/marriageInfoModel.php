@@ -27,7 +27,7 @@ class MarriageInfoModel {
   public function updateApplicantMarriageRegistrationDetail($marriageId, $waliIC, $witnessIC, $requestDate, $marriageDate, $marriageAddress, $dowryType, $dowry, $gift, $marriageCertificateNo) {
      
     session_start();
-    $ic = $_SESSION['currentUserIC'];
+    
     
     // Prepare your update statement
     $sql = "UPDATE marriage_info set 
@@ -56,7 +56,7 @@ class MarriageInfoModel {
     $stmt->bindParam(':dowry', $dowry);
     $stmt->bindParam(':gift', $gift);
     $stmt->bindParam(':marriageCertificateNo', $marriageCertificateNo);
-    $stmt->bindParam(':ic', $ic);
+    
 
     // Execute the statement
     if ($stmt->execute() === TRUE) {

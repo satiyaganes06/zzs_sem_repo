@@ -23,7 +23,7 @@ class VoluntaryDocModel
     }
 
     public function uploadFileVoluntary($voluntaryId, $docId, $combinedContent){
-        $query = "SELECT DocLink FROM voluntary_doc WHERE Doc_id = $docId";
+        
         try {
             $stmt = $this->connect->prepare("SELECT DocLink FROM voluntary_doc WHERE Doc_id = $docId");
             $stmt->execute();
@@ -41,7 +41,7 @@ class VoluntaryDocModel
             $combinedValue = $existingValue . "," . implode(",", $newFiles);
         
             // Update the attribute with the combined value in the database
-            $updateQuery = "UPDATE your_table SET DocLink = :combinedValue WHERE id = 1";
+            $updateQuery = "UPDATE voluntary_doc SET DocLink = :combinedValue WHERE id = 1";
         
             try {
                 $updateStmt = $this->connect->prepare($updateQuery);
