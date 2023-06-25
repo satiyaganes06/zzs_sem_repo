@@ -5,14 +5,22 @@ class RequestMarriageController
     private $marriageInfoModel;
     private $marriageRequestInfoModel;
     private $applicantModel;
+    private $waliModel;
+    private $witnessModel;
+    private $marriageDocModel;
+    private $documentModel;
 
     //Login controller's constructor
-    public function __construct($marriageInfoModel, $marriageRequestInfoModel, $applicantModel)
+    public function __construct($marriageInfoModel, $marriageRequestInfoModel, $applicantModel, $waliModel, $witnessModel, $marriageDocModel, $documentModel)
     {
         // session_start();
         $this->marriageInfoModel = $marriageInfoModel;
         $this->marriageRequestInfoModel = $marriageRequestInfoModel;
         $this->applicantModel = $applicantModel;
+        $this->waliModel = $waliModel;
+        $this->witnessModel = $witnessModel;
+        $this->marriageDocModel = $marriageDocModel;
+        $this->documentModel = $documentModel;
     }
 
     public function getApplicantAndPartnerInfo($partnerIC, $applicantIC)
