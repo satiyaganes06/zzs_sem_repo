@@ -67,24 +67,36 @@
 
     public function addIncentiveDoc($doc) {
 
-        $incentiveDocInfo = $this->incentiveDocModel->addIncentiveDoc();
+        $this->incentiveDocModel->addIncentiveDoc($doc);
+    }
+
+    public function getIncentiveDoc() {
+
+        $incentiveDocInfo = $this->incentiveDocModel->getIncentiveDoc();
 
         return $incentiveDocInfo;
     }
 
     //Retrieve special incentive list from special incentive model
-    public function viewSpecialIncentiveListFunction($from) {
+    public function adminIncentiveListView() {
+
+        session_start();
+        
+        $x = 0;
 
         $listOfSpecialIncentive = $this->specialIncentiveModel->getAllSpecialIncentiveInfo();
 
-        session_start();
+        foreach($listOfSpecialIncentive as $row) {
+            $name= $this->applicantModel->getApplicantProfileInfo($row['Applicant_IC']);
+            $applicantName[$x] = $name['ApplicantName'];
+            $x++;
+        }
+
+        $_SESSION['applicantName'] = $applicantName;
         $_SESSION['listOfSpecialIncentive'] = $listOfSpecialIncentive;
-        
-            ?>
-                <script>
-                    window.location = "../app/View/ManageSpecialIncentive/adminIncentiveListView.php";
-                </script>
-            <?php
+
+        header('location: ../../../../app/View/ManageSpecialIncentive/adminIncentiveListView.php');
+
     }
 
     
@@ -93,6 +105,11 @@
         $partner = $this->applicantModel->getApplicantProfileInfo($partner_IC);
 
         return $partner;
+    }
+
+    public function addRejection($rejectionReason) {
+
+        $this->specialIncentiveModel->addRejection($rejectionReason);
     }
 
 }

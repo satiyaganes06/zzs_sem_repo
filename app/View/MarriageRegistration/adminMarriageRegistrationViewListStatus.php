@@ -95,6 +95,7 @@
 
 
                         <div id="inMainContentOutline" class="table-responsive p-4">
+                        <form method="POST" action="../../../public/index.php?action=uploadFile2">
                         <label id="kpSpousein">Masukkan nombor kad pengenalan pemohon</label>
                         <br>
                         <Input type="text" id="kpSpouse" name="kpSpouse" value="">

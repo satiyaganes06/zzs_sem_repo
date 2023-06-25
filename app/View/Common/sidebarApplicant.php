@@ -82,13 +82,55 @@ if ($route == 'viewProfile') {
     $appIncentiveViewRoute = 'active';
     $appIncentiveViewRouteSection = 'show';
 
-    $appIncentiveRouteHeader = '';
-    $reqMarriageRouteHeader = 'collapsed';
-    $MPCRouteHeader = 'collapsed';
-    $profileRouteHeader = 'collapsed';
-    $marriageRegistrationRouteHeader = 'collapsed';
-    $appDetailsRouteHeader = 'collapsed';
-}
+        $appDetailsRouteHeader = '';
+        $MPCRouteHeader = 'collapsed';
+        $profileRouteHeader = 'collapsed';
+        $reqMarriageRouteHeader = 'collapsed';
+        $marriageRegistrationRouteHeader = 'collapsed';
+        $appIncentiveRouteHeader = 'collapsed';
+    } 
+    
+    else if($route == 'consultDetailsView'){
+        $consultDetailsViewRoute = 'active' ;
+
+    }
+    else if($route == 'reqMarriageView'){
+        $reqMarriageViewRoute = 'active' ;
+        $reqMarriageRouteSection = 'show';
+
+        $reqMarriageRouteHeader = '';
+        $MPCRouteHeader = 'collapsed';
+        $profileRouteHeader = 'collapsed';
+        $marriageRegistrationRouteHeader = 'collapsed';
+        $appDetailsRouteHeader = 'collapsed';
+        $appIncentiveRouteHeader = 'collapsed';
+    } 
+
+    else if($route == 'appIncentiveView'){
+        $appIncentiveViewRoute = 'active' ;
+        $appIncentiveViewRouteSection = 'show';
+
+        $appIncentiveRouteHeader = '';
+        $reqMarriageRouteHeader = 'collapsed';
+        $MPCRouteHeader = 'collapsed';
+        $profileRouteHeader = 'collapsed';
+        $marriageRegistrationRouteHeader = 'collapsed';
+        $appDetailsRouteHeader = 'collapsed';
+        
+    } 
+    else if($route == 'consultDetailsView'){
+        $appDetails2ViewRoute = 'active' ;
+        $appIncentiveViewRouteSection = 'show';
+
+        $appIncentiveRouteHeader = '';
+        $reqMarriageRouteHeader = 'collapsed';
+        $MPCRouteHeader = 'collapsed';
+        $profileRouteHeader = 'collapsed';
+        $marriageRegistrationRouteHeader = 'collapsed';
+        $appDetailsRouteHeader = 'collapsed';
+        
+    } 
+
 ?>
 
 <html>
@@ -304,6 +346,7 @@ if ($route == 'viewProfile') {
                             Aduan
                         </a>
 
+                            <a class="list-group-item list-group-item-action border-0 mt-1 px-3 pt-1 pb-1 <?php echo $appDetails2ViewRoute ?>
                         <a class="list-group-item list-group-item-action border-0 mt-1 px-3 pt-1 pb-1
                                         list-group-item-light" href="../../../public/index.php?action=viewProfile&from=khidmatNasihatPemohon">Khidmat
                             Nasihat

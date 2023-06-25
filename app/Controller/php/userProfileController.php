@@ -35,7 +35,15 @@
                     return $user; //ni satiya buat bukan salah aku
                     //header('Location: ../app/View/ManageSpecialIncentive/applicantIncentiveView.php?returnInfo='.  urlencode(serialize($user)));
                 
-                }else if($from == 'aduanPemohon'){
+                }else if($from == 'specialIncentiveApplicationAdmin'){
+                    return $user; //ni satiya buat bukan salah aku
+                    //header('Location: ../app/View/ManageSpecialIncentive/applicantIncentiveView.php?returnInfo='.  urlencode(serialize($user)));
+                }
+                else if($from == 'specialIncentiveApproval'){
+                    return $user; //ni satiya buat bukan salah aku
+                    //header('Location: ../app/View/ManageSpecialIncentive/applicantIncentiveView.php?returnInfo='.  urlencode(serialize($user)));
+                }
+                else if($from == 'aduanPemohon'){
                     header('Location: ../app/View/ManageComplaint/viewApplicantDetailsView.php?returnInfo='.  urlencode(serialize($user)));
                 
                 }else if($from == 'khidmatNasihatPemohon'){
@@ -117,14 +125,6 @@
                 <?php
             
 
-            }elseif($from == 'adminIncentiveListView'){
-                ?>
-                    <script>
-                        window.location = "../app/View/ManageSpecialIncentive/adminIncentiveListView.php";
-                    </script>
-                <?php
-
-
             }elseif($from == 'viewComplaintListDetailsView'){
             ?>
                 <script>
@@ -146,9 +146,10 @@
                     </script>
                 <?php
     
-                }
+                
 
             }
+        }
 
         //Update the applicant profile data 
         public function updateApplicantProfileFunction($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat) {

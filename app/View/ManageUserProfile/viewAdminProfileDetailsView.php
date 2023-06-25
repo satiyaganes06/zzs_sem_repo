@@ -57,8 +57,7 @@
 
 <body>
 
-    <!-- Toast -->
-    <?php include('../Common/alert.php'); ?>
+    
 
     <div class="container-md-8 container-sm-12 row d-flex
             justify-content-center">

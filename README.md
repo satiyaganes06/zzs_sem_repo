@@ -14,7 +14,7 @@ Icons - https://mdbootstrap.com/docs/standard/content-styles/icons/
 
 Test Users Details
 Pemohon
-- IC = 970608232207, Password = 12345
+- IC = 970608232207, Password = 12345678sG
 
 Kakitangan (Jaip Staff)
 - IC = 010802080454, Password = 12345

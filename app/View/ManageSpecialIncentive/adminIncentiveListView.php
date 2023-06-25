@@ -15,12 +15,20 @@
 
     }else{
 
-        // Retrieve list of applicant information
-        $result = $_SESSION['listOfSpecialIncentive'];
-        $bilNum = 0; 
-
         //Sidebar Active path
         $_SESSION['route'] = 'adminIncentiveListView';
+
+        // Retrieve the serialized and URL-encoded data from the URL parameter
+        $listOfSpecialIncentive = $_SESSION['listOfSpecialIncentive'];
+     //   $encodedApplicantData = $_GET['applicantData'];
+
+        //Retrive applicant name from applicant model
+        $applicantName = $_SESSION['applicantName'];
+
+        // Decode the URL-encoded data and unserialize it// Decode the URL-encoded data and unserialize it
+     //   $decodedApplicantData = unserialize(urldecode($encodedApplicantData));
+
+        $bilNum = 0;
     }
     
 ?>
@@ -101,52 +109,49 @@
                                 <tbody>
                                     
                                     <?php
-                                         
-
-                                        foreach ($result as $row)
+                                        foreach ($listOfSpecialIncentive as $row)
                                         {
-                                                
-                                                
+        
                                             $Incentive_id = $row["Incentive_Id"];
                                             $Applicant_IC = $row["Applicant_IC"];
-                                            $ApplicantName = $row["ApplicantName"];
+                                            $ApplicantName = $applicantName[$bilNum];
                                             $IncentiveDate = $row["IncentiveDate"];
                                             $IncentiveStatus = $row['IncentiveStatus'];
                                             ?>
-                                                <<tr>
+                                                <tr>
                                                     <td style="width: 5%;">
                                                         <?php echo ++$bilNum; ?>
                                                     </td>
 
-                                                    <td class="" style="width: 20%;">
+                                                    <td style="width: 15%;">
                                                         
-                                                        <div class="nameEllipsis"><?php echo $IncentiveDate;?></div>
+                                                        <?php echo $IncentiveDate;?>
                                                     </td>
 
                                                     <td style="width: 40%;">
-                                                        <span><?php echo $ApplicantName;?></span>
+                                                        <?php echo $ApplicantName;?>
                                                     </td>
 
-                                                    <td style="width: 20%;"><?php echo $Staff_type;?></td>
+                                                    <td style="width: 15%;"><?php echo $Applicant_IC;?></td>
 
-                                                    <td style="width: 15%;">
+                                                    <td style="width: 25%;">
                                                         <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
-                                                            onclick="location.href='../../../public/index.php?action=viewProfileById&type=staff&viewID=<?php echo $account_Id; ?>'">
+                                                            onclick="location.href='../../../public/index.php?action=specialIncentiveApplicationAdmin'">
                                                             Lihat
+                                                        </button>
+                                                        <button type="button" class="btn btn-link btn-sm bg-dark text-light btn-rounded" 
+                                                            onclick="location.href='../../../public/index.php?action=specialIncentiveApproval'">
+                                                            Kelulusan
                                                         </button>
                                                     </td>
                                                 </tr>
 
-                                            <?php 
+                                            <?php $bilNum++;
                                         }?>
                                     
                                     
                                 </tbody>
                             </table>
-                        </div>
-
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-link btn-md bg-dark text-light btn-rounded mt-3" type="submit" onclick="location.href='../ManageRegistration/staffRegisterView.php'" data-mdb-ripple-color="dark">Tambah Staf</button>
                         </div>
                     </div>
                 </div>
