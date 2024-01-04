@@ -14,7 +14,7 @@ Icons - https://mdbootstrap.com/docs/standard/content-styles/icons/
 
 Test Users Details
 Pemohon
-- IC = 970608232207, Password = 12345678sG
+- IC = 970608232207, Password = 12345678sG, email - satiyaganes.sg@gmail.com
 
 Kakitangan (Jaip Staff)
 - IC = 010802080454, Password = 12345

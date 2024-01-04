@@ -15,13 +15,9 @@
     
     try {
         // Server settings
-        $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true; 
-        $mail->Username = 'sgdevelopercompany@gmail.com';
-        $mail->Password = 'tjgxtlddossrivuj';
-        $mail->SMTPSecure = 'ssl';
-        $mail->Port = 465;
+        $mail->Port = 200;
 
         // Recipients
         $mail->setFrom('sgdevelopercompany@gmail.com', 'SG Developers');
@@ -71,4 +67,11 @@
 
         return $otp;
     }
+    // $mail->isSMTP();
+        // $mail->Host = 'smtp.gmail.com';
+        // $mail->SMTPAuth = true; 
+        // $mail->Username = 'sgdevelopercompany@gmail.com';
+        // $mail->Password = 'tjgxtlddossrivuj';
+        // $mail->SMTPSecure = 'ssl';
+        // $mail->Port = 465;
 ?>

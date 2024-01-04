@@ -344,7 +344,7 @@ switch ($action) {
     case 'uploadProofOfPaymentMPC':
         $typeOfFee = isset($_GET['typeOfFee']) ? $_GET['typeOfFee'] : '';
 
-        $marriagePreparationCourseController->uploadProofOfPaymentMPC($typeOfFee);
+        //$marriagePreparationCourseController->uploadProofOfPaymentMPC($typeOfFee);
 
         break;
 

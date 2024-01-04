@@ -152,8 +152,7 @@
                 </div>
 
                 <!-- form login -->
-                <form class="mt-4" action="../../../public/index.php?action=loginAccount" method="post" id="myform" >
-                  <!-- onsubmit = "return loginFormValidate();" -->
+                <form class="mt-4" action="../../../public/index.php?action=loginAccount" method="post" id="myform" onsubmit = "return loginFormValidate();" >
   
                   <!-- IC -->
                   <div class="form-outline bg-white rounded-4">
