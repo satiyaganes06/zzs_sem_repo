@@ -155,7 +155,8 @@
         public function updateApplicantProfileFunction($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat) {
             
             //Firstly, the updateApplicationProfileInfo will update the data in mySQL.
-            if($this->applicantModel->updateApplicantProfileInfo($nama, $umur, $tarikhTL, $jantina, $bangsa, $email, $alamat, $noTel, $noTelRum, $trafPen, $jawatan, $pendapatan, $alamatKerja, $noTelPenjabat)){
+            if($this->applicantModel->updateApplicantProfileInfo($alamat, $pendapatan, $tarikhTL, $bangsa, 
+            $jantina, $email, $nama, $noTel, $noTelRum, $trafPen, $jawatan, $umur, $alamatKerja, $noTelPenjabat)){
 
                 // Display success message using JavaScript
                 $_SESSION['alert-success'] = "Berjaya mengemas kini.";
