@@ -23,7 +23,7 @@ class ComplaintModel {
         Solution,
         ComplaintDate,
         ComplaintStatus
-    ) VALUES (?, ?, ?, ?, ?)");
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     //return to complaint controller
     return $query->execute([$complaintId, $consultationId, $adminId, $applicantIC, $purpose, $challenges, $solution, $complaintDate, $complaintStatus]);
