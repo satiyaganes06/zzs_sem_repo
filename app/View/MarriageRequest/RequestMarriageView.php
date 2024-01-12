@@ -214,69 +214,88 @@ if (!isset($_SESSION['currentUserIC'])) {
                                             <tbody>
                                                 <tr>
                                                     <th scope="row">Nama :</th>
-                                                    <td></td>
+                                                    <td><?php echo $decodedPartnerData['ApplicantName'];
+                                                        ?> </td>
 
                                                     <th scope="row">Umur :</th>
-                                                    <td></td>
+                                                    <td><?php echo $decodedPartnerData['ApplicantAge'];
+                                                        ?></td>
                                                 </tr>
 
                                                 <tr>
                                                     <th scope="row">Tarikh Lahir :</th>
-                                                    <td></td>
+                                                    <td><?php echo $decodedPartnerData['ApplicantBirthDate'];
+                                                        ?></td>
 
                                                     <th scope="row">Jantina :</th>
-                                                    <td></td>
+                                                    <td><?php echo $decodedPartnerData['ApplicantGender'];
+                                                        ?></td>
                                                 </tr>
 
                                                 <tr>
                                                     <th scope="row">No. Kad Pengenalan :</th>
-                                                    <td></td>
+                                                    <td><?php echo $decodedPartnerData['Applicant_Ic'];
+                                                        ?></td>
 
                                                     <th scope="row">Bangsa :</th>
-                                                    <td></td>
+                                                    <td><?php echo $decodedPartnerData['ApplicantRace'];
+                                                        ?></td>
                                                 </tr>
 
                                                 <tr>
                                                     <th scope="row">Email :</th>
-                                                    <td></td>
+                                                    <td><?php echo $decodedPartnerData['ApplicantEmail'];
+                                                        ?></td>
 
                                                     <th scope="row">No. Telefon(Pejabat) :</th>
-                                                    <td></td>
+                                                    <td><?php echo $decodedPartnerData['ApplicantWorkPhoneNo'];
+                                                        ?></td>
 
                                                 </tr>
 
                                                 <tr>
                                                     <th scope="row">Alamat :</th>
-                                                    <td></td>
+                                                    <td><?php echo $decodedPartnerData['ApplicantAddress'];
+                                                        ?></td>
                                                 </tr>
 
                                                 <tr>
                                                     <th scope="row">Alamat Tempat Kerja :</th>
-                                                    <td></td>
+                                                    <td><?php echo $decodedPartnerData['ApplicantWorkAddress'];
+                                                        ?></td>
                                                 </tr>
 
                                                 <tr>
                                                     <th scope="row">No. Telefon(Bimbit) :</th>
-                                                    <td></td>
+                                                    <td><?php echo $decodedPartnerData['ApplicantPhoneNo'];
+                                                        ?></td>
 
                                                     <th scope="row">No. Telefon(Rumah) :</th>
-                                                    <td></td>
+                                                    <td><?php echo $decodedPartnerData['ApplicantHomePhoneNo'];
+                                                        ?></td>
                                                 </tr>
 
                                                 <tr>
                                                     <th scope="row">Taraf Pendidikan :</th>
-                                                    <td></td>
+                                                    <td><?php echo $decodedPartnerData['ApplicantEduLevel'];
+                                                        ?></td>
 
                                                     <th scope="row">Jawatan / Pekerjaan :</th>
-                                                    <td></td>
+                                                    <td><?php echo $decodedPartnerData['ApplicantPosition'];
+                                                        ?></td>
                                                 </tr>
 
                                                 <tr>
                                                     <th scope="col-2">Pendapatan :</th>
-                                                    <td>RM </td>
+                                                    <td>RM <?php echo $decodedPartnerData['ApplicantSalary'];
+                                                            ?></td>
 
                                                     
-                                                    <td>
+                                                    <td><?php
+                                                    $partnerIc = $decodedPartnerData['Applicant_Ic'];
+                                                    $partnerName = $decodedPartnerData['ApplicantName'];
+                                                    $applicantName = $decodedApplicantData['ApplicantName'];
+                                                    ?>
                                                     <a href="../../View/MarriageRequest/RequestMarriageFormView.php?partnerIc=<?php echo $partnerIc; ?>&partnerName=<?php echo $partnerName; ?>&applicantName=<?php echo $applicantName; ?>"><button class="btn btn-dark">Confirm</button></a>
                                                     </td>
 
