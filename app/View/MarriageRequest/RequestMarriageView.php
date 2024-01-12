@@ -89,7 +89,7 @@ if (!isset($_SESSION['currentUserIC'])) {
 
                         <form action="../../../public/index.php?action=getApplicantAndPartnerInfo" method="post">
                             <label for="partnerIC"></label>
-                            <input type="integer" name="partnerIC">&nbsp;&nbsp;
+                            <input type="text" name="partnerIC">&nbsp;&nbsp;
                             <input type="submit" value="Search">
                         </form>
                         <?php
@@ -216,7 +216,7 @@ if (!isset($_SESSION['currentUserIC'])) {
                                                 <tr>
                                                     <th scope="row">Nama :</th>
                                                     <td><?php echo $decodedPartnerData['ApplicantName'];
-                                                        ?></td>
+                                                        ?> </td>
 
                                                     <th scope="row">Umur :</th>
                                                     <td><?php echo $decodedPartnerData['ApplicantAge'];
