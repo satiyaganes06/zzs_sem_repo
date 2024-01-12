@@ -89,7 +89,7 @@ if (!isset($_SESSION['currentUserIC'])) {
 
                         <form action="../../../public/index.php?action=getApplicantAndPartnerInfo" method="post">
                             <label for="partnerIC"></label>
-                            <input type="text" name="partnerIC">&nbsp;&nbsp;
+                            <input type="integer" name="partnerIC">&nbsp;&nbsp;
                             <input type="submit" value="Search">
                         </form>
                         <?php
